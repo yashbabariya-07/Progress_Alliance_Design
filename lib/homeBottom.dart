@@ -30,9 +30,12 @@ class HomeBottom extends StatelessWidget {
         ),
         items: [
           BottomNavigationBarItem(
-            icon: Icon(
-              MdiIcons.homeOutline,
-              size: MediaQuery.of(context).size.width * 0.08,
+            icon: Image.asset(
+              "assets/PAG.png",
+              color: selectedIndex == 0
+                  ? const Color.fromARGB(255, 16, 2, 90)
+                  : Colors.grey,
+              width: MediaQuery.of(context).size.width * 0.08,
             ),
             label: 'Home',
           ),
