@@ -440,154 +440,163 @@ class _HomePageState extends State<HomePage> {
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.01),
               GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, Routes.detailPersonRoute);
-                },
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.22,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: leads.length,
-                    itemBuilder: (context, index) {
-                      final lead = leads[index];
-                      DateTime now = DateTime.now();
-                      String formattedDate = DateFormat('dd MMM').format(now);
-                      return Container(
-                        margin: const EdgeInsets.all(5),
-                        height: MediaQuery.of(context).size.height * 0.2,
-                        width: MediaQuery.of(context).size.width * 0.85,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.white,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    formattedDate,
-                                    style: TextStyle(
-                                      fontSize: 12.sp,
-                                      fontFamily: 'Inter',
-                                    ),
-                                  ),
-                                  Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.03,
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.2,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      color: Colors.green,
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        "Inquiry",
-                                        style: TextStyle(
-                                            fontSize: 12.sp,
-                                            fontFamily: 'Inter',
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                  height: MediaQuery.of(context).size.height *
-                                      0.012),
-                              Row(
-                                children: [
-                                  CircleAvatar(
-                                    radius: MediaQuery.of(context).size.width *
-                                        0.055,
-                                    backgroundColor: Colors.black,
-                                    child: CircleAvatar(
-                                      radius:
-                                          MediaQuery.of(context).size.width *
-                                              0.054,
-                                      backgroundColor: Colors.white,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.02),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        lead['name'],
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                            fontFamily: 'Inter',
-                                            fontSize: 12.sp,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        lead['company'],
-                                        style: TextStyle(
-                                            fontFamily: 'Inter',
-                                            fontSize: 11.sp,
-                                            color: Colors.grey),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                  height: MediaQuery.of(context).size.height *
-                                      0.012),
-                              Text(
-                                lead['domain'],
-                                style: TextStyle(
-                                    fontSize: 12.sp,
-                                    fontFamily: 'Inter',
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                lead['profile'],
-                                style: TextStyle(
-                                    fontSize: 12.sp,
-                                    fontFamily: 'Inter',
-                                    color: Colors.grey[600]),
-                              ),
-                              RichText(
-                                text: TextSpan(
+                  onTap: () {
+                    Navigator.pushNamed(context, Routes.detailPersonRoute);
+                  },
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.22,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: leads.length,
+                      itemBuilder: (context, index) {
+                        final lead = leads[index];
+                        DateTime now = DateTime.now();
+                        String formattedDate = DateFormat('dd MMM').format(now);
+                        return Container(
+                          margin: const EdgeInsets.all(5),
+                          height: MediaQuery.of(context).size.height * 0.2,
+                          width: MediaQuery.of(context).size.width * 0.85,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Colors.white,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    TextSpan(
-                                      text: "Member Needs : ",
+                                    Text(
+                                      formattedDate,
                                       style: TextStyle(
                                         fontSize: 12.sp,
                                         fontFamily: 'Inter',
-                                        color: Colors.grey[400],
                                       ),
                                     ),
-                                    TextSpan(
-                                      text: lead['needs'],
-                                      style: TextStyle(
-                                          fontSize: 12.sp,
-                                          fontFamily: 'Inter',
-                                          color: Colors.grey[800]),
+                                    Container(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.03,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.2,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        color: Colors.green,
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          "Inquiry",
+                                          style: TextStyle(
+                                              fontSize: 12.sp,
+                                              fontFamily: 'Inter',
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
                                     ),
                                   ],
                                 ),
-                              ),
-                            ],
+                                SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.012),
+                                Row(
+                                  children: [
+                                    CircleAvatar(
+                                      radius:
+                                          MediaQuery.of(context).size.width *
+                                              0.055,
+                                      backgroundColor: Colors.black,
+                                      child: CircleAvatar(
+                                        radius:
+                                            MediaQuery.of(context).size.width *
+                                                0.054,
+                                        backgroundColor: Colors.white,
+                                        child: Icon(
+                                          Icons.person,
+                                          size: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.07,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.02),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          lead['name'],
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                              fontFamily: 'Inter',
+                                              fontSize: 12.sp,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Text(
+                                          lead['company'],
+                                          style: TextStyle(
+                                              fontFamily: 'Inter',
+                                              fontSize: 11.sp,
+                                              color: Colors.grey),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.012),
+                                Text(
+                                  lead['domain'],
+                                  style: TextStyle(
+                                      fontSize: 12.sp,
+                                      fontFamily: 'Inter',
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  lead['profile'],
+                                  style: TextStyle(
+                                      fontSize: 12.sp,
+                                      fontFamily: 'Inter',
+                                      color: Colors.grey[600]),
+                                ),
+                                RichText(
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: "Member Needs : ",
+                                        style: TextStyle(
+                                          fontSize: 12.sp,
+                                          fontFamily: 'Inter',
+                                          color: Colors.grey[400],
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: lead['needs'],
+                                        style: TextStyle(
+                                            fontSize: 12.sp,
+                                            fontFamily: 'Inter',
+                                            color: Colors.grey[800]),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ),
+                        );
+                      },
+                    ),
+                  )),
             ],
           ),
         ),
