@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactUs extends StatefulWidget {
@@ -115,7 +116,8 @@ class _ContactUsState extends State<ContactUs> {
                         child: Row(
                           children: [
                             Icon(
-                              Icons.call,
+                              MdiIcons.phoneOutline,
+                              color: Colors.grey[600],
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             SizedBox(
@@ -219,7 +221,8 @@ class _ContactUsState extends State<ContactUs> {
                         child: Row(
                           children: [
                             Icon(
-                              Icons.web,
+                              MdiIcons.web,
+                              color: Colors.grey[600],
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             SizedBox(
@@ -276,7 +279,8 @@ class _ContactUsState extends State<ContactUs> {
                         child: Row(
                           children: [
                             Icon(
-                              Icons.mail,
+                              MdiIcons.emailOutline,
+                              color: Colors.grey[600],
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             SizedBox(

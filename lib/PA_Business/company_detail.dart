@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:progress_alliance/routes/route.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:pdf/pdf.dart';
@@ -230,6 +231,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                 onPressed: _generateAndSharePDF,
                 icon: Icon(
                   Icons.share,
+                  color: Colors.grey[500],
                   size: MediaQuery.of(context).size.width * 0.06,
                 )),
           ],
@@ -323,7 +325,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
-                            Icons.call,
+                            MdiIcons.phoneOutline,
                             size: MediaQuery.of(context).size.width * 0.06,
                           ),
                           SizedBox(
@@ -353,9 +355,9 @@ class _CompanyDetailState extends State<CompanyDetail>
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset(
-                            "assets/wp.png",
-                            width: MediaQuery.of(context).size.width * 0.06,
+                          Icon(
+                            MdiIcons.whatsapp,
+                            size: MediaQuery.of(context).size.width * 0.06,
                           ),
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.01,
@@ -382,9 +384,9 @@ class _CompanyDetailState extends State<CompanyDetail>
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
-                            Icons.save,
-                            size: MediaQuery.of(context).size.width * 0.06,
+                          Image.asset(
+                            "assets/save.png",
+                            width: MediaQuery.of(context).size.width * 0.05,
                           ),
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.01,
@@ -416,7 +418,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                 color: const Color.fromARGB(255, 16, 2, 90),
                 fontWeight: FontWeight.bold,
               ),
-              tabs: [
+              tabs: const [
                 Tab(text: "About"),
                 Tab(text: "Contact"),
               ],
@@ -437,7 +439,8 @@ class _CompanyDetailState extends State<CompanyDetail>
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Icon(
-                                  Icons.person,
+                                  MdiIcons.accountOutline,
+                                  color: Colors.grey[500],
                                   size:
                                       MediaQuery.of(context).size.width * 0.06,
                                 ),
@@ -514,7 +517,8 @@ class _CompanyDetailState extends State<CompanyDetail>
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Icon(
-                                  Icons.list,
+                                  MdiIcons.viewAgendaOutline,
+                                  color: Colors.grey[500],
                                   size:
                                       MediaQuery.of(context).size.width * 0.06,
                                 ),
@@ -551,7 +555,8 @@ class _CompanyDetailState extends State<CompanyDetail>
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Icon(
-                                  Icons.line_style_outlined,
+                                  MdiIcons.viewAgendaOutline,
+                                  color: Colors.grey[500],
                                   size:
                                       MediaQuery.of(context).size.width * 0.06,
                                 ),
@@ -588,7 +593,8 @@ class _CompanyDetailState extends State<CompanyDetail>
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Icon(
-                                  Icons.format_align_center,
+                                  MdiIcons.hexagonOutline,
+                                  color: Colors.grey[500],
                                   size:
                                       MediaQuery.of(context).size.width * 0.06,
                                 ),
@@ -625,7 +631,8 @@ class _CompanyDetailState extends State<CompanyDetail>
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Icon(
-                                  Icons.badge,
+                                  MdiIcons.shoppingOutline,
+                                  color: Colors.grey[500],
                                   size:
                                       MediaQuery.of(context).size.width * 0.06,
                                 ),
@@ -679,7 +686,8 @@ class _CompanyDetailState extends State<CompanyDetail>
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Icon(
-                                  Icons.info,
+                                  MdiIcons.informationOutline,
+                                  color: Colors.grey[500],
                                   size:
                                       MediaQuery.of(context).size.width * 0.06,
                                 ),
@@ -722,7 +730,8 @@ class _CompanyDetailState extends State<CompanyDetail>
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Icon(
-                                  Icons.mail,
+                                  MdiIcons.emailOutline,
+                                  color: Colors.grey[500],
                                   size:
                                       MediaQuery.of(context).size.width * 0.06,
                                 ),
@@ -759,7 +768,8 @@ class _CompanyDetailState extends State<CompanyDetail>
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Icon(
-                                  Icons.web,
+                                  MdiIcons.web,
+                                  color: Colors.grey[500],
                                   size:
                                       MediaQuery.of(context).size.width * 0.06,
                                 ),
@@ -796,7 +806,8 @@ class _CompanyDetailState extends State<CompanyDetail>
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Icon(
-                                  Icons.pin_drop,
+                                  MdiIcons.mapMarkerOutline,
+                                  color: Colors.grey[500],
                                   size:
                                       MediaQuery.of(context).size.width * 0.06,
                                 ),
@@ -861,9 +872,9 @@ class _CompanyDetailState extends State<CompanyDetail>
                                                         .width *
                                                     0.01,
                                               ),
-                                              Icon(
-                                                Icons.send,
-                                                size: MediaQuery.of(context)
+                                              Image.asset(
+                                                "assets/sendd.png",
+                                                width: MediaQuery.of(context)
                                                         .size
                                                         .width *
                                                     0.04,
@@ -883,7 +894,8 @@ class _CompanyDetailState extends State<CompanyDetail>
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Icon(
-                                  Icons.link,
+                                  MdiIcons.link,
+                                  color: Colors.grey[500],
                                   size:
                                       MediaQuery.of(context).size.width * 0.06,
                                 ),

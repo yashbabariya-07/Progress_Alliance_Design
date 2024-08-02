@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:progress_alliance/bottombar.dart';
 import 'dart:io';
 import 'package:progress_alliance/routes/route.dart';
@@ -635,10 +636,18 @@ class _ProfileState extends State<Profile> {
                                       Navigator.pushNamed(
                                           context, Routes.basicDetailRoute);
                                     },
-                                    child: Icon(
-                                      Icons.note_add,
-                                      size: MediaQuery.of(context).size.width *
-                                          0.06,
+                                    child: CircleAvatar(
+                                      radius: 13,
+                                      backgroundColor: Colors.grey[300],
+                                      child: Center(
+                                        child: Icon(
+                                          MdiIcons.pencilOutline,
+                                          size: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.045,
+                                        ),
+                                      ),
                                     ))
                               ],
                             ),
@@ -816,10 +825,18 @@ class _ProfileState extends State<Profile> {
                                       Navigator.pushNamed(
                                           context, Routes.locationRoute);
                                     },
-                                    child: Icon(
-                                      Icons.note_add,
-                                      size: MediaQuery.of(context).size.width *
-                                          0.06,
+                                    child: CircleAvatar(
+                                      radius: 13,
+                                      backgroundColor: Colors.grey[300],
+                                      child: Center(
+                                        child: Icon(
+                                          MdiIcons.pencilOutline,
+                                          size: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.045,
+                                        ),
+                                      ),
                                     ))
                               ],
                             ),
@@ -887,10 +904,18 @@ class _ProfileState extends State<Profile> {
                                       Navigator.pushNamed(
                                           context, Routes.familyDetailRoute);
                                     },
-                                    child: Icon(
-                                      Icons.note_add,
-                                      size: MediaQuery.of(context).size.width *
-                                          0.06,
+                                    child: CircleAvatar(
+                                      radius: 13,
+                                      backgroundColor: Colors.grey[300],
+                                      child: Center(
+                                        child: Icon(
+                                          MdiIcons.pencilOutline,
+                                          size: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.045,
+                                        ),
+                                      ),
                                     ))
                               ],
                             ),

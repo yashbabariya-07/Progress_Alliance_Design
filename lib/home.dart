@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:progress_alliance/homeBottom.dart';
 import 'package:progress_alliance/routes/route.dart';
 
@@ -88,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                     width: MediaQuery.of(context).size.width * 0.4,
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-                  Divider(thickness: 0.5),
+                  const Divider(thickness: 0.5),
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 2.0),
@@ -97,9 +98,14 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           ListTile(
                             leading: Icon(
-                              Icons.note_add_sharp,
+                              Icons.note_add_outlined,
+                              color: Colors.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
+                            // Image.asset(
+                            //   "assets/notes.png",
+                            //   width: MediaQuery.of(context).size.width * 0.06,
+                            // ),
                             title: Text(
                               "Complaint",
                               style: TextStyle(
@@ -114,9 +120,14 @@ class _HomePageState extends State<HomePage> {
                           ),
                           ListTile(
                             leading: Icon(
-                              Icons.download,
+                              MdiIcons.downloadCircleOutline,
+                              color: Colors.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
+                            // Image.asset(
+                            //   "assets/downloads.png",
+                            //   width: MediaQuery.of(context).size.width * 0.06,
+                            // ),
                             title: Text(
                               "Downloads",
                               style: TextStyle(
@@ -131,9 +142,15 @@ class _HomePageState extends State<HomePage> {
                           ),
                           ListTile(
                             leading: Icon(
-                              Icons.feedback,
+                              Icons.feedback_outlined,
+                              color: Colors.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
+
+                            // Image.asset(
+                            //   "assets/feedback.png",
+                            //   width: MediaQuery.of(context).size.width * 0.06,
+                            // ),
                             title: Text(
                               "Feedback & Review",
                               style: TextStyle(
@@ -148,9 +165,15 @@ class _HomePageState extends State<HomePage> {
                           ),
                           ListTile(
                             leading: Icon(
-                              Icons.contact_phone,
+                              Icons.contact_mail,
+                              color: Colors.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
+
+                            // Image.asset(
+                            //   "assets/contact.png",
+                            //   width: MediaQuery.of(context).size.width * 0.06,
+                            // ),
                             title: Text(
                               "Contact Us",
                               style: TextStyle(
@@ -164,7 +187,8 @@ class _HomePageState extends State<HomePage> {
                           ),
                           ListTile(
                             leading: Icon(
-                              Icons.info,
+                              MdiIcons.informationOutline,
+                              color: Colors.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             title: Text(
@@ -178,7 +202,8 @@ class _HomePageState extends State<HomePage> {
                           ),
                           ListTile(
                             leading: Icon(
-                              Icons.help,
+                              MdiIcons.helpCircleOutline,
+                              color: Colors.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             title: Text(
@@ -206,11 +231,16 @@ class _HomePageState extends State<HomePage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset(
-                            "assets/lt.png",
-                            // height: MediaQuery.of(context).size.width * 0.065,
-                            width: MediaQuery.of(context).size.width * 0.05,
+                          Icon(
+                            MdiIcons.power,
+                            color: Colors.red,
+                            size: MediaQuery.of(context).size.width * 0.06,
                           ),
+                          // Image.asset(
+                          //   "assets/lt.png",
+                          //   // height: MediaQuery.of(context).size.width * 0.065,
+                          //   width: MediaQuery.of(context).size.width * 0.05,
+                          // ),
                           SizedBox(
                               width: MediaQuery.of(context).size.width * 0.009),
                           Text(
@@ -241,6 +271,7 @@ class _HomePageState extends State<HomePage> {
               },
               icon: Image.asset(
                 "assets/dr.png",
+                color: const Color.fromARGB(255, 16, 2, 90),
                 width: MediaQuery.of(context).size.width * 0.07,
               ),
             ),
@@ -271,7 +302,7 @@ class _HomePageState extends State<HomePage> {
                     fontFamily: 'Inter',
                     fontSize: 15.sp,
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 16, 2, 90),
+                    color: const Color.fromARGB(255, 16, 2, 90),
                   ),
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -283,6 +314,7 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(
                 Icons.search,
                 size: MediaQuery.of(context).size.width * 0.06,
+                color: const Color.fromARGB(255, 16, 2, 90),
               ),
               onPressed: () {
                 Navigator.pushNamed(context, Routes.homeSearchRoute);
@@ -292,6 +324,7 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(
                 Icons.qr_code,
                 size: MediaQuery.of(context).size.width * 0.06,
+                color: const Color.fromARGB(255, 16, 2, 90),
               ),
               onPressed: () {
                 Navigator.pushNamed(context, Routes.qrRoute);
@@ -299,7 +332,8 @@ class _HomePageState extends State<HomePage> {
             ),
             IconButton(
               icon: Icon(
-                Icons.notifications,
+                MdiIcons.bellOutline,
+                color: const Color.fromARGB(255, 16, 2, 90),
                 size: MediaQuery.of(context).size.width * 0.06,
               ),
               onPressed: () {

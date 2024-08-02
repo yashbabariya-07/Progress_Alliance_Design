@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:progress_alliance/bottombar.dart';
 import 'package:progress_alliance/routes/route.dart';
 
@@ -221,11 +222,18 @@ class _BusinessinfoState extends State<Businessinfo> {
                                         Navigator.pushNamed(context,
                                             Routes.businessDetailRoute);
                                       },
-                                      child: Icon(
-                                        Icons.note_add,
-                                        size:
-                                            MediaQuery.of(context).size.width *
-                                                0.06,
+                                      child: CircleAvatar(
+                                        radius: 13,
+                                        backgroundColor: Colors.grey[300],
+                                        child: Center(
+                                          child: Icon(
+                                            MdiIcons.pencilOutline,
+                                            size: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.045,
+                                          ),
+                                        ),
                                       ))
                                 ],
                               ),
@@ -620,11 +628,18 @@ class _BusinessinfoState extends State<Businessinfo> {
                                         Navigator.pushNamed(context,
                                             Routes.businessAddressRoute);
                                       },
-                                      child: Icon(
-                                        Icons.note_add,
-                                        size:
-                                            MediaQuery.of(context).size.width *
-                                                0.06,
+                                      child: CircleAvatar(
+                                        radius: 13,
+                                        backgroundColor: Colors.grey[300],
+                                        child: Center(
+                                          child: Icon(
+                                            MdiIcons.pencilOutline,
+                                            size: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.045,
+                                          ),
+                                        ),
                                       ))
                                 ],
                               ),
@@ -686,11 +701,18 @@ class _BusinessinfoState extends State<Businessinfo> {
                                         Navigator.pushNamed(
                                             context, Routes.socialAccountRoute);
                                       },
-                                      child: Icon(
-                                        Icons.note_add,
-                                        size:
-                                            MediaQuery.of(context).size.width *
-                                                0.06,
+                                      child: CircleAvatar(
+                                        radius: 13,
+                                        backgroundColor: Colors.grey[300],
+                                        child: Center(
+                                          child: Icon(
+                                            MdiIcons.pencilOutline,
+                                            size: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.045,
+                                          ),
+                                        ),
                                       ))
                                 ],
                               ),
@@ -716,7 +738,7 @@ class _BusinessinfoState extends State<Businessinfo> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(
-                              Icons.delete,
+                              MdiIcons.deleteOutline,
                               color: Colors.red,
                               size: MediaQuery.of(context).size.width * 0.065,
                             ),

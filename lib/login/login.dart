@@ -84,8 +84,7 @@ class _LoginPageState extends State<LoginPage> {
                             color: Colors.grey[700],
                           ),
                           border: InputBorder.none,
-                          contentPadding:
-                              const EdgeInsets.symmetric(horizontal: 10),
+                          contentPadding: const EdgeInsets.all(10),
                           prefixIcon: Icon(
                             Icons.search,
                             size: MediaQuery.of(context).size.width * 0.06,
@@ -205,7 +204,7 @@ class _LoginPageState extends State<LoginPage> {
                     border: Border.all(
                         color:
                             isKeyboardOpen == true ? Colors.black : Colors.grey,
-                        width: 1),
+                        width: 0.5),
                   ),
                   child: Row(
                     children: [

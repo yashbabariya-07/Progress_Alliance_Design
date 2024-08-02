@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class PADetail extends StatefulWidget {
   const PADetail({super.key});
@@ -37,7 +38,7 @@ class _PADetailState extends State<PADetail> {
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(0),
+            preferredSize: const Size.fromHeight(0),
             child: Container(
               color: Colors.grey,
               height: 0.2,
@@ -72,7 +73,7 @@ class _PADetailState extends State<PADetail> {
             ),
             IconButton(
               icon: Icon(
-                Icons.download,
+                MdiIcons.downloadOutline,
                 size: MediaQuery.of(context).size.width * 0.06,
               ),
               onPressed: () {},
@@ -88,7 +89,7 @@ class _PADetailState extends State<PADetail> {
                 child: Row(
                   children: [
                     Expanded(
-                      child: Container(
+                      child: SizedBox(
                         height: MediaQuery.of(context).size.width * 0.1,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
@@ -169,9 +170,13 @@ class _PADetailState extends State<PADetail> {
       key: _sectionKeys[title],
       height: MediaQuery.of(context).size.height * 0.05,
       width: double.infinity,
-      color: Colors.grey[200],
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        border: Border.all(color: Colors.grey, width: 0.2),
+        color: Colors.grey[200],
+      ),
       child: Padding(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: Text(
           title,
           style: TextStyle(
@@ -190,11 +195,8 @@ class _PADetailState extends State<PADetail> {
         height: MediaQuery.of(context).size.height * 0.09,
         width: double.infinity,
         decoration: BoxDecoration(
-          border: Border.all(
-            width: 0.5,
-            color: Colors.grey,
-          ),
           borderRadius: BorderRadius.circular(5),
+          border: Border.all(color: Colors.grey, width: 0.2),
         ),
         child: Padding(
           padding: const EdgeInsets.all(10),
@@ -251,14 +253,16 @@ class _PADetailState extends State<PADetail> {
                     width: MediaQuery.of(context).size.width * 0.015,
                   ),
                   Icon(
-                    Icons.call,
+                    MdiIcons.phoneOutline,
+                    color: Colors.grey[500],
                     size: MediaQuery.of(context).size.width * 0.06,
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.015,
                   ),
                   Icon(
-                    Icons.person,
+                    MdiIcons.accountPlusOutline,
+                    color: Colors.grey[500],
                     size: MediaQuery.of(context).size.width * 0.06,
                   ),
                 ],
@@ -277,11 +281,8 @@ class _PADetailState extends State<PADetail> {
         height: MediaQuery.of(context).size.height * 0.11,
         width: double.infinity,
         decoration: BoxDecoration(
-          border: Border.all(
-            width: 0.5,
-            color: Colors.grey,
-          ),
           borderRadius: BorderRadius.circular(5),
+          border: Border.all(color: Colors.grey, width: 0.2),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -352,9 +353,6 @@ class _PADetailState extends State<PADetail> {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.03,
-                  ),
                   Row(
                     children: [
                       Image.asset(
@@ -365,14 +363,16 @@ class _PADetailState extends State<PADetail> {
                         width: MediaQuery.of(context).size.width * 0.015,
                       ),
                       Icon(
-                        Icons.call,
+                        MdiIcons.phoneOutline,
+                        color: Colors.grey[500],
                         size: MediaQuery.of(context).size.width * 0.06,
                       ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.015,
                       ),
                       Icon(
-                        Icons.person,
+                        MdiIcons.accountPlusOutline,
+                        color: Colors.grey[500],
                         size: MediaQuery.of(context).size.width * 0.06,
                       ),
                     ],

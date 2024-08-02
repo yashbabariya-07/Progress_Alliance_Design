@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:progress_alliance/routes/route.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -47,13 +48,13 @@ class _GrowthpartnerState extends State<Growthpartner> {
   Color _getContainerColor(String type) {
     switch (type) {
       case "Circle Growth Partner":
-        return Color.fromARGB(255, 175, 205, 230);
+        return const Color.fromARGB(255, 175, 205, 230);
       case "Program Growth Partner":
-        return Color.fromARGB(255, 255, 205, 205);
+        return const Color.fromARGB(255, 255, 205, 205);
       case "Universal Growth Partner":
-        return Color.fromARGB(255, 220, 220, 220);
+        return const Color.fromARGB(255, 220, 220, 220);
       case "Cluster Growth Partner":
-        return Color.fromARGB(255, 205, 255, 205);
+        return const Color.fromARGB(255, 205, 255, 205);
       default:
         return Colors.white;
     }
@@ -123,7 +124,7 @@ class _GrowthpartnerState extends State<Growthpartner> {
             ),
             IconButton(
               icon: Icon(
-                Icons.download,
+                MdiIcons.downloadOutline,
                 size: MediaQuery.of(context).size.width * 0.06,
               ),
               onPressed: () {},
@@ -240,7 +241,7 @@ class _GrowthpartnerState extends State<Growthpartner> {
                               radius: MediaQuery.of(context).size.width * 0.045,
                               backgroundColor: Colors.grey[200],
                               child: Icon(
-                                Icons.call,
+                                MdiIcons.phoneOutline,
                                 size: MediaQuery.of(context).size.width * 0.05,
                               ),
                             ),

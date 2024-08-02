@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:progress_alliance/routes/route.dart';
 
 class NotificationPage extends StatefulWidget {
@@ -144,7 +145,7 @@ class _NotificationPageState extends State<NotificationPage> {
                       radius: MediaQuery.of(context).size.width * 0.05,
                       backgroundColor: Colors.blue[100],
                       child: Icon(
-                        Icons.notifications_active,
+                        MdiIcons.bellOutline,
                         color: Colors.blue,
                         size: MediaQuery.of(context).size.width * 0.05,
                       ),

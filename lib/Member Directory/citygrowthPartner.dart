@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class CityGrowthPartner extends StatefulWidget {
   const CityGrowthPartner({super.key});
@@ -50,7 +51,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner> {
           actions: [
             IconButton(
               icon: Icon(
-                Icons.download,
+                MdiIcons.downloadOutline,
                 size: MediaQuery.of(context).size.width * 0.06,
               ),
               onPressed: () {},
@@ -109,7 +110,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    width: 0.5,
+                    width: 0.2,
                     color: Colors.grey,
                   ),
                   borderRadius: BorderRadius.circular(5),
@@ -158,9 +159,6 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner> {
                           ],
                         ),
                       ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.03,
-                      ),
                       Row(
                         children: [
                           Image.asset(
@@ -171,14 +169,16 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner> {
                             width: MediaQuery.of(context).size.width * 0.015,
                           ),
                           Icon(
-                            Icons.call,
+                            MdiIcons.phoneOutline,
+                            color: Colors.grey[500],
                             size: MediaQuery.of(context).size.width * 0.06,
                           ),
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.015,
                           ),
                           Icon(
-                            Icons.person,
+                            MdiIcons.accountPlusOutline,
+                            color: Colors.grey[500],
                             size: MediaQuery.of(context).size.width * 0.06,
                           ),
                         ],
@@ -195,7 +195,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    width: 0.5,
+                    width: 0.2,
                     color: Colors.grey,
                   ),
                   borderRadius: BorderRadius.circular(5),
@@ -244,9 +244,6 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner> {
                           ],
                         ),
                       ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.03,
-                      ),
                       Row(
                         children: [
                           Image.asset(
@@ -257,14 +254,16 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner> {
                             width: MediaQuery.of(context).size.width * 0.015,
                           ),
                           Icon(
-                            Icons.call,
+                            MdiIcons.phoneOutline,
+                            color: Colors.grey[500],
                             size: MediaQuery.of(context).size.width * 0.06,
                           ),
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.015,
                           ),
                           Icon(
-                            Icons.person,
+                            MdiIcons.accountPlusOutline,
+                            color: Colors.grey[500],
                             size: MediaQuery.of(context).size.width * 0.06,
                           ),
                         ],
@@ -296,7 +295,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    width: 0.5,
+                    width: 0.2,
                     color: Colors.grey,
                   ),
                   borderRadius: BorderRadius.circular(5),
@@ -345,9 +344,6 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner> {
                           ],
                         ),
                       ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.03,
-                      ),
                       Row(
                         children: [
                           Image.asset(
@@ -358,14 +354,16 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner> {
                             width: MediaQuery.of(context).size.width * 0.015,
                           ),
                           Icon(
-                            Icons.call,
+                            MdiIcons.phoneOutline,
+                            color: Colors.grey[500],
                             size: MediaQuery.of(context).size.width * 0.06,
                           ),
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.015,
                           ),
                           Icon(
-                            Icons.person,
+                            MdiIcons.accountPlusOutline,
+                            color: Colors.grey[500],
                             size: MediaQuery.of(context).size.width * 0.06,
                           ),
                         ],
@@ -382,7 +380,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    width: 0.5,
+                    width: 0.2,
                     color: Colors.grey,
                   ),
                   borderRadius: BorderRadius.circular(5),
@@ -431,9 +429,6 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner> {
                           ],
                         ),
                       ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.03,
-                      ),
                       Row(
                         children: [
                           Image.asset(
@@ -444,14 +439,16 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner> {
                             width: MediaQuery.of(context).size.width * 0.015,
                           ),
                           Icon(
-                            Icons.call,
+                            MdiIcons.phoneOutline,
+                            color: Colors.grey[500],
                             size: MediaQuery.of(context).size.width * 0.06,
                           ),
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.015,
                           ),
                           Icon(
-                            Icons.person,
+                            MdiIcons.accountPlusOutline,
+                            color: Colors.grey[500],
                             size: MediaQuery.of(context).size.width * 0.06,
                           ),
                         ],

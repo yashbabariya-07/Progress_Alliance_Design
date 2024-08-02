@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class DeatailPage extends StatefulWidget {
   const DeatailPage({super.key});
@@ -169,7 +170,7 @@ class _DeatailPageState extends State<DeatailPage> {
                         style: TextStyle(
                             fontFamily: 'Inter',
                             fontSize: 13.sp,
-                            color: Color.fromARGB(255, 16, 2, 90),
+                            color: const Color.fromARGB(255, 16, 2, 90),
                             fontWeight: FontWeight.bold),
                       ),
                     ],
@@ -217,7 +218,8 @@ class _DeatailPageState extends State<DeatailPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
-                                Icons.call,
+                                MdiIcons.phoneOutline,
+                                color: const Color.fromARGB(255, 16, 2, 90),
                                 size: MediaQuery.of(context).size.width * 0.06,
                               ),
                               SizedBox(

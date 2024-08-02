@@ -51,6 +51,7 @@ class _ConnectedState extends State<Connected> {
     ];
 
     showModalBottomSheet(
+      backgroundColor: Colors.white,
       context: context,
       isScrollControlled: true,
       builder: (BuildContext context) {
@@ -108,8 +109,7 @@ class _ConnectedState extends State<Connected> {
                           labelStyle:
                               TextStyle(fontSize: 14.sp, fontFamily: 'Inter'),
                           border: InputBorder.none,
-                          contentPadding:
-                              const EdgeInsets.symmetric(horizontal: 10),
+                          contentPadding: const EdgeInsets.all(10),
                           prefixIcon: Icon(
                             Icons.search,
                             size: MediaQuery.of(context).size.width * 0.06,
@@ -351,7 +351,8 @@ class _ConnectedState extends State<Connected> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                     border: Border.all(
-                        color: isInput ? Colors.black : Colors.grey, width: 1),
+                        color: isInput ? Colors.black : Colors.grey,
+                        width: 0.5),
                   ),
                   child: Row(
                     children: [
@@ -472,7 +473,7 @@ class _ConnectedState extends State<Connected> {
                             color: _selectedGender == 'Male'
                                 ? Colors.black
                                 : Colors.grey,
-                            width: _selectedGender == 'Male' ? 1.5 : 1,
+                            width: _selectedGender == 'Male' ? 1 : 0.5,
                           ),
                           borderRadius: BorderRadius.circular(25.sp),
                         ),
@@ -480,16 +481,15 @@ class _ConnectedState extends State<Connected> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
-                              Icons.person,
-                              color: _selectedGender == 'Male'
-                                  ? Colors.black
-                                  : Colors.black54,
-                              size: MediaQuery.of(context).size.width * 0.06,
+                            Image.asset(
+                              "assets/man.png",
+                              width: MediaQuery.of(context).size.width * 0.075,
+                              height:
+                                  MediaQuery.of(context).size.height * 0.075,
                             ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.015,
-                            ),
+                            // SizedBox(
+                            //   width: MediaQuery.of(context).size.width * 0.01,
+                            // ),
                             Text(
                               'Male',
                               style: TextStyle(
@@ -521,7 +521,7 @@ class _ConnectedState extends State<Connected> {
                             color: _selectedGender == 'Female'
                                 ? Colors.black
                                 : Colors.grey,
-                            width: _selectedGender == 'Female' ? 1.5 : 1,
+                            width: _selectedGender == 'Female' ? 1 : 0.5,
                           ),
                           borderRadius: BorderRadius.circular(25.sp),
                         ),
@@ -529,16 +529,15 @@ class _ConnectedState extends State<Connected> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
-                              Icons.person,
-                              color: _selectedGender == 'Female'
-                                  ? Colors.black
-                                  : Colors.black54,
-                              size: MediaQuery.of(context).size.width * 0.06,
+                            Image.asset(
+                              "assets/woman.png",
+                              width: MediaQuery.of(context).size.width * 0.075,
+                              height:
+                                  MediaQuery.of(context).size.height * 0.075,
                             ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.015,
-                            ),
+                            // SizedBox(
+                            //   width: MediaQuery.of(context).size.width * 0.015,
+                            // ),
                             Text(
                               'Female',
                               style: TextStyle(

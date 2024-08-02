@@ -401,7 +401,7 @@ class _BasicDetailState extends State<BasicDetail> {
                               color: _selectedGender == 'Male'
                                   ? Colors.black
                                   : Colors.grey,
-                              width: _selectedGender == 'Male' ? 1.5 : 1,
+                              width: _selectedGender == 'Male' ? 1 : 0.5,
                             ),
                             borderRadius: BorderRadius.circular(5),
                           ),
@@ -412,6 +412,9 @@ class _BasicDetailState extends State<BasicDetail> {
                             style: TextStyle(
                               fontFamily: 'Inter',
                               fontSize: 14.sp,
+                              fontWeight: _selectedGender == 'Male'
+                                  ? FontWeight.bold
+                                  : FontWeight.normal,
                               color: _selectedGender == 'Male'
                                   ? Colors.black
                                   : Colors.black54,
@@ -436,7 +439,7 @@ class _BasicDetailState extends State<BasicDetail> {
                               color: _selectedGender == 'Female'
                                   ? Colors.black
                                   : Colors.grey,
-                              width: _selectedGender == 'Female' ? 1.5 : 1,
+                              width: _selectedGender == 'Female' ? 1 : 0.5,
                             ),
                             borderRadius: BorderRadius.circular(5),
                           ),
@@ -447,6 +450,9 @@ class _BasicDetailState extends State<BasicDetail> {
                             style: TextStyle(
                               fontFamily: 'Inter',
                               fontSize: 14.sp,
+                              fontWeight: _selectedGender == 'Female'
+                                  ? FontWeight.bold
+                                  : FontWeight.normal,
                               color: _selectedGender == 'Female'
                                   ? Colors.black
                                   : Colors.black54,

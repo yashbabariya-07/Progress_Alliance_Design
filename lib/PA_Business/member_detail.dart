@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MemberDetail extends StatefulWidget {
@@ -74,7 +75,8 @@ class _MemberDetailState extends State<MemberDetail>
             IconButton(
                 onPressed: () {},
                 icon: Icon(
-                  Icons.person_2_rounded,
+                  MdiIcons.accountPlusOutline,
+                  color: const Color.fromARGB(255, 16, 2, 90),
                   size: MediaQuery.of(context).size.width * 0.06,
                 )),
           ],
@@ -169,7 +171,7 @@ class _MemberDetailState extends State<MemberDetail>
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
-                            Icons.call,
+                            MdiIcons.phoneOutline,
                             size: MediaQuery.of(context).size.width * 0.06,
                           ),
                           SizedBox(
@@ -199,9 +201,9 @@ class _MemberDetailState extends State<MemberDetail>
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset(
-                            "assets/wp.png",
-                            width: MediaQuery.of(context).size.width * 0.06,
+                          Icon(
+                            MdiIcons.whatsapp,
+                            size: MediaQuery.of(context).size.width * 0.06,
                           ),
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.01,
@@ -229,7 +231,7 @@ class _MemberDetailState extends State<MemberDetail>
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
-                            Icons.person_4_rounded,
+                            MdiIcons.accountGroupOutline,
                             size: MediaQuery.of(context).size.width * 0.06,
                           ),
                           SizedBox(
@@ -262,7 +264,7 @@ class _MemberDetailState extends State<MemberDetail>
                 color: const Color.fromARGB(255, 16, 2, 90),
                 fontWeight: FontWeight.bold,
               ),
-              tabs: [
+              tabs: const [
                 Tab(text: "Personal"),
                 Tab(text: "Business"),
               ],
@@ -281,7 +283,8 @@ class _MemberDetailState extends State<MemberDetail>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Icon(
-                                Icons.call,
+                                MdiIcons.phoneOutline,
+                                color: Colors.grey[500],
                                 size: MediaQuery.of(context).size.width * 0.06,
                               ),
                               SizedBox(
@@ -317,7 +320,8 @@ class _MemberDetailState extends State<MemberDetail>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Icon(
-                                Icons.calendar_month_outlined,
+                                MdiIcons.calendarMonthOutline,
+                                color: Colors.grey[500],
                                 size: MediaQuery.of(context).size.width * 0.06,
                               ),
                               SizedBox(
@@ -353,7 +357,8 @@ class _MemberDetailState extends State<MemberDetail>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Icon(
-                                Icons.calendar_month_outlined,
+                                MdiIcons.calendarMonthOutline,
+                                color: Colors.grey[500],
                                 size: MediaQuery.of(context).size.width * 0.06,
                               ),
                               SizedBox(
@@ -389,7 +394,8 @@ class _MemberDetailState extends State<MemberDetail>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Icon(
-                                Icons.calendar_month_outlined,
+                                MdiIcons.phoneOutline,
+                                color: Colors.grey[500],
                                 size: MediaQuery.of(context).size.width * 0.06,
                               ),
                               SizedBox(
@@ -424,7 +430,9 @@ class _MemberDetailState extends State<MemberDetail>
                                                 0.54,
                                       ),
                                       Icon(
-                                        Icons.call,
+                                        MdiIcons.phoneOutline,
+                                        color: const Color.fromARGB(
+                                            255, 16, 2, 90),
                                         size:
                                             MediaQuery.of(context).size.width *
                                                 0.06,
@@ -449,7 +457,8 @@ class _MemberDetailState extends State<MemberDetail>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Icon(
-                                Icons.pin_drop,
+                                MdiIcons.mapMarkerOutline,
+                                color: Colors.grey[500],
                                 size: MediaQuery.of(context).size.width * 0.06,
                               ),
                               SizedBox(
@@ -510,9 +519,9 @@ class _MemberDetailState extends State<MemberDetail>
                                                       .width *
                                                   0.01,
                                             ),
-                                            Icon(
-                                              Icons.send,
-                                              size: MediaQuery.of(context)
+                                            Image.asset(
+                                              "assets/sendd.png",
+                                              width: MediaQuery.of(context)
                                                       .size
                                                       .width *
                                                   0.04,
@@ -532,7 +541,8 @@ class _MemberDetailState extends State<MemberDetail>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Icon(
-                                Icons.person,
+                                MdiIcons.accountOutline,
+                                color: Colors.grey[500],
                                 size: MediaQuery.of(context).size.width * 0.06,
                               ),
                               SizedBox(
@@ -601,10 +611,11 @@ class _MemberDetailState extends State<MemberDetail>
                                                   width: MediaQuery.of(context)
                                                           .size
                                                           .width *
-                                                      0.0015,
+                                                      0.01,
                                                 ),
                                                 Icon(
-                                                  Icons.call,
+                                                  MdiIcons.phoneOutline,
+                                                  color: Colors.grey[500],
                                                   size: MediaQuery.of(context)
                                                           .size
                                                           .width *
@@ -614,10 +625,11 @@ class _MemberDetailState extends State<MemberDetail>
                                                   width: MediaQuery.of(context)
                                                           .size
                                                           .width *
-                                                      0.0015,
+                                                      0.01,
                                                 ),
                                                 Icon(
-                                                  Icons.person,
+                                                  MdiIcons.accountPlusOutline,
+                                                  color: Colors.grey[500],
                                                   size: MediaQuery.of(context)
                                                           .size
                                                           .width *
@@ -638,7 +650,7 @@ class _MemberDetailState extends State<MemberDetail>
                   ),
                   SingleChildScrollView(
                     child: Padding(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -715,10 +727,17 @@ class _MemberDetailState extends State<MemberDetail>
                                     color: Colors.grey[700],
                                     fontWeight: FontWeight.bold),
                               ),
-                              Icon(
-                                Icons.save,
-                                size: MediaQuery.of(context).size.width * 0.06,
-                              ),
+                              CircleAvatar(
+                                radius: 13,
+                                backgroundColor: Colors.grey[300],
+                                child: Center(
+                                  child: Icon(
+                                    MdiIcons.pencilOutline,
+                                    size: MediaQuery.of(context).size.width *
+                                        0.045,
+                                  ),
+                                ),
+                              )
                             ],
                           ),
                           SizedBox(
@@ -728,7 +747,8 @@ class _MemberDetailState extends State<MemberDetail>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Icon(
-                                Icons.badge,
+                                MdiIcons.shoppingOutline,
+                                color: Colors.grey[500],
                                 size: MediaQuery.of(context).size.width * 0.06,
                               ),
                               SizedBox(
@@ -763,7 +783,8 @@ class _MemberDetailState extends State<MemberDetail>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Icon(
-                                Icons.list,
+                                MdiIcons.viewAgendaOutline,
+                                color: Colors.grey[500],
                                 size: MediaQuery.of(context).size.width * 0.06,
                               ),
                               SizedBox(
@@ -798,7 +819,8 @@ class _MemberDetailState extends State<MemberDetail>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Icon(
-                                Icons.line_style_outlined,
+                                MdiIcons.viewAgendaOutline,
+                                color: Colors.grey[500],
                                 size: MediaQuery.of(context).size.width * 0.06,
                               ),
                               SizedBox(
@@ -833,7 +855,8 @@ class _MemberDetailState extends State<MemberDetail>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Icon(
-                                Icons.compare_rounded,
+                                MdiIcons.hexagonOutline,
+                                color: Colors.grey[500],
                                 size: MediaQuery.of(context).size.width * 0.06,
                               ),
                               SizedBox(
@@ -868,7 +891,8 @@ class _MemberDetailState extends State<MemberDetail>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Icon(
-                                Icons.calendar_month_outlined,
+                                MdiIcons.calendarMonthOutline,
+                                color: Colors.grey[500],
                                 size: MediaQuery.of(context).size.width * 0.06,
                               ),
                               SizedBox(
@@ -903,7 +927,8 @@ class _MemberDetailState extends State<MemberDetail>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Icon(
-                                Icons.call,
+                                MdiIcons.phoneOutline,
+                                color: Colors.grey[500],
                                 size: MediaQuery.of(context).size.width * 0.06,
                               ),
                               SizedBox(
@@ -938,7 +963,8 @@ class _MemberDetailState extends State<MemberDetail>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Icon(
-                                Icons.pin_drop,
+                                MdiIcons.mapMarkerOutline,
+                                color: Colors.grey[500],
                                 size: MediaQuery.of(context).size.width * 0.06,
                               ),
                               SizedBox(
@@ -998,9 +1024,9 @@ class _MemberDetailState extends State<MemberDetail>
                                                       .width *
                                                   0.01,
                                             ),
-                                            Icon(
-                                              Icons.send,
-                                              size: MediaQuery.of(context)
+                                            Image.asset(
+                                              "assets/sendd.png",
+                                              width: MediaQuery.of(context)
                                                       .size
                                                       .width *
                                                   0.04,
@@ -1020,7 +1046,8 @@ class _MemberDetailState extends State<MemberDetail>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Icon(
-                                Icons.info,
+                                MdiIcons.informationOutline,
+                                color: Colors.grey[500],
                                 size: MediaQuery.of(context).size.width * 0.06,
                               ),
                               SizedBox(
@@ -1055,7 +1082,8 @@ class _MemberDetailState extends State<MemberDetail>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Icon(
-                                Icons.link,
+                                MdiIcons.link,
+                                color: Colors.grey[500],
                                 size: MediaQuery.of(context).size.width * 0.06,
                               ),
                               SizedBox(

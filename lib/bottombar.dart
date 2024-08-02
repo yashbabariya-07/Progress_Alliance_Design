@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final int selectedIndex;
@@ -29,14 +30,14 @@ class CustomBottomNavigationBar extends StatelessWidget {
         items: [
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.person_2_rounded,
+              MdiIcons.accountCircleOutline,
               size: MediaQuery.of(context).size.width * 0.09,
             ),
             label: 'Personal',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.badge_sharp,
+              MdiIcons.shoppingOutline,
               size: MediaQuery.of(context).size.width * 0.09,
             ),
             label: 'Business',
