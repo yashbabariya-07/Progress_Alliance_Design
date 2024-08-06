@@ -6,8 +6,10 @@ import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/ShimmerLoader/syntax.dart';
 import 'package:progress_alliance/homeBottom.dart';
 import 'package:progress_alliance/routes/route.dart';
+import 'package:shimmer/shimmer.dart';
 
 class Googlemap extends StatefulWidget {
   const Googlemap({super.key});
@@ -17,7 +19,7 @@ class Googlemap extends StatefulWidget {
 }
 
 class _GooglemapState extends State<Googlemap>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, LoadingStateMixin {
   late GoogleMapController mapController;
   late TabController _tabController;
   final CustomInfoWindowController _customInfoWindowController =
@@ -1086,194 +1088,231 @@ class _GooglemapState extends State<Googlemap>
                         final user = users[index];
                         return Padding(
                           padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Column(
-                                    children: [
-                                      InkWell(
-                                        onTap: () async {
-                                          final profile = await _pickProfile();
-                                          if (profile != null) {
-                                            setState(() {
-                                              users[index]['profileImage'] =
-                                                  profile;
-                                            });
-                                          }
-                                        },
-                                        child: Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.18,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.08,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            color: Colors.grey[200],
-                                          ),
-                                          child: user['profileImage'] != null
-                                              ? ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  child: Image.file(
-                                                    user['profileImage'],
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                )
-                                              : Center(
-                                                  child: Text(
-                                                    "+",
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                      fontFamily: 'Inter',
-                                                      fontSize: 20.sp,
-                                                      color: Colors.grey[600],
-                                                    ),
-                                                  ),
-                                                ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                0.006,
-                                      ),
-                                      Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          SizedBox(
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.02,
-                                            child: const Icon(
-                                                Icons.fiber_manual_record,
-                                                size: 10,
-                                                color: Colors.blue),
-                                          ),
-                                          SizedBox(
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.006),
-                                          Text(
-                                            user['distance'],
-                                            style: TextStyle(
-                                                fontSize: 10.sp,
-                                                fontFamily: 'Inter',
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.blue),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
+                          child: isLoading
+                              ? Shimmer.fromColors(
+                                  baseColor: Colors.grey[300]!,
+                                  highlightColor: Colors.grey[100]!,
+                                  child: Container(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.09,
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      border: Border.all(
+                                          width: 0.2, color: Colors.grey),
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
                                   ),
-                                  SizedBox(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.02,
+                                )
+                              : Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(5),
                                   ),
-                                  Expanded(
-                                    child: Column(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
+                                        Column(
                                           children: [
-                                            Expanded(
-                                              child: Text(
-                                                user['name'],
+                                            InkWell(
+                                              onTap: () async {
+                                                final profile =
+                                                    await _pickProfile();
+                                                if (profile != null) {
+                                                  setState(() {
+                                                    users[index]
+                                                            ['profileImage'] =
+                                                        profile;
+                                                  });
+                                                }
+                                              },
+                                              child: Container(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.18,
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.08,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  color: Colors.grey[200],
+                                                ),
+                                                child: user['profileImage'] !=
+                                                        null
+                                                    ? ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        child: Image.file(
+                                                          user['profileImage'],
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      )
+                                                    : Center(
+                                                        child: Text(
+                                                          "+",
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: TextStyle(
+                                                            fontFamily: 'Inter',
+                                                            fontSize: 20.sp,
+                                                            color: Colors
+                                                                .grey[600],
+                                                          ),
+                                                        ),
+                                                      ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.006,
+                                            ),
+                                            Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                SizedBox(
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height *
+                                                      0.02,
+                                                  child: const Icon(
+                                                      Icons.fiber_manual_record,
+                                                      size: 10,
+                                                      color: Colors.blue),
+                                                ),
+                                                SizedBox(
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.006),
+                                                Text(
+                                                  user['distance'],
+                                                  style: TextStyle(
+                                                      fontSize: 10.sp,
+                                                      fontFamily: 'Inter',
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.blue),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.02,
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Expanded(
+                                                    child: Text(
+                                                      user['name'],
+                                                      maxLines: 2,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      style: TextStyle(
+                                                          fontFamily: 'Inter',
+                                                          fontSize: 12.sp,
+                                                          color: Colors.black,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      Icon(
+                                                        MdiIcons.whatsapp,
+                                                        color: const Color
+                                                            .fromARGB(
+                                                            255, 16, 2, 90),
+                                                        size: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.06,
+                                                      ),
+                                                      SizedBox(
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.02,
+                                                      ),
+                                                      Icon(
+                                                        MdiIcons.phoneOutline,
+                                                        color: const Color
+                                                            .fromARGB(
+                                                            255, 16, 2, 90),
+                                                        size: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.06,
+                                                      ),
+                                                      SizedBox(
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.02,
+                                                      ),
+                                                      Image.asset(
+                                                        "assets/sendd.png",
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.05,
+                                                      )
+                                                    ],
+                                                  )
+                                                ],
+                                              ),
+                                              Text(
+                                                user['company'],
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                  fontFamily: 'Inter',
+                                                  fontSize: 12.sp,
+                                                ),
+                                              ),
+                                              Text(
+                                                user['address'],
                                                 maxLines: 2,
                                                 overflow: TextOverflow.ellipsis,
                                                 style: TextStyle(
                                                     fontFamily: 'Inter',
                                                     fontSize: 12.sp,
-                                                    color: Colors.black,
-                                                    fontWeight:
-                                                        FontWeight.bold),
+                                                    color: Colors.grey[700]),
                                               ),
-                                            ),
-                                            Row(
-                                              children: [
-                                                Icon(
-                                                  MdiIcons.whatsapp,
-                                                  color: const Color.fromARGB(
-                                                      255, 16, 2, 90),
-                                                  size: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.06,
-                                                ),
-                                                SizedBox(
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.02,
-                                                ),
-                                                Icon(
-                                                  MdiIcons.phoneOutline,
-                                                  color: const Color.fromARGB(
-                                                      255, 16, 2, 90),
-                                                  size: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.06,
-                                                ),
-                                                SizedBox(
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.02,
-                                                ),
-                                                Image.asset(
-                                                  "assets/sendd.png",
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.05,
-                                                )
-                                              ],
-                                            )
-                                          ],
-                                        ),
-                                        Text(
-                                          user['company'],
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                            fontFamily: 'Inter',
-                                            fontSize: 12.sp,
+                                            ],
                                           ),
-                                        ),
-                                        Text(
-                                          user['address'],
-                                          maxLines: 2,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 12.sp,
-                                              color: Colors.grey[700]),
                                         ),
                                       ],
                                     ),
                                   ),
-                                ],
-                              ),
-                            ),
-                          ),
+                                ),
                         );
                       },
                     ),

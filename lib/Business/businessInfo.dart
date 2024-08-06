@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/ShimmerLoader/syntax.dart';
 import 'package:progress_alliance/bottombar.dart';
 import 'package:progress_alliance/routes/route.dart';
+import 'package:shimmer/shimmer.dart';
 
 class Businessinfo extends StatefulWidget {
   final String name;
@@ -70,9 +72,10 @@ class Businessinfo extends StatefulWidget {
   State<Businessinfo> createState() => _BusinessinfoState();
 }
 
-class _BusinessinfoState extends State<Businessinfo> {
+class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
   File? _logoImage;
   int _selectedIndex = 1;
+
   void _onTabTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -151,615 +154,751 @@ class _BusinessinfoState extends State<Businessinfo> {
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(10),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Column(
-                    children: [
-                      Container(
-                        alignment: Alignment.topLeft,
-                        child: InkWell(
-                          onTap: _picklogoImage,
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * 0.32,
-                            height: MediaQuery.of(context).size.height * 0.15,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.grey[200],
+            child: isLoading
+                ? Shimmer.fromColors(
+                    baseColor: Colors.grey[300]!,
+                    highlightColor: Colors.grey[100]!,
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width * 0.32,
+                              height: MediaQuery.of(context).size.height * 0.15,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[200]),
                             ),
-                            child: _logoImage != null
-                                ? ClipRRect(
-                                    borderRadius: BorderRadius.circular(10),
-                                    child: Image.file(
-                                      _logoImage!,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  )
-                                : Center(
-                                    child: Text(
-                                      "+ Add",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 15.sp,
-                                        color: Colors.grey[600],
-                                      ),
-                                    ),
-                                  ),
                           ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(width: 0.2, color: Colors.grey),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Business Details",
-                                    style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 15.sp,
-                                        color: const Color.fromARGB(
-                                            255, 16, 2, 90),
-                                        fontWeight: FontWeight.bold),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.02,
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.75,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[200]),
+                            ),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.012,
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.11,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[200]),
+                            ),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.012,
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.09,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[200]),
+                            ),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.02,
+                          ),
+                          Align(
+                            alignment: Alignment.center,
+                            child: Container(
+                              alignment: Alignment.centerRight,
+                              height: MediaQuery.of(context).size.width * 0.1,
+                              width: MediaQuery.of(context).size.width * 0.45,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: Colors.grey[200]),
+                            ),
+                          ),
+                        ]))
+                : Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Column(
+                          children: [
+                            Container(
+                              alignment: Alignment.topLeft,
+                              child: InkWell(
+                                onTap: _picklogoImage,
+                                child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.32,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.15,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Colors.grey[200],
                                   ),
-                                  GestureDetector(
-                                      onTap: () {
-                                        Navigator.pushNamed(context,
-                                            Routes.businessDetailRoute);
-                                      },
-                                      child: CircleAvatar(
-                                        radius: 13,
-                                        backgroundColor: Colors.grey[300],
-                                        child: Center(
-                                          child: Icon(
-                                            MdiIcons.pencilOutline,
-                                            size: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.045,
+                                  child: _logoImage != null
+                                      ? ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          child: Image.file(
+                                            _logoImage!,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        )
+                                      : Center(
+                                          child: Text(
+                                            "+ Add",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontFamily: 'Inter',
+                                              fontSize: 15.sp,
+                                              color: Colors.grey[600],
+                                            ),
                                           ),
                                         ),
-                                      ))
-                                ],
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.02,
-                              ),
-                              Text(
-                                "Company Name",
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 12.sp,
-                                    color: Colors.grey),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.006,
-                              ),
-                              Text(
-                                widget.name,
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
                                 ),
                               ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.012,
+                            ),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.02,
+                            ),
+                            Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border:
+                                    Border.all(width: 0.2, color: Colors.grey),
                               ),
-                              Text(
-                                "Business Type",
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 12.sp,
-                                    color: Colors.grey),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.006,
-                              ),
-                              Text(
-                                widget.type,
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                ),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.012,
-                              ),
-                              Text(
-                                "Business Category",
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 12.sp,
-                                    color: Colors.grey),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.006,
-                              ),
-                              Text(
-                                widget.category,
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                ),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.012,
-                              ),
-                              Text(
-                                "Business Sub Category",
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 12.sp,
-                                    color: Colors.grey),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.006,
-                              ),
-                              Text(
-                                widget.subCategory,
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                ),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.012,
-                              ),
-                              Text(
-                                "Products/Service",
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 12.sp,
-                                    color: Colors.grey),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.006,
-                              ),
-                              Text(
-                                widget.product,
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                ),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.012,
-                              ),
-                              Text(
-                                "GST Number",
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 12.sp,
-                                    color: Colors.grey),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.006,
-                              ),
-                              Text(
-                                widget.gstNo,
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                ),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.012,
-                              ),
-                              Text(
-                                "Contact Number",
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 12.sp,
-                                    color: Colors.grey),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.006,
-                              ),
-                              Text(
-                                widget.number,
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                ),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.012,
-                              ),
-                              Text(
-                                "Email Address",
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 12.sp,
-                                    color: Colors.grey),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.006,
-                              ),
-                              Text(
-                                widget.email,
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                ),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.012,
-                              ),
-                              Text(
-                                "Website",
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 12.sp,
-                                    color: Colors.grey),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.006,
-                              ),
-                              Text(
-                                widget.website,
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                ),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.012,
-                              ),
-                              Text(
-                                "Team Size",
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 12.sp,
-                                    color: Colors.grey),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.006,
-                              ),
-                              Text(
-                                widget.teamSize,
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                ),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.012,
-                              ),
-                              Text(
-                                "Business Formation",
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 12.sp,
-                                    color: Colors.grey),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.006,
-                              ),
-                              Text(
-                                widget.formation,
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                ),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.012,
-                              ),
-                              Text(
-                                "Business established Date",
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 12.sp,
-                                    color: Colors.grey),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.006,
-                              ),
-                              Text(
-                                widget.establish,
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                ),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.012,
-                              ),
-                              Text(
-                                "About Business",
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 12.sp,
-                                    color: Colors.grey),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.006,
-                              ),
-                              Text(
-                                widget.about,
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                ),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.012,
-                              ),
-                              if (widget.logoImage != null)
-                                Column(
+                              child: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      "Logo",
-                                      style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 12.sp,
-                                        color: Colors.grey,
-                                      ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "Business Details",
+                                          style: TextStyle(
+                                              fontFamily: 'Inter',
+                                              fontSize: 15.sp,
+                                              color: const Color.fromARGB(
+                                                  255, 16, 2, 90),
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        GestureDetector(
+                                            onTap: () {
+                                              Navigator.pushNamed(context,
+                                                  Routes.businessDetailRoute);
+                                            },
+                                            child: CircleAvatar(
+                                              radius: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.035,
+                                              backgroundColor: Colors.grey[300],
+                                              child: Center(
+                                                child: Icon(
+                                                  MdiIcons.pencilOutline,
+                                                  size: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.045,
+                                                ),
+                                              ),
+                                            ))
+                                      ],
                                     ),
-                                    SizedBox(height: 5),
-                                    Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.25,
+                                    SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
-                                              0.25,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        image: DecorationImage(
-                                          image: FileImage(widget.logoImage!),
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
+                                              0.02,
                                     ),
-                                  ],
-                                ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.012,
-                              ),
-                              if (widget.bannerImage != null)
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
                                     Text(
-                                      "Banner",
+                                      "Company Name",
+                                      style: TextStyle(
+                                          fontFamily: 'Inter',
+                                          fontSize: 12.sp,
+                                          color: Colors.grey),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.006,
+                                    ),
+                                    Text(
+                                      widget.name,
                                       style: TextStyle(
                                         fontFamily: 'Inter',
-                                        fontSize: 12.sp,
-                                        color: Colors.grey,
+                                        fontSize: 14.sp,
                                       ),
                                     ),
                                     SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
-                                              0.01,
+                                              0.012,
                                     ),
-                                    Container(
-                                      width: double.infinity,
+                                    Text(
+                                      "Business Type",
+                                      style: TextStyle(
+                                          fontFamily: 'Inter',
+                                          fontSize: 12.sp,
+                                          color: Colors.grey),
+                                    ),
+                                    SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
-                                              0.4,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        image: DecorationImage(
-                                          image: FileImage(widget.bannerImage!),
-                                          fit: BoxFit.cover,
+                                              0.006,
+                                    ),
+                                    Text(
+                                      widget.type,
+                                      style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.012,
+                                    ),
+                                    Text(
+                                      "Business Category",
+                                      style: TextStyle(
+                                          fontFamily: 'Inter',
+                                          fontSize: 12.sp,
+                                          color: Colors.grey),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.006,
+                                    ),
+                                    Text(
+                                      widget.category,
+                                      style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.012,
+                                    ),
+                                    Text(
+                                      "Business Sub Category",
+                                      style: TextStyle(
+                                          fontFamily: 'Inter',
+                                          fontSize: 12.sp,
+                                          color: Colors.grey),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.006,
+                                    ),
+                                    Text(
+                                      widget.subCategory,
+                                      style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.012,
+                                    ),
+                                    Text(
+                                      "Products/Service",
+                                      style: TextStyle(
+                                          fontFamily: 'Inter',
+                                          fontSize: 12.sp,
+                                          color: Colors.grey),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.006,
+                                    ),
+                                    Text(
+                                      widget.product,
+                                      style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.012,
+                                    ),
+                                    Text(
+                                      "GST Number",
+                                      style: TextStyle(
+                                          fontFamily: 'Inter',
+                                          fontSize: 12.sp,
+                                          color: Colors.grey),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.006,
+                                    ),
+                                    Text(
+                                      widget.gstNo,
+                                      style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.012,
+                                    ),
+                                    Text(
+                                      "Contact Number",
+                                      style: TextStyle(
+                                          fontFamily: 'Inter',
+                                          fontSize: 12.sp,
+                                          color: Colors.grey),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.006,
+                                    ),
+                                    Text(
+                                      widget.number,
+                                      style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.012,
+                                    ),
+                                    Text(
+                                      "Email Address",
+                                      style: TextStyle(
+                                          fontFamily: 'Inter',
+                                          fontSize: 12.sp,
+                                          color: Colors.grey),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.006,
+                                    ),
+                                    Text(
+                                      widget.email,
+                                      style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.012,
+                                    ),
+                                    Text(
+                                      "Website",
+                                      style: TextStyle(
+                                          fontFamily: 'Inter',
+                                          fontSize: 12.sp,
+                                          color: Colors.grey),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.006,
+                                    ),
+                                    Text(
+                                      widget.website,
+                                      style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.012,
+                                    ),
+                                    Text(
+                                      "Team Size",
+                                      style: TextStyle(
+                                          fontFamily: 'Inter',
+                                          fontSize: 12.sp,
+                                          color: Colors.grey),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.006,
+                                    ),
+                                    Text(
+                                      widget.teamSize,
+                                      style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.012,
+                                    ),
+                                    Text(
+                                      "Business Formation",
+                                      style: TextStyle(
+                                          fontFamily: 'Inter',
+                                          fontSize: 12.sp,
+                                          color: Colors.grey),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.006,
+                                    ),
+                                    Text(
+                                      widget.formation,
+                                      style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.012,
+                                    ),
+                                    Text(
+                                      "Business established Date",
+                                      style: TextStyle(
+                                          fontFamily: 'Inter',
+                                          fontSize: 12.sp,
+                                          color: Colors.grey),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.006,
+                                    ),
+                                    Text(
+                                      widget.establish,
+                                      style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.012,
+                                    ),
+                                    Text(
+                                      "About Business",
+                                      style: TextStyle(
+                                          fontFamily: 'Inter',
+                                          fontSize: 12.sp,
+                                          color: Colors.grey),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.006,
+                                    ),
+                                    Text(
+                                      widget.about,
+                                      style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.012,
+                                    ),
+                                    if (widget.logoImage != null)
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Logo",
+                                            style: TextStyle(
+                                              fontFamily: 'Inter',
+                                              fontSize: 12.sp,
+                                              color: Colors.grey,
+                                            ),
+                                          ),
+                                          SizedBox(height: 5),
+                                          Container(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.25,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.25,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              image: DecorationImage(
+                                                image: FileImage(
+                                                    widget.logoImage!),
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.012,
+                                    ),
+                                    if (widget.bannerImage != null)
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Banner",
+                                            style: TextStyle(
+                                              fontFamily: 'Inter',
+                                              fontSize: 12.sp,
+                                              color: Colors.grey,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.01,
+                                          ),
+                                          Container(
+                                            width: double.infinity,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.4,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              image: DecorationImage(
+                                                image: FileImage(
+                                                    widget.bannerImage!),
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.012,
+                            ),
+                            Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border:
+                                    Border.all(width: 0.2, color: Colors.grey),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "Business Address",
+                                          style: TextStyle(
+                                              fontFamily: 'Inter',
+                                              fontSize: 15.sp,
+                                              color: const Color.fromARGB(
+                                                  255, 16, 2, 90),
+                                              fontWeight: FontWeight.bold),
                                         ),
+                                        GestureDetector(
+                                            onTap: () {
+                                              Navigator.pushNamed(context,
+                                                  Routes.businessAddressRoute);
+                                            },
+                                            child: CircleAvatar(
+                                              radius: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.035,
+                                              backgroundColor: Colors.grey[300],
+                                              child: Center(
+                                                child: Icon(
+                                                  MdiIcons.pencilOutline,
+                                                  size: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.045,
+                                                ),
+                                              ),
+                                            ))
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.02,
+                                    ),
+                                    Text(
+                                      "Address",
+                                      style: TextStyle(
+                                          fontFamily: 'Inter',
+                                          fontSize: 12.sp,
+                                          color: Colors.grey),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.006,
+                                    ),
+                                    Text(
+                                      "${widget.shopNumber} ${widget.streetName} ${widget.area} ${widget.landmark} ${widget.city} ${widget.state}  ${widget.pincode} ",
+                                      style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
                                       ),
                                     ),
                                   ],
                                 ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.012,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(width: 0.2, color: Colors.grey),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Business Address",
-                                    style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 15.sp,
-                                        color: const Color.fromARGB(
-                                            255, 16, 2, 90),
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  GestureDetector(
-                                      onTap: () {
-                                        Navigator.pushNamed(context,
-                                            Routes.businessAddressRoute);
-                                      },
-                                      child: CircleAvatar(
-                                        radius: 13,
-                                        backgroundColor: Colors.grey[300],
-                                        child: Center(
-                                          child: Icon(
-                                            MdiIcons.pencilOutline,
-                                            size: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.045,
-                                          ),
-                                        ),
-                                      ))
-                                ],
                               ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.02,
-                              ),
-                              Text(
-                                "Address",
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 12.sp,
-                                    color: Colors.grey),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.006,
-                              ),
-                              Text(
-                                "${widget.shopNumber} ${widget.streetName} ${widget.area} ${widget.landmark} ${widget.city} ${widget.state}  ${widget.pincode} ",
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.012,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(width: 0.2, color: Colors.grey),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Social Account",
-                                    style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 15.sp,
-                                        color: const Color.fromARGB(
-                                            255, 16, 2, 90),
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  GestureDetector(
-                                      onTap: () {
-                                        Navigator.pushNamed(
-                                            context, Routes.socialAccountRoute);
-                                      },
-                                      child: CircleAvatar(
-                                        radius: 13,
-                                        backgroundColor: Colors.grey[300],
-                                        child: Center(
-                                          child: Icon(
-                                            MdiIcons.pencilOutline,
-                                            size: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.045,
-                                          ),
-                                        ),
-                                      ))
-                                ],
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.02,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: Colors.red[50],
-                        ),
-                        height: MediaQuery.of(context).size.width * 0.1,
-                        width: MediaQuery.of(context).size.width * 0.45,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              MdiIcons.deleteOutline,
-                              color: Colors.red,
-                              size: MediaQuery.of(context).size.width * 0.065,
                             ),
                             SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.006,
+                              height:
+                                  MediaQuery.of(context).size.height * 0.012,
                             ),
-                            Text(
-                              "Delete Business",
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 13.sp,
-                                  color: Colors.red),
+                            Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border:
+                                    Border.all(width: 0.2, color: Colors.grey),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "Social Account",
+                                          style: TextStyle(
+                                              fontFamily: 'Inter',
+                                              fontSize: 15.sp,
+                                              color: const Color.fromARGB(
+                                                  255, 16, 2, 90),
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        GestureDetector(
+                                            onTap: () {
+                                              Navigator.pushNamed(context,
+                                                  Routes.socialAccountRoute);
+                                            },
+                                            child: CircleAvatar(
+                                              radius: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.035,
+                                              backgroundColor: Colors.grey[300],
+                                              child: Center(
+                                                child: Icon(
+                                                  MdiIcons.pencilOutline,
+                                                  size: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.045,
+                                                ),
+                                              ),
+                                            ))
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.02,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.02,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                color: Colors.red[50],
+                              ),
+                              height: MediaQuery.of(context).size.width * 0.1,
+                              width: MediaQuery.of(context).size.width * 0.45,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    MdiIcons.deleteOutline,
+                                    color: Colors.red,
+                                    size: MediaQuery.of(context).size.width *
+                                        0.065,
+                                  ),
+                                  SizedBox(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.006,
+                                  ),
+                                  Text(
+                                    "Delete Business",
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 13.sp,
+                                        color: Colors.red),
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
                       ),
                     ],
                   ),
-                ),
-              ],
-            ),
           ),
         ),
         bottomNavigationBar: CustomBottomNavigationBar(

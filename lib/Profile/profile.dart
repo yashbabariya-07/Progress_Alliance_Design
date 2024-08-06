@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/ShimmerLoader/syntax.dart';
 import 'package:progress_alliance/bottombar.dart';
 import 'dart:io';
 import 'package:progress_alliance/routes/route.dart';
+import 'package:shimmer/shimmer.dart';
 
 class Profile extends StatefulWidget {
   final String gender;
@@ -35,7 +37,7 @@ class Profile extends StatefulWidget {
   State<Profile> createState() => _ProfileState();
 }
 
-class _ProfileState extends State<Profile> {
+class _ProfileState extends State<Profile> with LoadingStateMixin {
   File? _coverImage;
   File? _profileImage;
 
@@ -458,88 +460,143 @@ class _ProfileState extends State<Profile> {
           ],
         ),
         body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: MediaQuery.of(context).size.height * 0.17,
-                    color: Colors.grey[300],
-                    child: _coverImage != null
-                        ? Image.file(
-                            _coverImage!,
-                            fit: BoxFit.cover,
-                          )
-                        : Padding(
-                            padding: const EdgeInsets.only(top: 22.0),
-                            child: Text(
-                              "Cover Photo",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 15.sp,
-                                color: Colors.grey[600],
-                              ),
-                            ),
+          child: isLoading
+              ? Shimmer.fromColors(
+                  baseColor: Colors.grey[300]!,
+                  highlightColor: Colors.grey[100]!,
+                  child: Column(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        height: MediaQuery.of(context).size.height * 0.15,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.grey[200]),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.08,
+                      ),
+                      Column(
+                        children: [
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.02,
+                            width: MediaQuery.of(context).size.width * 0.25,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(2),
+                                color: Colors.grey[200]),
                           ),
-                  ),
-                  Positioned(
-                    right: MediaQuery.of(context).size.width * 0.02,
-                    top: MediaQuery.of(context).size.width * 0.02,
-                    child: GestureDetector(
-                      onTap: _pickCoverImage,
-                      child: CircleAvatar(
-                        radius: MediaQuery.of(context).size.width * 0.03,
-                        backgroundColor: Colors.black,
-                        child: CircleAvatar(
-                          radius: MediaQuery.of(context).size.width * 0.029,
-                          backgroundColor: Colors.white,
-                          child: Icon(
-                            Icons.camera_alt_rounded,
-                            size: MediaQuery.of(context).size.width * 0.035,
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.002,
                           ),
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.02,
+                            width: MediaQuery.of(context).size.width * 0.35,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(2),
+                                color: Colors.grey[200]),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.002,
+                          ),
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.02,
+                            width: MediaQuery.of(context).size.width * 0.55,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(2),
+                                color: Colors.grey[200]),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.002,
+                          ),
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.02,
+                            width: MediaQuery.of(context).size.width * 0.35,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(2),
+                                color: Colors.grey[200]),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.035,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Container(
+                          height: MediaQuery.of(context).size.height * 0.45,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.grey[200]),
                         ),
                       ),
-                    ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.012,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Container(
+                          height: MediaQuery.of(context).size.height * 0.2,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.grey[200]),
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.012,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Container(
+                          height: MediaQuery.of(context).size.height * 0.35,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.grey[200]),
+                        ),
+                      ),
+                    ],
                   ),
-                  Positioned(
-                    bottom: -MediaQuery.of(context).size.width * 0.12,
-                    left: MediaQuery.of(context).size.width * 0.33,
-                    child: Stack(
-                      alignment: Alignment.bottomRight,
+                )
+              : Column(
+                  children: [
+                    Stack(
+                      clipBehavior: Clip.none,
                       children: [
-                        CircleAvatar(
-                          radius: MediaQuery.of(context).size.width * 0.16,
-                          backgroundColor: Colors.white,
-                          child: CircleAvatar(
-                            radius: MediaQuery.of(context).size.width * 0.156,
-                            backgroundImage: _profileImage != null
-                                ? FileImage(_profileImage!)
-                                : null,
-                            child: _profileImage == null
-                                ? Icon(
-                                    Icons.person,
-                                    size:
-                                        MediaQuery.of(context).size.width * 0.1,
-                                  )
-                                : null,
-                          ),
+                        Container(
+                          width: double.infinity,
+                          height: MediaQuery.of(context).size.height * 0.17,
+                          color: Colors.grey[300],
+                          child: _coverImage != null
+                              ? Image.file(
+                                  _coverImage!,
+                                  fit: BoxFit.cover,
+                                )
+                              : Padding(
+                                  padding: const EdgeInsets.only(top: 22.0),
+                                  child: Text(
+                                    "Cover Photo",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontSize: 15.sp,
+                                      color: Colors.grey[600],
+                                    ),
+                                  ),
+                                ),
                         ),
                         Positioned(
-                          right: MediaQuery.of(context).size.width * 0.03,
-                          bottom: MediaQuery.of(context).size.width * 0.01,
+                          right: MediaQuery.of(context).size.width * 0.02,
+                          top: MediaQuery.of(context).size.width * 0.02,
                           child: GestureDetector(
-                            onTap: () {
-                              _showProfileOptions(context);
-                            },
+                            onTap: _pickCoverImage,
                             child: CircleAvatar(
-                              radius: MediaQuery.of(context).size.width * 0.037,
+                              radius: MediaQuery.of(context).size.width * 0.03,
                               backgroundColor: Colors.black,
                               child: CircleAvatar(
                                 radius:
-                                    MediaQuery.of(context).size.width * 0.035,
+                                    MediaQuery.of(context).size.width * 0.029,
                                 backgroundColor: Colors.white,
                                 child: Icon(
                                   Icons.camera_alt_rounded,
@@ -550,650 +607,734 @@ class _ProfileState extends State<Profile> {
                             ),
                           ),
                         ),
+                        Positioned(
+                          bottom: -MediaQuery.of(context).size.width * 0.12,
+                          left: MediaQuery.of(context).size.width * 0.33,
+                          child: Stack(
+                            alignment: Alignment.bottomRight,
+                            children: [
+                              CircleAvatar(
+                                radius:
+                                    MediaQuery.of(context).size.width * 0.16,
+                                backgroundColor: Colors.white,
+                                child: CircleAvatar(
+                                  radius:
+                                      MediaQuery.of(context).size.width * 0.156,
+                                  backgroundImage: _profileImage != null
+                                      ? FileImage(_profileImage!)
+                                      : null,
+                                  child: _profileImage == null
+                                      ? Icon(
+                                          Icons.person,
+                                          size: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.1,
+                                        )
+                                      : null,
+                                ),
+                              ),
+                              Positioned(
+                                right: MediaQuery.of(context).size.width * 0.03,
+                                bottom:
+                                    MediaQuery.of(context).size.width * 0.01,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    _showProfileOptions(context);
+                                  },
+                                  child: CircleAvatar(
+                                    radius: MediaQuery.of(context).size.width *
+                                        0.037,
+                                    backgroundColor: Colors.black,
+                                    child: CircleAvatar(
+                                      radius:
+                                          MediaQuery.of(context).size.width *
+                                              0.035,
+                                      backgroundColor: Colors.white,
+                                      child: Icon(
+                                        Icons.camera_alt_rounded,
+                                        size:
+                                            MediaQuery.of(context).size.width *
+                                                0.035,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.07,
-              ),
-              Column(
-                children: [
-                  Text(
-                    "Mr. John Doe",
-                    style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    "Saral Info Solution",
-                    style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 13.sp,
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.07,
                     ),
-                  ),
-                  RichText(
-                      text: TextSpan(children: [
-                    TextSpan(
-                      text: "Membership Id: ",
-                      style: TextStyle(
-                          fontSize: 12.sp,
-                          fontFamily: 'Inter',
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                    TextSpan(
-                      text: "PA_Member_Id:07",
-                      style: TextStyle(
-                          fontSize: 12.sp,
-                          fontFamily: 'Inter',
-                          color: Colors.black),
-                    ),
-                  ])),
-                  Text(
-                    "Saral Info Solution",
-                    style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 13.sp,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.035,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Column(
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(width: 0.2, color: Colors.grey),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Basic Detail",
-                                  style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      fontSize: 15.sp,
-                                      color:
-                                          const Color.fromARGB(255, 16, 2, 90),
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                GestureDetector(
-                                    onTap: () {
-                                      Navigator.pushNamed(
-                                          context, Routes.basicDetailRoute);
-                                    },
-                                    child: CircleAvatar(
-                                      radius: 13,
-                                      backgroundColor: Colors.grey[300],
-                                      child: Center(
-                                        child: Icon(
-                                          MdiIcons.pencilOutline,
-                                          size: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.045,
-                                        ),
-                                      ),
-                                    ))
-                              ],
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.018,
-                            ),
-                            Text(
-                              "Gender",
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 12.sp,
-                                  color: Colors.grey),
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.006,
-                            ),
-                            Text(
-                              widget.gender,
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.012,
-                            ),
-                            Text(
-                              "Date of Birth",
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 12.sp,
-                                  color: Colors.grey),
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.006,
-                            ),
-                            Text(
-                              widget.dob,
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.012,
-                            ),
-                            Text(
-                              "Marriage Anniversary",
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 12.sp,
-                                  color: Colors.grey),
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.006,
-                            ),
-                            Text(
-                              widget.marriage,
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.012,
-                            ),
-                            Text(
-                              "Mobile Number",
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 12.sp,
-                                  color: Colors.grey),
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.006,
-                            ),
-                            Text(
-                              widget.mobile,
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.012,
-                            ),
-                            Text(
-                              "Weight",
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 12.sp,
-                                  color: Colors.grey),
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.006,
-                            ),
-                            Text(
-                              widget.weight,
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.012,
-                            ),
-                            Text(
-                              "Blood Group",
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 12.sp,
-                                  color: Colors.grey),
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.006,
-                            ),
-                            Text(
-                              widget.bgroup,
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
+                    Column(
+                      children: [
+                        Text(
+                          "Mr. John Doe",
+                          style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.bold),
                         ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.012,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Column(
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(width: 0.2, color: Colors.grey),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Residential Details",
-                                  style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      fontSize: 15.sp,
-                                      color:
-                                          const Color.fromARGB(255, 16, 2, 90),
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                GestureDetector(
-                                    onTap: () {
-                                      Navigator.pushNamed(
-                                          context, Routes.locationRoute);
-                                    },
-                                    child: CircleAvatar(
-                                      radius: 13,
-                                      backgroundColor: Colors.grey[300],
-                                      child: Center(
-                                        child: Icon(
-                                          MdiIcons.pencilOutline,
-                                          size: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.045,
-                                        ),
-                                      ),
-                                    ))
-                              ],
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.018,
-                            ),
-                            Text(
-                              "Address",
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 12.sp,
-                                  color: Colors.grey),
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.006,
-                            ),
-                            Text(
-                              "your address",
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
+                        Text(
+                          "Saral Info Solution",
+                          style: TextStyle(
+                            fontFamily: 'Inter',
+                            fontSize: 13.sp,
+                          ),
                         ),
-                      ),
+                        RichText(
+                            text: TextSpan(children: [
+                          TextSpan(
+                            text: "Membership Id: ",
+                            style: TextStyle(
+                                fontSize: 12.sp,
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                          TextSpan(
+                            text: "PA_Member_Id:07",
+                            style: TextStyle(
+                                fontSize: 12.sp,
+                                fontFamily: 'Inter',
+                                color: Colors.black),
+                          ),
+                        ])),
+                        Text(
+                          "Saral Info Solution",
+                          style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 13.sp,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.012,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Column(
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(width: 0.2, color: Colors.grey),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Family Details",
-                                  style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      fontSize: 15.sp,
-                                      color:
-                                          const Color.fromARGB(255, 16, 2, 90),
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                GestureDetector(
-                                    onTap: () {
-                                      Navigator.pushNamed(
-                                          context, Routes.familyDetailRoute);
-                                    },
-                                    child: CircleAvatar(
-                                      radius: 13,
-                                      backgroundColor: Colors.grey[300],
-                                      child: Center(
-                                        child: Icon(
-                                          MdiIcons.pencilOutline,
-                                          size: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.045,
-                                        ),
-                                      ),
-                                    ))
-                              ],
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.035,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Column(
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border:
+                                  Border.all(width: 0.2, color: Colors.grey),
                             ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.018,
-                            ),
-                            Text(
-                              "Spouse Name",
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 12.sp,
-                                  color: Colors.grey),
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.006,
-                            ),
-                            Text(
-                              widget.spouseName,
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.012,
-                            ),
-                            Text(
-                              "Spouse Date of Birth",
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 12.sp,
-                                  color: Colors.grey),
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.006,
-                            ),
-                            Text(
-                              widget.spouseDOB,
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.006,
-                            ),
-                            Text(
-                              'Children',
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 12.sp,
-                                  color: Colors.grey),
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.006,
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                border:
-                                    Border.all(color: Colors.grey, width: 0.5),
-                              ),
-                              child: Table(
-                                border: TableBorder.all(
-                                    color: Colors.grey, width: 0.5),
+                            child: Padding(
+                              padding: const EdgeInsets.all(15),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  TableRow(
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      TableCell(
-                                          child: Padding(
-                                        padding: const EdgeInsets.all(8),
-                                        child: Center(
-                                            child: Text(
-                                          'Name',
-                                          style: TextStyle(
+                                      Text(
+                                        "Basic Detail",
+                                        style: TextStyle(
                                             fontFamily: 'Inter',
-                                            fontSize: 13.sp,
-                                            fontWeight: FontWeight.bold,
+                                            fontSize: 15.sp,
                                             color: const Color.fromARGB(
                                                 255, 16, 2, 90),
-                                          ),
-                                        )),
-                                      )),
-                                      TableCell(
-                                          child: Padding(
-                                        padding: const EdgeInsets.all(8),
-                                        child: Center(
-                                            child: Text(
-                                          'DOB',
-                                          style: TextStyle(
-                                            fontFamily: 'Inter',
-                                            fontSize: 13.sp,
-                                            fontWeight: FontWeight.bold,
-                                            color: const Color.fromARGB(
-                                                255, 16, 2, 90),
-                                          ),
-                                        )),
-                                      )),
-                                      TableCell(
-                                          child: Padding(
-                                        padding: const EdgeInsets.all(8),
-                                        child: Center(
-                                            child: Text(
-                                          'Gender',
-                                          style: TextStyle(
-                                            fontFamily: 'Inter',
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 13.sp,
-                                            color: const Color.fromARGB(
-                                                255, 16, 2, 90),
-                                          ),
-                                        )),
-                                      )),
-                                      TableCell(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Center(
-                                            child: GestureDetector(
-                                                onTap: _addChild,
-                                                child: Icon(
-                                                  Icons.add,
-                                                  size: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.06,
-                                                )),
-                                          ),
-                                        ),
+                                            fontWeight: FontWeight.bold),
                                       ),
+                                      GestureDetector(
+                                          onTap: () {
+                                            Navigator.pushNamed(context,
+                                                Routes.basicDetailRoute);
+                                          },
+                                          child: CircleAvatar(
+                                            radius: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.035,
+                                            backgroundColor: Colors.grey[300],
+                                            child: Center(
+                                              child: Icon(
+                                                MdiIcons.pencilOutline,
+                                                size: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.045,
+                                              ),
+                                            ),
+                                          ))
                                     ],
                                   ),
-                                  for (int i = 0; i < children.length; i++)
-                                    TableRow(
-                                      children: [
-                                        TableCell(
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(5.0),
-                                            child: Center(
-                                              child: Text(
-                                                children[i]['name'] ?? '',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                  fontFamily: 'Inter',
-                                                  fontSize: 13.sp,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        TableCell(
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(5.0),
-                                            child: Center(
-                                              child: Text(
-                                                children[i]['dob'] ?? '',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                  fontFamily: 'Inter',
-                                                  fontSize: 13.sp,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        TableCell(
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(5.0),
-                                            child: Center(
-                                              child: Text(
-                                                children[i]['gender'] ?? '',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                  fontFamily: 'Inter',
-                                                  fontSize: 13.sp,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        TableCell(
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(5.0),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                GestureDetector(
-                                                    onTap: () => _editChild(i),
-                                                    child: Icon(
-                                                      Icons.edit,
-                                                      size:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              0.06,
-                                                    )),
-                                                SizedBox(width: 5),
-                                                GestureDetector(
-                                                    onTap: () {
-                                                      setState(() {
-                                                        children.removeAt(i);
-                                                      });
-                                                    },
-                                                    child: Icon(
-                                                      Icons.delete,
-                                                      size:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              0.06,
-                                                    )),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.018,
+                                  ),
+                                  Text(
+                                    "Gender",
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 12.sp,
+                                        color: Colors.grey),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.006,
+                                  ),
+                                  Text(
+                                    widget.gender,
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.012,
+                                  ),
+                                  Text(
+                                    "Date of Birth",
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 12.sp,
+                                        color: Colors.grey),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.006,
+                                  ),
+                                  Text(
+                                    widget.dob,
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.012,
+                                  ),
+                                  Text(
+                                    "Marriage Anniversary",
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 12.sp,
+                                        color: Colors.grey),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.006,
+                                  ),
+                                  Text(
+                                    widget.marriage,
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.012,
+                                  ),
+                                  Text(
+                                    "Mobile Number",
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 12.sp,
+                                        color: Colors.grey),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.006,
+                                  ),
+                                  Text(
+                                    widget.mobile,
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.012,
+                                  ),
+                                  Text(
+                                    "Weight",
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 12.sp,
+                                        color: Colors.grey),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.006,
+                                  ),
+                                  Text(
+                                    widget.weight,
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.012,
+                                  ),
+                                  Text(
+                                    "Blood Group",
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 12.sp,
+                                        color: Colors.grey),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.006,
+                                  ),
+                                  Text(
+                                    widget.bgroup,
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                 ],
                               ),
                             ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.006,
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.012,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Column(
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border:
+                                  Border.all(width: 0.2, color: Colors.grey),
                             ),
-                            Text(
-                              "Emergency Person's Name",
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 12.sp,
-                                  color: Colors.grey),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        "Residential Details",
+                                        style: TextStyle(
+                                            fontFamily: 'Inter',
+                                            fontSize: 15.sp,
+                                            color: const Color.fromARGB(
+                                                255, 16, 2, 90),
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      GestureDetector(
+                                          onTap: () {
+                                            Navigator.pushNamed(
+                                                context, Routes.locationRoute);
+                                          },
+                                          child: CircleAvatar(
+                                            radius: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.035,
+                                            backgroundColor: Colors.grey[300],
+                                            child: Center(
+                                              child: Icon(
+                                                MdiIcons.pencilOutline,
+                                                size: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.045,
+                                              ),
+                                            ),
+                                          ))
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.018,
+                                  ),
+                                  Text(
+                                    "Address",
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 12.sp,
+                                        color: Colors.grey),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.006,
+                                  ),
+                                  Text(
+                                    "your address",
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
                             ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.006,
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.012,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Column(
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border:
+                                  Border.all(width: 0.2, color: Colors.grey),
                             ),
-                            Text(
-                              widget.emgName,
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        "Family Details",
+                                        style: TextStyle(
+                                            fontFamily: 'Inter',
+                                            fontSize: 15.sp,
+                                            color: const Color.fromARGB(
+                                                255, 16, 2, 90),
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      GestureDetector(
+                                          onTap: () {
+                                            Navigator.pushNamed(context,
+                                                Routes.familyDetailRoute);
+                                          },
+                                          child: CircleAvatar(
+                                            radius: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.035,
+                                            backgroundColor: Colors.grey[300],
+                                            child: Center(
+                                              child: Icon(
+                                                MdiIcons.pencilOutline,
+                                                size: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.045,
+                                              ),
+                                            ),
+                                          ))
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.018,
+                                  ),
+                                  Text(
+                                    "Spouse Name",
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 12.sp,
+                                        color: Colors.grey),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.006,
+                                  ),
+                                  Text(
+                                    widget.spouseName,
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.012,
+                                  ),
+                                  Text(
+                                    "Spouse Date of Birth",
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 12.sp,
+                                        color: Colors.grey),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.006,
+                                  ),
+                                  Text(
+                                    widget.spouseDOB,
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.006,
+                                  ),
+                                  Text(
+                                    'Children',
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 12.sp,
+                                        color: Colors.grey),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.006,
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: Colors.grey, width: 0.5),
+                                    ),
+                                    child: Table(
+                                      border: TableBorder.all(
+                                          color: Colors.grey, width: 0.5),
+                                      children: [
+                                        TableRow(
+                                          children: [
+                                            TableCell(
+                                                child: Padding(
+                                              padding: const EdgeInsets.all(8),
+                                              child: Center(
+                                                  child: Text(
+                                                'Name',
+                                                style: TextStyle(
+                                                  fontFamily: 'Inter',
+                                                  fontSize: 13.sp,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: const Color.fromARGB(
+                                                      255, 16, 2, 90),
+                                                ),
+                                              )),
+                                            )),
+                                            TableCell(
+                                                child: Padding(
+                                              padding: const EdgeInsets.all(8),
+                                              child: Center(
+                                                  child: Text(
+                                                'DOB',
+                                                style: TextStyle(
+                                                  fontFamily: 'Inter',
+                                                  fontSize: 13.sp,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: const Color.fromARGB(
+                                                      255, 16, 2, 90),
+                                                ),
+                                              )),
+                                            )),
+                                            TableCell(
+                                                child: Padding(
+                                              padding: const EdgeInsets.all(8),
+                                              child: Center(
+                                                  child: Text(
+                                                'Gender',
+                                                style: TextStyle(
+                                                  fontFamily: 'Inter',
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 13.sp,
+                                                  color: const Color.fromARGB(
+                                                      255, 16, 2, 90),
+                                                ),
+                                              )),
+                                            )),
+                                            TableCell(
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Center(
+                                                  child: GestureDetector(
+                                                      onTap: _addChild,
+                                                      child: Icon(
+                                                        Icons.add,
+                                                        size: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.06,
+                                                      )),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        for (int i = 0;
+                                            i < children.length;
+                                            i++)
+                                          TableRow(
+                                            children: [
+                                              TableCell(
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(5.0),
+                                                  child: Center(
+                                                    child: Text(
+                                                      children[i]['name'] ?? '',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                        fontFamily: 'Inter',
+                                                        fontSize: 13.sp,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              TableCell(
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(5.0),
+                                                  child: Center(
+                                                    child: Text(
+                                                      children[i]['dob'] ?? '',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                        fontFamily: 'Inter',
+                                                        fontSize: 13.sp,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              TableCell(
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(5.0),
+                                                  child: Center(
+                                                    child: Text(
+                                                      children[i]['gender'] ??
+                                                          '',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                        fontFamily: 'Inter',
+                                                        fontSize: 13.sp,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              TableCell(
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(5.0),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      GestureDetector(
+                                                          onTap: () =>
+                                                              _editChild(i),
+                                                          child: Icon(
+                                                            Icons.edit,
+                                                            size: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width *
+                                                                0.06,
+                                                          )),
+                                                      SizedBox(width: 5),
+                                                      GestureDetector(
+                                                          onTap: () {
+                                                            setState(() {
+                                                              children
+                                                                  .removeAt(i);
+                                                            });
+                                                          },
+                                                          child: Icon(
+                                                            Icons.delete,
+                                                            size: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width *
+                                                                0.06,
+                                                          )),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.006,
+                                  ),
+                                  Text(
+                                    "Emergency Person's Name",
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 12.sp,
+                                        color: Colors.grey),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.006,
+                                  ),
+                                  Text(
+                                    widget.emgName,
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.012,
+                                  ),
+                                  Text(
+                                    "Emergency Person's Number",
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 12.sp,
+                                        color: Colors.grey),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.006,
+                                  ),
+                                  Text(
+                                    widget.emgNumber,
+                                    style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
                             ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.012,
-                            ),
-                            Text(
-                              "Emergency Person's Number",
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 12.sp,
-                                  color: Colors.grey),
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.006,
-                            ),
-                            Text(
-                              widget.emgNumber,
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
-              ),
-            ],
-          ),
         ),
         bottomNavigationBar: CustomBottomNavigationBar(
           selectedIndex: _selectedIndex,

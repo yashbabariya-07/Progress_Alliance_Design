@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:progress_alliance/ShimmerLoader/customShimmer.dart';
+import 'package:progress_alliance/ShimmerLoader/syntax.dart';
 import 'package:progress_alliance/routes/route.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:pdf/pdf.dart';
@@ -19,22 +20,14 @@ class CompanyDetail extends StatefulWidget {
 }
 
 class _CompanyDetailState extends State<CompanyDetail>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, LoadingStateMixin {
   late TabController _tabController;
-  bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    _loadData();
-    _tabController = TabController(length: 2, vsync: this);
-  }
 
-  Future<void> _loadData() async {
-    await Future.delayed(const Duration(seconds: 2));
-    setState(() {
-      _isLoading = false;
-    });
+    _tabController = TabController(length: 2, vsync: this);
   }
 
   Future<Uint8List> _loadAsset(String path) async {
@@ -245,7 +238,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                 )),
           ],
         ),
-        body: _isLoading
+        body: isLoading
             ? const ShimmerCustom()
             : Column(
                 children: [

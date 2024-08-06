@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:progress_alliance/ShimmerLoader/customShimmer.dart';
+import 'package:progress_alliance/ShimmerLoader/syntax.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MemberDetail extends StatefulWidget {
@@ -14,16 +15,14 @@ class MemberDetail extends StatefulWidget {
 }
 
 class _MemberDetailState extends State<MemberDetail>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, LoadingStateMixin {
   late TabController _tabController;
   File? _coverImage;
-  bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
-    _loadData();
   }
 
   Future<void> _pickCoverImage() async {
@@ -35,13 +34,6 @@ class _MemberDetailState extends State<MemberDetail>
         _coverImage = File(pickedFile.path);
       });
     }
-  }
-
-  Future<void> _loadData() async {
-    await Future.delayed(const Duration(seconds: 2));
-    setState(() {
-      _isLoading = false;
-    });
   }
 
   @override
@@ -91,7 +83,7 @@ class _MemberDetailState extends State<MemberDetail>
                 )),
           ],
         ),
-        body: _isLoading
+        body: isLoading
             ? const ShimmerCustom()
             : Column(
                 children: [

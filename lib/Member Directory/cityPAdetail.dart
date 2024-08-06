@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/ShimmerLoader/syntax.dart';
 import 'package:shimmer/shimmer.dart';
 
 class PADetail extends StatefulWidget {
@@ -10,7 +11,7 @@ class PADetail extends StatefulWidget {
   State<PADetail> createState() => _PADetailState();
 }
 
-class _PADetailState extends State<PADetail> {
+class _PADetailState extends State<PADetail> with LoadingStateMixin {
   final List<String> _paList = [
     "Growth Partner Team",
     "Event Team",
@@ -26,21 +27,6 @@ class _PADetailState extends State<PADetail> {
     "Finance Team": GlobalKey(),
     "Growth Associate Team": GlobalKey(),
   };
-
-  bool _isLoading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadData();
-  }
-
-  Future<void> _loadData() async {
-    await Future.delayed(const Duration(seconds: 2));
-    setState(() {
-      _isLoading = false;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +84,7 @@ class _PADetailState extends State<PADetail> {
         ),
         body: SingleChildScrollView(
           controller: _scrollController,
-          child: _isLoading
+          child: isLoading
               ? SizedBox(
                   height: MediaQuery.of(context).size.height,
                   child: Shimmer.fromColors(

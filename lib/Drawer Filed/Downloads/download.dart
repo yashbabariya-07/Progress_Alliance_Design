@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:progress_alliance/ShimmerLoader/syntax.dart';
 import 'package:progress_alliance/routes/route.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shimmer/shimmer.dart';
@@ -167,25 +168,10 @@ class VolumeWidget extends StatefulWidget {
   State<VolumeWidget> createState() => _VolumeWidgetState();
 }
 
-class _VolumeWidgetState extends State<VolumeWidget> {
-  bool _isLoading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadData();
-  }
-
-  Future<void> _loadData() async {
-    await Future.delayed(const Duration(seconds: 2));
-    setState(() {
-      _isLoading = false;
-    });
-  }
-
+class _VolumeWidgetState extends State<VolumeWidget> with LoadingStateMixin {
   @override
   Widget build(BuildContext context) {
-    return _isLoading
+    return isLoading
         ? Shimmer.fromColors(
             baseColor: Colors.grey[300]!,
             highlightColor: Colors.grey[100]!,

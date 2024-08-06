@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 
-class SyntaxShimmer extends StatefulWidget {
-  const SyntaxShimmer({super.key});
-
-  @override
-  State<SyntaxShimmer> createState() => _SyntaxShimmerState();
-}
-
-class _SyntaxShimmerState extends State<SyntaxShimmer> {
+mixin LoadingStateMixin<T extends StatefulWidget> on State<T> {
   bool _isLoading = true;
+
+  bool get isLoading => _isLoading;
 
   @override
   void initState() {
@@ -18,13 +13,10 @@ class _SyntaxShimmerState extends State<SyntaxShimmer> {
 
   Future<void> _loadData() async {
     await Future.delayed(const Duration(seconds: 2));
-    setState(() {
-      _isLoading = false;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return const SizedBox();
+    if (mounted) {
+      setState(() {
+        _isLoading = false;
+      });
+    }
   }
 }

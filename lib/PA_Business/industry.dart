@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:progress_alliance/ShimmerLoader/syntax.dart';
 import 'package:progress_alliance/routes/route.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -12,7 +13,7 @@ class Retailer extends StatefulWidget {
   State<Retailer> createState() => _RetailerState();
 }
 
-class _RetailerState extends State<Retailer> {
+class _RetailerState extends State<Retailer> with LoadingStateMixin {
   final ValueNotifier<String> _searchQuery = ValueNotifier<String>("");
   final picker = ImagePicker();
 
@@ -55,21 +56,6 @@ class _RetailerState extends State<Retailer> {
   ];
 
   final Set<String> selectedCategories = {};
-
-  bool _isLoading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadData();
-  }
-
-  Future<void> _loadData() async {
-    await Future.delayed(const Duration(seconds: 2));
-    setState(() {
-      _isLoading = false;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -308,7 +294,7 @@ class _RetailerState extends State<Retailer> {
                 onTap: () {
                   Navigator.pushNamed(context, Routes.memberDetailRoute);
                 },
-                child: _isLoading
+                child: isLoading
                     ? Shimmer.fromColors(
                         baseColor: Colors.grey[300]!,
                         highlightColor: Colors.grey[100]!,

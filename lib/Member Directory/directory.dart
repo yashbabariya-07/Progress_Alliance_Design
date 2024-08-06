@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:progress_alliance/ShimmerLoader/syntax.dart';
 import 'package:progress_alliance/homeBottom.dart';
 import 'package:progress_alliance/routes/route.dart';
 import 'package:shimmer/shimmer.dart';
@@ -11,7 +12,8 @@ class MemberDirectory extends StatefulWidget {
   State<MemberDirectory> createState() => _MemberDirectoryState();
 }
 
-class _MemberDirectoryState extends State<MemberDirectory> {
+class _MemberDirectoryState extends State<MemberDirectory>
+    with LoadingStateMixin {
   List<Map<String, String>> cities = [
     {"image": "assets/surat.jpg", "label": "Ahemdabad"},
     {"image": "assets/surat.jpg", "label": "Ankleshwar"},
@@ -47,21 +49,6 @@ class _MemberDirectoryState extends State<MemberDirectory> {
       default:
         break;
     }
-  }
-
-  bool _isLoading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadData();
-  }
-
-  Future<void> _loadData() async {
-    await Future.delayed(const Duration(seconds: 2));
-    setState(() {
-      _isLoading = false;
-    });
   }
 
   @override
@@ -112,7 +99,7 @@ class _MemberDirectoryState extends State<MemberDirectory> {
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-          child: _isLoading
+          child: isLoading
               ? Shimmer.fromColors(
                   baseColor: Colors.grey[300]!,
                   highlightColor: Colors.grey[100]!,

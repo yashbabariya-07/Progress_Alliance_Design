@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:progress_alliance/ShimmerLoader/syntax.dart';
 import 'package:progress_alliance/routes/route.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -10,27 +11,13 @@ class CityPartner extends StatefulWidget {
   State<CityPartner> createState() => _CityPartnerState();
 }
 
-class _CityPartnerState extends State<CityPartner> {
+class _CityPartnerState extends State<CityPartner> with LoadingStateMixin {
   final List<Map<String, String>> partners = [
     {'name': 'PA 1 KARNAVATI', 'member': '34 member'},
     {'name': 'PA 2 VARACHHA', 'member': '94 member'},
     {'name': 'PA 3 SABARMATI', 'member': '56 member'},
     {'name': 'PA 4 GOPIPURA', 'member': '78 member'},
   ];
-  bool _isLoading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadData();
-  }
-
-  Future<void> _loadData() async {
-    await Future.delayed(const Duration(seconds: 2));
-    setState(() {
-      _isLoading = false;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +70,7 @@ class _CityPartnerState extends State<CityPartner> {
           padding: const EdgeInsets.all(15),
           child: Column(
             children: [
-              _isLoading
+              isLoading
                   ? Shimmer.fromColors(
                       baseColor: Colors.grey[300]!,
                       highlightColor: Colors.grey[100]!,
@@ -149,7 +136,7 @@ class _CityPartnerState extends State<CityPartner> {
                   ),
                   itemCount: partners.length,
                   itemBuilder: (context, index) {
-                    return _isLoading
+                    return isLoading
                         ? Shimmer.fromColors(
                             baseColor: Colors.grey[300]!,
                             highlightColor: Colors.grey[100]!,

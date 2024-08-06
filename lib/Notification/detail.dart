@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/ShimmerLoader/syntax.dart';
 import 'package:shimmer/shimmer.dart';
 
 class DeatailPage extends StatefulWidget {
@@ -13,7 +14,7 @@ class DeatailPage extends StatefulWidget {
   State<DeatailPage> createState() => _DeatailPageState();
 }
 
-class _DeatailPageState extends State<DeatailPage> {
+class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
   File? _coverImage;
 
   Future<void> _pickCoverImage() async {
@@ -25,21 +26,6 @@ class _DeatailPageState extends State<DeatailPage> {
         _coverImage = File(pickedFile.path);
       });
     }
-  }
-
-  bool _isLoading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadData();
-  }
-
-  Future<void> _loadData() async {
-    await Future.delayed(const Duration(seconds: 2));
-    setState(() {
-      _isLoading = false;
-    });
   }
 
   @override
@@ -97,7 +83,7 @@ class _DeatailPageState extends State<DeatailPage> {
         ),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(15, 25, 15, 0),
-          child: _isLoading
+          child: isLoading
               ? Shimmer.fromColors(
                   baseColor: Colors.grey[300]!,
                   highlightColor: Colors.grey[100]!,

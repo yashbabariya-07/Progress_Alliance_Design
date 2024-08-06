@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/ShimmerLoader/syntax.dart';
 import 'package:progress_alliance/homeBottom.dart';
 import 'package:progress_alliance/routes/route.dart';
 import 'package:shimmer/shimmer.dart';
@@ -14,7 +15,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with LoadingStateMixin {
   int _current = 0;
   final List<String> imgList = [
     'assets/s1.jpg',
@@ -68,21 +69,6 @@ class _HomePageState extends State<HomePage> {
       "needs": "UI/UX Designer"
     },
   ];
-
-  bool _isLoading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadData();
-  }
-
-  Future<void> _loadData() async {
-    await Future.delayed(const Duration(seconds: 2));
-    setState(() {
-      _isLoading = false;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -295,7 +281,7 @@ class _HomePageState extends State<HomePage> {
           titleSpacing: 0,
           title: Row(
             children: [
-              _isLoading
+              isLoading
                   ? Shimmer.fromColors(
                       baseColor: Colors.grey[300]!,
                       highlightColor: Colors.grey[100]!,
@@ -368,7 +354,7 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Padding(
           padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
-          child: _isLoading
+          child: isLoading
               ? Shimmer.fromColors(
                   baseColor: Colors.grey[300]!,
                   highlightColor: Colors.grey[100]!,
@@ -667,16 +653,14 @@ class _HomePageState extends State<HomePage> {
                         },
                       ),
                       items: imgList
-                          .map((item) => Container(
-                                child: Center(
-                                  child: ClipRRect(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(8)),
-                                    child: Image.asset(
-                                      item,
-                                      fit: BoxFit.cover,
-                                      width: MediaQuery.of(context).size.width,
-                                    ),
+                          .map((item) => Center(
+                                child: ClipRRect(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(8)),
+                                  child: Image.asset(
+                                    item,
+                                    fit: BoxFit.cover,
+                                    width: MediaQuery.of(context).size.width,
                                   ),
                                 ),
                               ))
@@ -697,22 +681,19 @@ class _HomePageState extends State<HomePage> {
                                 initialPage: entry.key,
                               ),
                               items: imgList
-                                  .map((item) => Container(
-                                        child: Center(
-                                          child: Image.asset(
-                                            item,
-                                            fit: BoxFit.cover,
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                          ),
+                                  .map((item) => Center(
+                                        child: Image.asset(
+                                          item,
+                                          fit: BoxFit.cover,
+                                          width:
+                                              MediaQuery.of(context).size.width,
                                         ),
                                       ))
                                   .toList()),
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.025,
                             height: MediaQuery.of(context).size.width * 0.025,
-                            margin: EdgeInsets.symmetric(horizontal: 2.0),
+                            margin: const EdgeInsets.symmetric(horizontal: 2.0),
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: (Theme.of(context).brightness ==

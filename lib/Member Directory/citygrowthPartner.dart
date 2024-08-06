@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/ShimmerLoader/syntax.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CityGrowthPartner extends StatefulWidget {
@@ -10,23 +11,9 @@ class CityGrowthPartner extends StatefulWidget {
   State<CityGrowthPartner> createState() => _CityGrowthPartnerState();
 }
 
-class _CityGrowthPartnerState extends State<CityGrowthPartner> {
-  TextEditingController _SearchController = TextEditingController();
-
-  bool _isLoading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadData();
-  }
-
-  Future<void> _loadData() async {
-    await Future.delayed(const Duration(seconds: 2));
-    setState(() {
-      _isLoading = false;
-    });
-  }
+class _CityGrowthPartnerState extends State<CityGrowthPartner>
+    with LoadingStateMixin {
+  final TextEditingController _SearchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +61,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner> {
             ),
           ],
         ),
-        body: _isLoading
+        body: isLoading
             ? SizedBox(
                 height: MediaQuery.of(context).size.height,
                 child: Shimmer.fromColors(
