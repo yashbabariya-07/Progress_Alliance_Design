@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:progress_alliance/homeBottom.dart';
 import 'package:progress_alliance/routes/route.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -67,6 +68,21 @@ class _HomePageState extends State<HomePage> {
       "needs": "UI/UX Designer"
     },
   ];
+
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+  }
+
+  Future<void> _loadData() async {
+    await Future.delayed(const Duration(seconds: 2));
+    setState(() {
+      _isLoading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -279,18 +295,26 @@ class _HomePageState extends State<HomePage> {
           titleSpacing: 0,
           title: Row(
             children: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, Routes.profileRoute);
-                },
-                child: CircleAvatar(
-                  radius: MediaQuery.of(context).size.width * 0.045,
-                  child: Icon(
-                    Icons.person,
-                    size: MediaQuery.of(context).size.width * 0.07,
-                  ),
-                ),
-              ),
+              _isLoading
+                  ? Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: CircleAvatar(
+                        radius: MediaQuery.of(context).size.width * 0.045,
+                      ),
+                    )
+                  : GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, Routes.profileRoute);
+                      },
+                      child: CircleAvatar(
+                        radius: MediaQuery.of(context).size.width * 0.045,
+                        child: Icon(
+                          Icons.person,
+                          size: MediaQuery.of(context).size.width * 0.07,
+                        ),
+                      ),
+                    ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.02,
               ),
@@ -344,261 +368,565 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Padding(
           padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CarouselSlider(
-                options: CarouselOptions(
-                  autoPlay: true,
-                  viewportFraction: 1,
-                  enlargeCenterPage: true,
-                  aspectRatio: 2.0,
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      _current = index;
-                    });
-                  },
-                ),
-                items: imgList
-                    .map((item) => Container(
-                          child: Center(
-                            child: ClipRRect(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(8)),
-                              child: Image.asset(
-                                item,
-                                fit: BoxFit.cover,
-                                width: MediaQuery.of(context).size.width,
-                              ),
-                            ),
-                          ),
-                        ))
-                    .toList(),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.008,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: imgList.asMap().entries.map((entry) {
-                  return GestureDetector(
-                    onTap: () => CarouselSlider(
+          child: _isLoading
+              ? Shimmer.fromColors(
+                  baseColor: Colors.grey[300]!,
+                  highlightColor: Colors.grey[100]!,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CarouselSlider(
                         options: CarouselOptions(
                           autoPlay: true,
+                          viewportFraction: 1,
                           enlargeCenterPage: true,
                           aspectRatio: 2.0,
-                          initialPage: entry.key,
+                          onPageChanged: (index, reason) {
+                            setState(() {
+                              _current = index;
+                            });
+                          },
                         ),
                         items: imgList
                             .map((item) => Container(
                                   child: Center(
+                                    child: ClipRRect(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(8)),
+                                      child: Image.asset(
+                                        item,
+                                        fit: BoxFit.cover,
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                      ),
+                                    ),
+                                  ),
+                                ))
+                            .toList(),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.008,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: imgList.asMap().entries.map((entry) {
+                          return GestureDetector(
+                            onTap: () => CarouselSlider(
+                                options: CarouselOptions(
+                                  autoPlay: true,
+                                  enlargeCenterPage: true,
+                                  aspectRatio: 2.0,
+                                  initialPage: entry.key,
+                                ),
+                                items: imgList
+                                    .map((item) => Container(
+                                          child: Center(
+                                            child: Image.asset(
+                                              item,
+                                              fit: BoxFit.cover,
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                            ),
+                                          ),
+                                        ))
+                                    .toList()),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width * 0.025,
+                              height: MediaQuery.of(context).size.width * 0.025,
+                              margin: EdgeInsets.symmetric(horizontal: 2.0),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: (Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? Colors.white
+                                        : Colors.black)
+                                    .withOpacity(
+                                        _current == entry.key ? 0.9 : 0.4),
+                              ),
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.015,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.02,
+                            width: MediaQuery.of(context).size.width * 0.24,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(2),
+                                color: Colors.grey[200]),
+                          ),
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.02,
+                            width: MediaQuery.of(context).size.width * 0.24,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(2),
+                                color: Colors.grey[200]),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.01),
+                      GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, Routes.detailPersonRoute);
+                          },
+                          child: SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.22,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: leads.length,
+                              itemBuilder: (context, index) {
+                                final lead = leads[index];
+                                DateTime now = DateTime.now();
+                                String formattedDate =
+                                    DateFormat('dd MMM').format(now);
+                                return Container(
+                                  margin: const EdgeInsets.all(5),
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.2,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.85,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: Colors.white,
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15, vertical: 10),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              formattedDate,
+                                              style: TextStyle(
+                                                fontSize: 12.sp,
+                                                fontFamily: 'Inter',
+                                              ),
+                                            ),
+                                            Container(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.03,
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.2,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                                color: Colors.green,
+                                              ),
+                                              child: Center(
+                                                child: Text(
+                                                  "Inquiry",
+                                                  style: TextStyle(
+                                                      fontSize: 12.sp,
+                                                      fontFamily: 'Inter',
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.012),
+                                        Row(
+                                          children: [
+                                            CircleAvatar(
+                                              radius: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.055,
+                                              backgroundColor: Colors.black,
+                                              child: CircleAvatar(
+                                                radius: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.054,
+                                                backgroundColor: Colors.white,
+                                                child: Icon(
+                                                  Icons.person,
+                                                  size: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.07,
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.02),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  lead['name'],
+                                                  maxLines: 1,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: TextStyle(
+                                                      fontFamily: 'Inter',
+                                                      fontSize: 12.sp,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                Text(
+                                                  lead['company'],
+                                                  style: TextStyle(
+                                                      fontFamily: 'Inter',
+                                                      fontSize: 11.sp,
+                                                      color: Colors.grey),
+                                                ),
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                        SizedBox(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.012),
+                                        Text(
+                                          lead['domain'],
+                                          style: TextStyle(
+                                              fontSize: 12.sp,
+                                              fontFamily: 'Inter',
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Text(
+                                          lead['profile'],
+                                          style: TextStyle(
+                                              fontSize: 12.sp,
+                                              fontFamily: 'Inter',
+                                              color: Colors.grey[600]),
+                                        ),
+                                        RichText(
+                                          text: TextSpan(
+                                            children: [
+                                              TextSpan(
+                                                text: "Member Needs : ",
+                                                style: TextStyle(
+                                                  fontSize: 12.sp,
+                                                  fontFamily: 'Inter',
+                                                  color: Colors.grey[400],
+                                                ),
+                                              ),
+                                              TextSpan(
+                                                text: lead['needs'],
+                                                style: TextStyle(
+                                                    fontSize: 12.sp,
+                                                    fontFamily: 'Inter',
+                                                    color: Colors.grey[800]),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          )),
+                    ],
+                  ))
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CarouselSlider(
+                      options: CarouselOptions(
+                        autoPlay: true,
+                        viewportFraction: 1,
+                        enlargeCenterPage: true,
+                        aspectRatio: 2.0,
+                        onPageChanged: (index, reason) {
+                          setState(() {
+                            _current = index;
+                          });
+                        },
+                      ),
+                      items: imgList
+                          .map((item) => Container(
+                                child: Center(
+                                  child: ClipRRect(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8)),
                                     child: Image.asset(
                                       item,
                                       fit: BoxFit.cover,
                                       width: MediaQuery.of(context).size.width,
                                     ),
                                   ),
-                                ))
-                            .toList()),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * 0.025,
-                      height: MediaQuery.of(context).size.width * 0.025,
-                      margin: EdgeInsets.symmetric(horizontal: 2.0),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: (Theme.of(context).brightness == Brightness.dark
-                                ? Colors.white
-                                : Colors.black)
-                            .withOpacity(_current == entry.key ? 0.9 : 0.4),
-                      ),
+                                ),
+                              ))
+                          .toList(),
                     ),
-                  );
-                }).toList(),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.015,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "My Leads",
-                    style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    "View All",
-                    style: TextStyle(
-                        fontFamily: 'Inter',
-                        color: Colors.grey,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14.sp),
-                  ),
-                ],
-              ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-              GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, Routes.detailPersonRoute);
-                  },
-                  child: SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.22,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: leads.length,
-                      itemBuilder: (context, index) {
-                        final lead = leads[index];
-                        DateTime now = DateTime.now();
-                        String formattedDate = DateFormat('dd MMM').format(now);
-                        return Container(
-                          margin: const EdgeInsets.all(5),
-                          height: MediaQuery.of(context).size.height * 0.2,
-                          width: MediaQuery.of(context).size.width * 0.85,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: Colors.white,
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.008,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: imgList.asMap().entries.map((entry) {
+                        return GestureDetector(
+                          onTap: () => CarouselSlider(
+                              options: CarouselOptions(
+                                autoPlay: true,
+                                enlargeCenterPage: true,
+                                aspectRatio: 2.0,
+                                initialPage: entry.key,
+                              ),
+                              items: imgList
+                                  .map((item) => Container(
+                                        child: Center(
+                                          child: Image.asset(
+                                            item,
+                                            fit: BoxFit.cover,
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                          ),
+                                        ),
+                                      ))
+                                  .toList()),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.025,
+                            height: MediaQuery.of(context).size.width * 0.025,
+                            margin: EdgeInsets.symmetric(horizontal: 2.0),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: (Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? Colors.white
+                                      : Colors.black)
+                                  .withOpacity(
+                                      _current == entry.key ? 0.9 : 0.4),
+                            ),
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      formattedDate,
-                                      style: TextStyle(
-                                        fontSize: 12.sp,
-                                        fontFamily: 'Inter',
-                                      ),
-                                    ),
-                                    Container(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.03,
-                                      width: MediaQuery.of(context).size.width *
-                                          0.2,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(5),
-                                        color: Colors.green,
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          "Inquiry",
-                                          style: TextStyle(
-                                              fontSize: 12.sp,
-                                              fontFamily: 'Inter',
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                        );
+                      }).toList(),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.015,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "My Leads",
+                          style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          "View All",
+                          style: TextStyle(
+                              fontFamily: 'Inter',
+                              color: Colors.grey,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14.sp),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, Routes.detailPersonRoute);
+                        },
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.22,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: leads.length,
+                            itemBuilder: (context, index) {
+                              final lead = leads[index];
+                              DateTime now = DateTime.now();
+                              String formattedDate =
+                                  DateFormat('dd MMM').format(now);
+                              return Container(
+                                margin: const EdgeInsets.all(5),
+                                height:
+                                    MediaQuery.of(context).size.height * 0.2,
+                                width: MediaQuery.of(context).size.width * 0.85,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.white,
                                 ),
-                                SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.012),
-                                Row(
-                                  children: [
-                                    CircleAvatar(
-                                      radius:
-                                          MediaQuery.of(context).size.width *
-                                              0.055,
-                                      backgroundColor: Colors.black,
-                                      child: CircleAvatar(
-                                        radius:
-                                            MediaQuery.of(context).size.width *
-                                                0.054,
-                                        backgroundColor: Colors.white,
-                                        child: Icon(
-                                          Icons.person,
-                                          size: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.07,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.02),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          lead['name'],
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 12.sp,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        Text(
-                                          lead['company'],
-                                          style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 11.sp,
-                                              color: Colors.grey),
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                                SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.012),
-                                Text(
-                                  lead['domain'],
-                                  style: TextStyle(
-                                      fontSize: 12.sp,
-                                      fontFamily: 'Inter',
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Text(
-                                  lead['profile'],
-                                  style: TextStyle(
-                                      fontSize: 12.sp,
-                                      fontFamily: 'Inter',
-                                      color: Colors.grey[600]),
-                                ),
-                                RichText(
-                                  text: TextSpan(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 15, vertical: 10),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      TextSpan(
-                                        text: "Member Needs : ",
-                                        style: TextStyle(
-                                          fontSize: 12.sp,
-                                          fontFamily: 'Inter',
-                                          color: Colors.grey[400],
-                                        ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            formattedDate,
+                                            style: TextStyle(
+                                              fontSize: 12.sp,
+                                              fontFamily: 'Inter',
+                                            ),
+                                          ),
+                                          Container(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.03,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.2,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              color: Colors.green,
+                                            ),
+                                            child: Center(
+                                              child: Text(
+                                                "Inquiry",
+                                                style: TextStyle(
+                                                    fontSize: 12.sp,
+                                                    fontFamily: 'Inter',
+                                                    color: Colors.white,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                      TextSpan(
-                                        text: lead['needs'],
+                                      SizedBox(
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.012),
+                                      Row(
+                                        children: [
+                                          CircleAvatar(
+                                            radius: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.055,
+                                            backgroundColor: Colors.black,
+                                            child: CircleAvatar(
+                                              radius: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.054,
+                                              backgroundColor: Colors.white,
+                                              child: Icon(
+                                                Icons.person,
+                                                size: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.07,
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.02),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                lead['name'],
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                    fontFamily: 'Inter',
+                                                    fontSize: 12.sp,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              Text(
+                                                lead['company'],
+                                                style: TextStyle(
+                                                    fontFamily: 'Inter',
+                                                    fontSize: 11.sp,
+                                                    color: Colors.grey),
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                      SizedBox(
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.012),
+                                      Text(
+                                        lead['domain'],
                                         style: TextStyle(
                                             fontSize: 12.sp,
                                             fontFamily: 'Inter',
-                                            color: Colors.grey[800]),
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(
+                                        lead['profile'],
+                                        style: TextStyle(
+                                            fontSize: 12.sp,
+                                            fontFamily: 'Inter',
+                                            color: Colors.grey[600]),
+                                      ),
+                                      RichText(
+                                        text: TextSpan(
+                                          children: [
+                                            TextSpan(
+                                              text: "Member Needs : ",
+                                              style: TextStyle(
+                                                fontSize: 12.sp,
+                                                fontFamily: 'Inter',
+                                                color: Colors.grey[400],
+                                              ),
+                                            ),
+                                            TextSpan(
+                                              text: lead['needs'],
+                                              style: TextStyle(
+                                                  fontSize: 12.sp,
+                                                  fontFamily: 'Inter',
+                                                  color: Colors.grey[800]),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ],
                                   ),
                                 ),
-                              ],
-                            ),
+                              );
+                            },
                           ),
-                        );
-                      },
-                    ),
-                  )),
-            ],
-          ),
+                        )),
+                  ],
+                ),
         ),
         bottomNavigationBar: HomeBottom(
           selectedIndex: _selectedIndex,

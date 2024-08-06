@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:progress_alliance/routes/route.dart';
+import 'package:shimmer/shimmer.dart';
 
 class Retailer extends StatefulWidget {
   const Retailer({super.key});
@@ -54,6 +55,21 @@ class _RetailerState extends State<Retailer> {
   ];
 
   final Set<String> selectedCategories = {};
+
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+  }
+
+  Future<void> _loadData() async {
+    await Future.delayed(const Duration(seconds: 2));
+    setState(() {
+      _isLoading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -292,112 +308,134 @@ class _RetailerState extends State<Retailer> {
                 onTap: () {
                   Navigator.pushNamed(context, Routes.memberDetailRoute);
                 },
-                child: Container(
-                  margin: EdgeInsets.only(bottom: 10),
-                  decoration: BoxDecoration(
-                    border: Border.all(width: 0.2, color: Colors.grey),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Center(
-                          child: InkWell(
-                            onTap: () async {
-                              final profile = await _pickProfile();
-                              if (profile != null) {
-                                setState(() {
-                                  retailer[index]['profileImage'] = profile;
-                                });
-                              }
-                            },
-                            child: Container(
-                              width: MediaQuery.of(context).size.width * 0.22,
-                              height: MediaQuery.of(context).size.height * 0.1,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.grey[300],
-                              ),
-                              child: retailers['profileImage'] != null
-                                  ? ClipRRect(
-                                      borderRadius: BorderRadius.circular(10),
-                                      child: Image.file(
-                                        retailers['profileImage'],
-                                        fit: BoxFit.cover,
-                                      ),
-                                    )
-                                  : Center(
-                                      child: Text(
-                                        "+",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 20.sp,
-                                          color: Colors.grey[600],
-                                        ),
-                                      ),
-                                    ),
-                            ),
+                child: _isLoading
+                    ? Shimmer.fromColors(
+                        baseColor: Colors.grey[300]!,
+                        highlightColor: Colors.grey[100]!,
+                        child: Container(
+                          padding: const EdgeInsets.all(15),
+                          margin: const EdgeInsets.only(bottom: 5),
+                          height: MediaQuery.of(context).size.height * 0.13,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(width: 0.2, color: Colors.grey),
+                            borderRadius: BorderRadius.circular(8),
                           ),
+                        ))
+                    : Container(
+                        margin: const EdgeInsets.only(bottom: 10),
+                        decoration: BoxDecoration(
+                          border: Border.all(width: 0.2, color: Colors.grey),
+                          borderRadius: BorderRadius.circular(5),
                         ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.03,
-                        ),
-                        Expanded(
-                          child: Column(
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                retailers['name'],
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 13.sp,
-                                    color: const Color.fromARGB(255, 16, 2, 90),
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                retailers['work'],
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 12.sp,
-                                  color: const Color.fromARGB(255, 16, 2, 90),
+                              Center(
+                                child: InkWell(
+                                  onTap: () async {
+                                    final profile = await _pickProfile();
+                                    if (profile != null) {
+                                      setState(() {
+                                        retailer[index]['profileImage'] =
+                                            profile;
+                                      });
+                                    }
+                                  },
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.22,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.1,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey[300],
+                                    ),
+                                    child: retailers['profileImage'] != null
+                                        ? ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            child: Image.file(
+                                              retailers['profileImage'],
+                                              fit: BoxFit.cover,
+                                            ),
+                                          )
+                                        : Center(
+                                            child: Text(
+                                              "+",
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                fontFamily: 'Inter',
+                                                fontSize: 20.sp,
+                                                color: Colors.grey[600],
+                                              ),
+                                            ),
+                                          ),
+                                  ),
                                 ),
                               ),
-                              Text(
-                                retailers['owner'],
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 12.sp,
-                                    color: Colors.grey[900]),
-                              ),
                               SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.003,
+                                width: MediaQuery.of(context).size.width * 0.03,
                               ),
-                              Text(
-                                retailers['address'],
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 12.sp,
-                                    color: Colors.grey),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      retailers['name'],
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                          fontFamily: 'Inter',
+                                          fontSize: 13.sp,
+                                          color: const Color.fromARGB(
+                                              255, 16, 2, 90),
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      retailers['work'],
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 12.sp,
+                                        color: const Color.fromARGB(
+                                            255, 16, 2, 90),
+                                      ),
+                                    ),
+                                    Text(
+                                      retailers['owner'],
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                          fontFamily: 'Inter',
+                                          fontSize: 12.sp,
+                                          color: Colors.grey[900]),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.003,
+                                    ),
+                                    Text(
+                                      retailers['address'],
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                          fontFamily: 'Inter',
+                                          fontSize: 12.sp,
+                                          color: Colors.grey),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                ),
+                      ),
               );
             },
           ),

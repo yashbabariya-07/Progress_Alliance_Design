@@ -1,9 +1,9 @@
 import 'dart:io';
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/ShimmerLoader/customShimmer.dart';
 import 'package:progress_alliance/routes/route.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:pdf/pdf.dart';
@@ -21,11 +21,20 @@ class CompanyDetail extends StatefulWidget {
 class _CompanyDetailState extends State<CompanyDetail>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
+    _loadData();
     _tabController = TabController(length: 2, vsync: this);
+  }
+
+  Future<void> _loadData() async {
+    await Future.delayed(const Duration(seconds: 2));
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   Future<Uint8List> _loadAsset(String path) async {
@@ -236,709 +245,794 @@ class _CompanyDetailState extends State<CompanyDetail>
                 )),
           ],
         ),
-        body: Column(
-          children: [
-            Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.15,
-                  color: Colors.grey[300],
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 22.0),
-                    child: Text(
-                      "Cover Photo",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 15.sp,
-                        color: Colors.grey[600],
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  bottom: -MediaQuery.of(context).size.width * 0.13,
-                  left: MediaQuery.of(context).size.width * 0.38,
-                  child: Stack(
-                    alignment: Alignment.bottomRight,
+        body: _isLoading
+            ? const ShimmerCustom()
+            : Column(
+                children: [
+                  Stack(
+                    clipBehavior: Clip.none,
                     children: [
-                      CircleAvatar(
-                        radius: MediaQuery.of(context).size.width * 0.15,
-                        backgroundColor: Colors.white,
-                        child: CircleAvatar(
-                            radius: MediaQuery.of(context).size.width * 0.146,
-                            child: Icon(
-                              Icons.person,
-                              size: MediaQuery.of(context).size.width * 0.1,
-                            )),
+                      Container(
+                        width: double.infinity,
+                        height: MediaQuery.of(context).size.height * 0.15,
+                        color: Colors.grey[300],
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 22.0),
+                          child: Text(
+                            "Cover Photo",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 15.sp,
+                              color: Colors.grey[600],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: -MediaQuery.of(context).size.width * 0.13,
+                        left: MediaQuery.of(context).size.width * 0.38,
+                        child: Stack(
+                          alignment: Alignment.bottomRight,
+                          children: [
+                            CircleAvatar(
+                              radius: MediaQuery.of(context).size.width * 0.15,
+                              backgroundColor: Colors.white,
+                              child: CircleAvatar(
+                                  radius:
+                                      MediaQuery.of(context).size.width * 0.146,
+                                  child: Icon(
+                                    Icons.person,
+                                    size:
+                                        MediaQuery.of(context).size.width * 0.1,
+                                  )),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.062,
-            ),
-            Column(
-              children: [
-                Text(
-                  "Company/Brand name",
-                  style: TextStyle(
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.062,
+                  ),
+                  Column(
+                    children: [
+                      Text(
+                        "Company/Brand name",
+                        style: TextStyle(
+                            fontFamily: 'Inter',
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "Services Type",
+                        style: TextStyle(
+                            fontFamily: 'Inter',
+                            fontSize: 13.sp,
+                            color: Colors.grey),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.024,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap: () async {
+                            const phoneNumber = 'tel:7874118535';
+                            if (await canLaunch(phoneNumber)) {
+                              await launch(phoneNumber);
+                            } else {
+                              throw 'Could not launch $phoneNumber';
+                            }
+                          },
+                          child: Container(
+                            height: MediaQuery.of(context).size.height * 0.05,
+                            width: MediaQuery.of(context).size.width * 0.28,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: Colors.grey[300]),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  MdiIcons.phoneOutline,
+                                  size:
+                                      MediaQuery.of(context).size.width * 0.06,
+                                ),
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.01,
+                                ),
+                                Text(
+                                  'Call',
+                                  style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            launch('https://wa.me/7874118535');
+                          },
+                          child: Container(
+                            height: MediaQuery.of(context).size.height * 0.05,
+                            width: MediaQuery.of(context).size.width * 0.28,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: Colors.grey[300]),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  MdiIcons.whatsapp,
+                                  size:
+                                      MediaQuery.of(context).size.width * 0.06,
+                                ),
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.01,
+                                ),
+                                Text(
+                                  'Whatsapp',
+                                  style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Container(
+                            height: MediaQuery.of(context).size.height * 0.05,
+                            width: MediaQuery.of(context).size.width * 0.28,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: Colors.grey[300]),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  "assets/save.png",
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.05,
+                                ),
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.01,
+                                ),
+                                Text(
+                                  'Save',
+                                  style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  TabBar(
+                    controller: _tabController,
+                    indicatorSize: TabBarIndicatorSize.tab,
+                    indicatorColor: Color.fromARGB(255, 16, 2, 90),
+                    labelStyle: TextStyle(
                       fontFamily: 'Inter',
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "Services Type",
-                  style: TextStyle(
-                      fontFamily: 'Inter', fontSize: 13.sp, color: Colors.grey),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.024,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  GestureDetector(
-                    onTap: () async {
-                      const phoneNumber = 'tel:7874118535';
-                      if (await canLaunch(phoneNumber)) {
-                        await launch(phoneNumber);
-                      } else {
-                        throw 'Could not launch $phoneNumber';
-                      }
-                    },
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * 0.05,
-                      width: MediaQuery.of(context).size.width * 0.28,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.grey[300]),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            MdiIcons.phoneOutline,
-                            size: MediaQuery.of(context).size.width * 0.06,
-                          ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.01,
-                          ),
-                          Text(
-                            'Call',
-                            style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
+                      fontSize: 16.sp,
+                      color: const Color.fromARGB(255, 16, 2, 90),
+                      fontWeight: FontWeight.bold,
                     ),
+                    tabs: const [
+                      Tab(text: "About"),
+                      Tab(text: "Contact"),
+                    ],
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      launch('https://wa.me/7874118535');
-                    },
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * 0.05,
-                      width: MediaQuery.of(context).size.width * 0.28,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.grey[300]),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 5, vertical: 10),
+                      child: TabBarView(
+                        controller: _tabController,
                         children: [
-                          Icon(
-                            MdiIcons.whatsapp,
-                            size: MediaQuery.of(context).size.width * 0.06,
+                          SingleChildScrollView(
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Icon(
+                                        MdiIcons.accountOutline,
+                                        color: Colors.grey[500],
+                                        size:
+                                            MediaQuery.of(context).size.width *
+                                                0.06,
+                                      ),
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.02,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Contact Person',
+                                            style: TextStyle(
+                                                fontFamily: 'Inter',
+                                                fontSize: 13.sp,
+                                                color: Colors.grey),
+                                          ),
+                                          SizedBox(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.835,
+                                            child: ListTile(
+                                                leading: CircleAvatar(
+                                                  radius: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.05,
+                                                  child: Icon(
+                                                    Icons.person,
+                                                    size: MediaQuery.of(context)
+                                                            .size
+                                                            .width *
+                                                        0.06,
+                                                  ),
+                                                ),
+                                                title: Text(
+                                                  'Person Name',
+                                                  style: TextStyle(
+                                                      fontFamily: 'Inter',
+                                                      fontSize: 13.sp,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                subtitle: Text(
+                                                  'Person PA Details',
+                                                  style: TextStyle(
+                                                      fontFamily: 'Inter',
+                                                      fontSize: 13.sp,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.grey),
+                                                ),
+                                                trailing: IconButton(
+                                                  icon: Icon(
+                                                    Icons
+                                                        .arrow_forward_ios_rounded,
+                                                    size: MediaQuery.of(context)
+                                                            .size
+                                                            .width *
+                                                        0.05,
+                                                  ),
+                                                  onPressed: () {
+                                                    Navigator.pushNamed(
+                                                        context,
+                                                        Routes
+                                                            .memberDetailRoute);
+                                                  },
+                                                )),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.012,
+                                  ),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Icon(
+                                        MdiIcons.viewAgendaOutline,
+                                        color: Colors.grey[500],
+                                        size:
+                                            MediaQuery.of(context).size.width *
+                                                0.06,
+                                      ),
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.02,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Category',
+                                            style: TextStyle(
+                                                fontFamily: 'Inter',
+                                                fontSize: 13.sp,
+                                                color: Colors.grey),
+                                          ),
+                                          Text(
+                                            'Company Category',
+                                            style: TextStyle(
+                                                fontFamily: 'Inter',
+                                                fontSize: 13.sp,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.02,
+                                  ),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Icon(
+                                        MdiIcons.viewAgendaOutline,
+                                        color: Colors.grey[500],
+                                        size:
+                                            MediaQuery.of(context).size.width *
+                                                0.06,
+                                      ),
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.02,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Sub Category',
+                                            style: TextStyle(
+                                                fontFamily: 'Inter',
+                                                fontSize: 13.sp,
+                                                color: Colors.grey),
+                                          ),
+                                          Text(
+                                            'Company Sub Category',
+                                            style: TextStyle(
+                                                fontFamily: 'Inter',
+                                                fontSize: 13.sp,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.02,
+                                  ),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Icon(
+                                        MdiIcons.hexagonOutline,
+                                        color: Colors.grey[500],
+                                        size:
+                                            MediaQuery.of(context).size.width *
+                                                0.06,
+                                      ),
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.02,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Formation',
+                                            style: TextStyle(
+                                                fontFamily: 'Inter',
+                                                fontSize: 13.sp,
+                                                color: Colors.grey),
+                                          ),
+                                          Text(
+                                            'Company Formation',
+                                            style: TextStyle(
+                                                fontFamily: 'Inter',
+                                                fontSize: 13.sp,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.02,
+                                  ),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Icon(
+                                        MdiIcons.shoppingOutline,
+                                        color: Colors.grey[500],
+                                        size:
+                                            MediaQuery.of(context).size.width *
+                                                0.06,
+                                      ),
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.02,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Product & Services',
+                                            style: TextStyle(
+                                                fontFamily: 'Inter',
+                                                fontSize: 13.sp,
+                                                color: Colors.grey),
+                                          ),
+                                          SizedBox(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.005,
+                                          ),
+                                          Container(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.05,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.4,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                                color: Colors.grey[300]),
+                                            child: Center(
+                                              child: Text('Company Product',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Inter',
+                                                    fontSize: 13.sp,
+                                                    fontWeight: FontWeight.bold,
+                                                  )),
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.02,
+                                  ),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Icon(
+                                        MdiIcons.informationOutline,
+                                        color: Colors.grey[500],
+                                        size:
+                                            MediaQuery.of(context).size.width *
+                                                0.06,
+                                      ),
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.02,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'About Us',
+                                            style: TextStyle(
+                                                fontFamily: 'Inter',
+                                                fontSize: 13.sp,
+                                                color: Colors.grey),
+                                          ),
+                                          Text(
+                                            'Company Intro...',
+                                            style: TextStyle(
+                                                fontFamily: 'Inter',
+                                                fontSize: 13.sp,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.01,
-                          ),
-                          Text(
-                            'Whatsapp',
-                            style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * 0.05,
-                      width: MediaQuery.of(context).size.width * 0.28,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.grey[300]),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            "assets/save.png",
-                            width: MediaQuery.of(context).size.width * 0.05,
-                          ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.01,
-                          ),
-                          Text(
-                            'Save',
-                            style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.bold),
-                          ),
+                          SingleChildScrollView(
+                            child: Padding(
+                              padding: EdgeInsets.all(10),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Icon(
+                                        MdiIcons.emailOutline,
+                                        color: Colors.grey[500],
+                                        size:
+                                            MediaQuery.of(context).size.width *
+                                                0.06,
+                                      ),
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.02,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Email Address',
+                                            style: TextStyle(
+                                                fontFamily: 'Inter',
+                                                fontSize: 13.sp,
+                                                color: Colors.grey),
+                                          ),
+                                          Text(
+                                            'Company e-mail address',
+                                            style: TextStyle(
+                                                fontFamily: 'Inter',
+                                                fontSize: 13.sp,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.02,
+                                  ),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Icon(
+                                        MdiIcons.web,
+                                        color: Colors.grey[500],
+                                        size:
+                                            MediaQuery.of(context).size.width *
+                                                0.06,
+                                      ),
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.02,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Website',
+                                            style: TextStyle(
+                                                fontFamily: 'Inter',
+                                                fontSize: 13.sp,
+                                                color: Colors.grey),
+                                          ),
+                                          Text(
+                                            'Company website',
+                                            style: TextStyle(
+                                                fontFamily: 'Inter',
+                                                fontSize: 13.sp,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.02,
+                                  ),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Icon(
+                                        MdiIcons.mapMarkerOutline,
+                                        color: Colors.grey[500],
+                                        size:
+                                            MediaQuery.of(context).size.width *
+                                                0.06,
+                                      ),
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.02,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Address',
+                                            style: TextStyle(
+                                                fontFamily: 'Inter',
+                                                fontSize: 13.sp,
+                                                color: Colors.grey),
+                                          ),
+                                          Text(
+                                            'Company address',
+                                            style: TextStyle(
+                                                fontFamily: 'Inter',
+                                                fontSize: 13.sp,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          SizedBox(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.006,
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              launch('https://maps.google.com');
+                                            },
+                                            child: Container(
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.05,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.33,
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20),
+                                                    color: Colors.grey[300]),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      'Get Direction',
+                                                      style: TextStyle(
+                                                          fontFamily: 'Inter',
+                                                          color: Colors.blue,
+                                                          fontSize: 13.sp),
+                                                    ),
+                                                    SizedBox(
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width *
+                                                              0.01,
+                                                    ),
+                                                    Image.asset(
+                                                      "assets/sendd.png",
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width *
+                                                              0.04,
+                                                      color: Colors.blue,
+                                                    )
+                                                  ],
+                                                )),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.02,
+                                  ),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Icon(
+                                        MdiIcons.link,
+                                        color: Colors.grey[500],
+                                        size:
+                                            MediaQuery.of(context).size.width *
+                                                0.06,
+                                      ),
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.02,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Social Media Link',
+                                            style: TextStyle(
+                                                fontFamily: 'Inter',
+                                                fontSize: 13.sp,
+                                                color: Colors.grey),
+                                          ),
+                                          GestureDetector(
+                                              onTap: () {
+                                                launch(
+                                                    'https://wa.me/7874118535');
+                                              },
+                                              child: Image.asset(
+                                                "assets/wp.png",
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.08,
+                                              )),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
                         ],
                       ),
                     ),
                   ),
                 ],
               ),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.02,
-            ),
-            TabBar(
-              controller: _tabController,
-              indicatorSize: TabBarIndicatorSize.tab,
-              indicatorColor: Color.fromARGB(255, 16, 2, 90),
-              labelStyle: TextStyle(
-                fontFamily: 'Inter',
-                fontSize: 16.sp,
-                color: const Color.fromARGB(255, 16, 2, 90),
-                fontWeight: FontWeight.bold,
-              ),
-              tabs: const [
-                Tab(text: "About"),
-                Tab(text: "Contact"),
-              ],
-            ),
-            Expanded(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                child: TabBarView(
-                  controller: _tabController,
-                  children: [
-                    SingleChildScrollView(
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Column(
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  MdiIcons.accountOutline,
-                                  color: Colors.grey[500],
-                                  size:
-                                      MediaQuery.of(context).size.width * 0.06,
-                                ),
-                                SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.02,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Contact Person',
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 13.sp,
-                                          color: Colors.grey),
-                                    ),
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.835,
-                                      child: ListTile(
-                                          leading: CircleAvatar(
-                                            radius: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.05,
-                                            child: Icon(
-                                              Icons.person,
-                                              size: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.06,
-                                            ),
-                                          ),
-                                          title: Text(
-                                            'Person Name',
-                                            style: TextStyle(
-                                                fontFamily: 'Inter',
-                                                fontSize: 13.sp,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          subtitle: Text(
-                                            'Person PA Details',
-                                            style: TextStyle(
-                                                fontFamily: 'Inter',
-                                                fontSize: 13.sp,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.grey),
-                                          ),
-                                          trailing: IconButton(
-                                            icon: Icon(
-                                              Icons.arrow_forward_ios_rounded,
-                                              size: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.05,
-                                            ),
-                                            onPressed: () {
-                                              Navigator.pushNamed(context,
-                                                  Routes.memberDetailRoute);
-                                            },
-                                          )),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.012,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  MdiIcons.viewAgendaOutline,
-                                  color: Colors.grey[500],
-                                  size:
-                                      MediaQuery.of(context).size.width * 0.06,
-                                ),
-                                SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.02,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Category',
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 13.sp,
-                                          color: Colors.grey),
-                                    ),
-                                    Text(
-                                      'Company Category',
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 13.sp,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.02,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  MdiIcons.viewAgendaOutline,
-                                  color: Colors.grey[500],
-                                  size:
-                                      MediaQuery.of(context).size.width * 0.06,
-                                ),
-                                SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.02,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Sub Category',
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 13.sp,
-                                          color: Colors.grey),
-                                    ),
-                                    Text(
-                                      'Company Sub Category',
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 13.sp,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.02,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  MdiIcons.hexagonOutline,
-                                  color: Colors.grey[500],
-                                  size:
-                                      MediaQuery.of(context).size.width * 0.06,
-                                ),
-                                SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.02,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Formation',
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 13.sp,
-                                          color: Colors.grey),
-                                    ),
-                                    Text(
-                                      'Company Formation',
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 13.sp,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.02,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  MdiIcons.shoppingOutline,
-                                  color: Colors.grey[500],
-                                  size:
-                                      MediaQuery.of(context).size.width * 0.06,
-                                ),
-                                SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.02,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Product & Services',
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 13.sp,
-                                          color: Colors.grey),
-                                    ),
-                                    SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.005,
-                                    ),
-                                    Container(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.05,
-                                      width: MediaQuery.of(context).size.width *
-                                          0.4,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          color: Colors.grey[300]),
-                                      child: Center(
-                                        child: Text('Company Product',
-                                            style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                              fontWeight: FontWeight.bold,
-                                            )),
-                                      ),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.02,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  MdiIcons.informationOutline,
-                                  color: Colors.grey[500],
-                                  size:
-                                      MediaQuery.of(context).size.width * 0.06,
-                                ),
-                                SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.02,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'About Us',
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 13.sp,
-                                          color: Colors.grey),
-                                    ),
-                                    Text(
-                                      'Company Intro...',
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 13.sp,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SingleChildScrollView(
-                      child: Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Column(
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  MdiIcons.emailOutline,
-                                  color: Colors.grey[500],
-                                  size:
-                                      MediaQuery.of(context).size.width * 0.06,
-                                ),
-                                SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.02,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Email Address',
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 13.sp,
-                                          color: Colors.grey),
-                                    ),
-                                    Text(
-                                      'Company e-mail address',
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 13.sp,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.02,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  MdiIcons.web,
-                                  color: Colors.grey[500],
-                                  size:
-                                      MediaQuery.of(context).size.width * 0.06,
-                                ),
-                                SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.02,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Website',
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 13.sp,
-                                          color: Colors.grey),
-                                    ),
-                                    Text(
-                                      'Company website',
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 13.sp,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.02,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  MdiIcons.mapMarkerOutline,
-                                  color: Colors.grey[500],
-                                  size:
-                                      MediaQuery.of(context).size.width * 0.06,
-                                ),
-                                SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.02,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Address',
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 13.sp,
-                                          color: Colors.grey),
-                                    ),
-                                    Text(
-                                      'Company address',
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 13.sp,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.006,
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        launch('https://maps.google.com');
-                                      },
-                                      child: Container(
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.05,
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.33,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                              color: Colors.grey[300]),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                'Get Direction',
-                                                style: TextStyle(
-                                                    fontFamily: 'Inter',
-                                                    color: Colors.blue,
-                                                    fontSize: 13.sp),
-                                              ),
-                                              SizedBox(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.01,
-                                              ),
-                                              Image.asset(
-                                                "assets/sendd.png",
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.04,
-                                                color: Colors.blue,
-                                              )
-                                            ],
-                                          )),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.02,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  MdiIcons.link,
-                                  color: Colors.grey[500],
-                                  size:
-                                      MediaQuery.of(context).size.width * 0.06,
-                                ),
-                                SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.02,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Social Media Link',
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 13.sp,
-                                          color: Colors.grey),
-                                    ),
-                                    GestureDetector(
-                                        onTap: () {
-                                          launch('https://wa.me/7874118535');
-                                        },
-                                        child: Image.asset(
-                                          "assets/wp.png",
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.08,
-                                        )),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

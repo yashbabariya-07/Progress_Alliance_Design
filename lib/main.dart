@@ -155,7 +155,9 @@ class MyApp extends StatelessWidget {
             Routes.ComplaintRoute: (context) => const ComplaintPage(),
             Routes.addComplaintRoute: (context) => const Addcomplaint(),
             Routes.downloadRoute: (context) => const Download(),
-            Routes.pdfviewRoute: (context) => const BookView(),
+            Routes.pdfviewRoute: (context) => const BookView(
+                  pdfPath: '',
+                ),
             Routes.cityDetailRoute: (context) => const CityPartner(),
             Routes.citygrowthPartnerRoute: (context) =>
                 const CityGrowthPartner(),

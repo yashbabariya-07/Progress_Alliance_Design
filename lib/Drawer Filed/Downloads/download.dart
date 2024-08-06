@@ -1,9 +1,13 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:progress_alliance/routes/route.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:shimmer/shimmer.dart';
 
 class Download extends StatefulWidget {
   const Download({super.key});
@@ -20,7 +24,7 @@ class _DownloadState extends State<Download> {
       date: DateFormat('dd MMM yyyy')
           .format(DateTime.now().subtract(Duration(days: index * 30))),
       imagePath: null,
-      pdfPath: 'path_to_your_pdf_file${index + 1}.pdf',
+      pdfPath: 'assets/pdf/random.pdf',
     ),
   );
 
@@ -33,6 +37,17 @@ class _DownloadState extends State<Download> {
         volumes[index].imagePath = pickedFile.path;
       });
     }
+  }
+
+  Future<void> _sharePdf(String pdfPath) async {
+    final directory = await getTemporaryDirectory();
+    final fileName = pdfPath.split('/').last;
+    final tempFile = File('${directory.path}/$fileName');
+
+    final assetData = await rootBundle.load(pdfPath);
+    await tempFile.writeAsBytes(assetData.buffer.asUint8List());
+
+    await Share.shareXFiles([XFile(tempFile.path)], text: '');
   }
 
   @override
@@ -81,7 +96,7 @@ class _DownloadState extends State<Download> {
                 decoration: BoxDecoration(
                   border: Border.all(
                     width: 1,
-                    color: Color.fromARGB(255, 16, 2, 90),
+                    color: const Color.fromARGB(255, 16, 2, 90),
                   ),
                   borderRadius: BorderRadius.circular(25),
                 ),
@@ -91,7 +106,7 @@ class _DownloadState extends State<Download> {
                     style: TextStyle(
                         fontFamily: 'Inter',
                         fontSize: 13.sp,
-                        color: Color.fromARGB(255, 16, 2, 90),
+                        color: const Color.fromARGB(255, 16, 2, 90),
                         fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -108,6 +123,7 @@ class _DownloadState extends State<Download> {
                       child: VolumeWidget(
                         volume: volumes[index],
                         onImagePick: () => _pickbookImage(index),
+                        onShare: () => _sharePdf(volumes[index].pdfPath),
                       ),
                     );
                   },
@@ -135,148 +151,186 @@ class Volume {
   });
 }
 
-class VolumeWidget extends StatelessWidget {
+class VolumeWidget extends StatefulWidget {
   final Volume volume;
   final VoidCallback onImagePick;
+  final VoidCallback onShare;
 
   const VolumeWidget({
-    Key? key,
+    super.key,
     required this.volume,
     required this.onImagePick,
-  }) : super(key: key);
+    required this.onShare,
+  });
+
+  @override
+  State<VolumeWidget> createState() => _VolumeWidgetState();
+}
+
+class _VolumeWidgetState extends State<VolumeWidget> {
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+  }
+
+  Future<void> _loadData() async {
+    await Future.delayed(const Duration(seconds: 2));
+    setState(() {
+      _isLoading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(8),
-      margin: EdgeInsets.only(bottom: 5),
-      decoration: BoxDecoration(
-        border: Border.all(width: 0.2, color: Colors.grey),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            GestureDetector(
-              onTap: onImagePick,
-              child: Container(
-                height: MediaQuery.of(context).size.height * 0.12,
-                width: MediaQuery.of(context).size.width * 0.25,
-                decoration: BoxDecoration(
-                  border: Border.all(width: 0.2, color: Colors.grey),
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: volume.imagePath != null
-                    ? Image.file(
-                        File(volume.imagePath!),
-                        fit: BoxFit.cover,
-                      )
-                    : Center(
-                        child: Icon(Icons.add,
-                            size: MediaQuery.of(context).size.width * 0.08)),
+    return _isLoading
+        ? Shimmer.fromColors(
+            baseColor: Colors.grey[300]!,
+            highlightColor: Colors.grey[100]!,
+            child: Container(
+              padding: const EdgeInsets.all(15),
+              margin: const EdgeInsets.only(bottom: 5),
+              height: MediaQuery.of(context).size.height * 0.16,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(width: 0.2, color: Colors.grey),
+                borderRadius: BorderRadius.circular(8),
               ),
+            ))
+        : Container(
+            padding: const EdgeInsets.all(15),
+            margin: const EdgeInsets.only(bottom: 5),
+            decoration: BoxDecoration(
+              border: Border.all(width: 0.2, color: Colors.grey),
+              borderRadius: BorderRadius.circular(8),
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.04,
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    volume.title,
-                    style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 15.sp,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    volume.date,
-                    style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 12.sp,
-                      color: Colors.grey[700],
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                GestureDetector(
+                  onTap: widget.onImagePick,
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.12,
+                    width: MediaQuery.of(context).size.width * 0.25,
+                    decoration: BoxDecoration(
+                      border: Border.all(width: 0.2, color: Colors.grey),
+                      borderRadius: BorderRadius.circular(5),
                     ),
+                    child: widget.volume.imagePath != null
+                        ? Image.file(
+                            File(widget.volume.imagePath!),
+                            fit: BoxFit.cover,
+                          )
+                        : Center(
+                            child: Icon(Icons.add,
+                                size:
+                                    MediaQuery.of(context).size.width * 0.08)),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.04,
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      Text(
+                        widget.volume.title,
+                        style: TextStyle(
+                            fontFamily: 'Inter',
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        widget.volume.date,
+                        style: TextStyle(
+                          fontFamily: 'Inter',
+                          fontSize: 12.sp,
+                          color: Colors.grey[700],
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.2,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    widget.onShare();
+                                  },
+                                  child: Icon(
+                                    Icons.share,
+                                    size: MediaQuery.of(context).size.width *
+                                        0.06,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.05,
+                                ),
+                                Image.asset(
+                                  "assets/downloads.png",
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.06,
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                       SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.2,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Icon(
-                              Icons.share,
-                              size: MediaQuery.of(context).size.width * 0.06,
+                        height: MediaQuery.of(context).size.height * 0.009,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, Routes.pdfviewRoute,
+                              arguments: widget.volume.pdfPath);
+                        },
+                        child: Container(
+                          height: MediaQuery.of(context).size.height * 0.035,
+                          width: MediaQuery.of(context).size.width * 0.2,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.blue[50],
+                          ),
+                          child: Center(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.remove_red_eye,
+                                  color: Colors.blue,
+                                  size:
+                                      MediaQuery.of(context).size.width * 0.05,
+                                ),
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.01,
+                                ),
+                                Text(
+                                  'View',
+                                  style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      color: Colors.blue,
+                                      fontSize: 12.sp),
+                                ),
+                              ],
                             ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.05,
-                            ),
-                            Icon(
-                              Icons.download,
-                              size: MediaQuery.of(context).size.width * 0.06,
-                            ),
-                          ],
+                          ),
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.009,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, Routes.pdfviewRoute,
-                          arguments: volume.pdfPath);
-                    },
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * 0.035,
-                      width: MediaQuery.of(context).size.width * 0.2,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.blue[50],
-                      ),
-                      child: Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.remove_red_eye,
-                              color: Colors.blue,
-                              size: MediaQuery.of(context).size.width * 0.05,
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.01,
-                            ),
-                            Text(
-                              'View',
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  color: Colors.blue,
-                                  fontSize: 12.sp),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.04,
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [],
-            ),
-          ],
-        ),
-      ),
-    );
+          );
   }
 }

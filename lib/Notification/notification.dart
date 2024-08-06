@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:progress_alliance/routes/route.dart';
+import 'package:shimmer/shimmer.dart';
 
 class NotificationPage extends StatefulWidget {
   const NotificationPage({super.key});
@@ -13,6 +14,21 @@ class NotificationPage extends StatefulWidget {
 
 class _NotificationPageState extends State<NotificationPage> {
   String selectedOption = 'General';
+
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+  }
+
+  Future<void> _loadData() async {
+    await Future.delayed(const Duration(seconds: 2));
+    setState(() {
+      _isLoading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -135,70 +151,85 @@ class _NotificationPageState extends State<NotificationPage> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.012,
               ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, Routes.notificationDetailRoute);
-                },
-                child: Row(
-                  children: [
-                    CircleAvatar(
-                      radius: MediaQuery.of(context).size.width * 0.05,
-                      backgroundColor: Colors.blue[100],
-                      child: Icon(
-                        MdiIcons.bellOutline,
-                        color: Colors.blue,
-                        size: MediaQuery.of(context).size.width * 0.05,
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.05,
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+              _isLoading
+                  ? Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: Container(
+                        padding: const EdgeInsets.all(15),
+                        margin: const EdgeInsets.only(bottom: 5),
+                        height: MediaQuery.of(context).size.height * 0.1,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ))
+                  : GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, Routes.notificationDetailRoute);
+                      },
+                      child: Row(
                         children: [
-                          Text(
-                            'You Have New Lead',
-                            style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.bold),
+                          CircleAvatar(
+                            radius: MediaQuery.of(context).size.width * 0.05,
+                            backgroundColor: Colors.blue[100],
+                            child: Icon(
+                              MdiIcons.bellOutline,
+                              color: Colors.blue,
+                              size: MediaQuery.of(context).size.width * 0.05,
+                            ),
                           ),
-                          RichText(
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            text: TextSpan(children: [
-                              TextSpan(
-                                text:
-                                    "Congratulations, You have got new lead from Axar Patel...",
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 13.sp,
-                                    color: Colors.grey[900]),
-                              ),
-                              TextSpan(
-                                text: "View More",
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 13.sp,
-                                    color: Color.fromARGB(255, 16, 2, 90),
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ]),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.05,
                           ),
-                          Text(
-                            formattedDate,
-                            style: TextStyle(
-                                fontFamily: 'Inter',
-                                color: Colors.grey,
-                                fontSize: 13.sp),
-                          ),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'You Have New Lead',
+                                  style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontSize: 15.sp,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                RichText(
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  text: TextSpan(children: [
+                                    TextSpan(
+                                      text:
+                                          "Congratulations, You have got new lead from Axar Patel...",
+                                      style: TextStyle(
+                                          fontFamily: 'Inter',
+                                          fontSize: 13.sp,
+                                          color: Colors.grey[900]),
+                                    ),
+                                    TextSpan(
+                                      text: "View More",
+                                      style: TextStyle(
+                                          fontFamily: 'Inter',
+                                          fontSize: 13.sp,
+                                          color: Color.fromARGB(255, 16, 2, 90),
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ]),
+                                ),
+                                Text(
+                                  formattedDate,
+                                  style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      color: Colors.grey,
+                                      fontSize: 13.sp),
+                                ),
+                              ],
+                            ),
+                          )
                         ],
                       ),
                     )
-                  ],
-                ),
-              )
             ],
           ),
         ),
