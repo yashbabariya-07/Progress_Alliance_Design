@@ -88,8 +88,8 @@ class _AdServiceState extends State<AdService> {
                 child: GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    crossAxisSpacing: 12,
-                    mainAxisSpacing: 12,
+                    crossAxisSpacing: 5,
+                    mainAxisSpacing: 5,
                     childAspectRatio: 1.5,
                   ),
                   itemCount: services.length,

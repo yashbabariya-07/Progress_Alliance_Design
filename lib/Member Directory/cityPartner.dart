@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:progress_alliance/routes/route.dart';
+import 'package:shimmer/shimmer.dart';
 
 class CityPartner extends StatefulWidget {
   const CityPartner({super.key});
@@ -16,6 +17,20 @@ class _CityPartnerState extends State<CityPartner> {
     {'name': 'PA 3 SABARMATI', 'member': '56 member'},
     {'name': 'PA 4 GOPIPURA', 'member': '78 member'},
   ];
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+  }
+
+  Future<void> _loadData() async {
+    await Future.delayed(const Duration(seconds: 2));
+    setState(() {
+      _isLoading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,46 +83,59 @@ class _CityPartnerState extends State<CityPartner> {
           padding: const EdgeInsets.all(15),
           child: Column(
             children: [
-              Container(
-                height: MediaQuery.of(context).size.height * 0.05,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 0.2,
-                    color: Colors.grey,
-                  ),
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "GROWTH PARTNERS (121)",
-                        style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.bold),
+              _isLoading
+                  ? Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: Container(
+                        height: MediaQuery.of(context).size.height * 0.05,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(width: 0.2, color: Colors.grey),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ))
+                  : Container(
+                      height: MediaQuery.of(context).size.height * 0.05,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 0.2,
+                          color: Colors.grey,
+                        ),
+                        borderRadius: BorderRadius.circular(5),
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(
-                              context, Routes.citygrowthPartnerRoute);
-                        },
-                        child: Text(
-                          "View All >",
-                          style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 14.sp,
-                            color: Colors.blue,
-                          ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "GROWTH PARTNERS (121)",
+                              style: TextStyle(
+                                  fontFamily: 'Inter',
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, Routes.citygrowthPartnerRoute);
+                              },
+                              child: Text(
+                                "View All >",
+                                style: TextStyle(
+                                  fontFamily: 'Inter',
+                                  fontSize: 14.sp,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
-                ),
-              ),
+                    ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.03,
               ),
@@ -116,20 +144,35 @@ class _CityPartnerState extends State<CityPartner> {
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     childAspectRatio: 2.2,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 5,
+                    mainAxisSpacing: 5,
                   ),
                   itemCount: partners.length,
                   itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, Routes.paDetailRoute);
-                      },
-                      child: PartnerCard(
-                        name: partners[index]['name']!,
-                        member: partners[index]['member']!,
-                      ),
-                    );
+                    return _isLoading
+                        ? Shimmer.fromColors(
+                            baseColor: Colors.grey[300]!,
+                            highlightColor: Colors.grey[100]!,
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.05,
+                              width: MediaQuery.of(context).size.width * 0.3,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                border:
+                                    Border.all(width: 0.2, color: Colors.grey),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                            ))
+                        : GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context, Routes.paDetailRoute);
+                            },
+                            child: PartnerCard(
+                              name: partners[index]['name']!,
+                              member: partners[index]['member']!,
+                            ),
+                          );
                   },
                 ),
               ),
@@ -145,8 +188,7 @@ class PartnerCard extends StatelessWidget {
   final String name;
   final String member;
 
-  const PartnerCard({Key? key, required this.name, required this.member})
-      : super(key: key);
+  const PartnerCard({super.key, required this.name, required this.member});
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:shimmer/shimmer.dart';
 
 class PADetail extends StatefulWidget {
   const PADetail({super.key});
@@ -25,6 +26,21 @@ class _PADetailState extends State<PADetail> {
     "Finance Team": GlobalKey(),
     "Growth Associate Team": GlobalKey(),
   };
+
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+  }
+
+  Future<void> _loadData() async {
+    await Future.delayed(const Duration(seconds: 2));
+    setState(() {
+      _isLoading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,84 +98,135 @@ class _PADetailState extends State<PADetail> {
         ),
         body: SingleChildScrollView(
           controller: _scrollController,
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(15),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: SizedBox(
-                        height: MediaQuery.of(context).size.width * 0.1,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: _paList.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            final option = _paList[index];
-                            final isSelected = _selectedList == option;
-
-                            return GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  _selectedList = option;
-                                });
-                                Scrollable.ensureVisible(
-                                  _sectionKeys[option]!.currentContext!,
-                                  duration: Duration(seconds: 1),
-                                );
-                              },
-                              child: Container(
-                                margin: EdgeInsets.only(right: 10),
-                                decoration: BoxDecoration(
-                                  color: isSelected
-                                      ? Colors.transparent
-                                      : Colors.grey[200],
-                                  border: Border.all(
-                                    width: isSelected ? 1 : 0,
-                                    color: isSelected
-                                        ? Color.fromARGB(255, 16, 2, 90)
-                                        : Colors.transparent,
-                                  ),
-                                  borderRadius: BorderRadius.circular(25),
-                                ),
-                                padding: EdgeInsets.symmetric(horizontal: 10),
-                                child: Center(
-                                  child: Text(
-                                    option,
-                                    style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      fontSize: 13.sp,
-                                      color: isSelected
-                                          ? Color.fromARGB(255, 16, 2, 90)
-                                          : Colors.grey[500],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
+          child: _isLoading
+              ? SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  child: Shimmer.fromColors(
+                    baseColor: Colors.grey[300]!,
+                    highlightColor: Colors.grey[100]!,
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 15, 15, 10),
+                          child: Container(
+                            height: MediaQuery.of(context).size.height * 0.06,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border:
+                                  Border.all(width: 0.2, color: Colors.grey),
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                          ),
                         ),
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: 6,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 2.5, horizontal: 15),
+                                child: Container(
+                                  height: MediaQuery.of(context).size.height *
+                                      0.087,
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border: Border.all(
+                                        width: 0.2, color: Colors.grey),
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              : Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: SizedBox(
+                              height: MediaQuery.of(context).size.width * 0.1,
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: _paList.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  final option = _paList[index];
+                                  final isSelected = _selectedList == option;
+
+                                  return GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        _selectedList = option;
+                                      });
+                                      Scrollable.ensureVisible(
+                                        _sectionKeys[option]!.currentContext!,
+                                        duration: const Duration(seconds: 1),
+                                      );
+                                    },
+                                    child: Container(
+                                      margin: const EdgeInsets.only(right: 10),
+                                      decoration: BoxDecoration(
+                                        color: isSelected
+                                            ? Colors.transparent
+                                            : Colors.grey[200],
+                                        border: Border.all(
+                                          width: isSelected ? 1 : 0,
+                                          color: isSelected
+                                              ? const Color.fromARGB(
+                                                  255, 16, 2, 90)
+                                              : Colors.transparent,
+                                        ),
+                                        borderRadius: BorderRadius.circular(25),
+                                      ),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10),
+                                      child: Center(
+                                        child: Text(
+                                          option,
+                                          style: TextStyle(
+                                            fontFamily: 'Inter',
+                                            fontSize: 13.sp,
+                                            color: isSelected
+                                                ? const Color.fromARGB(
+                                                    255, 16, 2, 90)
+                                                : Colors.grey[500],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
+                    buildSectionHeader("Growth Partner Team"),
+                    buildPersonCard(
+                        "Person 1 Name ", "Yoyo Fashion India Pvt Ltd"),
+                    buildPersonCard("Person 2 Name ", "Saral InfoTech Pvt Ltd"),
+                    buildPersonCard("Person 3 Name ", "Vatudi Fashion"),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                    buildSectionHeader("Event Team"),
+                    buildTeamHeadCard("Event Team Head", "Person 4 Name ",
+                        "Yoyo Fashion India Pvt Ltd"),
+                    buildSectionHeader("Finance Team"),
+                    buildTeamHeadCard("Finance Team Head", "Person 5 Name ",
+                        "Yoyo Industries Canada Pvt Ltd"),
+                    buildSectionHeader("Growth Associate Team"),
+                    buildTeamHeadCard("Welcome Team Head", "Person 6 Name ",
+                        "Yoyo Fashion India Pvt Ltd"),
                   ],
                 ),
-              ),
-              buildSectionHeader("Growth Partner Team"),
-              buildPersonCard("Person 1 Name ", "Yoyo Fashion India Pvt Ltd"),
-              buildPersonCard("Person 2 Name ", "Saral InfoTech Pvt Ltd"),
-              buildPersonCard("Person 3 Name ", "Vatudi Fashion"),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-              buildSectionHeader("Event Team"),
-              buildTeamHeadCard("Event Team Head", "Person 4 Name ",
-                  "Yoyo Fashion India Pvt Ltd"),
-              buildSectionHeader("Finance Team"),
-              buildTeamHeadCard("Finance Team Head", "Person 5 Name ",
-                  "Yoyo Industries Canada Pvt Ltd"),
-              buildSectionHeader("Growth Associate Team"),
-              buildTeamHeadCard("Welcome Team Head", "Person 6 Name ",
-                  "Yoyo Fashion India Pvt Ltd"),
-            ],
-          ),
         ),
       ),
     );

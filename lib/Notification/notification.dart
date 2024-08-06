@@ -93,7 +93,7 @@ class _NotificationPageState extends State<NotificationPage> {
                             : Colors.grey[200],
                         border: Border.all(
                           color: selectedOption == 'General'
-                              ? Color.fromARGB(255, 16, 2, 90)
+                              ? const Color.fromARGB(255, 16, 2, 90)
                               : Colors.transparent,
                         ),
                       ),
@@ -103,7 +103,7 @@ class _NotificationPageState extends State<NotificationPage> {
                           style: TextStyle(
                               fontFamily: 'Inter',
                               color: selectedOption == 'General'
-                                  ? Color.fromARGB(255, 16, 2, 90)
+                                  ? const Color.fromARGB(255, 16, 2, 90)
                                   : Colors.black,
                               fontSize: 15.sp),
                         ),
@@ -129,7 +129,7 @@ class _NotificationPageState extends State<NotificationPage> {
                             : Colors.grey[200],
                         border: Border.all(
                           color: selectedOption == 'Business'
-                              ? Color.fromARGB(255, 16, 2, 90)
+                              ? const Color.fromARGB(255, 16, 2, 90)
                               : Colors.transparent,
                         ),
                       ),
@@ -139,7 +139,7 @@ class _NotificationPageState extends State<NotificationPage> {
                           style: TextStyle(
                               fontFamily: 'Inter',
                               color: selectedOption == 'Business'
-                                  ? Color.fromARGB(255, 16, 2, 90)
+                                  ? const Color.fromARGB(255, 16, 2, 90)
                                   : Colors.black,
                               fontSize: 15.sp),
                         ),
@@ -212,7 +212,8 @@ class _NotificationPageState extends State<NotificationPage> {
                                       style: TextStyle(
                                           fontFamily: 'Inter',
                                           fontSize: 13.sp,
-                                          color: Color.fromARGB(255, 16, 2, 90),
+                                          color: const Color.fromARGB(
+                                              255, 16, 2, 90),
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ]),

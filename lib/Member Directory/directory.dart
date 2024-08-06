@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:progress_alliance/homeBottom.dart';
 import 'package:progress_alliance/routes/route.dart';
+import 'package:shimmer/shimmer.dart';
 
 class MemberDirectory extends StatefulWidget {
   const MemberDirectory({Key? key}) : super(key: key);
@@ -46,6 +47,21 @@ class _MemberDirectoryState extends State<MemberDirectory> {
       default:
         break;
     }
+  }
+
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+  }
+
+  Future<void> _loadData() async {
+    await Future.delayed(const Duration(seconds: 2));
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   @override
@@ -96,125 +112,220 @@ class _MemberDirectoryState extends State<MemberDirectory> {
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  border: Border.all(width: 0.2, color: Colors.grey),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
+          child: _isLoading
+              ? Shimmer.fromColors(
+                  baseColor: Colors.grey[300]!,
+                  highlightColor: Colors.grey[100]!,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.07,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(width: 0.2, color: Colors.grey),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.02,
+                      ),
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.004,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(2),
+                            color: Colors.grey[200]),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.015,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            "Cluster Growth Partner",
-                            style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.bold),
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.022,
+                            width: MediaQuery.of(context).size.width * 0.24,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(2),
+                                color: Colors.grey[200]),
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.pushNamed(
-                                  context, Routes.growthPartnerRoute);
-                            },
-                            child: Text(
-                              "View All >",
-                              style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 14.sp,
-                                color: Colors.blue,
-                              ),
-                            ),
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.022,
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(2),
+                                color: Colors.grey[200]),
                           ),
                         ],
                       ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.025,
+                      ),
+                      Expanded(
+                        child: GridView.builder(
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 4,
+                                  mainAxisSpacing: 8,
+                                  childAspectRatio: 1),
+                          itemCount: cities.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Column(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.5),
+                                        spreadRadius: 2,
+                                        blurRadius: 2,
+                                      ),
+                                    ],
+                                  ),
+                                  child: CircleAvatar(
+                                    radius: MediaQuery.of(context).size.width *
+                                        0.099,
+                                    child: CircleAvatar(
+                                      radius:
+                                          MediaQuery.of(context).size.width *
+                                              0.097,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+                      ),
                     ],
                   ),
-                ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.02,
-              ),
-              const Divider(thickness: 0.5),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.015,
-              ),
-              Text(
-                "Cities",
-                style: TextStyle(
-                  fontFamily: 'Inter',
-                  fontSize: 15.sp,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.025,
-              ),
-              Expanded(
-                child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4,
-                      mainAxisSpacing: 8,
-                      childAspectRatio: 0.8),
-                  itemCount: cities.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Column(
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(
-                                context, Routes.cityDetailRoute);
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 2,
-                                  blurRadius: 2,
+                )
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        border: Border.all(width: 0.2, color: Colors.grey),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Cluster Growth Partner",
+                                  style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontSize: 15.sp,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, Routes.growthPartnerRoute);
+                                  },
+                                  child: Text(
+                                    "View All >",
+                                    style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontSize: 14.sp,
+                                      color: Colors.blue,
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
-                            child: CircleAvatar(
-                              radius: MediaQuery.of(context).size.width * 0.099,
-                              backgroundColor: Colors.white,
-                              child: CircleAvatar(
-                                radius:
-                                    MediaQuery.of(context).size.width * 0.097,
-                                backgroundImage:
-                                    AssetImage(cities[index]['image']!),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.02,
+                    ),
+                    const Divider(thickness: 0.5),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.015,
+                    ),
+                    Text(
+                      "Cities",
+                      style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 15.sp,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.025,
+                    ),
+                    Expanded(
+                      child: GridView.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 4,
+                                mainAxisSpacing: 8,
+                                childAspectRatio: 0.8),
+                        itemCount: cities.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Column(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, Routes.cityDetailRoute);
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.5),
+                                        spreadRadius: 2,
+                                        blurRadius: 2,
+                                      ),
+                                    ],
+                                  ),
+                                  child: CircleAvatar(
+                                    radius: MediaQuery.of(context).size.width *
+                                        0.099,
+                                    backgroundColor: Colors.white,
+                                    child: CircleAvatar(
+                                      radius:
+                                          MediaQuery.of(context).size.width *
+                                              0.097,
+                                      backgroundImage:
+                                          AssetImage(cities[index]['image']!),
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.01),
-                        Text(
-                          cities[index]['label']!,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 12.sp,
-                            color: const Color.fromARGB(255, 16, 2, 90),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    );
-                  },
+                              SizedBox(
+                                  height: MediaQuery.of(context).size.height *
+                                      0.01),
+                              Text(
+                                cities[index]['label']!,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontFamily: 'Inter',
+                                  fontSize: 12.sp,
+                                  color: const Color.fromARGB(255, 16, 2, 90),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
         ),
         bottomNavigationBar: HomeBottom(
           selectedIndex: _selectedIndex,
