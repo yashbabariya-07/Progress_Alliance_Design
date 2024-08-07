@@ -102,15 +102,21 @@ class _GooglemapState extends State<Googlemap>
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
-    customMarker();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      customMarker(context);
+    });
   }
 
   BitmapDescriptor markerIcon = BitmapDescriptor.defaultMarker;
 
-  void customMarker() {
+  void customMarker(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+    final markerSize = screenSize.width * 0.05;
+
     BitmapDescriptor.fromAssetImage(
-            const ImageConfiguration(size: Size(20, 20)), "assets/marker.png")
-        .then((icon) {
+      ImageConfiguration(size: Size(markerSize, markerSize)),
+      "assets/marker.png",
+    ).then((icon) {
       setState(() {
         markerIcon = icon;
       });
@@ -372,7 +378,7 @@ class _GooglemapState extends State<Googlemap>
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
+                              SizedBox(
                                 height:
                                     MediaQuery.of(context).size.height * 0.02,
                                 child: Icon(Icons.fiber_manual_record,
