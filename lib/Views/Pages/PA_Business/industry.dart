@@ -1,7 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:image_picker/image_picker.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 
 import 'package:progress_alliance/Routes/route.dart';
@@ -64,25 +65,25 @@ class _RetailerState extends State<Retailer> with LoadingStateMixin {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           centerTitle: true,
           titleSpacing: 0,
           title: Text(
             "Retailer",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
-              color: const Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
+              color: FontsColor.purple,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -112,10 +113,10 @@ class _RetailerState extends State<Retailer> with LoadingStateMixin {
           ],
         ),
         endDrawer: Container(
-          color: Colors.white,
+          color: FontsColor.white,
           width: MediaQuery.of(context).size.width * 0.68,
           child: Drawer(
-            backgroundColor: Colors.white,
+            backgroundColor: FontsColor.white,
             child: Padding(
               padding: const EdgeInsets.only(top: 50.0),
               child: Column(
@@ -123,10 +124,10 @@ class _RetailerState extends State<Retailer> with LoadingStateMixin {
                   Text(
                     'Categories',
                     style: TextStyle(
-                      fontSize: 16.sp,
-                      fontFamily: 'Inter',
-                      color: const Color.fromARGB(255, 16, 2, 90),
-                      fontWeight: FontWeight.bold,
+                      fontSize: FontsSize.f16,
+                      fontFamily: FontsFamily.inter,
+                      color: FontsColor.purple,
+                      fontWeight: FontsWeight.bold,
                     ),
                   ),
                   SizedBox(
@@ -170,9 +171,9 @@ class _RetailerState extends State<Retailer> with LoadingStateMixin {
                               title: Text(
                                 category,
                                 style: TextStyle(
-                                    fontSize: 13.sp,
-                                    fontFamily: 'Inter',
-                                    fontWeight: FontWeight.bold),
+                                    fontSize: FontsSize.f13,
+                                    fontFamily: FontsFamily.inter,
+                                    fontWeight: FontsWeight.bold),
                               ),
                               onTap: () {
                                 setState(() {
@@ -203,15 +204,15 @@ class _RetailerState extends State<Retailer> with LoadingStateMixin {
                                 width: MediaQuery.of(context).size.width * 0.28,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: const Color.fromARGB(255, 16, 2, 90),
+                                  color: FontsColor.purple,
                                 ),
                                 child: Center(
                                   child: Text(
                                     'Apply',
                                     style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      fontSize: 15.sp,
-                                      color: Colors.white,
+                                      fontFamily: FontsFamily.inter,
+                                      fontSize: FontsSize.f15,
+                                      color: FontsColor.white,
                                     ),
                                   ),
                                 ),
@@ -243,8 +244,8 @@ class _RetailerState extends State<Retailer> with LoadingStateMixin {
                                     child: Text(
                                       'Reset',
                                       style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 15.sp,
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f15,
                                         color: const Color.fromARGB(
                                             255, 16, 2, 90),
                                       ),
@@ -263,15 +264,15 @@ class _RetailerState extends State<Retailer> with LoadingStateMixin {
                                       MediaQuery.of(context).size.width * 0.28,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(5),
-                                    color: const Color.fromARGB(255, 16, 2, 90),
+                                    color: FontsColor.purple,
                                   ),
                                   child: Center(
                                     child: Text(
                                       'Apply',
                                       style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 15.sp,
-                                        color: Colors.white,
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f15,
+                                        color: FontsColor.white,
                                       ),
                                     ),
                                   ),
@@ -297,23 +298,25 @@ class _RetailerState extends State<Retailer> with LoadingStateMixin {
                 },
                 child: isLoading
                     ? Shimmer.fromColors(
-                        baseColor: Colors.grey[300]!,
-                        highlightColor: Colors.grey[100]!,
+                        baseColor: FontsColor.grey300!,
+                        highlightColor: FontsColor.grey100!,
                         child: Container(
                           padding: const EdgeInsets.all(15),
                           margin: const EdgeInsets.only(bottom: 5),
                           height: MediaQuery.of(context).size.height * 0.13,
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(width: 0.2, color: Colors.grey),
+                            color: FontsColor.white,
+                            border:
+                                Border.all(width: 0.2, color: FontsColor.grey),
                             borderRadius: BorderRadius.circular(8),
                           ),
                         ))
                     : Container(
                         margin: const EdgeInsets.only(bottom: 10),
                         decoration: BoxDecoration(
-                          border: Border.all(width: 0.2, color: Colors.grey),
+                          border:
+                              Border.all(width: 0.2, color: FontsColor.grey),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Padding(
@@ -339,7 +342,7 @@ class _RetailerState extends State<Retailer> with LoadingStateMixin {
                                         0.1,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
-                                      color: Colors.grey[300],
+                                      color: FontsColor.grey300,
                                     ),
                                     child: retailers['profileImage'] != null
                                         ? ClipRRect(
@@ -355,9 +358,9 @@ class _RetailerState extends State<Retailer> with LoadingStateMixin {
                                               "+",
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
-                                                fontFamily: 'Inter',
-                                                fontSize: 20.sp,
-                                                color: Colors.grey[600],
+                                                fontFamily: FontsFamily.inter,
+                                                fontSize: FontsSize.f20,
+                                                color: FontsColor.grey600,
                                               ),
                                             ),
                                           ),
@@ -376,46 +379,43 @@ class _RetailerState extends State<Retailer> with LoadingStateMixin {
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 13.sp,
+                                          fontFamily: FontsFamily.inter,
+                                          fontSize: FontsSize.f13,
                                           color: const Color.fromARGB(
                                               255, 16, 2, 90),
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontsWeight.bold),
                                     ),
                                     Text(
                                       retailers['work'],
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 12.sp,
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f12,
+                                        fontWeight: FontsWeight.bold,
                                         color: const Color.fromARGB(
                                             255, 16, 2, 90),
                                       ),
                                     ),
-                                    Text(
-                                      retailers['owner'],
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 12.sp,
-                                          color: Colors.grey[900]),
-                                    ),
+                                    Text(retailers['owner'],
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f12,
+                                            color: FontsColor.grey800)),
                                     SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
                                               0.003,
                                     ),
-                                    Text(
-                                      retailers['address'],
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 12.sp,
-                                          color: Colors.grey),
-                                    ),
+                                    Text(retailers['address'],
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f12,
+                                            color: FontsColor.grey)),
                                   ],
                                 ),
                               ),

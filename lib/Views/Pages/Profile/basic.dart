@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Pages/Profile/profile.dart';
 
 class BasicDetail extends StatefulWidget {
@@ -27,15 +28,15 @@ class _BasicDetailState extends State<BasicDetail> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -43,10 +44,10 @@ class _BasicDetailState extends State<BasicDetail> {
           title: Text(
             "Basic Details",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
-              color: const Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
+              color: FontsColor.purple,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: GestureDetector(
@@ -82,9 +83,9 @@ class _BasicDetailState extends State<BasicDetail> {
               child: Text(
                 "Save",
                 style: TextStyle(
-                  fontFamily: 'Inter',
-                  fontSize: 15.sp,
-                  color: const Color.fromARGB(255, 16, 2, 90),
+                  fontFamily: FontsFamily.inter,
+                  fontSize: FontsSize.f15,
+                  color: FontsColor.purple,
                 ),
               ),
             )
@@ -106,8 +107,8 @@ class _BasicDetailState extends State<BasicDetail> {
                           Text(
                             'Prefix',
                             style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 14.sp,
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f14,
                             ),
                           ),
                           SizedBox(
@@ -118,16 +119,16 @@ class _BasicDetailState extends State<BasicDetail> {
                             width: double.infinity,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              border:
-                                  Border.all(color: Colors.grey, width: 0.5),
+                              border: Border.all(
+                                  color: FontsColor.grey, width: 0.5),
                             ),
                             child: DropdownButtonFormField<String>(
                               iconSize:
                                   MediaQuery.of(context).size.width * 0.06,
                               style: TextStyle(
-                                fontSize: 14.sp,
-                                fontFamily: 'Inter',
-                                color: Colors.black,
+                                fontSize: FontsSize.f14,
+                                fontFamily: FontsFamily.inter,
+                                color: FontsColor.black,
                               ),
                               value: _prefix,
                               items: [
@@ -153,14 +154,14 @@ class _BasicDetailState extends State<BasicDetail> {
                               decoration: InputDecoration(
                                 hintText: 'Prefix',
                                 hintStyle: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontFamily: 'Inter',
+                                  fontSize: FontsSize.f14,
+                                  fontFamily: FontsFamily.inter,
                                 ),
                                 border: InputBorder.none,
                                 contentPadding: const EdgeInsets.all(10),
-                                focusedBorder: const OutlineInputBorder(
+                                focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Colors.black,
+                                    color: FontsColor.black,
                                     width: 1,
                                   ),
                                 ),
@@ -181,9 +182,9 @@ class _BasicDetailState extends State<BasicDetail> {
                           Text(
                             'Name*',
                             style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 14.sp,
-                              color: Colors.black,
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f14,
+                              color: FontsColor.black,
                             ),
                           ),
                           SizedBox(
@@ -194,23 +195,23 @@ class _BasicDetailState extends State<BasicDetail> {
                             width: double.infinity,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              border:
-                                  Border.all(color: Colors.grey, width: 0.5),
+                              border: Border.all(
+                                  color: FontsColor.grey, width: 0.5),
                             ),
                             child: TextFormField(
                               controller: _name,
                               decoration: InputDecoration(
                                 hintText: 'Enter Name',
                                 hintStyle: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontFamily: 'Inter',
+                                  fontSize: FontsSize.f14,
+                                  fontFamily: FontsFamily.inter,
                                 ),
                                 border: InputBorder.none,
                                 contentPadding: const EdgeInsets.all(10),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5),
-                                  borderSide: const BorderSide(
-                                    color: Colors.black,
+                                  borderSide: BorderSide(
+                                    color: FontsColor.black,
                                     width: 1,
                                   ),
                                 ),
@@ -235,9 +236,9 @@ class _BasicDetailState extends State<BasicDetail> {
                           Text(
                             "Father's Name*",
                             style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 14.sp,
-                              color: Colors.black,
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f14,
+                              color: FontsColor.black,
                             ),
                           ),
                           SizedBox(
@@ -248,23 +249,23 @@ class _BasicDetailState extends State<BasicDetail> {
                             width: double.infinity,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              border:
-                                  Border.all(color: Colors.grey, width: 0.5),
+                              border: Border.all(
+                                  color: FontsColor.grey, width: 0.5),
                             ),
                             child: TextFormField(
                               controller: _fname,
                               decoration: InputDecoration(
                                 hintText: "Enter Name",
                                 hintStyle: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontFamily: 'Inter',
+                                  fontSize: FontsSize.f14,
+                                  fontFamily: FontsFamily.inter,
                                 ),
                                 border: InputBorder.none,
                                 contentPadding: const EdgeInsets.all(10),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5),
-                                  borderSide: const BorderSide(
-                                    color: Colors.black,
+                                  borderSide: BorderSide(
+                                    color: FontsColor.black,
                                     width: 1,
                                   ),
                                 ),
@@ -285,9 +286,9 @@ class _BasicDetailState extends State<BasicDetail> {
                           Text(
                             'Surname*',
                             style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 14.sp,
-                              color: Colors.black,
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f14,
+                              color: FontsColor.black,
                             ),
                           ),
                           SizedBox(
@@ -298,23 +299,23 @@ class _BasicDetailState extends State<BasicDetail> {
                             width: double.infinity,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              border:
-                                  Border.all(color: Colors.grey, width: 0.5),
+                              border: Border.all(
+                                  color: FontsColor.grey, width: 0.5),
                             ),
                             child: TextFormField(
                               controller: _surname,
                               decoration: InputDecoration(
                                 hintText: 'Enter Surname',
                                 hintStyle: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontFamily: 'Inter',
+                                  fontSize: FontsSize.f14,
+                                  fontFamily: FontsFamily.inter,
                                 ),
                                 border: InputBorder.none,
                                 contentPadding: const EdgeInsets.all(10),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5),
-                                  borderSide: const BorderSide(
-                                    color: Colors.black,
+                                  borderSide: BorderSide(
+                                    color: FontsColor.black,
                                     width: 1,
                                   ),
                                 ),
@@ -335,9 +336,9 @@ class _BasicDetailState extends State<BasicDetail> {
                     Text(
                       'Mobile Number',
                       style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14.sp,
-                        color: Colors.black,
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f14,
+                        color: FontsColor.black,
                       ),
                     ),
                     SizedBox(
@@ -348,22 +349,22 @@ class _BasicDetailState extends State<BasicDetail> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.grey, width: 0.5),
+                        border: Border.all(color: FontsColor.grey, width: 0.5),
                       ),
                       child: TextFormField(
                         controller: _mobile,
                         decoration: InputDecoration(
                           hintText: 'Enter mobile no.',
                           hintStyle: TextStyle(
-                            fontSize: 14.sp,
-                            fontFamily: 'Inter',
+                            fontSize: FontsSize.f14,
+                            fontFamily: FontsFamily.inter,
                           ),
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.all(10),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                              color: Colors.black,
+                            borderSide: BorderSide(
+                              color: FontsColor.black,
                               width: 1,
                             ),
                           ),
@@ -378,9 +379,9 @@ class _BasicDetailState extends State<BasicDetail> {
                 Text(
                   'Gender',
                   style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: 14.sp,
-                    color: Colors.black,
+                    fontFamily: FontsFamily.inter,
+                    fontSize: FontsSize.f14,
+                    color: FontsColor.black,
                   ),
                 ),
                 SizedBox(
@@ -399,8 +400,8 @@ class _BasicDetailState extends State<BasicDetail> {
                           decoration: BoxDecoration(
                             border: Border.all(
                               color: _selectedGender == 'Male'
-                                  ? Colors.black
-                                  : Colors.grey,
+                                  ? FontsColor.black
+                                  : FontsColor.grey,
                               width: _selectedGender == 'Male' ? 1 : 0.5,
                             ),
                             borderRadius: BorderRadius.circular(5),
@@ -410,14 +411,14 @@ class _BasicDetailState extends State<BasicDetail> {
                           child: Text(
                             'Male',
                             style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 14.sp,
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f14,
                               fontWeight: _selectedGender == 'Male'
                                   ? FontWeight.bold
                                   : FontWeight.normal,
                               color: _selectedGender == 'Male'
-                                  ? Colors.black
-                                  : Colors.black54,
+                                  ? FontsColor.black
+                                  : FontsColor.black54,
                             ),
                           ),
                         ),
@@ -437,8 +438,8 @@ class _BasicDetailState extends State<BasicDetail> {
                           decoration: BoxDecoration(
                             border: Border.all(
                               color: _selectedGender == 'Female'
-                                  ? Colors.black
-                                  : Colors.grey,
+                                  ? FontsColor.black
+                                  : FontsColor.grey,
                               width: _selectedGender == 'Female' ? 1 : 0.5,
                             ),
                             borderRadius: BorderRadius.circular(5),
@@ -448,14 +449,14 @@ class _BasicDetailState extends State<BasicDetail> {
                           child: Text(
                             'Female',
                             style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 14.sp,
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f14,
                               fontWeight: _selectedGender == 'Female'
                                   ? FontWeight.bold
                                   : FontWeight.normal,
                               color: _selectedGender == 'Female'
-                                  ? Colors.black
-                                  : Colors.black54,
+                                  ? FontsColor.black
+                                  : FontsColor.black54,
                             ),
                           ),
                         ),
@@ -472,9 +473,9 @@ class _BasicDetailState extends State<BasicDetail> {
                     Text(
                       'Date of Birth',
                       style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14.sp,
-                        color: Colors.black,
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f14,
+                        color: FontsColor.black,
                       ),
                     ),
                     SizedBox(
@@ -485,7 +486,7 @@ class _BasicDetailState extends State<BasicDetail> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.grey, width: 0.5),
+                        border: Border.all(color: FontsColor.grey, width: 0.5),
                       ),
                       child: InkWell(
                         onTap: () async {
@@ -509,15 +510,15 @@ class _BasicDetailState extends State<BasicDetail> {
                             decoration: InputDecoration(
                               hintText: 'Select Date of Birth',
                               hintStyle: TextStyle(
-                                fontSize: 14.sp,
-                                fontFamily: 'Inter',
+                                fontSize: FontsSize.f14,
+                                fontFamily: FontsFamily.inter,
                               ),
                               border: InputBorder.none,
                               contentPadding: const EdgeInsets.all(10),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5),
-                                borderSide: const BorderSide(
-                                  color: Colors.black,
+                                borderSide: BorderSide(
+                                  color: FontsColor.black,
                                   width: 0.5,
                                 ),
                               ),
@@ -541,9 +542,9 @@ class _BasicDetailState extends State<BasicDetail> {
                     Text(
                       'Marriage Anniversary',
                       style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14.sp,
-                        color: Colors.black,
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f14,
+                        color: FontsColor.black,
                       ),
                     ),
                     SizedBox(
@@ -554,7 +555,7 @@ class _BasicDetailState extends State<BasicDetail> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.grey, width: 0.5),
+                        border: Border.all(color: FontsColor.grey, width: 0.5),
                       ),
                       child: InkWell(
                         onTap: () async {
@@ -578,15 +579,15 @@ class _BasicDetailState extends State<BasicDetail> {
                             decoration: InputDecoration(
                               hintText: 'Select your marriage anniversary',
                               hintStyle: TextStyle(
-                                fontSize: 14.sp,
-                                fontFamily: 'Inter',
+                                fontSize: FontsSize.f14,
+                                fontFamily: FontsFamily.inter,
                               ),
                               border: InputBorder.none,
                               contentPadding: const EdgeInsets.all(10),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5),
-                                borderSide: const BorderSide(
-                                  color: Colors.black,
+                                borderSide: BorderSide(
+                                  color: FontsColor.black,
                                   width: 0.5,
                                 ),
                               ),
@@ -614,9 +615,9 @@ class _BasicDetailState extends State<BasicDetail> {
                           Text(
                             'Weight',
                             style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 14.sp,
-                              color: Colors.black,
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f14,
+                              color: FontsColor.black,
                             ),
                           ),
                           SizedBox(
@@ -627,23 +628,23 @@ class _BasicDetailState extends State<BasicDetail> {
                             width: double.infinity,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              border:
-                                  Border.all(color: Colors.grey, width: 0.5),
+                              border: Border.all(
+                                  color: FontsColor.grey, width: 0.5),
                             ),
                             child: TextFormField(
                               controller: _weight,
                               decoration: InputDecoration(
                                 hintText: 'Enter your weight',
                                 hintStyle: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontFamily: 'Inter',
+                                  fontSize: FontsSize.f14,
+                                  fontFamily: FontsFamily.inter,
                                 ),
                                 border: InputBorder.none,
                                 contentPadding: const EdgeInsets.all(10),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5),
-                                  borderSide: const BorderSide(
-                                    color: Colors.black,
+                                  borderSide: BorderSide(
+                                    color: FontsColor.black,
                                     width: 1,
                                   ),
                                 ),
@@ -652,9 +653,9 @@ class _BasicDetailState extends State<BasicDetail> {
                                   icon: Text(
                                     "KG",
                                     style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      fontSize: 14.sp,
-                                      color: Colors.black,
+                                      fontFamily: FontsFamily.inter,
+                                      fontSize: FontsSize.f14,
+                                      color: FontsColor.black,
                                     ),
                                   ),
                                   padding: EdgeInsets.zero,
@@ -676,9 +677,9 @@ class _BasicDetailState extends State<BasicDetail> {
                           Text(
                             'Blood Group',
                             style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 14.sp,
-                              color: Colors.black,
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f14,
+                              color: FontsColor.black,
                             ),
                           ),
                           SizedBox(
@@ -689,16 +690,16 @@ class _BasicDetailState extends State<BasicDetail> {
                             width: double.infinity,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              border:
-                                  Border.all(color: Colors.grey, width: 0.5),
+                              border: Border.all(
+                                  color: FontsColor.grey, width: 0.5),
                             ),
                             child: DropdownButtonFormField<String>(
                               iconSize:
                                   MediaQuery.of(context).size.width * 0.06,
                               style: TextStyle(
-                                fontSize: 14.sp,
-                                fontFamily: 'Inter',
-                                color: Colors.black,
+                                fontSize: FontsSize.f14,
+                                fontFamily: FontsFamily.inter,
+                                color: FontsColor.black,
                               ),
                               value: _bgrp,
                               items: [
@@ -724,14 +725,14 @@ class _BasicDetailState extends State<BasicDetail> {
                               decoration: InputDecoration(
                                 hintText: 'Your blood group',
                                 hintStyle: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontFamily: 'Inter',
+                                  fontSize: FontsSize.f14,
+                                  fontFamily: FontsFamily.inter,
                                 ),
                                 border: InputBorder.none,
                                 contentPadding: const EdgeInsets.all(10),
-                                focusedBorder: const OutlineInputBorder(
+                                focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Colors.black,
+                                    color: FontsColor.black,
                                     width: 1,
                                   ),
                                 ),

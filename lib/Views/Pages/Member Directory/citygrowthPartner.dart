@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 
 import 'package:shimmer/shimmer.dart';
@@ -22,14 +23,14 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -37,10 +38,10 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
           title: Text(
             "Growth Partner",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
-              color: const Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
+              color: FontsColor.purple,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: GestureDetector(
@@ -66,8 +67,8 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
             ? SizedBox(
                 height: MediaQuery.of(context).size.height,
                 child: Shimmer.fromColors(
-                  baseColor: Colors.grey[300]!,
-                  highlightColor: Colors.grey[100]!,
+                  baseColor: FontsColor.grey300!,
+                  highlightColor: FontsColor.grey100!,
                   child: Column(
                     children: [
                       Padding(
@@ -76,8 +77,9 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                           height: MediaQuery.of(context).size.height * 0.055,
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(width: 0.2, color: Colors.grey),
+                            color: FontsColor.white,
+                            border:
+                                Border.all(width: 0.2, color: FontsColor.grey),
                             borderRadius: BorderRadius.circular(5),
                           ),
                         ),
@@ -94,9 +96,9 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                                     MediaQuery.of(context).size.height * 0.087,
                                 width: double.infinity,
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: FontsColor.white,
                                   border: Border.all(
-                                      width: 0.2, color: Colors.grey),
+                                      width: 0.2, color: FontsColor.grey),
                                   borderRadius: BorderRadius.circular(5),
                                 ),
                               ),
@@ -117,20 +119,20 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: Colors.grey, width: 0.2),
+                        border: Border.all(color: FontsColor.grey, width: 0.2),
                       ),
                       child: TextFormField(
                         controller: _SearchController,
                         decoration: InputDecoration(
                           labelText: 'Search by name, company and chapter...',
                           labelStyle: TextStyle(
-                              fontSize: 14.sp,
-                              fontFamily: 'Inter',
-                              color: Colors.grey[700]),
+                              fontSize: FontsSize.f14,
+                              fontFamily: FontsFamily.inter,
+                              color: FontsColor.grey700),
                           border: InputBorder.none,
                           prefixIcon: Icon(
                             Icons.search,
-                            color: Colors.orange,
+                            color: FontsColor.orange,
                             size: MediaQuery.of(context).size.width * 0.06,
                           ),
                         ),
@@ -141,15 +143,15 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                   Container(
                     height: MediaQuery.of(context).size.height * 0.05,
                     width: double.infinity,
-                    color: Colors.grey[200],
+                    color: FontsColor.grey200,
                     child: Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
                         "PA 1 ARJUN",
                         style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.bold),
+                            fontFamily: FontsFamily.inter,
+                            fontSize: FontsSize.f14,
+                            fontWeight: FontsWeight.bold),
                       ),
                     ),
                   ),
@@ -161,7 +163,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                       decoration: BoxDecoration(
                         border: Border.all(
                           width: 0.2,
-                          color: Colors.grey,
+                          color: FontsColor.grey,
                         ),
                         borderRadius: BorderRadius.circular(5),
                       ),
@@ -171,7 +173,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                           children: [
                             CircleAvatar(
                               radius: MediaQuery.of(context).size.width * 0.06,
-                              backgroundColor: Colors.green,
+                              backgroundColor: FontsColor.green,
                               child: CircleAvatar(
                                 radius:
                                     MediaQuery.of(context).size.width * 0.058,
@@ -193,20 +195,18 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                                   Text(
                                     "Person 1 Name ",
                                     style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.bold),
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
+                                        fontWeight: FontsWeight.bold),
                                   ),
                                   Flexible(
-                                    child: Text(
-                                      "Yoyo Fashion India Pvt Ltd",
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          color: Colors.grey,
-                                          fontSize: 12.sp),
-                                    ),
+                                    child: Text("Yoyo Fashion India Pvt Ltd",
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f12,
+                                            color: FontsColor.grey)),
                                   ),
                                 ],
                               ),
@@ -224,7 +224,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                                 ),
                                 Icon(
                                   MdiIcons.phoneOutline,
-                                  color: Colors.grey[500],
+                                  color: FontsColor.grey500,
                                   size:
                                       MediaQuery.of(context).size.width * 0.06,
                                 ),
@@ -234,7 +234,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                                 ),
                                 Icon(
                                   MdiIcons.accountPlusOutline,
-                                  color: Colors.grey[500],
+                                  color: FontsColor.grey500,
                                   size:
                                       MediaQuery.of(context).size.width * 0.06,
                                 ),
@@ -253,7 +253,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                       decoration: BoxDecoration(
                         border: Border.all(
                           width: 0.2,
-                          color: Colors.grey,
+                          color: FontsColor.grey,
                         ),
                         borderRadius: BorderRadius.circular(5),
                       ),
@@ -263,7 +263,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                           children: [
                             CircleAvatar(
                               radius: MediaQuery.of(context).size.width * 0.06,
-                              backgroundColor: Colors.blue,
+                              backgroundColor: FontsColor.blue,
                               child: CircleAvatar(
                                 radius:
                                     MediaQuery.of(context).size.width * 0.058,
@@ -285,9 +285,9 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                                   Text(
                                     "Person 2 Name ",
                                     style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.bold),
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
+                                        fontWeight: FontsWeight.bold),
                                   ),
                                   Flexible(
                                     child: Text(
@@ -295,9 +295,9 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          color: Colors.grey,
-                                          fontSize: 12.sp),
+                                          fontFamily: FontsFamily.inter,
+                                          fontSize: FontsSize.f12,
+                                          color: FontsColor.grey),
                                     ),
                                   ),
                                 ],
@@ -316,7 +316,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                                 ),
                                 Icon(
                                   MdiIcons.phoneOutline,
-                                  color: Colors.grey[500],
+                                  color: FontsColor.grey500,
                                   size:
                                       MediaQuery.of(context).size.width * 0.06,
                                 ),
@@ -326,7 +326,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                                 ),
                                 Icon(
                                   MdiIcons.accountPlusOutline,
-                                  color: Colors.grey[500],
+                                  color: FontsColor.grey500,
                                   size:
                                       MediaQuery.of(context).size.width * 0.06,
                                 ),
@@ -340,15 +340,15 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                   Container(
                     height: MediaQuery.of(context).size.height * 0.05,
                     width: double.infinity,
-                    color: Colors.grey[200],
+                    color: FontsColor.grey200,
                     child: Padding(
                       padding: EdgeInsets.all(10),
                       child: Text(
                         "PA 2 LAKSHYA",
                         style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.bold),
+                            fontFamily: FontsFamily.inter,
+                            fontSize: FontsSize.f14,
+                            fontWeight: FontsWeight.bold),
                       ),
                     ),
                   ),
@@ -360,7 +360,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                       decoration: BoxDecoration(
                         border: Border.all(
                           width: 0.2,
-                          color: Colors.grey,
+                          color: FontsColor.grey,
                         ),
                         borderRadius: BorderRadius.circular(5),
                       ),
@@ -370,7 +370,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                           children: [
                             CircleAvatar(
                               radius: MediaQuery.of(context).size.width * 0.06,
-                              backgroundColor: Colors.green,
+                              backgroundColor: FontsColor.green,
                               child: CircleAvatar(
                                 radius:
                                     MediaQuery.of(context).size.width * 0.058,
@@ -392,20 +392,18 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                                   Text(
                                     "Person 3 Name ",
                                     style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.bold),
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
+                                        fontWeight: FontsWeight.bold),
                                   ),
                                   Flexible(
-                                    child: Text(
-                                      "Manshav Infosoft Solution",
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          color: Colors.grey,
-                                          fontSize: 12.sp),
-                                    ),
+                                    child: Text("Manshav Infosoft Solution",
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f12,
+                                            color: FontsColor.grey)),
                                   ),
                                 ],
                               ),
@@ -423,7 +421,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                                 ),
                                 Icon(
                                   MdiIcons.phoneOutline,
-                                  color: Colors.grey[500],
+                                  color: FontsColor.grey500,
                                   size:
                                       MediaQuery.of(context).size.width * 0.06,
                                 ),
@@ -433,7 +431,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                                 ),
                                 Icon(
                                   MdiIcons.accountPlusOutline,
-                                  color: Colors.grey[500],
+                                  color: FontsColor.grey500,
                                   size:
                                       MediaQuery.of(context).size.width * 0.06,
                                 ),
@@ -452,7 +450,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                       decoration: BoxDecoration(
                         border: Border.all(
                           width: 0.2,
-                          color: Colors.grey,
+                          color: FontsColor.grey,
                         ),
                         borderRadius: BorderRadius.circular(5),
                       ),
@@ -462,7 +460,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                           children: [
                             CircleAvatar(
                               radius: MediaQuery.of(context).size.width * 0.06,
-                              backgroundColor: Colors.blue,
+                              backgroundColor: FontsColor.blue,
                               child: CircleAvatar(
                                 radius:
                                     MediaQuery.of(context).size.width * 0.058,
@@ -484,9 +482,9 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                                   Text(
                                     "Person 4 Name ",
                                     style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.bold),
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
+                                        fontWeight: FontsWeight.bold),
                                   ),
                                   Flexible(
                                     child: Text(
@@ -494,9 +492,9 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          color: Colors.grey,
-                                          fontSize: 12.sp),
+                                          fontFamily: FontsFamily.inter,
+                                          fontSize: FontsSize.f12,
+                                          color: FontsColor.grey),
                                     ),
                                   ),
                                 ],
@@ -515,7 +513,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                                 ),
                                 Icon(
                                   MdiIcons.phoneOutline,
-                                  color: Colors.grey[500],
+                                  color: FontsColor.grey500,
                                   size:
                                       MediaQuery.of(context).size.width * 0.06,
                                 ),
@@ -525,7 +523,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                                 ),
                                 Icon(
                                   MdiIcons.accountPlusOutline,
-                                  color: Colors.grey[500],
+                                  color: FontsColor.grey500,
                                   size:
                                       MediaQuery.of(context).size.width * 0.06,
                                 ),
@@ -536,90 +534,6 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                       ),
                     ),
                   ),
-                  // Padding(
-                  //   padding: const EdgeInsets.all(10),
-                  //   child: Container(
-                  //     height: MediaQuery.of(context).size.height * 0.1,
-                  //     width: double.infinity,
-                  //     decoration: BoxDecoration(
-                  //       border: Border.all(
-                  //         width: 0.5,
-                  //         color: Colors.grey,
-                  //       ),
-                  //       borderRadius: BorderRadius.circular(5),
-                  //     ),
-                  //     child: Padding(
-                  //       padding: const EdgeInsets.all(10),
-                  //       child: Row(
-                  //         children: [
-                  //           CircleAvatar(
-                  //             radius: MediaQuery.of(context).size.width * 0.06,
-                  //             backgroundColor: Colors.green,
-                  //             child: CircleAvatar(
-                  //               radius: MediaQuery.of(context).size.width * 0.058,
-                  //               child: Icon(
-                  //                 Icons.person,
-                  //                 size: MediaQuery.of(context).size.width * 0.08,
-                  //               ),
-                  //             ),
-                  //           ),
-                  //           SizedBox(
-                  //             width: MediaQuery.of(context).size.width * 0.05,
-                  //           ),
-                  //           Expanded(
-                  //             child: Column(
-                  //               mainAxisAlignment: MainAxisAlignment.center,
-                  //               crossAxisAlignment: CrossAxisAlignment.start,
-                  //               children: [
-                  //                 Text(
-                  //                   "Person 5 Name ",
-                  //                   style: TextStyle(
-                  //                       fontFamily: 'Inter', fontSize: 16.sp),
-                  //                 ),
-                  //                 Flexible(
-                  //                   child: Text(
-                  //                     "Omkaleshwar Textile",
-                  //                     maxLines: 1,
-                  //                     overflow: TextOverflow.ellipsis,
-                  //                     style: TextStyle(
-                  //                         fontFamily: 'Inter',
-                  //                         color: Colors.grey,
-                  //                         fontSize: 14.sp),
-                  //                   ),
-                  //                 ),
-                  //               ],
-                  //             ),
-                  //           ),
-                  //           SizedBox(
-                  //             width: MediaQuery.of(context).size.width * 0.03,
-                  //           ),
-                  //           Row(
-                  //             children: [
-                  //               Image.asset(
-                  //                 "assets/wp.png",
-                  //                 width: MediaQuery.of(context).size.width * 0.07,
-                  //               ),
-                  //               SizedBox(
-                  //                 width: MediaQuery.of(context).size.width * 0.015,
-                  //               ),
-                  //               Icon(
-                  //                 Icons.call,
-                  //                 size: MediaQuery.of(context).size.width * 0.06,
-                  //               ),
-                  //               SizedBox(
-                  //                 width: MediaQuery.of(context).size.width * 0.015,
-                  //               ),
-                  //               Icon(
-                  //                 Icons.person,
-                  //                 size: MediaQuery.of(context).size.width * 0.06,
-                  //               ),
-                  //             ],
-                  //           )
-                  //         ],
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
                 ],
               ),
       ),

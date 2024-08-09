@@ -1,10 +1,12 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import 'package:progress_alliance/Routes/route.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
+
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/customShimmer.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -55,7 +57,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                 height: 70,
                 decoration: pw.BoxDecoration(
                   shape: pw.BoxShape.rectangle,
-                  color: PdfColors.grey200,
+                  color: const PdfColor.fromInt(0xFFEEEEEE),
                   borderRadius: pw.BorderRadius.circular(5),
                 ),
                 child: pw.Center(child: pw.Text('Logo')),
@@ -63,10 +65,12 @@ class _CompanyDetailState extends State<CompanyDetail>
               pw.SizedBox(height: 20),
               pw.Text('Company/Brand Name',
                   style: pw.TextStyle(
-                      fontSize: 16.sp, fontWeight: pw.FontWeight.bold)),
+                      fontSize: FontsSize.f16, fontWeight: pw.FontWeight.bold)),
               pw.SizedBox(height: 10),
               pw.Text('Your Company Service/product',
-                  style: pw.TextStyle(color: PdfColors.grey)),
+                  style: const pw.TextStyle(
+                    color: PdfColor.fromInt(0xFF9E9E9E),
+                  )),
               pw.SizedBox(height: 20),
               pw.Row(
                 mainAxisAlignment: pw.MainAxisAlignment.center,
@@ -77,7 +81,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                       width: 100,
                       height: 40,
                       decoration: pw.BoxDecoration(
-                        color: PdfColors.grey200,
+                        color: const PdfColor.fromInt(0xFFEEEEEE),
                         borderRadius: pw.BorderRadius.circular(5),
                       ),
                       child: pw.Row(
@@ -96,7 +100,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                       width: 100,
                       height: 40,
                       decoration: pw.BoxDecoration(
-                        color: PdfColors.grey200,
+                        color: const PdfColor.fromInt(0xFFEEEEEE),
                         borderRadius: pw.BorderRadius.circular(5),
                       ),
                       child: pw.Row(
@@ -113,12 +117,12 @@ class _CompanyDetailState extends State<CompanyDetail>
               pw.SizedBox(height: 10),
               pw.Divider(
                 thickness: 0.5,
-                color: PdfColors.grey300,
+                color: const PdfColor.fromInt(0xFFE0E0E0),
               ),
               pw.SizedBox(height: 10),
               pw.Text('Contact',
                   style: pw.TextStyle(
-                      fontSize: 18.sp, fontWeight: pw.FontWeight.bold)),
+                      fontSize: FontsSize.f18, fontWeight: pw.FontWeight.bold)),
               pw.SizedBox(height: 10),
               pw.Row(mainAxisAlignment: pw.MainAxisAlignment.center, children: [
                 pw.Container(
@@ -126,36 +130,36 @@ class _CompanyDetailState extends State<CompanyDetail>
                   height: 50,
                   decoration: pw.BoxDecoration(
                     shape: pw.BoxShape.circle,
-                    color: PdfColors.grey200,
+                    color: const PdfColor.fromInt(0xFFEEEEEE),
                     borderRadius: pw.BorderRadius.circular(20),
                   ),
                   child: pw.Center(child: pw.Text('Image')),
                 ),
                 pw.SizedBox(width: 10),
                 pw.Text('Contact Person Name',
-                    style: pw.TextStyle(fontSize: 16.sp)),
+                    style: pw.TextStyle(fontSize: FontsSize.f16)),
               ]),
               pw.SizedBox(height: 10),
               pw.Divider(
                 thickness: 0.5,
-                color: PdfColors.grey300,
+                color: const PdfColor.fromInt(0xFFE0E0E0),
               ),
               pw.SizedBox(height: 10),
               pw.Text('Address',
                   style: pw.TextStyle(
-                      fontSize: 18.sp, fontWeight: pw.FontWeight.bold)),
+                      fontSize: FontsSize.f18, fontWeight: pw.FontWeight.bold)),
               pw.SizedBox(height: 10),
               pw.Text('Your Company address',
-                  style: pw.TextStyle(fontSize: 16.sp)),
+                  style: pw.TextStyle(fontSize: FontsSize.f16)),
               pw.SizedBox(height: 10),
               pw.Divider(
                 thickness: 0.5,
-                color: PdfColors.grey300,
+                color: const PdfColor.fromInt(0xFFE0E0E0),
               ),
               pw.SizedBox(height: 10),
               pw.Text('Services & Products',
                   style: pw.TextStyle(
-                      fontSize: 18.sp, fontWeight: pw.FontWeight.bold)),
+                      fontSize: FontsSize.f18, fontWeight: pw.FontWeight.bold)),
               pw.SizedBox(height: 10),
               pw.Align(
                 alignment: pw.Alignment.topLeft,
@@ -171,7 +175,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                             padding: const pw.EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 5),
                             decoration: pw.BoxDecoration(
-                              color: PdfColors.grey200,
+                              color: const PdfColor.fromInt(0xFFEEEEEE),
                               borderRadius: pw.BorderRadius.circular(15),
                             ),
                             child: pw.Text(service),
@@ -198,15 +202,15 @@ class _CompanyDetailState extends State<CompanyDetail>
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -214,10 +218,10 @@ class _CompanyDetailState extends State<CompanyDetail>
           title: Text(
             "Company Details",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
-              color: const Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
+              color: FontsColor.purple,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: GestureDetector(
@@ -234,7 +238,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                 onPressed: _generateAndSharePDF,
                 icon: Icon(
                   Icons.share,
-                  color: Colors.grey[500],
+                  color: FontsColor.grey500,
                   size: MediaQuery.of(context).size.width * 0.06,
                 )),
           ],
@@ -249,16 +253,16 @@ class _CompanyDetailState extends State<CompanyDetail>
                       Container(
                         width: double.infinity,
                         height: MediaQuery.of(context).size.height * 0.15,
-                        color: Colors.grey[300],
+                        color: FontsColor.grey300,
                         child: Padding(
                           padding: const EdgeInsets.only(top: 22.0),
                           child: Text(
                             "Cover Photo",
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 15.sp,
-                              color: Colors.grey[600],
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f15,
+                              color: FontsColor.grey600,
                             ),
                           ),
                         ),
@@ -271,7 +275,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                           children: [
                             CircleAvatar(
                               radius: MediaQuery.of(context).size.width * 0.15,
-                              backgroundColor: Colors.white,
+                              backgroundColor: FontsColor.white,
                               child: CircleAvatar(
                                   radius:
                                       MediaQuery.of(context).size.width * 0.146,
@@ -294,16 +298,16 @@ class _CompanyDetailState extends State<CompanyDetail>
                       Text(
                         "Company/Brand name",
                         style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 15.sp,
-                            fontWeight: FontWeight.bold),
+                            fontFamily: FontsFamily.inter,
+                            fontSize: FontsSize.f15,
+                            fontWeight: FontsWeight.bold),
                       ),
                       Text(
                         "Services Type",
                         style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 13.sp,
-                            color: Colors.grey),
+                            fontFamily: FontsFamily.inter,
+                            fontSize: FontsSize.f13,
+                            color: FontsColor.grey),
                       ),
                     ],
                   ),
@@ -329,7 +333,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                             width: MediaQuery.of(context).size.width * 0.28,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
-                                color: Colors.grey[300]),
+                                color: FontsColor.grey300),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -345,9 +349,11 @@ class _CompanyDetailState extends State<CompanyDetail>
                                 Text(
                                   'Call',
                                   style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.bold),
+                                    fontFamily: FontsFamily.inter,
+                                    fontSize: FontsSize.f12,
+                                    color: FontsColor.black,
+                                    fontWeight: FontsWeight.bold,
+                                  ),
                                 ),
                               ],
                             ),
@@ -362,7 +368,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                             width: MediaQuery.of(context).size.width * 0.28,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
-                                color: Colors.grey[300]),
+                                color: FontsColor.grey300),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -378,9 +384,11 @@ class _CompanyDetailState extends State<CompanyDetail>
                                 Text(
                                   'Whatsapp',
                                   style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.bold),
+                                    fontFamily: FontsFamily.inter,
+                                    fontSize: FontsSize.f12,
+                                    color: FontsColor.black,
+                                    fontWeight: FontsWeight.bold,
+                                  ),
                                 ),
                               ],
                             ),
@@ -393,7 +401,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                             width: MediaQuery.of(context).size.width * 0.28,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
-                                color: Colors.grey[300]),
+                                color: FontsColor.grey300),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -409,9 +417,11 @@ class _CompanyDetailState extends State<CompanyDetail>
                                 Text(
                                   'Save',
                                   style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.bold),
+                                    fontFamily: FontsFamily.inter,
+                                    fontSize: FontsSize.f12,
+                                    color: FontsColor.black,
+                                    fontWeight: FontsWeight.bold,
+                                  ),
                                 ),
                               ],
                             ),
@@ -428,10 +438,10 @@ class _CompanyDetailState extends State<CompanyDetail>
                     indicatorSize: TabBarIndicatorSize.tab,
                     indicatorColor: Color.fromARGB(255, 16, 2, 90),
                     labelStyle: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16.sp,
-                      color: const Color.fromARGB(255, 16, 2, 90),
-                      fontWeight: FontWeight.bold,
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f16,
+                      color: FontsColor.purple,
+                      fontWeight: FontsWeight.bold,
                     ),
                     tabs: const [
                       Tab(text: "About"),
@@ -456,7 +466,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                                     children: [
                                       Icon(
                                         MdiIcons.accountOutline,
-                                        color: Colors.grey[500],
+                                        color: FontsColor.grey500,
                                         size:
                                             MediaQuery.of(context).size.width *
                                                 0.06,
@@ -475,9 +485,9 @@ class _CompanyDetailState extends State<CompanyDetail>
                                           Text(
                                             'Contact Person',
                                             style: TextStyle(
-                                                fontFamily: 'Inter',
-                                                fontSize: 13.sp,
-                                                color: Colors.grey),
+                                                fontFamily: FontsFamily.inter,
+                                                fontSize: FontsSize.f13,
+                                                color: FontsColor.grey),
                                           ),
                                           SizedBox(
                                             width: MediaQuery.of(context)
@@ -501,19 +511,21 @@ class _CompanyDetailState extends State<CompanyDetail>
                                                 title: Text(
                                                   'Person Name',
                                                   style: TextStyle(
-                                                      fontFamily: 'Inter',
-                                                      fontSize: 13.sp,
+                                                      fontFamily:
+                                                          FontsFamily.inter,
+                                                      fontSize: FontsSize.f13,
                                                       fontWeight:
                                                           FontWeight.bold),
                                                 ),
                                                 subtitle: Text(
                                                   'Person PA Details',
                                                   style: TextStyle(
-                                                      fontFamily: 'Inter',
-                                                      fontSize: 13.sp,
+                                                      fontFamily:
+                                                          FontsFamily.inter,
+                                                      fontSize: FontsSize.f13,
                                                       fontWeight:
                                                           FontWeight.bold,
-                                                      color: Colors.grey),
+                                                      color: FontsColor.grey),
                                                 ),
                                                 trailing: IconButton(
                                                   icon: Icon(
@@ -546,7 +558,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                                     children: [
                                       Icon(
                                         MdiIcons.viewAgendaOutline,
-                                        color: Colors.grey[500],
+                                        color: FontsColor.grey500,
                                         size:
                                             MediaQuery.of(context).size.width *
                                                 0.06,
@@ -565,16 +577,16 @@ class _CompanyDetailState extends State<CompanyDetail>
                                           Text(
                                             'Category',
                                             style: TextStyle(
-                                                fontFamily: 'Inter',
-                                                fontSize: 13.sp,
-                                                color: Colors.grey),
+                                                fontFamily: FontsFamily.inter,
+                                                fontSize: FontsSize.f13,
+                                                color: FontsColor.grey),
                                           ),
                                           Text(
                                             'Company Category',
                                             style: TextStyle(
-                                                fontFamily: 'Inter',
-                                                fontSize: 13.sp,
-                                                fontWeight: FontWeight.bold),
+                                                fontFamily: FontsFamily.inter,
+                                                fontSize: FontsSize.f13,
+                                                fontWeight: FontsWeight.bold),
                                           ),
                                         ],
                                       )
@@ -590,7 +602,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                                     children: [
                                       Icon(
                                         MdiIcons.viewAgendaOutline,
-                                        color: Colors.grey[500],
+                                        color: FontsColor.grey500,
                                         size:
                                             MediaQuery.of(context).size.width *
                                                 0.06,
@@ -609,16 +621,16 @@ class _CompanyDetailState extends State<CompanyDetail>
                                           Text(
                                             'Sub Category',
                                             style: TextStyle(
-                                                fontFamily: 'Inter',
-                                                fontSize: 13.sp,
-                                                color: Colors.grey),
+                                                fontFamily: FontsFamily.inter,
+                                                fontSize: FontsSize.f13,
+                                                color: FontsColor.grey),
                                           ),
                                           Text(
                                             'Company Sub Category',
                                             style: TextStyle(
-                                                fontFamily: 'Inter',
-                                                fontSize: 13.sp,
-                                                fontWeight: FontWeight.bold),
+                                                fontFamily: FontsFamily.inter,
+                                                fontSize: FontsSize.f13,
+                                                fontWeight: FontsWeight.bold),
                                           ),
                                         ],
                                       )
@@ -634,7 +646,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                                     children: [
                                       Icon(
                                         MdiIcons.hexagonOutline,
-                                        color: Colors.grey[500],
+                                        color: FontsColor.grey500,
                                         size:
                                             MediaQuery.of(context).size.width *
                                                 0.06,
@@ -653,16 +665,16 @@ class _CompanyDetailState extends State<CompanyDetail>
                                           Text(
                                             'Formation',
                                             style: TextStyle(
-                                                fontFamily: 'Inter',
-                                                fontSize: 13.sp,
-                                                color: Colors.grey),
+                                                fontFamily: FontsFamily.inter,
+                                                fontSize: FontsSize.f13,
+                                                color: FontsColor.grey),
                                           ),
                                           Text(
                                             'Company Formation',
                                             style: TextStyle(
-                                                fontFamily: 'Inter',
-                                                fontSize: 13.sp,
-                                                fontWeight: FontWeight.bold),
+                                                fontFamily: FontsFamily.inter,
+                                                fontSize: FontsSize.f13,
+                                                fontWeight: FontsWeight.bold),
                                           ),
                                         ],
                                       )
@@ -678,7 +690,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                                     children: [
                                       Icon(
                                         MdiIcons.shoppingOutline,
-                                        color: Colors.grey[500],
+                                        color: FontsColor.grey500,
                                         size:
                                             MediaQuery.of(context).size.width *
                                                 0.06,
@@ -697,9 +709,9 @@ class _CompanyDetailState extends State<CompanyDetail>
                                           Text(
                                             'Product & Services',
                                             style: TextStyle(
-                                                fontFamily: 'Inter',
-                                                fontSize: 13.sp,
-                                                color: Colors.grey),
+                                                fontFamily: FontsFamily.inter,
+                                                fontSize: FontsSize.f13,
+                                                color: FontsColor.grey),
                                           ),
                                           SizedBox(
                                             height: MediaQuery.of(context)
@@ -719,13 +731,15 @@ class _CompanyDetailState extends State<CompanyDetail>
                                             decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(20),
-                                                color: Colors.grey[300]),
+                                                color: FontsColor.grey300),
                                             child: Center(
                                               child: Text('Company Product',
                                                   style: TextStyle(
-                                                    fontFamily: 'Inter',
-                                                    fontSize: 13.sp,
-                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily:
+                                                        FontsFamily.inter,
+                                                    fontSize: FontsSize.f13,
+                                                    fontWeight:
+                                                        FontsWeight.bold,
                                                   )),
                                             ),
                                           ),
@@ -743,7 +757,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                                     children: [
                                       Icon(
                                         MdiIcons.informationOutline,
-                                        color: Colors.grey[500],
+                                        color: FontsColor.grey500,
                                         size:
                                             MediaQuery.of(context).size.width *
                                                 0.06,
@@ -762,16 +776,16 @@ class _CompanyDetailState extends State<CompanyDetail>
                                           Text(
                                             'About Us',
                                             style: TextStyle(
-                                                fontFamily: 'Inter',
-                                                fontSize: 13.sp,
-                                                color: Colors.grey),
+                                                fontFamily: FontsFamily.inter,
+                                                fontSize: FontsSize.f13,
+                                                color: FontsColor.grey),
                                           ),
                                           Text(
                                             'Company Intro...',
                                             style: TextStyle(
-                                                fontFamily: 'Inter',
-                                                fontSize: 13.sp,
-                                                fontWeight: FontWeight.bold),
+                                                fontFamily: FontsFamily.inter,
+                                                fontSize: FontsSize.f13,
+                                                fontWeight: FontsWeight.bold),
                                           ),
                                         ],
                                       )
@@ -792,7 +806,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                                     children: [
                                       Icon(
                                         MdiIcons.emailOutline,
-                                        color: Colors.grey[500],
+                                        color: FontsColor.grey500,
                                         size:
                                             MediaQuery.of(context).size.width *
                                                 0.06,
@@ -811,16 +825,16 @@ class _CompanyDetailState extends State<CompanyDetail>
                                           Text(
                                             'Email Address',
                                             style: TextStyle(
-                                                fontFamily: 'Inter',
-                                                fontSize: 13.sp,
-                                                color: Colors.grey),
+                                                fontFamily: FontsFamily.inter,
+                                                fontSize: FontsSize.f13,
+                                                color: FontsColor.grey),
                                           ),
                                           Text(
                                             'Company e-mail address',
                                             style: TextStyle(
-                                                fontFamily: 'Inter',
-                                                fontSize: 13.sp,
-                                                fontWeight: FontWeight.bold),
+                                                fontFamily: FontsFamily.inter,
+                                                fontSize: FontsSize.f13,
+                                                fontWeight: FontsWeight.bold),
                                           ),
                                         ],
                                       )
@@ -836,7 +850,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                                     children: [
                                       Icon(
                                         MdiIcons.web,
-                                        color: Colors.grey[500],
+                                        color: FontsColor.grey500,
                                         size:
                                             MediaQuery.of(context).size.width *
                                                 0.06,
@@ -855,16 +869,16 @@ class _CompanyDetailState extends State<CompanyDetail>
                                           Text(
                                             'Website',
                                             style: TextStyle(
-                                                fontFamily: 'Inter',
-                                                fontSize: 13.sp,
-                                                color: Colors.grey),
+                                                fontFamily: FontsFamily.inter,
+                                                fontSize: FontsSize.f13,
+                                                color: FontsColor.grey),
                                           ),
                                           Text(
                                             'Company website',
                                             style: TextStyle(
-                                                fontFamily: 'Inter',
-                                                fontSize: 13.sp,
-                                                fontWeight: FontWeight.bold),
+                                                fontFamily: FontsFamily.inter,
+                                                fontSize: FontsSize.f13,
+                                                fontWeight: FontsWeight.bold),
                                           ),
                                         ],
                                       )
@@ -880,7 +894,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                                     children: [
                                       Icon(
                                         MdiIcons.mapMarkerOutline,
-                                        color: Colors.grey[500],
+                                        color: FontsColor.grey500,
                                         size:
                                             MediaQuery.of(context).size.width *
                                                 0.06,
@@ -899,16 +913,16 @@ class _CompanyDetailState extends State<CompanyDetail>
                                           Text(
                                             'Address',
                                             style: TextStyle(
-                                                fontFamily: 'Inter',
-                                                fontSize: 13.sp,
-                                                color: Colors.grey),
+                                                fontFamily: FontsFamily.inter,
+                                                fontSize: FontsSize.f13,
+                                                color: FontsColor.grey),
                                           ),
                                           Text(
                                             'Company address',
                                             style: TextStyle(
-                                                fontFamily: 'Inter',
-                                                fontSize: 13.sp,
-                                                fontWeight: FontWeight.bold),
+                                                fontFamily: FontsFamily.inter,
+                                                fontSize: FontsSize.f13,
+                                                fontWeight: FontsWeight.bold),
                                           ),
                                           SizedBox(
                                             height: MediaQuery.of(context)
@@ -933,7 +947,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             20),
-                                                    color: Colors.grey[300]),
+                                                    color: FontsColor.grey300),
                                                 child: Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
@@ -941,9 +955,12 @@ class _CompanyDetailState extends State<CompanyDetail>
                                                     Text(
                                                       'Get Direction',
                                                       style: TextStyle(
-                                                          fontFamily: 'Inter',
-                                                          color: Colors.blue,
-                                                          fontSize: 13.sp),
+                                                          fontFamily:
+                                                              FontsFamily.inter,
+                                                          color:
+                                                              FontsColor.blue,
+                                                          fontSize:
+                                                              FontsSize.f13),
                                                     ),
                                                     SizedBox(
                                                       width:
@@ -959,7 +976,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                                                                   .size
                                                                   .width *
                                                               0.04,
-                                                      color: Colors.blue,
+                                                      color: FontsColor.blue,
                                                     )
                                                   ],
                                                 )),
@@ -978,7 +995,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                                     children: [
                                       Icon(
                                         MdiIcons.link,
-                                        color: Colors.grey[500],
+                                        color: FontsColor.grey500,
                                         size:
                                             MediaQuery.of(context).size.width *
                                                 0.06,
@@ -997,9 +1014,9 @@ class _CompanyDetailState extends State<CompanyDetail>
                                           Text(
                                             'Social Media Link',
                                             style: TextStyle(
-                                                fontFamily: 'Inter',
-                                                fontSize: 13.sp,
-                                                color: Colors.grey),
+                                                fontFamily: FontsFamily.inter,
+                                                fontSize: FontsSize.f13,
+                                                color: FontsColor.grey),
                                           ),
                                           GestureDetector(
                                               onTap: () {

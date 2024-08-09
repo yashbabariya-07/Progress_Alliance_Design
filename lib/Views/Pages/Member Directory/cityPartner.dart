@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:progress_alliance/Routes/route.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -26,15 +26,15 @@ class _CityPartnerState extends State<CityPartner> with LoadingStateMixin {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -42,10 +42,10 @@ class _CityPartnerState extends State<CityPartner> with LoadingStateMixin {
           title: Text(
             "City Name",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
-              color: const Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
+              color: FontsColor.purple,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: GestureDetector(
@@ -73,14 +73,15 @@ class _CityPartnerState extends State<CityPartner> with LoadingStateMixin {
             children: [
               isLoading
                   ? Shimmer.fromColors(
-                      baseColor: Colors.grey[300]!,
-                      highlightColor: Colors.grey[100]!,
+                      baseColor: FontsColor.grey300!,
+                      highlightColor: FontsColor.grey100!,
                       child: Container(
                         height: MediaQuery.of(context).size.height * 0.05,
                         width: double.infinity,
                         decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(width: 0.2, color: Colors.grey),
+                          color: FontsColor.white,
+                          border:
+                              Border.all(width: 0.2, color: FontsColor.grey),
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ))
@@ -90,7 +91,7 @@ class _CityPartnerState extends State<CityPartner> with LoadingStateMixin {
                       decoration: BoxDecoration(
                         border: Border.all(
                           width: 0.2,
-                          color: Colors.grey,
+                          color: FontsColor.grey,
                         ),
                         borderRadius: BorderRadius.circular(5),
                       ),
@@ -102,9 +103,9 @@ class _CityPartnerState extends State<CityPartner> with LoadingStateMixin {
                             Text(
                               "GROWTH PARTNERS (121)",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f14,
+                                  fontWeight: FontsWeight.bold),
                             ),
                             GestureDetector(
                               onTap: () {
@@ -114,9 +115,9 @@ class _CityPartnerState extends State<CityPartner> with LoadingStateMixin {
                               child: Text(
                                 "View All >",
                                 style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  color: Colors.blue,
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f14,
+                                  color: FontsColor.blue,
                                 ),
                               ),
                             ),
@@ -139,15 +140,15 @@ class _CityPartnerState extends State<CityPartner> with LoadingStateMixin {
                   itemBuilder: (context, index) {
                     return isLoading
                         ? Shimmer.fromColors(
-                            baseColor: Colors.grey[300]!,
-                            highlightColor: Colors.grey[100]!,
+                            baseColor: FontsColor.grey300!,
+                            highlightColor: FontsColor.grey100!,
                             child: Container(
                               height: MediaQuery.of(context).size.height * 0.05,
                               width: MediaQuery.of(context).size.width * 0.3,
                               decoration: BoxDecoration(
-                                color: Colors.white,
-                                border:
-                                    Border.all(width: 0.2, color: Colors.grey),
+                                color: FontsColor.white,
+                                border: Border.all(
+                                    width: 0.2, color: FontsColor.grey),
                                 borderRadius: BorderRadius.circular(5),
                               ),
                             ))
@@ -186,7 +187,7 @@ class PartnerCard extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(
           width: 0.5,
-          color: Colors.grey,
+          color: FontsColor.grey,
         ),
         borderRadius: BorderRadius.circular(5),
       ),
@@ -197,10 +198,10 @@ class PartnerCard extends StatelessWidget {
           Text(
             name,
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 13.sp,
-              color: const Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f13,
+              color: FontsColor.purple,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           SizedBox(
@@ -211,16 +212,16 @@ class PartnerCard extends StatelessWidget {
             width: MediaQuery.of(context).size.width * 0.27,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Colors.blue[50],
+              color: FontsColor.blue50,
             ),
             child: Center(
               child: Text(
                 member,
                 style: TextStyle(
-                    fontFamily: 'Inter',
-                    color: Colors.blue,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12.sp),
+                  fontFamily: FontsFamily.inter,
+                  fontSize: FontsSize.f10,
+                  color: FontsColor.blue,
+                ),
               ),
             ),
           ),

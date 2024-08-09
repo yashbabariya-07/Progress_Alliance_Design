@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 
 class Google extends StatefulWidget {
   const Google({super.key});
@@ -16,7 +17,7 @@ class _GoogleState extends State<Google> {
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(0),
           child: Container(
-            color: Colors.grey,
+            color: FontsColor.grey,
             height: 1,
           ),
         ),

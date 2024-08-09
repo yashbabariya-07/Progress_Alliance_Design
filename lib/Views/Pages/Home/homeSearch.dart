@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'package:progress_alliance/Theme/textStyle.dart';
 
 class Homesearch extends StatefulWidget {
   const Homesearch({super.key});
@@ -17,15 +18,15 @@ class _HomesearchState extends State<Homesearch> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -33,10 +34,10 @@ class _HomesearchState extends State<Homesearch> {
           title: Text(
             "What are you looking for?",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
-              color: const Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
+              color: FontsColor.purple,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: GestureDetector(
@@ -58,23 +59,23 @@ class _HomesearchState extends State<Homesearch> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: Colors.grey, width: 0.2),
+                  border: Border.all(color: FontsColor.grey, width: 0.2),
                 ),
                 child: TextFormField(
                   controller: _searchController,
                   decoration: InputDecoration(
                     hintText: 'Search by member name, company or products..',
                     hintStyle: TextStyle(
-                      fontSize: 14.sp,
-                      fontFamily: 'Inter',
-                      color: Colors.grey[700],
+                      fontSize: FontsSize.f14,
+                      fontFamily: FontsFamily.inter,
+                      color: FontsColor.grey700,
                     ),
                     border: InputBorder.none,
                     contentPadding: const EdgeInsets.all(10),
                     prefixIcon: Icon(
                       Icons.search,
                       size: MediaQuery.of(context).size.width * 0.06,
-                      color: Colors.orange,
+                      color: FontsColor.orange,
                     ),
                   ),
                   onChanged: (value) {},
@@ -90,21 +91,18 @@ class _HomesearchState extends State<Homesearch> {
                     Text(
                       "No recent search",
                       style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 15.sp,
-                          fontWeight: FontWeight.bold),
+                          fontFamily: FontsFamily.inter,
+                          fontSize: FontsSize.f15,
+                          fontWeight: FontsWeight.bold),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.width * 0.01,
                     ),
-                    Text(
-                      "Your search history is empty",
-                      style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 12.sp,
-                        color: Colors.grey[600],
-                      ),
-                    ),
+                    Text("Your search history is empty",
+                        style: TextStyle(
+                            fontFamily: FontsFamily.inter,
+                            fontSize: FontsSize.f12,
+                            color: FontsColor.grey600)),
                   ],
                 ),
               ),

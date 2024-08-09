@@ -1,10 +1,11 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 import 'package:progress_alliance/Routes/route.dart';
 import 'package:share_plus/share_plus.dart';
@@ -57,14 +58,14 @@ class _DownloadState extends State<Download> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -72,10 +73,10 @@ class _DownloadState extends State<Download> {
           title: Text(
             "Downloads",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
               color: Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: GestureDetector(
@@ -97,7 +98,7 @@ class _DownloadState extends State<Download> {
                 decoration: BoxDecoration(
                   border: Border.all(
                     width: 1,
-                    color: const Color.fromARGB(255, 16, 2, 90),
+                    color: FontsColor.purple,
                   ),
                   borderRadius: BorderRadius.circular(25),
                 ),
@@ -105,10 +106,10 @@ class _DownloadState extends State<Download> {
                   child: Text(
                     "MAGAZINE",
                     style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 13.sp,
-                        color: const Color.fromARGB(255, 16, 2, 90),
-                        fontWeight: FontWeight.bold),
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f13,
+                        color: FontsColor.purple,
+                        fontWeight: FontsWeight.bold),
                   ),
                 ),
               ),
@@ -173,16 +174,16 @@ class _VolumeWidgetState extends State<VolumeWidget> with LoadingStateMixin {
   Widget build(BuildContext context) {
     return isLoading
         ? Shimmer.fromColors(
-            baseColor: Colors.grey[300]!,
-            highlightColor: Colors.grey[100]!,
+            baseColor: FontsColor.grey300!,
+            highlightColor: FontsColor.grey100!,
             child: Container(
               padding: const EdgeInsets.all(15),
               margin: const EdgeInsets.only(bottom: 5),
               height: MediaQuery.of(context).size.height * 0.16,
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(width: 0.2, color: Colors.grey),
+                color: FontsColor.white,
+                border: Border.all(width: 0.2, color: FontsColor.grey),
                 borderRadius: BorderRadius.circular(8),
               ),
             ))
@@ -190,7 +191,7 @@ class _VolumeWidgetState extends State<VolumeWidget> with LoadingStateMixin {
             padding: const EdgeInsets.all(15),
             margin: const EdgeInsets.only(bottom: 5),
             decoration: BoxDecoration(
-              border: Border.all(width: 0.2, color: Colors.grey),
+              border: Border.all(width: 0.2, color: FontsColor.grey),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Row(
@@ -202,7 +203,7 @@ class _VolumeWidgetState extends State<VolumeWidget> with LoadingStateMixin {
                     height: MediaQuery.of(context).size.height * 0.12,
                     width: MediaQuery.of(context).size.width * 0.25,
                     decoration: BoxDecoration(
-                      border: Border.all(width: 0.2, color: Colors.grey),
+                      border: Border.all(width: 0.2, color: FontsColor.grey),
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: widget.volume.imagePath != null
@@ -227,18 +228,15 @@ class _VolumeWidgetState extends State<VolumeWidget> with LoadingStateMixin {
                       Text(
                         widget.volume.title,
                         style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 15.sp,
-                            fontWeight: FontWeight.bold),
+                            fontFamily: FontsFamily.inter,
+                            fontSize: FontsSize.f15,
+                            fontWeight: FontsWeight.bold),
                       ),
-                      Text(
-                        widget.volume.date,
-                        style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 12.sp,
-                          color: Colors.grey[700],
-                        ),
-                      ),
+                      Text(widget.volume.date,
+                          style: TextStyle(
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f12,
+                              color: FontsColor.grey700)),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
@@ -284,7 +282,7 @@ class _VolumeWidgetState extends State<VolumeWidget> with LoadingStateMixin {
                           width: MediaQuery.of(context).size.width * 0.2,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            color: Colors.blue[50],
+                            color: FontsColor.blue50,
                           ),
                           child: Center(
                             child: Row(
@@ -292,7 +290,7 @@ class _VolumeWidgetState extends State<VolumeWidget> with LoadingStateMixin {
                               children: [
                                 Icon(
                                   Icons.remove_red_eye,
-                                  color: Colors.blue,
+                                  color: FontsColor.blue,
                                   size:
                                       MediaQuery.of(context).size.width * 0.05,
                                 ),
@@ -303,9 +301,10 @@ class _VolumeWidgetState extends State<VolumeWidget> with LoadingStateMixin {
                                 Text(
                                   'View',
                                   style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      color: Colors.blue,
-                                      fontSize: 12.sp),
+                                    fontFamily: FontsFamily.inter,
+                                    fontSize: FontsSize.f12,
+                                    color: FontsColor.blue,
+                                  ),
                                 ),
                               ],
                             ),

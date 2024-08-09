@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:progress_alliance/Routes/route.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Growthpartner extends StatefulWidget {
@@ -48,30 +49,30 @@ class _GrowthpartnerState extends State<Growthpartner> {
   Color _getContainerColor(String type) {
     switch (type) {
       case "Circle Growth Partner":
-        return const Color.fromARGB(255, 175, 205, 230);
+        return FontsColor.lightblue;
       case "Program Growth Partner":
-        return const Color.fromARGB(255, 255, 205, 205);
+        return FontsColor.lightred;
       case "Universal Growth Partner":
-        return const Color.fromARGB(255, 220, 220, 220);
+        return FontsColor.lightblack;
       case "Cluster Growth Partner":
-        return const Color.fromARGB(255, 205, 255, 205);
+        return FontsColor.lightgreen;
       default:
-        return Colors.white;
+        return FontsColor.white;
     }
   }
 
   Color _getTextColor(String type) {
     switch (type) {
       case "Circle Growth Partner":
-        return Colors.blue;
+        return FontsColor.blue;
       case "Program Growth Partner":
         return Colors.red;
       case "Universal Growth Partner":
-        return Colors.black;
+        return FontsColor.black;
       case "Cluster Growth Partner":
-        return Colors.green;
+        return FontsColor.green;
       default:
-        return Colors.black;
+        return FontsColor.black;
     }
   }
 
@@ -81,15 +82,15 @@ class _GrowthpartnerState extends State<Growthpartner> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -99,10 +100,10 @@ class _GrowthpartnerState extends State<Growthpartner> {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
-              color: const Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
+              color: FontsColor.purple,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: GestureDetector(
@@ -150,7 +151,7 @@ class _GrowthpartnerState extends State<Growthpartner> {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
-                    border: Border.all(width: 0.5, color: Colors.grey),
+                    border: Border.all(width: 0.5, color: FontsColor.grey),
                   ),
                   child: Column(
                     children: [
@@ -168,9 +169,9 @@ class _GrowthpartnerState extends State<Growthpartner> {
                             type,
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.bold,
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f12,
+                              fontWeight: FontsWeight.bold,
                               color: _getTextColor(type),
                             ),
                           ),
@@ -192,18 +193,18 @@ class _GrowthpartnerState extends State<Growthpartner> {
                         items[index]['name'],
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 13.sp,
-                          fontWeight: FontWeight.bold,
+                          fontFamily: FontsFamily.inter,
+                          fontSize: FontsSize.f13,
+                          fontWeight: FontsWeight.bold,
                         ),
                       ),
                       Text(
                         items[index]['business'],
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 13.sp,
-                            color: Colors.grey),
+                            fontFamily: FontsFamily.inter,
+                            fontSize: FontsSize.f13,
+                            color: FontsColor.grey),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.006,
@@ -217,7 +218,7 @@ class _GrowthpartnerState extends State<Growthpartner> {
                             },
                             child: CircleAvatar(
                               radius: MediaQuery.of(context).size.width * 0.045,
-                              backgroundColor: Colors.grey[200],
+                              backgroundColor: FontsColor.grey200,
                               child: Image.asset(
                                 "assets/wp.png",
                                 width:
@@ -239,7 +240,7 @@ class _GrowthpartnerState extends State<Growthpartner> {
                             },
                             child: CircleAvatar(
                               radius: MediaQuery.of(context).size.width * 0.045,
-                              backgroundColor: Colors.grey[200],
+                              backgroundColor: FontsColor.grey200,
                               child: Icon(
                                 MdiIcons.phoneOutline,
                                 size: MediaQuery.of(context).size.width * 0.05,

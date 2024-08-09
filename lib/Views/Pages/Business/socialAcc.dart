@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Pages/Business/businessInfo.dart';
 
 class SocialAccount extends StatefulWidget {
@@ -23,14 +24,14 @@ class _SocialAccountState extends State<SocialAccount> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           appBar: AppBar(
             forceMaterialTransparency: true,
             toolbarHeight: MediaQuery.of(context).size.width * 0.15,
             bottom: PreferredSize(
               preferredSize: const Size.fromHeight(0),
               child: Container(
-                color: Colors.grey,
+                color: FontsColor.grey,
                 height: 0.2,
               ),
             ),
@@ -38,10 +39,10 @@ class _SocialAccountState extends State<SocialAccount> {
             title: Text(
               "Social Accounts",
               style: TextStyle(
-                fontFamily: 'Inter',
-                fontSize: 16.sp,
-                color: const Color.fromARGB(255, 16, 2, 90),
-                fontWeight: FontWeight.bold,
+                fontFamily: FontsFamily.inter,
+                fontSize: FontsSize.f16,
+                color: FontsColor.purple,
+                fontWeight: FontsWeight.bold,
               ),
             ),
             leading: GestureDetector(
@@ -94,9 +95,9 @@ class _SocialAccountState extends State<SocialAccount> {
                 child: Text(
                   "Save",
                   style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: 15.sp,
-                    color: const Color.fromARGB(255, 16, 2, 90),
+                    fontFamily: FontsFamily.inter,
+                    fontSize: FontsSize.f15,
+                    color: FontsColor.purple,
                   ),
                 ),
               )
@@ -114,9 +115,9 @@ class _SocialAccountState extends State<SocialAccount> {
                       Text(
                         "Facebook Link",
                         style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 14.sp,
-                          color: Colors.black,
+                          fontFamily: FontsFamily.inter,
+                          fontSize: FontsSize.f14,
+                          color: FontsColor.black,
                         ),
                       ),
                       SizedBox(
@@ -127,22 +128,23 @@ class _SocialAccountState extends State<SocialAccount> {
                         width: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
-                          border: Border.all(color: Colors.grey, width: 0.5),
+                          border:
+                              Border.all(color: FontsColor.grey, width: 0.5),
                         ),
                         child: TextFormField(
                           controller: _facbook,
                           decoration: InputDecoration(
                             hintText: 'Enter facebook link',
                             hintStyle: TextStyle(
-                              fontSize: 14.sp,
-                              fontFamily: 'Inter',
+                              fontSize: FontsSize.f14,
+                              fontFamily: FontsFamily.inter,
                             ),
                             border: InputBorder.none,
                             contentPadding: const EdgeInsets.all(10),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5),
-                              borderSide: const BorderSide(
-                                color: Colors.black,
+                              borderSide: BorderSide(
+                                color: FontsColor.black,
                                 width: 1,
                               ),
                             ),
@@ -160,9 +162,9 @@ class _SocialAccountState extends State<SocialAccount> {
                       Text(
                         "Linkedin Link",
                         style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 14.sp,
-                          color: Colors.black,
+                          fontFamily: FontsFamily.inter,
+                          fontSize: FontsSize.f14,
+                          color: FontsColor.black,
                         ),
                       ),
                       SizedBox(
@@ -173,22 +175,23 @@ class _SocialAccountState extends State<SocialAccount> {
                         width: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
-                          border: Border.all(color: Colors.grey, width: 0.5),
+                          border:
+                              Border.all(color: FontsColor.grey, width: 0.5),
                         ),
                         child: TextFormField(
                           controller: _linkedin,
                           decoration: InputDecoration(
                             hintText: 'Enter linkedin link',
                             hintStyle: TextStyle(
-                              fontSize: 14.sp,
-                              fontFamily: 'Inter',
+                              fontSize: FontsSize.f14,
+                              fontFamily: FontsFamily.inter,
                             ),
                             border: InputBorder.none,
                             contentPadding: const EdgeInsets.all(10),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5),
-                              borderSide: const BorderSide(
-                                color: Colors.black,
+                              borderSide: BorderSide(
+                                color: FontsColor.black,
                                 width: 1,
                               ),
                             ),
@@ -206,9 +209,9 @@ class _SocialAccountState extends State<SocialAccount> {
                       Text(
                         "Instagram Link",
                         style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 14.sp,
-                          color: Colors.black,
+                          fontFamily: FontsFamily.inter,
+                          fontSize: FontsSize.f14,
+                          color: FontsColor.black,
                         ),
                       ),
                       SizedBox(
@@ -219,22 +222,23 @@ class _SocialAccountState extends State<SocialAccount> {
                         width: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
-                          border: Border.all(color: Colors.grey, width: 0.5),
+                          border:
+                              Border.all(color: FontsColor.grey, width: 0.5),
                         ),
                         child: TextFormField(
                           controller: _instagram,
                           decoration: InputDecoration(
                             hintText: 'Enter instagram link',
                             hintStyle: TextStyle(
-                              fontSize: 14.sp,
-                              fontFamily: 'Inter',
+                              fontSize: FontsSize.f14,
+                              fontFamily: FontsFamily.inter,
                             ),
                             border: InputBorder.none,
                             contentPadding: const EdgeInsets.all(10),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5),
-                              borderSide: const BorderSide(
-                                color: Colors.black,
+                              borderSide: BorderSide(
+                                color: FontsColor.black,
                                 width: 1,
                               ),
                             ),
@@ -252,9 +256,9 @@ class _SocialAccountState extends State<SocialAccount> {
                       Text(
                         "Twitter Link",
                         style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 14.sp,
-                          color: Colors.black,
+                          fontFamily: FontsFamily.inter,
+                          fontSize: FontsSize.f14,
+                          color: FontsColor.black,
                         ),
                       ),
                       SizedBox(
@@ -265,22 +269,23 @@ class _SocialAccountState extends State<SocialAccount> {
                         width: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
-                          border: Border.all(color: Colors.grey, width: 0.5),
+                          border:
+                              Border.all(color: FontsColor.grey, width: 0.5),
                         ),
                         child: TextFormField(
                           controller: _twitter,
                           decoration: InputDecoration(
                             hintText: 'Enter twitter link',
                             hintStyle: TextStyle(
-                              fontSize: 14.sp,
-                              fontFamily: 'Inter',
+                              fontSize: FontsSize.f14,
+                              fontFamily: FontsFamily.inter,
                             ),
                             border: InputBorder.none,
                             contentPadding: const EdgeInsets.all(10),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5),
-                              borderSide: const BorderSide(
-                                color: Colors.black,
+                              borderSide: BorderSide(
+                                color: FontsColor.black,
                                 width: 1,
                               ),
                             ),
@@ -298,9 +303,9 @@ class _SocialAccountState extends State<SocialAccount> {
                       Text(
                         "Youtube Link",
                         style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 14.sp,
-                          color: Colors.black,
+                          fontFamily: FontsFamily.inter,
+                          fontSize: FontsSize.f14,
+                          color: FontsColor.black,
                         ),
                       ),
                       SizedBox(
@@ -311,22 +316,23 @@ class _SocialAccountState extends State<SocialAccount> {
                         width: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
-                          border: Border.all(color: Colors.grey, width: 0.5),
+                          border:
+                              Border.all(color: FontsColor.grey, width: 0.5),
                         ),
                         child: TextFormField(
                           controller: _youtube,
                           decoration: InputDecoration(
                             hintText: 'Enter youtube link',
                             hintStyle: TextStyle(
-                              fontSize: 14.sp,
-                              fontFamily: 'Inter',
+                              fontSize: FontsSize.f14,
+                              fontFamily: FontsFamily.inter,
                             ),
                             border: InputBorder.none,
                             contentPadding: const EdgeInsets.all(10),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5),
-                              borderSide: const BorderSide(
-                                color: Colors.black,
+                              borderSide: BorderSide(
+                                color: FontsColor.black,
                                 width: 1,
                               ),
                             ),
@@ -344,9 +350,9 @@ class _SocialAccountState extends State<SocialAccount> {
                       Text(
                         "Google Business Link",
                         style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 14.sp,
-                          color: Colors.black,
+                          fontFamily: FontsFamily.inter,
+                          fontSize: FontsSize.f14,
+                          color: FontsColor.black,
                         ),
                       ),
                       SizedBox(
@@ -357,22 +363,23 @@ class _SocialAccountState extends State<SocialAccount> {
                         width: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
-                          border: Border.all(color: Colors.grey, width: 0.5),
+                          border:
+                              Border.all(color: FontsColor.grey, width: 0.5),
                         ),
                         child: TextFormField(
                           controller: _google,
                           decoration: InputDecoration(
                             hintText: 'Enter google business link',
                             hintStyle: TextStyle(
-                              fontSize: 14.sp,
-                              fontFamily: 'Inter',
+                              fontSize: FontsSize.f14,
+                              fontFamily: FontsFamily.inter,
                             ),
                             border: InputBorder.none,
                             contentPadding: const EdgeInsets.all(10),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5),
-                              borderSide: const BorderSide(
-                                color: Colors.black,
+                              borderSide: BorderSide(
+                                color: FontsColor.black,
                                 width: 1,
                               ),
                             ),

@@ -1,9 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 
 import 'package:shimmer/shimmer.dart';
@@ -38,14 +39,14 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -53,10 +54,10 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
           title: Text(
             "#Your Lead Code",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
               color: Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: GestureDetector(
@@ -74,10 +75,10 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
               icon: Text(
                 "Remove",
                 style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: 13.sp,
+                    fontFamily: FontsFamily.inter,
+                    fontSize: FontsSize.f13,
                     color: Colors.red,
-                    fontWeight: FontWeight.bold),
+                    fontWeight: FontsWeight.bold),
               ),
             )
           ],
@@ -86,8 +87,8 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
           padding: const EdgeInsets.fromLTRB(15, 25, 15, 0),
           child: isLoading
               ? Shimmer.fromColors(
-                  baseColor: Colors.grey[300]!,
-                  highlightColor: Colors.grey[100]!,
+                  baseColor: FontsColor.grey300!,
+                  highlightColor: FontsColor.grey100!,
                   child: Column(
                     children: [
                       Container(
@@ -95,7 +96,7 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                         width: MediaQuery.of(context).size.width * 0.24,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Colors.grey[200]),
+                            color: FontsColor.grey200),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.025,
@@ -105,7 +106,7 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                         width: MediaQuery.of(context).size.width * 0.4,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(2),
-                            color: Colors.grey[200]),
+                            color: FontsColor.grey200),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.005,
@@ -115,7 +116,7 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                         width: MediaQuery.of(context).size.width * 0.25,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(2),
-                            color: Colors.grey[200]),
+                            color: FontsColor.grey200),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.025,
@@ -139,7 +140,7 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                                 width: MediaQuery.of(context).size.width * 0.25,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(2),
-                                    color: Colors.grey[200]),
+                                    color: FontsColor.grey200),
                               ),
                               SizedBox(
                                 height:
@@ -151,7 +152,7 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                                 width: MediaQuery.of(context).size.width * 0.4,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(2),
-                                    color: Colors.grey[200]),
+                                    color: FontsColor.grey200),
                               ),
                             ],
                           ),
@@ -167,7 +168,7 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                                 width: MediaQuery.of(context).size.width * 0.35,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(2),
-                                    color: Colors.grey[200]),
+                                    color: FontsColor.grey200),
                               ),
                               SizedBox(
                                 height:
@@ -179,7 +180,7 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                                 width: MediaQuery.of(context).size.width * 0.4,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(2),
-                                    color: Colors.grey[200]),
+                                    color: FontsColor.grey200),
                               ),
                             ],
                           ),
@@ -195,7 +196,7 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                                 width: MediaQuery.of(context).size.width * 0.25,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(2),
-                                    color: Colors.grey[200]),
+                                    color: FontsColor.grey200),
                               ),
                               SizedBox(
                                 height:
@@ -207,7 +208,7 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                                 width: MediaQuery.of(context).size.width * 0.35,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(2),
-                                    color: Colors.grey[200]),
+                                    color: FontsColor.grey200),
                               ),
                             ],
                           ),
@@ -226,7 +227,7 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                                       MediaQuery.of(context).size.width * 0.35,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
-                                      color: Colors.grey[200]),
+                                      color: FontsColor.grey200),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -246,9 +247,9 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                                       Text(
                                         'Call',
                                         style: TextStyle(
-                                            fontFamily: 'Inter',
-                                            fontSize: 13.sp,
-                                            fontWeight: FontWeight.bold),
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f13,
+                                            fontWeight: FontsWeight.bold),
                                       ),
                                     ],
                                   ),
@@ -266,7 +267,7 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                                       MediaQuery.of(context).size.width * 0.35,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
-                                      color: Colors.grey[200]),
+                                      color: FontsColor.grey200),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -284,9 +285,9 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                                       Text(
                                         'Whatsapp',
                                         style: TextStyle(
-                                            fontFamily: 'Inter',
-                                            fontSize: 13.sp,
-                                            fontWeight: FontWeight.bold),
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f13,
+                                            fontWeight: FontsWeight.bold),
                                       ),
                                     ],
                                   ),
@@ -306,7 +307,7 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                         width: MediaQuery.of(context).size.width * 0.24,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Colors.grey[200]),
+                            color: FontsColor.grey200),
                         child: _coverImage != null
                             ? Image.file(
                                 _coverImage!,
@@ -323,16 +324,16 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                     Text(
                       "Company/Industrie Name",
                       style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 15.sp,
-                          fontWeight: FontWeight.bold),
+                          fontFamily: FontsFamily.inter,
+                          fontSize: FontsSize.f15,
+                          fontWeight: FontsWeight.bold),
                     ),
                     Text(
                       "Company Name",
                       style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 14.sp,
-                          color: Colors.grey),
+                          fontFamily: FontsFamily.inter,
+                          fontSize: FontsSize.f14,
+                          color: FontsColor.grey),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.024,
@@ -353,9 +354,9 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                             Text(
                               'Date',
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 13.sp,
-                                  color: Colors.grey),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f13,
+                                  color: FontsColor.grey),
                             ),
                             SizedBox(
                               height:
@@ -364,9 +365,9 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                             Text(
                               formattedDate,
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 13.sp,
-                                  fontWeight: FontWeight.bold),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f13,
+                                  fontWeight: FontsWeight.bold),
                             ),
                           ],
                         ),
@@ -379,9 +380,9 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                             Text(
                               "Member's Need",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 13.sp,
-                                  color: Colors.grey),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f13,
+                                  color: FontsColor.grey),
                             ),
                             SizedBox(
                               height:
@@ -390,10 +391,10 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                             Text(
                               "Your Needed Filed",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 13.sp,
-                                  color: const Color.fromARGB(255, 16, 2, 90),
-                                  fontWeight: FontWeight.bold),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f13,
+                                  color: FontsColor.purple,
+                                  fontWeight: FontsWeight.bold),
                             ),
                           ],
                         ),
@@ -406,9 +407,9 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                             Text(
                               "Description",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 13.sp,
-                                  color: Colors.grey),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f13,
+                                  color: FontsColor.grey),
                             ),
                             SizedBox(
                               height:
@@ -417,9 +418,9 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                             Text(
                               "No Description",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 13.sp,
-                                  fontWeight: FontWeight.bold),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f13,
+                                  fontWeight: FontsWeight.bold),
                             ),
                           ],
                         ),
@@ -437,14 +438,13 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                                 width: MediaQuery.of(context).size.width * 0.35,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(5),
-                                    color: Colors.grey[200]),
+                                    color: FontsColor.grey200),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Icon(
                                       MdiIcons.phoneOutline,
-                                      color:
-                                          const Color.fromARGB(255, 16, 2, 90),
+                                      color: FontsColor.purple,
                                       size: MediaQuery.of(context).size.width *
                                           0.06,
                                     ),
@@ -455,9 +455,9 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                                     Text(
                                       'Call',
                                       style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 13.sp,
-                                          fontWeight: FontWeight.bold),
+                                          fontFamily: FontsFamily.inter,
+                                          fontSize: FontsSize.f13,
+                                          fontWeight: FontsWeight.bold),
                                     ),
                                   ],
                                 ),
@@ -474,7 +474,7 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                                 width: MediaQuery.of(context).size.width * 0.35,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(5),
-                                    color: Colors.grey[200]),
+                                    color: FontsColor.grey200),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -490,9 +490,9 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                                     Text(
                                       'Whatsapp',
                                       style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 13.sp,
-                                          fontWeight: FontWeight.bold),
+                                          fontFamily: FontsFamily.inter,
+                                          fontSize: FontsSize.f13,
+                                          fontWeight: FontsWeight.bold),
                                     ),
                                   ],
                                 ),

@@ -1,7 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:progress_alliance/Routes/route.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:shimmer/shimmer.dart';
 
 class AdService extends StatefulWidget {
@@ -41,10 +42,10 @@ class _AdServiceState extends State<AdService> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           centerTitle: true,
           leading: GestureDetector(
             onTap: () {
@@ -58,16 +59,16 @@ class _AdServiceState extends State<AdService> {
           title: Text(
             "Advertising Services",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
               color: Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -101,8 +102,8 @@ class _AdServiceState extends State<AdService> {
                       },
                       child: _isLoading
                           ? Shimmer.fromColors(
-                              baseColor: Colors.grey[300]!,
-                              highlightColor: Colors.grey[100]!,
+                              baseColor: FontsColor.grey300!,
+                              highlightColor: FontsColor.grey100!,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
                                 child: Stack(
@@ -110,7 +111,7 @@ class _AdServiceState extends State<AdService> {
                                   children: [
                                     Container(
                                       decoration: BoxDecoration(
-                                          color: Colors.grey[200]),
+                                          color: FontsColor.grey200),
                                     ),
                                   ],
                                 ),
@@ -132,7 +133,7 @@ class _AdServiceState extends State<AdService> {
                                         filter: ImageFilter.blur(
                                             sigmaX: 1, sigmaY: 1),
                                         child: Container(
-                                            color: Colors.transparent),
+                                            color: FontsColor.transparent),
                                       ),
                                     ),
                                   ),
@@ -144,10 +145,10 @@ class _AdServiceState extends State<AdService> {
                                         service["name"]!,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 16.sp,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
+                                          fontFamily: FontsFamily.inter,
+                                          fontSize: FontsSize.f16,
+                                          fontWeight: FontsWeight.bold,
+                                          color: FontsColor.white,
                                         ),
                                       ),
                                     ),

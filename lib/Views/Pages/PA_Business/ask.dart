@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'package:progress_alliance/Theme/textStyle.dart';
 
 class AskPage extends StatefulWidget {
   const AskPage({super.key});
@@ -27,18 +28,19 @@ class _AskPageState extends State<AskPage> {
         height: MediaQuery.of(context).size.height * 0.045,
         width: MediaQuery.of(context).size.width * 0.25,
         decoration: BoxDecoration(
-          color: isSelected ? color : Colors.transparent,
+          color: isSelected ? color : FontsColor.transparent,
           border: Border.all(
-              width: 1, color: isSelected ? Colors.transparent : Colors.grey),
+              width: 1,
+              color: isSelected ? FontsColor.transparent : FontsColor.grey),
           borderRadius: BorderRadius.circular(25),
         ),
         child: Center(
           child: Text(
             label,
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 13.sp,
-              color: isSelected ? Colors.white : Colors.black,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f13,
+              color: isSelected ? FontsColor.white : FontsColor.black,
             ),
           ),
         ),
@@ -65,7 +67,7 @@ class _AskPageState extends State<AskPage> {
     ];
 
     showModalBottomSheet(
-      backgroundColor: Colors.white,
+      backgroundColor: FontsColor.white,
       context: context,
       isScrollControlled: true,
       builder: (BuildContext context) {
@@ -93,9 +95,9 @@ class _AskPageState extends State<AskPage> {
                       Text(
                         'Select Business Category',
                         style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.bold),
+                            fontFamily: FontsFamily.inter,
+                            fontSize: FontsSize.f16,
+                            fontWeight: FontsWeight.bold),
                       ),
                     ],
                   ),
@@ -107,20 +109,21 @@ class _AskPageState extends State<AskPage> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: Colors.grey, width: 0.2),
+                      border: Border.all(color: FontsColor.grey, width: 0.2),
                     ),
                     child: TextField(
                       controller: _searchController,
                       decoration: InputDecoration(
                           labelText: 'Search business category...',
-                          labelStyle:
-                              TextStyle(fontSize: 14.sp, fontFamily: 'Inter'),
+                          labelStyle: TextStyle(
+                              fontSize: FontsSize.f14,
+                              fontFamily: FontsFamily.inter),
                           border: InputBorder.none,
                           contentPadding: EdgeInsets.symmetric(horizontal: 10),
                           prefixIcon: Icon(
                             Icons.search,
                             size: MediaQuery.of(context).size.width * 0.06,
-                            color: Colors.orange,
+                            color: FontsColor.orange,
                           )),
                       onChanged: (value) {
                         _searchQuery.value = value;
@@ -149,7 +152,8 @@ class _AskPageState extends State<AskPage> {
                                   title: Text(
                                     filteredCategories[index],
                                     style: TextStyle(
-                                        fontFamily: 'Inter', fontSize: 14.sp),
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14),
                                   ),
                                   onTap: () {
                                     _businessCategoryController.text =
@@ -175,8 +179,8 @@ class _AskPageState extends State<AskPage> {
   }
 
   Divider buildDivider() {
-    return const Divider(
-      color: Colors.grey,
+    return Divider(
+      color: FontsColor.grey,
       thickness: 0.2,
     );
   }
@@ -187,15 +191,15 @@ class _AskPageState extends State<AskPage> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -203,10 +207,10 @@ class _AskPageState extends State<AskPage> {
           title: Text(
             "Add Ask",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
-              color: const Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
+              color: FontsColor.purple,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: GestureDetector(
@@ -227,7 +231,7 @@ class _AskPageState extends State<AskPage> {
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: Colors.grey, width: 0.2),
+                    border: Border.all(color: FontsColor.grey, width: 0.2),
                   ),
                   height: MediaQuery.of(context).size.height * 0.06,
                   width: double.infinity,
@@ -235,15 +239,15 @@ class _AskPageState extends State<AskPage> {
                     decoration: InputDecoration(
                       labelText: 'Search by product and service',
                       labelStyle: TextStyle(
-                        fontSize: 15.sp,
-                        fontFamily: 'Inter',
+                        fontSize: FontsSize.f15,
+                        fontFamily: FontsFamily.inter,
                       ),
                       border: InputBorder.none,
                       contentPadding: EdgeInsets.symmetric(horizontal: 10),
                       prefixIcon: Icon(
                         Icons.search,
                         size: MediaQuery.of(context).size.width * 0.06,
-                        color: Colors.orange,
+                        color: FontsColor.orange,
                       ),
                     ),
                     onChanged: (value) {},
@@ -258,9 +262,9 @@ class _AskPageState extends State<AskPage> {
                     Text(
                       "Business Category",
                       style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 13.sp,
-                          fontWeight: FontWeight.bold),
+                          fontFamily: FontsFamily.inter,
+                          fontSize: FontsSize.f13,
+                          fontWeight: FontsWeight.bold),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.01,
@@ -270,7 +274,7 @@ class _AskPageState extends State<AskPage> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.grey, width: 0.5),
+                        border: Border.all(color: FontsColor.grey, width: 0.5),
                       ),
                       child: InkWell(
                         onTap: () {
@@ -282,21 +286,21 @@ class _AskPageState extends State<AskPage> {
                             decoration: InputDecoration(
                               hintText: 'select category',
                               hintStyle: TextStyle(
-                                fontSize: 13.sp,
-                                fontFamily: 'Inter',
+                                fontSize: FontsSize.f13,
+                                fontFamily: FontsFamily.inter,
                               ),
                               border: InputBorder.none,
                               contentPadding: const EdgeInsets.all(10),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5),
-                                borderSide: const BorderSide(
-                                  color: Colors.black,
+                                borderSide: BorderSide(
+                                  color: FontsColor.black,
                                   width: 1,
                                 ),
                               ),
                               suffixIcon: Icon(
                                 Icons.arrow_forward_ios_rounded,
-                                color: Colors.grey,
+                                color: FontsColor.grey,
                                 size: MediaQuery.of(context).size.width * 0.06,
                               ),
                             ),
@@ -315,9 +319,9 @@ class _AskPageState extends State<AskPage> {
                     Text(
                       "Description",
                       style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 13.sp,
-                          fontWeight: FontWeight.bold),
+                          fontFamily: FontsFamily.inter,
+                          fontSize: FontsSize.f13,
+                          fontWeight: FontsWeight.bold),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.01,
@@ -327,8 +331,8 @@ class _AskPageState extends State<AskPage> {
                       decoration: InputDecoration(
                         hintText: 'Write brief description for your ask....',
                         hintStyle: TextStyle(
-                          fontSize: 13.sp,
-                          fontFamily: 'Inter',
+                          fontSize: FontsSize.f13,
+                          fontFamily: FontsFamily.inter,
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5),
@@ -336,7 +340,7 @@ class _AskPageState extends State<AskPage> {
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5),
                           borderSide: BorderSide(
-                            color: Colors.black,
+                            color: FontsColor.black,
                             width: 1,
                           ),
                         ),
@@ -354,9 +358,9 @@ class _AskPageState extends State<AskPage> {
                   child: Text(
                     "Time Duration",
                     style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 13.sp,
-                        fontWeight: FontWeight.bold),
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f13,
+                        fontWeight: FontsWeight.bold),
                   ),
                 ),
                 SizedBox(
@@ -369,11 +373,11 @@ class _AskPageState extends State<AskPage> {
                     spacing: MediaQuery.of(context).size.width * 0.03,
                     runSpacing: MediaQuery.of(context).size.height * 0.015,
                     children: [
-                      _buildContainer("Inquiry", Colors.green),
+                      _buildContainer("Inquiry", FontsColor.green),
                       _buildContainer("Urgent", Colors.red),
-                      _buildContainer("In 1 Month", Colors.blue),
-                      _buildContainer("In 2 Month", Colors.orange),
-                      _buildContainer("In 3 Month", Colors.yellow),
+                      _buildContainer("In 1 Month", FontsColor.blue),
+                      _buildContainer("In 2 Month", FontsColor.orange),
+                      _buildContainer("In 3 Month", FontsColor.yellow),
                     ],
                   ),
                 ),
@@ -386,16 +390,16 @@ class _AskPageState extends State<AskPage> {
                     height: MediaQuery.of(context).size.height * 0.06,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 16, 2, 90),
+                        color: const Color.fromARGB(255, 16, 2, 90),
                         borderRadius: BorderRadius.circular(10)),
                     child: Center(
                       child: Text(
                         'Submit',
                         style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 15.sp,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
+                            fontFamily: FontsFamily.inter,
+                            fontSize: FontsSize.f15,
+                            color: FontsColor.white,
+                            fontWeight: FontsWeight.bold),
                       ),
                     ),
                   ),

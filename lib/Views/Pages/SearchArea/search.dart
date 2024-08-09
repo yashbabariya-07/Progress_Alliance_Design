@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Pages/SearchArea/location_listTile.dart';
 import 'package:progress_alliance/Views/Pages/SearchArea/models/auto_prediction.dart';
 import 'package:progress_alliance/Views/Pages/SearchArea/models/place_response.dart';
@@ -87,7 +88,7 @@ class _SearchPlaceState extends State<SearchPlace> {
             Divider(
               height: 4,
               thickness: 1,
-              color: Colors.grey,
+              color: FontsColor.grey,
             ),
             Expanded(
               child: ListView.builder(

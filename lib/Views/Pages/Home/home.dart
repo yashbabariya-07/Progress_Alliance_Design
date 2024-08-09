@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 import 'package:progress_alliance/Views/Widgets/homeBottom.dart';
 import 'package:progress_alliance/Routes/route.dart';
@@ -77,11 +78,11 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.grey[100],
+        backgroundColor: FontsColor.grey100,
         drawer: SizedBox(
           width: MediaQuery.of(context).size.width * 0.64,
           child: Drawer(
-            backgroundColor: Colors.white,
+            backgroundColor: FontsColor.white,
             child: Padding(
               padding: const EdgeInsets.only(top: 70),
               child: Column(
@@ -101,15 +102,15 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                           ListTile(
                             leading: Icon(
                               Icons.note_add_outlined,
-                              color: Colors.black,
+                              color: FontsColor.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             title: Text(
                               "Complaint",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f14,
+                                  fontWeight: FontsWeight.bold),
                             ),
                             onTap: () {
                               Navigator.pushNamed(
@@ -119,15 +120,15 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                           ListTile(
                             leading: Icon(
                               MdiIcons.downloadCircleOutline,
-                              color: Colors.black,
+                              color: FontsColor.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             title: Text(
                               "Downloads",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f14,
+                                  fontWeight: FontsWeight.bold),
                             ),
                             onTap: () {
                               Navigator.pushNamed(
@@ -137,15 +138,15 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                           ListTile(
                             leading: Icon(
                               Icons.feedback_outlined,
-                              color: Colors.black,
+                              color: FontsColor.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             title: Text(
                               "Feedback & Review",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f14,
+                                  fontWeight: FontsWeight.bold),
                             ),
                             onTap: () {
                               Navigator.pushNamed(
@@ -155,15 +156,15 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                           ListTile(
                             leading: Icon(
                               Icons.contact_mail,
-                              color: Colors.black,
+                              color: FontsColor.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             title: Text(
                               "Contact Us",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f14,
+                                  fontWeight: FontsWeight.bold),
                             ),
                             onTap: () {
                               Navigator.pushNamed(context, Routes.contactRoute);
@@ -172,30 +173,30 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                           ListTile(
                             leading: Icon(
                               MdiIcons.informationOutline,
-                              color: Colors.black,
+                              color: FontsColor.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             title: Text(
                               "About Us",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f14,
+                                  fontWeight: FontsWeight.bold),
                             ),
                             onTap: () {},
                           ),
                           ListTile(
                             leading: Icon(
                               MdiIcons.helpCircleOutline,
-                              color: Colors.black,
+                              color: FontsColor.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             title: Text(
                               "Help?",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f14,
+                                  fontWeight: FontsWeight.bold),
                             ),
                             onTap: () {},
                           ),
@@ -225,9 +226,9 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                           Text(
                             "LOG OUT",
                             style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 13.sp,
-                                fontWeight: FontWeight.bold,
+                                fontFamily: FontsFamily.inter,
+                                fontSize: FontsSize.f13,
+                                fontWeight: FontsWeight.bold,
                                 color: Colors.red),
                           ),
                         ],
@@ -241,7 +242,7 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
         ),
         appBar: AppBar(
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           automaticallyImplyLeading: false,
           leading: Builder(
             builder: (context) => IconButton(
@@ -250,7 +251,7 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
               },
               icon: Image.asset(
                 "assets/dr.png",
-                color: const Color.fromARGB(255, 16, 2, 90),
+                color: FontsColor.purple,
                 width: MediaQuery.of(context).size.width * 0.07,
               ),
             ),
@@ -260,8 +261,8 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
             children: [
               isLoading
                   ? Shimmer.fromColors(
-                      baseColor: Colors.grey[300]!,
-                      highlightColor: Colors.grey[100]!,
+                      baseColor: FontsColor.grey300!,
+                      highlightColor: FontsColor.grey100!,
                       child: CircleAvatar(
                         radius: MediaQuery.of(context).size.width * 0.045,
                       ),
@@ -286,10 +287,10 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                   "Hii, John Doe",
                   maxLines: 1,
                   style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: 15.sp,
-                    fontWeight: FontWeight.bold,
-                    color: const Color.fromARGB(255, 16, 2, 90),
+                    fontFamily: FontsFamily.inter,
+                    fontSize: FontsSize.f15,
+                    fontWeight: FontsWeight.bold,
+                    color: FontsColor.purple,
                   ),
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -301,7 +302,7 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
               icon: Icon(
                 Icons.search,
                 size: MediaQuery.of(context).size.width * 0.06,
-                color: const Color.fromARGB(255, 16, 2, 90),
+                color: FontsColor.purple,
               ),
               onPressed: () {
                 Navigator.pushNamed(context, Routes.homeSearchRoute);
@@ -311,7 +312,7 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
               icon: Icon(
                 Icons.qr_code,
                 size: MediaQuery.of(context).size.width * 0.06,
-                color: const Color.fromARGB(255, 16, 2, 90),
+                color: FontsColor.purple,
               ),
               onPressed: () {
                 Navigator.pushNamed(context, Routes.qrRoute);
@@ -320,7 +321,7 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
             IconButton(
               icon: Icon(
                 MdiIcons.bellOutline,
-                color: const Color.fromARGB(255, 16, 2, 90),
+                color: FontsColor.purple,
                 size: MediaQuery.of(context).size.width * 0.06,
               ),
               onPressed: () {
@@ -333,8 +334,8 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
           padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
           child: isLoading
               ? Shimmer.fromColors(
-                  baseColor: Colors.grey[300]!,
-                  highlightColor: Colors.grey[100]!,
+                  baseColor: FontsColor.grey300!,
+                  highlightColor: FontsColor.grey100!,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -402,8 +403,8 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                                 shape: BoxShape.circle,
                                 color: (Theme.of(context).brightness ==
                                             Brightness.dark
-                                        ? Colors.white
-                                        : Colors.black)
+                                        ? FontsColor.white
+                                        : FontsColor.black)
                                     .withOpacity(
                                         _current == entry.key ? 0.9 : 0.4),
                               ),
@@ -422,14 +423,14 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                             width: MediaQuery.of(context).size.width * 0.24,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(2),
-                                color: Colors.grey[200]),
+                                color: FontsColor.grey200),
                           ),
                           Container(
                             height: MediaQuery.of(context).size.height * 0.02,
                             width: MediaQuery.of(context).size.width * 0.24,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(2),
-                                color: Colors.grey[200]),
+                                color: FontsColor.grey200),
                           ),
                         ],
                       ),
@@ -458,7 +459,7 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                                       MediaQuery.of(context).size.width * 0.85,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(5),
-                                    color: Colors.white,
+                                    color: FontsColor.white,
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
@@ -471,13 +472,12 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text(
-                                              formattedDate,
-                                              style: TextStyle(
-                                                fontSize: 12.sp,
-                                                fontFamily: 'Inter',
-                                              ),
-                                            ),
+                                            Text(formattedDate,
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        FontsFamily.inter,
+                                                    fontSize: FontsSize.f12,
+                                                    color: FontsColor.black)),
                                             Container(
                                               height: MediaQuery.of(context)
                                                       .size
@@ -490,18 +490,18 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                                               decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(5),
-                                                color: Colors.green,
+                                                color: FontsColor.green,
                                               ),
                                               child: Center(
-                                                child: Text(
-                                                  "Inquiry",
-                                                  style: TextStyle(
-                                                      fontSize: 12.sp,
-                                                      fontFamily: 'Inter',
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
+                                                child: Text("Inquiry",
+                                                    style: TextStyle(
+                                                        fontFamily:
+                                                            FontsFamily.inter,
+                                                        fontSize: FontsSize.f12,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color:
+                                                            FontsColor.white)),
                                               ),
                                             ),
                                           ],
@@ -518,13 +518,14 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                                                       .size
                                                       .width *
                                                   0.055,
-                                              backgroundColor: Colors.black,
+                                              backgroundColor: FontsColor.black,
                                               child: CircleAvatar(
                                                 radius: MediaQuery.of(context)
                                                         .size
                                                         .width *
                                                     0.054,
-                                                backgroundColor: Colors.white,
+                                                backgroundColor:
+                                                    FontsColor.white,
                                                 child: Icon(
                                                   Icons.person,
                                                   size: MediaQuery.of(context)
@@ -543,24 +544,25 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                Text(
-                                                  lead['name'],
-                                                  maxLines: 1,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  style: TextStyle(
-                                                      fontFamily: 'Inter',
-                                                      fontSize: 12.sp,
+                                                Text(lead['name'],
+                                                    maxLines: 1,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: TextStyle(
+                                                      fontFamily:
+                                                          FontsFamily.inter,
+                                                      fontSize: FontsSize.f12,
+                                                      color: FontsColor.black,
                                                       fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                                Text(
-                                                  lead['company'],
-                                                  style: TextStyle(
-                                                      fontFamily: 'Inter',
-                                                      fontSize: 11.sp,
-                                                      color: Colors.grey),
-                                                ),
+                                                          FontWeight.bold,
+                                                    )),
+                                                Text(lead['company'],
+                                                    style: TextStyle(
+                                                        fontFamily:
+                                                            FontsFamily.inter,
+                                                        fontSize: FontsSize.f11,
+                                                        color:
+                                                            FontsColor.grey)),
                                               ],
                                             )
                                           ],
@@ -570,38 +572,37 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                                                     .size
                                                     .height *
                                                 0.012),
-                                        Text(
-                                          lead['domain'],
-                                          style: TextStyle(
-                                              fontSize: 12.sp,
-                                              fontFamily: 'Inter',
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        Text(
-                                          lead['profile'],
-                                          style: TextStyle(
-                                              fontSize: 12.sp,
-                                              fontFamily: 'Inter',
-                                              color: Colors.grey[600]),
-                                        ),
+                                        Text(lead['domain'],
+                                            style: TextStyle(
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f12,
+                                              color: FontsColor.black,
+                                              fontWeight: FontsWeight.bold,
+                                            )),
+                                        Text(lead['profile'],
+                                            style: TextStyle(
+                                                fontFamily: FontsFamily.inter,
+                                                fontSize: FontsSize.f12,
+                                                color: FontsColor.grey600)),
                                         RichText(
                                           text: TextSpan(
                                             children: [
                                               TextSpan(
-                                                text: "Member Needs : ",
-                                                style: TextStyle(
-                                                  fontSize: 12.sp,
-                                                  fontFamily: 'Inter',
-                                                  color: Colors.grey[400],
-                                                ),
-                                              ),
+                                                  text: "Member Needs : ",
+                                                  style: TextStyle(
+                                                      fontFamily:
+                                                          FontsFamily.inter,
+                                                      fontSize: FontsSize.f12,
+                                                      color:
+                                                          FontsColor.grey400)),
                                               TextSpan(
-                                                text: lead['needs'],
-                                                style: TextStyle(
-                                                    fontSize: 12.sp,
-                                                    fontFamily: 'Inter',
-                                                    color: Colors.grey[800]),
-                                              ),
+                                                  text: lead['needs'],
+                                                  style: TextStyle(
+                                                      fontFamily:
+                                                          FontsFamily.inter,
+                                                      fontSize: FontsSize.f12,
+                                                      color:
+                                                          FontsColor.grey800)),
                                             ],
                                           ),
                                         ),
@@ -675,8 +676,8 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                               shape: BoxShape.circle,
                               color: (Theme.of(context).brightness ==
                                           Brightness.dark
-                                      ? Colors.white
-                                      : Colors.black)
+                                      ? FontsColor.white
+                                      : FontsColor.black)
                                   .withOpacity(
                                       _current == entry.key ? 0.9 : 0.4),
                             ),
@@ -693,17 +694,17 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                         Text(
                           "My Leads",
                           style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.bold),
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f14,
+                              fontWeight: FontsWeight.bold),
                         ),
                         Text(
                           "View All",
                           style: TextStyle(
-                              fontFamily: 'Inter',
-                              color: Colors.grey,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14.sp),
+                              fontFamily: FontsFamily.inter,
+                              color: FontsColor.grey,
+                              fontWeight: FontsWeight.bold,
+                              fontSize: FontsSize.f14),
                         ),
                       ],
                     ),
@@ -730,7 +731,7 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                                 width: MediaQuery.of(context).size.width * 0.85,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.white,
+                                  color: FontsColor.white,
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
@@ -743,13 +744,11 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text(
-                                            formattedDate,
-                                            style: TextStyle(
-                                              fontSize: 12.sp,
-                                              fontFamily: 'Inter',
-                                            ),
-                                          ),
+                                          Text(formattedDate,
+                                              style: TextStyle(
+                                                  fontFamily: FontsFamily.inter,
+                                                  fontSize: FontsSize.f12,
+                                                  color: FontsColor.black)),
                                           Container(
                                             height: MediaQuery.of(context)
                                                     .size
@@ -762,18 +761,17 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(5),
-                                              color: Colors.green,
+                                              color: FontsColor.green,
                                             ),
                                             child: Center(
-                                              child: Text(
-                                                "Inquiry",
-                                                style: TextStyle(
-                                                    fontSize: 12.sp,
-                                                    fontFamily: 'Inter',
-                                                    color: Colors.white,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
+                                              child: Text("Inquiry",
+                                                  style: TextStyle(
+                                                      fontFamily:
+                                                          FontsFamily.inter,
+                                                      fontSize: FontsSize.f12,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: FontsColor.white)),
                                             ),
                                           ),
                                         ],
@@ -790,13 +788,13 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                                                     .size
                                                     .width *
                                                 0.055,
-                                            backgroundColor: Colors.black,
+                                            backgroundColor: FontsColor.black,
                                             child: CircleAvatar(
                                               radius: MediaQuery.of(context)
                                                       .size
                                                       .width *
                                                   0.054,
-                                              backgroundColor: Colors.white,
+                                              backgroundColor: FontsColor.white,
                                               child: Icon(
                                                 Icons.person,
                                                 size: MediaQuery.of(context)
@@ -815,22 +813,25 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text(
-                                                lead['name'],
-                                                maxLines: 1,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
-                                                    fontFamily: 'Inter',
-                                                    fontSize: 12.sp,
+                                              Text(lead['name'],
+                                                  maxLines: 1,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: TextStyle(
+                                                    fontFamily:
+                                                        FontsFamily.inter,
+                                                    fontSize: FontsSize.f12,
+                                                    color: FontsColor.black,
                                                     fontWeight:
-                                                        FontWeight.bold),
-                                              ),
+                                                        FontsWeight.bold,
+                                                  )),
                                               Text(
                                                 lead['company'],
                                                 style: TextStyle(
-                                                    fontFamily: 'Inter',
-                                                    fontSize: 11.sp,
-                                                    color: Colors.grey),
+                                                    fontFamily:
+                                                        FontsFamily.inter,
+                                                    fontSize: FontsSize.f11,
+                                                    color: FontsColor.grey),
                                               ),
                                             ],
                                           )
@@ -841,38 +842,35 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                                                   .size
                                                   .height *
                                               0.012),
-                                      Text(
-                                        lead['domain'],
-                                        style: TextStyle(
-                                            fontSize: 12.sp,
-                                            fontFamily: 'Inter',
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        lead['profile'],
-                                        style: TextStyle(
-                                            fontSize: 12.sp,
-                                            fontFamily: 'Inter',
-                                            color: Colors.grey[600]),
-                                      ),
+                                      Text(lead['domain'],
+                                          style: TextStyle(
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f12,
+                                            color: FontsColor.black,
+                                            fontWeight: FontsWeight.bold,
+                                          )),
+                                      Text(lead['profile'],
+                                          style: TextStyle(
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f12,
+                                              color: FontsColor.grey600)),
                                       RichText(
                                         text: TextSpan(
                                           children: [
                                             TextSpan(
-                                              text: "Member Needs : ",
-                                              style: TextStyle(
-                                                fontSize: 12.sp,
-                                                fontFamily: 'Inter',
-                                                color: Colors.grey[400],
-                                              ),
-                                            ),
+                                                text: "Member Needs : ",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        FontsFamily.inter,
+                                                    fontSize: FontsSize.f12,
+                                                    color: FontsColor.grey400)),
                                             TextSpan(
-                                              text: lead['needs'],
-                                              style: TextStyle(
-                                                  fontSize: 12.sp,
-                                                  fontFamily: 'Inter',
-                                                  color: Colors.grey[800]),
-                                            ),
+                                                text: lead['needs'],
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        FontsFamily.inter,
+                                                    fontSize: FontsSize.f12,
+                                                    color: FontsColor.grey800)),
                                           ],
                                         ),
                                       ),

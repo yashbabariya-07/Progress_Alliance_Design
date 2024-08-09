@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:progress_alliance/Routes/route.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 
 class OTPPage extends StatefulWidget {
   const OTPPage({Key? key}) : super(key: key);
@@ -20,9 +21,9 @@ class _OTPPageState extends State<OTPPage> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           leading: IconButton(
             icon: Icon(
               Icons.arrow_back_ios_rounded,
@@ -40,26 +41,26 @@ class _OTPPageState extends State<OTPPage> {
                 Text(
                   "Verify your\nphone number",
                   style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.bold,
+                    fontFamily: FontsFamily.inter,
+                    fontSize: FontsSize.f20,
+                    fontWeight: FontsWeight.bold,
                   ),
                   textAlign: TextAlign.center,
                 ),
                 Text(
                   "A verification code has been sent to",
                   style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 13.sp,
-                      color: Colors.grey[700]),
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f13,
+                      color: FontsColor.grey700),
                   textAlign: TextAlign.center,
                 ),
                 Text(
                   "+918766098574",
                   style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.bold,
+                    fontFamily: FontsFamily.inter,
+                    fontSize: FontsSize.f14,
+                    fontWeight: FontsWeight.bold,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -75,9 +76,9 @@ class _OTPPageState extends State<OTPPage> {
                     borderRadius: BorderRadius.circular(5),
                     fieldHeight: MediaQuery.of(context).size.width * 0.12,
                     fieldWidth: MediaQuery.of(context).size.width * 0.12,
-                    activeColor: Colors.black,
-                    inactiveColor: Colors.grey,
-                    selectedColor: Colors.black,
+                    activeColor: FontsColor.black,
+                    inactiveColor: FontsColor.grey,
+                    selectedColor: FontsColor.black,
                   ),
                   keyboardType: TextInputType.number,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -89,9 +90,9 @@ class _OTPPageState extends State<OTPPage> {
                 Text(
                   "Didn't you receive any code?",
                   style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 12.sp,
-                      color: Colors.grey[700]),
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f12,
+                      color: FontsColor.grey700),
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(
@@ -100,14 +101,13 @@ class _OTPPageState extends State<OTPPage> {
                 Text(
                   "RESEND CODE (07)",
                   style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: 12.sp,
-                    color: Colors.grey[700],
-                    fontWeight: FontWeight.bold,
-                  ),
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f12,
+                      color: FontsColor.grey700,
+                      fontWeight: FontsWeight.bold),
                   textAlign: TextAlign.center,
                 ),
-                Spacer(),
+                const Spacer(),
                 InkWell(
                   onTap: () {
                     Navigator.pushNamed(context, Routes.homeRoute);
@@ -123,10 +123,10 @@ class _OTPPageState extends State<OTPPage> {
                       child: Text(
                         "Verify",
                         style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 15.sp,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
+                            fontFamily: FontsFamily.inter,
+                            fontSize: FontsSize.f15,
+                            color: FontsColor.white,
+                            fontWeight: FontsWeight.bold),
                       ),
                     ),
                   ),

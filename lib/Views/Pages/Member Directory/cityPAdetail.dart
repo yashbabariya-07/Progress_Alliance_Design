@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 
 import 'package:shimmer/shimmer.dart';
@@ -35,15 +36,15 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -51,10 +52,10 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
           title: Text(
             "PA Chapter Name",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
-              color: const Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
+              color: FontsColor.purple,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: GestureDetector(
@@ -89,8 +90,8 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
               ? SizedBox(
                   height: MediaQuery.of(context).size.height,
                   child: Shimmer.fromColors(
-                    baseColor: Colors.grey[300]!,
-                    highlightColor: Colors.grey[100]!,
+                    baseColor: FontsColor.grey300!,
+                    highlightColor: FontsColor.grey100!,
                     child: Column(
                       children: [
                         Padding(
@@ -99,9 +100,9 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
                             height: MediaQuery.of(context).size.height * 0.06,
                             width: double.infinity,
                             decoration: BoxDecoration(
-                              color: Colors.white,
-                              border:
-                                  Border.all(width: 0.2, color: Colors.grey),
+                              color: FontsColor.white,
+                              border: Border.all(
+                                  width: 0.2, color: FontsColor.grey),
                               borderRadius: BorderRadius.circular(5),
                             ),
                           ),
@@ -118,9 +119,9 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
                                       0.087,
                                   width: double.infinity,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: FontsColor.white,
                                     border: Border.all(
-                                        width: 0.2, color: Colors.grey),
+                                        width: 0.2, color: FontsColor.grey),
                                     borderRadius: BorderRadius.circular(5),
                                   ),
                                 ),
@@ -162,14 +163,14 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
                                       margin: const EdgeInsets.only(right: 10),
                                       decoration: BoxDecoration(
                                         color: isSelected
-                                            ? Colors.transparent
-                                            : Colors.grey[200],
+                                            ? FontsColor.transparent
+                                            : FontsColor.grey200,
                                         border: Border.all(
                                           width: isSelected ? 1 : 0,
                                           color: isSelected
                                               ? const Color.fromARGB(
                                                   255, 16, 2, 90)
-                                              : Colors.transparent,
+                                              : FontsColor.transparent,
                                         ),
                                         borderRadius: BorderRadius.circular(25),
                                       ),
@@ -179,12 +180,12 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
                                         child: Text(
                                           option,
                                           style: TextStyle(
-                                            fontFamily: 'Inter',
-                                            fontSize: 13.sp,
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f13,
                                             color: isSelected
                                                 ? const Color.fromARGB(
                                                     255, 16, 2, 90)
-                                                : Colors.grey[500],
+                                                : FontsColor.grey500,
                                           ),
                                         ),
                                       ),
@@ -226,17 +227,17 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        border: Border.all(color: Colors.grey, width: 0.2),
-        color: Colors.grey[200],
+        border: Border.all(color: FontsColor.grey, width: 0.2),
+        color: FontsColor.grey200,
       ),
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: Text(
           title,
           style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 14.sp,
-              fontWeight: FontWeight.bold),
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f14,
+              fontWeight: FontsWeight.bold),
         ),
       ),
     );
@@ -250,7 +251,7 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
-          border: Border.all(color: Colors.grey, width: 0.2),
+          border: Border.all(color: FontsColor.grey, width: 0.2),
         ),
         child: Padding(
           padding: const EdgeInsets.all(10),
@@ -258,7 +259,7 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
             children: [
               CircleAvatar(
                 radius: MediaQuery.of(context).size.width * 0.06,
-                backgroundColor: Colors.green,
+                backgroundColor: FontsColor.green,
                 child: CircleAvatar(
                   radius: MediaQuery.of(context).size.width * 0.058,
                   child: Icon(
@@ -278,19 +279,17 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
                     Text(
                       personName,
                       style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.bold),
+                          fontFamily: FontsFamily.inter,
+                          fontSize: FontsSize.f14,
+                          fontWeight: FontsWeight.bold),
                     ),
-                    Text(
-                      company,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                          fontFamily: 'Inter',
-                          color: Colors.grey,
-                          fontSize: 12.sp),
-                    ),
+                    Text(company,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            fontFamily: FontsFamily.inter,
+                            fontSize: FontsSize.f12,
+                            color: FontsColor.grey)),
                   ],
                 ),
               ),
@@ -308,7 +307,7 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
                   ),
                   Icon(
                     MdiIcons.phoneOutline,
-                    color: Colors.grey[500],
+                    color: FontsColor.grey500,
                     size: MediaQuery.of(context).size.width * 0.06,
                   ),
                   SizedBox(
@@ -316,7 +315,7 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
                   ),
                   Icon(
                     MdiIcons.accountPlusOutline,
-                    color: Colors.grey[500],
+                    color: FontsColor.grey500,
                     size: MediaQuery.of(context).size.width * 0.06,
                   ),
                 ],
@@ -336,7 +335,7 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
-          border: Border.all(color: Colors.grey, width: 0.2),
+          border: Border.all(color: FontsColor.grey, width: 0.2),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -347,8 +346,8 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
                 height: MediaQuery.of(context).size.height * 0.025,
                 width: MediaQuery.of(context).size.width * 0.33,
                 decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  border: Border.all(width: 0.2, color: Colors.transparent),
+                  color: FontsColor.grey200,
+                  border: Border.all(width: 0.2, color: FontsColor.transparent),
                   borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(5),
                       bottomRight: Radius.circular(5)),
@@ -357,10 +356,11 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
                   child: Text(
                     title,
                     style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 10.sp,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.orange),
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f10,
+                      fontWeight: FontsWeight.bold,
+                      color: FontsColor.orange,
+                    ),
                   ),
                 ),
               ),
@@ -371,7 +371,7 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
                 children: [
                   CircleAvatar(
                     radius: MediaQuery.of(context).size.width * 0.06,
-                    backgroundColor: Colors.blue,
+                    backgroundColor: FontsColor.blue,
                     child: CircleAvatar(
                       radius: MediaQuery.of(context).size.width * 0.058,
                       child: Icon(
@@ -391,18 +391,18 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
                         Text(
                           personName,
                           style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.bold),
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f14,
+                              fontWeight: FontsWeight.bold),
                         ),
                         Text(
                           company,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                              fontFamily: 'Inter',
-                              color: Colors.grey,
-                              fontSize: 12.sp),
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f12,
+                              color: FontsColor.grey),
                         ),
                       ],
                     ),
@@ -418,7 +418,7 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
                       ),
                       Icon(
                         MdiIcons.phoneOutline,
-                        color: Colors.grey[500],
+                        color: FontsColor.grey500,
                         size: MediaQuery.of(context).size.width * 0.06,
                       ),
                       SizedBox(
@@ -426,7 +426,7 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
                       ),
                       Icon(
                         MdiIcons.accountPlusOutline,
-                        color: Colors.grey[500],
+                        color: FontsColor.grey500,
                         size: MediaQuery.of(context).size.width * 0.06,
                       ),
                     ],

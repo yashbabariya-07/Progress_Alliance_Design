@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Pages/Profile/profile.dart';
 
 class FamilyDetail extends StatefulWidget {
@@ -21,15 +22,15 @@ class _FamilyDetailState extends State<FamilyDetail> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -37,10 +38,10 @@ class _FamilyDetailState extends State<FamilyDetail> {
           title: Text(
             "Family Details",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
-              color: const Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
+              color: FontsColor.purple,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: GestureDetector(
@@ -76,9 +77,9 @@ class _FamilyDetailState extends State<FamilyDetail> {
               child: Text(
                 "Save",
                 style: TextStyle(
-                  fontFamily: 'Inter',
-                  fontSize: 15.sp,
-                  color: const Color.fromARGB(255, 16, 2, 90),
+                  fontFamily: FontsFamily.inter,
+                  fontSize: FontsSize.f15,
+                  color: FontsColor.purple,
                 ),
               ),
             )
@@ -96,9 +97,9 @@ class _FamilyDetailState extends State<FamilyDetail> {
                     Text(
                       'Spouse Name',
                       style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14.sp,
-                        color: Colors.black,
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f14,
+                        color: FontsColor.black,
                       ),
                     ),
                     SizedBox(
@@ -109,21 +110,21 @@ class _FamilyDetailState extends State<FamilyDetail> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.grey, width: 0.5),
+                        border: Border.all(color: FontsColor.grey, width: 0.5),
                       ),
                       child: TextFormField(
                         controller: _sname,
                         decoration: InputDecoration(
                           hintText: 'Enter your spouse name',
                           hintStyle: TextStyle(
-                            fontSize: 14.sp,
+                            fontSize: FontsSize.f14,
                           ),
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.all(10),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                              color: Colors.black,
+                            borderSide: BorderSide(
+                              color: FontsColor.black,
                               width: 1,
                             ),
                           ),
@@ -141,9 +142,9 @@ class _FamilyDetailState extends State<FamilyDetail> {
                     Text(
                       'Spouse Date of Birth',
                       style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14.sp,
-                        color: Colors.black,
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f14,
+                        color: FontsColor.black,
                       ),
                     ),
                     SizedBox(
@@ -154,7 +155,7 @@ class _FamilyDetailState extends State<FamilyDetail> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.grey, width: 0.5),
+                        border: Border.all(color: FontsColor.grey, width: 0.5),
                       ),
                       child: InkWell(
                         onTap: () async {
@@ -178,14 +179,14 @@ class _FamilyDetailState extends State<FamilyDetail> {
                             decoration: InputDecoration(
                               hintText: 'Spouse Date of Birth',
                               hintStyle: TextStyle(
-                                fontSize: 14.sp,
+                                fontSize: FontsSize.f14,
                               ),
                               border: InputBorder.none,
                               contentPadding: const EdgeInsets.all(10),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5),
-                                borderSide: const BorderSide(
-                                  color: Colors.black,
+                                borderSide: BorderSide(
+                                  color: FontsColor.black,
                                   width: 0.5,
                                 ),
                               ),
@@ -209,9 +210,9 @@ class _FamilyDetailState extends State<FamilyDetail> {
                     Text(
                       "Emergency Person's Name",
                       style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14.sp,
-                        color: Colors.black,
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f14,
+                        color: FontsColor.black,
                       ),
                     ),
                     SizedBox(
@@ -222,21 +223,21 @@ class _FamilyDetailState extends State<FamilyDetail> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.grey, width: 0.5),
+                        border: Border.all(color: FontsColor.grey, width: 0.5),
                       ),
                       child: TextFormField(
                         controller: _ename,
                         decoration: InputDecoration(
                           hintText: 'Enter your emg. person name',
                           hintStyle: TextStyle(
-                            fontSize: 14.sp,
+                            fontSize: FontsSize.f14,
                           ),
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.all(10),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                              color: Colors.black,
+                            borderSide: BorderSide(
+                              color: FontsColor.black,
                               width: 1,
                             ),
                           ),
@@ -254,9 +255,9 @@ class _FamilyDetailState extends State<FamilyDetail> {
                     Text(
                       "Emergency Person's Number",
                       style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14.sp,
-                        color: Colors.black,
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f14,
+                        color: FontsColor.black,
                       ),
                     ),
                     SizedBox(
@@ -267,21 +268,21 @@ class _FamilyDetailState extends State<FamilyDetail> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.grey, width: 0.5),
+                        border: Border.all(color: FontsColor.grey, width: 0.5),
                       ),
                       child: TextFormField(
                         controller: _enumber,
                         decoration: InputDecoration(
                           hintText: 'Enter your emg. person number',
                           hintStyle: TextStyle(
-                            fontSize: 14.sp,
+                            fontSize: FontsSize.f14,
                           ),
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.all(10),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                              color: Colors.black,
+                            borderSide: BorderSide(
+                              color: FontsColor.black,
                               width: 1,
                             ),
                           ),

@@ -1,8 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:image_picker/image_picker.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 
 class FeedbackPage extends StatefulWidget {
   const FeedbackPage({super.key});
@@ -40,10 +41,10 @@ class _FeedbackPageState extends State<FeedbackPage> {
         height: MediaQuery.of(context).size.height * 0.045,
         width: width,
         decoration: BoxDecoration(
-          color: isSelected ? Color.fromARGB(255, 16, 2, 90) : Colors.grey[300],
+          color: isSelected ? FontsColor.purple : FontsColor.grey300,
           border: Border.all(
             width: 1,
-            color: isSelected ? Colors.transparent : Colors.transparent,
+            color: isSelected ? FontsColor.transparent : FontsColor.transparent,
           ),
           borderRadius: BorderRadius.circular(25),
         ),
@@ -52,10 +53,10 @@ class _FeedbackPageState extends State<FeedbackPage> {
             text,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 12.sp,
-              fontWeight: FontWeight.bold,
-              color: isSelected ? Colors.white : Colors.grey[700],
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f12,
+              fontWeight: FontsWeight.bold,
+              color: isSelected ? FontsColor.white : FontsColor.grey700,
             ),
           ),
         ),
@@ -69,15 +70,15 @@ class _FeedbackPageState extends State<FeedbackPage> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -85,10 +86,10 @@ class _FeedbackPageState extends State<FeedbackPage> {
           title: Text(
             "Feedback & Review",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
               color: Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: GestureDetector(
@@ -110,10 +111,10 @@ class _FeedbackPageState extends State<FeedbackPage> {
                 Text(
                   "Tell us what can be improved?",
                   style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: 15.sp,
+                    fontFamily: FontsFamily.inter,
+                    fontSize: FontsSize.f15,
                     color: Color.fromARGB(255, 16, 2, 90),
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontsWeight.bold,
                   ),
                 ),
                 SizedBox(
@@ -165,10 +166,10 @@ class _FeedbackPageState extends State<FeedbackPage> {
                 Text(
                   "Rate Your Experience",
                   style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: 14.sp,
-                    color: const Color.fromARGB(255, 16, 2, 90),
-                    fontWeight: FontWeight.bold,
+                    fontFamily: FontsFamily.inter,
+                    fontSize: FontsSize.f14,
+                    color: FontsColor.purple,
+                    fontWeight: FontsWeight.bold,
                   ),
                 ),
                 SizedBox(
@@ -177,9 +178,9 @@ class _FeedbackPageState extends State<FeedbackPage> {
                 Text(
                   "Are you satisfied with service?",
                   style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 12.sp,
-                      color: Colors.grey[700]),
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f12,
+                      color: FontsColor.grey700),
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
@@ -189,7 +190,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
                   initialRating: 0,
                   direction: Axis.horizontal,
                   allowHalfRating: true,
-                  unratedColor: Colors.grey,
+                  unratedColor: FontsColor.grey,
                   itemCount: 5,
                   itemSize: 27,
                   itemPadding: EdgeInsets.symmetric(horizontal: 3),
@@ -207,9 +208,9 @@ class _FeedbackPageState extends State<FeedbackPage> {
                     Text(
                       "Description",
                       style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 13.sp,
-                          fontWeight: FontWeight.bold),
+                          fontFamily: FontsFamily.inter,
+                          fontSize: FontsSize.f13,
+                          fontWeight: FontsWeight.bold),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.015,
@@ -218,7 +219,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.grey, width: 0.5),
+                        border: Border.all(color: FontsColor.grey, width: 0.5),
                       ),
                       child: TextFormField(
                         controller: _description,
@@ -226,15 +227,15 @@ class _FeedbackPageState extends State<FeedbackPage> {
                         decoration: InputDecoration(
                           hintText: 'Tell us how we can improve...',
                           hintStyle: TextStyle(
-                            fontSize: 13.sp,
-                            fontFamily: 'Inter',
+                            fontSize: FontsSize.f13,
+                            fontFamily: FontsFamily.inter,
                           ),
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.all(10),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                              color: Colors.black,
+                            borderSide: BorderSide(
+                              color: FontsColor.black,
                               width: 1,
                             ),
                           ),
@@ -253,7 +254,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
                             scale: MediaQuery.of(context).size.height * 0.0014,
                             child: Theme(
                               data: ThemeData(
-                                  unselectedWidgetColor: Colors.white),
+                                  unselectedWidgetColor: FontsColor.white),
                               child: Checkbox(
                                 value: isValue,
                                 onChanged: (value) {
@@ -271,9 +272,9 @@ class _FeedbackPageState extends State<FeedbackPage> {
                         Text(
                           "Don't show my identity?",
                           style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 13.sp,
-                              fontWeight: FontWeight.bold),
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f13,
+                              fontWeight: FontsWeight.bold),
                         ),
                       ],
                     ),
@@ -286,9 +287,9 @@ class _FeedbackPageState extends State<FeedbackPage> {
                         Text(
                           "Attach Images (Optional)",
                           style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 13.sp,
-                              fontWeight: FontWeight.bold),
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f13,
+                              fontWeight: FontsWeight.bold),
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.012,
@@ -300,7 +301,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
                             width: MediaQuery.of(context).size.height * 0.15,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: Colors.grey[300],
+                              color: FontsColor.grey300,
                             ),
                             child: _coverImage != null
                                 ? Image.file(
@@ -316,8 +317,8 @@ class _FeedbackPageState extends State<FeedbackPage> {
                                         Text(
                                           "Add Image",
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp),
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f13),
                                         ),
                                       ],
                                     ),
@@ -342,9 +343,9 @@ class _FeedbackPageState extends State<FeedbackPage> {
                           child: Text(
                             'Submit',
                             style: TextStyle(
-                              fontFamily: 'Inter',
-                              color: Colors.white,
-                              fontSize: 20.sp,
+                              fontFamily: FontsFamily.inter,
+                              color: FontsColor.white,
+                              fontSize: FontsSize.f20,
                             ),
                           ),
                         ),

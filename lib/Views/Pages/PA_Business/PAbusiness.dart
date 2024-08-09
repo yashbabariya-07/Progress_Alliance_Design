@@ -1,7 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Widgets/homeBottom.dart';
 import 'package:progress_alliance/Routes/route.dart';
 
@@ -78,10 +79,10 @@ class _PabusinessState extends State<Pabusiness> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           centerTitle: true,
           leading: Builder(
             builder: (context) => IconButton(
@@ -90,7 +91,7 @@ class _PabusinessState extends State<Pabusiness> {
               },
               icon: Image.asset(
                 "assets/dr.png",
-                color: const Color.fromARGB(255, 16, 2, 90),
+                color: FontsColor.purple,
                 width: MediaQuery.of(context).size.width * 0.07,
               ),
             ),
@@ -99,16 +100,16 @@ class _PabusinessState extends State<Pabusiness> {
           title: Text(
             "PA Business",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
-              color: const Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
+              color: FontsColor.purple,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -117,7 +118,7 @@ class _PabusinessState extends State<Pabusiness> {
                 onPressed: () {},
                 icon: Icon(
                   Icons.search,
-                  color: const Color.fromARGB(255, 16, 2, 90),
+                  color: FontsColor.purple,
                   size: MediaQuery.of(context).size.width * 0.06,
                 ))
           ],
@@ -125,7 +126,7 @@ class _PabusinessState extends State<Pabusiness> {
         drawer: SizedBox(
           width: MediaQuery.of(context).size.width * 0.64,
           child: Drawer(
-            backgroundColor: Colors.white,
+            backgroundColor: FontsColor.white,
             child: Padding(
               padding: const EdgeInsets.only(top: 70),
               child: Column(
@@ -145,15 +146,15 @@ class _PabusinessState extends State<Pabusiness> {
                           ListTile(
                             leading: Icon(
                               Icons.note_add_outlined,
-                              color: Colors.black,
+                              color: FontsColor.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             title: Text(
                               "Complaint",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f14,
+                                  fontWeight: FontsWeight.bold),
                             ),
                             onTap: () {
                               Navigator.pushNamed(
@@ -163,15 +164,15 @@ class _PabusinessState extends State<Pabusiness> {
                           ListTile(
                             leading: Icon(
                               MdiIcons.downloadCircleOutline,
-                              color: Colors.black,
+                              color: FontsColor.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             title: Text(
                               "Downloads",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f14,
+                                  fontWeight: FontsWeight.bold),
                             ),
                             onTap: () {
                               Navigator.pushNamed(
@@ -181,15 +182,15 @@ class _PabusinessState extends State<Pabusiness> {
                           ListTile(
                             leading: Icon(
                               Icons.feedback_outlined,
-                              color: Colors.black,
+                              color: FontsColor.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             title: Text(
                               "Feedback & Review",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f14,
+                                  fontWeight: FontsWeight.bold),
                             ),
                             onTap: () {
                               Navigator.pushNamed(
@@ -199,15 +200,15 @@ class _PabusinessState extends State<Pabusiness> {
                           ListTile(
                             leading: Icon(
                               Icons.contact_mail,
-                              color: Colors.black,
+                              color: FontsColor.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             title: Text(
                               "Contact Us",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f14,
+                                  fontWeight: FontsWeight.bold),
                             ),
                             onTap: () {
                               Navigator.pushNamed(context, Routes.contactRoute);
@@ -216,30 +217,30 @@ class _PabusinessState extends State<Pabusiness> {
                           ListTile(
                             leading: Icon(
                               MdiIcons.informationOutline,
-                              color: Colors.black,
+                              color: FontsColor.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             title: Text(
                               "About Us",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f14,
+                                  fontWeight: FontsWeight.bold),
                             ),
                             onTap: () {},
                           ),
                           ListTile(
                             leading: Icon(
                               MdiIcons.helpCircleOutline,
-                              color: Colors.black,
+                              color: FontsColor.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             title: Text(
                               "Help?",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f14,
+                                  fontWeight: FontsWeight.bold),
                             ),
                             onTap: () {},
                           ),
@@ -269,9 +270,9 @@ class _PabusinessState extends State<Pabusiness> {
                           Text(
                             "LOG OUT",
                             style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 13.sp,
-                                fontWeight: FontWeight.bold,
+                                fontFamily: FontsFamily.inter,
+                                fontSize: FontsSize.f13,
+                                fontWeight: FontsWeight.bold,
                                 color: Colors.red),
                           ),
                         ],
@@ -295,10 +296,10 @@ class _PabusinessState extends State<Pabusiness> {
                     Text(
                       "Business Category",
                       style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 15.sp,
+                          fontFamily: FontsFamily.inter,
+                          fontSize: FontsSize.f15,
                           color: Color.fromARGB(255, 16, 2, 90),
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontsWeight.bold),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -307,9 +308,9 @@ class _PabusinessState extends State<Pabusiness> {
                       child: Text(
                         "View All",
                         style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 13.sp,
-                            color: Colors.grey),
+                            fontFamily: FontsFamily.inter,
+                            fontSize: FontsSize.f13,
+                            color: FontsColor.grey),
                       ),
                     ),
                   ],
@@ -335,7 +336,8 @@ class _PabusinessState extends State<Pabusiness> {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          border: Border.all(width: 0.2, color: Colors.grey),
+                          border:
+                              Border.all(width: 0.2, color: FontsColor.grey),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Row(
@@ -369,19 +371,19 @@ class _PabusinessState extends State<Pabusiness> {
                                       maxLines: 2,
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.bold),
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f12,
+                                        color: FontsColor.black,
+                                        fontWeight: FontsWeight.bold,
+                                      ),
                                     ),
-                                    Text(
-                                      item["subtitle"]!,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 12.sp,
-                                          color: Colors.grey),
-                                    ),
+                                    Text(item["subtitle"]!,
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f12,
+                                            color: FontsColor.grey)),
                                   ],
                                 ),
                               ),
@@ -398,10 +400,10 @@ class _PabusinessState extends State<Pabusiness> {
                 Text(
                   "Find Industries",
                   style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: 15.sp,
+                    fontFamily: FontsFamily.inter,
+                    fontSize: FontsSize.f15,
                     color: Color.fromARGB(255, 16, 2, 90),
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontsWeight.bold,
                   ),
                 ),
                 SizedBox(
@@ -436,7 +438,8 @@ class _PabusinessState extends State<Pabusiness> {
                                   child: BackdropFilter(
                                     filter:
                                         ImageFilter.blur(sigmaX: 1, sigmaY: 1),
-                                    child: Container(color: Colors.transparent),
+                                    child: Container(
+                                        color: FontsColor.transparent),
                                   ),
                                 ),
                               ),
@@ -453,10 +456,10 @@ class _PabusinessState extends State<Pabusiness> {
                                     child: Text(
                                       industry["name"]!,
                                       style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
+                                        color: FontsColor.white,
+                                        fontWeight: FontsWeight.bold,
                                       ),
                                       textAlign: TextAlign.center,
                                     ),
@@ -478,7 +481,7 @@ class _PabusinessState extends State<Pabusiness> {
           height: MediaQuery.of(context).size.height * 0.05,
           width: MediaQuery.of(context).size.width * 0.3,
           decoration: BoxDecoration(
-            border: Border.all(width: 1, color: Colors.transparent),
+            border: Border.all(width: 1, color: FontsColor.transparent),
             borderRadius: BorderRadius.circular(25),
           ),
           child: FloatingActionButton(
@@ -489,9 +492,9 @@ class _PabusinessState extends State<Pabusiness> {
             child: Text(
               "+ Add Ask",
               style: TextStyle(
-                fontFamily: 'Inter',
-                fontSize: 13.sp,
-                color: Colors.white,
+                fontFamily: FontsFamily.inter,
+                fontSize: FontsSize.f13,
+                color: FontsColor.white,
               ),
               textAlign: TextAlign.center,
             ),

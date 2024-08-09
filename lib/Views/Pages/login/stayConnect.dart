@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:progress_alliance/Routes/route.dart';
+import 'package:progress_alliance/Views/Components/countryCode.dart';
 
 class Connected extends StatefulWidget {
   const Connected({super.key});
@@ -43,146 +44,6 @@ class _ConnectedState extends State<Connected> {
     super.dispose();
   }
 
-  void _showCountryCode(BuildContext context) {
-    final List<Map<String, String>> countries = [
-      {'name': 'Canada', 'code': '+1', 'flag': '🇨🇦'},
-      {'name': 'United States', 'code': '+1', 'flag': '🇺🇸'},
-      {'name': 'India', 'code': '+91', 'flag': '🇮🇳'},
-    ];
-
-    showModalBottomSheet(
-      backgroundColor: Colors.white,
-      context: context,
-      isScrollControlled: true,
-      builder: (BuildContext context) {
-        return Scaffold(
-          body: Padding(
-            padding: const EdgeInsets.fromLTRB(10, 40, 10, 10),
-            child: SizedBox(
-              width: double.infinity,
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Icon(
-                          Icons.arrow_back_ios_rounded,
-                          size: MediaQuery.of(context).size.width * 0.06,
-                        ),
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.22,
-                      ),
-                      Text(
-                        'Select a Country',
-                        style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.01,
-                  ),
-                  const Divider(
-                    thickness: 0.2,
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.008,
-                  ),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.06,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: Colors.grey, width: 0.2),
-                    ),
-                    child: TextField(
-                      controller: _searchController,
-                      decoration: InputDecoration(
-                          labelText:
-                              'Search by country name, code and short...',
-                          labelStyle:
-                              TextStyle(fontSize: 14.sp, fontFamily: 'Inter'),
-                          border: InputBorder.none,
-                          contentPadding: const EdgeInsets.all(10),
-                          prefixIcon: Icon(
-                            Icons.search,
-                            size: MediaQuery.of(context).size.width * 0.06,
-                            color: Colors.orange,
-                          )),
-                      onChanged: (value) {
-                        _searchQuery.value = value;
-                      },
-                    ),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.015,
-                  ),
-                  Expanded(
-                    child: ValueListenableBuilder<String>(
-                      valueListenable: _searchQuery,
-                      builder: (context, value, child) {
-                        final filteredCountries = countries.where((country) {
-                          final countryName = country['name']!.toLowerCase();
-                          final countryCode = country['code']!.toLowerCase();
-                          final searchValue = value.toLowerCase();
-                          return countryName.contains(searchValue) ||
-                              countryCode.contains(searchValue);
-                        }).toList();
-                        return ListView.builder(
-                          itemCount: filteredCountries.length,
-                          itemBuilder: (context, index) {
-                            return ListTile(
-                              leading: Text(
-                                filteredCountries[index]['flag']!,
-                                style: TextStyle(
-                                  fontSize: 24.sp,
-                                  fontFamily: 'Inter',
-                                ),
-                              ),
-                              title: Text(
-                                filteredCountries[index]['name']!,
-                                style: TextStyle(
-                                    fontSize: 14.sp,
-                                    fontFamily: 'Inter',
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              trailing: Text(
-                                filteredCountries[index]['code']!,
-                                style: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontFamily: 'Inter',
-                                ),
-                              ),
-                              onTap: () {
-                                setState(() {
-                                  _selectedCountryCode =
-                                      filteredCountries[index]['code']!;
-                                  _selectedCountryFlag =
-                                      filteredCountries[index]['flag']!;
-                                });
-                                Navigator.pop(context);
-                              },
-                            );
-                          },
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
@@ -190,9 +51,9 @@ class _ConnectedState extends State<Connected> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           leading: GestureDetector(
@@ -216,19 +77,19 @@ class _ConnectedState extends State<Connected> {
                     Text(
                       "Stay Connected with US",
                       style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 16.sp,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f16,
+                        color: FontsColor.black,
+                        fontWeight: FontsWeight.bold,
                       ),
                     ),
                     Text(
                       "Enhance your experience with some insights about you",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14.sp,
-                        color: Colors.grey,
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f14,
+                        color: FontsColor.grey,
                       ),
                     ),
                   ],
@@ -245,10 +106,10 @@ class _ConnectedState extends State<Connected> {
                           Text(
                             "First Name",
                             style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 15.sp,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold),
+                                fontFamily: FontsFamily.inter,
+                                fontSize: FontsSize.f15,
+                                color: FontsColor.black,
+                                fontWeight: FontsWeight.bold),
                           ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.01,
@@ -258,8 +119,8 @@ class _ConnectedState extends State<Connected> {
                             width: double.infinity,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              border:
-                                  Border.all(color: Colors.grey, width: 0.5),
+                              border: Border.all(
+                                  color: FontsColor.grey, width: 0.5),
                             ),
                             child: TextFormField(
                               controller: _fname,
@@ -268,13 +129,13 @@ class _ConnectedState extends State<Connected> {
                                 contentPadding: const EdgeInsets.all(10),
                                 hintText: "Enter your first name",
                                 hintStyle: TextStyle(
-                                  fontSize: 13.sp,
-                                  fontFamily: 'Inter',
+                                  fontSize: FontsSize.f13,
+                                  fontFamily: FontsFamily.inter,
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5),
-                                  borderSide: const BorderSide(
-                                    color: Colors.black,
+                                  borderSide: BorderSide(
+                                    color: FontsColor.black,
                                     width: 1,
                                   ),
                                 ),
@@ -294,10 +155,10 @@ class _ConnectedState extends State<Connected> {
                           Text(
                             'Last Name',
                             style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 15.sp,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold),
+                                fontFamily: FontsFamily.inter,
+                                fontSize: FontsSize.f15,
+                                color: FontsColor.black,
+                                fontWeight: FontsWeight.bold),
                           ),
                           SizedBox(
                               height:
@@ -307,23 +168,23 @@ class _ConnectedState extends State<Connected> {
                             width: double.infinity,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              border:
-                                  Border.all(color: Colors.grey, width: 0.5),
+                              border: Border.all(
+                                  color: FontsColor.grey, width: 0.5),
                             ),
                             child: TextFormField(
                               controller: _lname,
                               decoration: InputDecoration(
                                 hintText: 'Enter your last name',
                                 hintStyle: TextStyle(
-                                  fontSize: 13.sp,
-                                  fontFamily: 'Inter',
+                                  fontSize: FontsSize.f13,
+                                  fontFamily: FontsFamily.inter,
                                 ),
                                 border: InputBorder.none,
                                 contentPadding: const EdgeInsets.all(10),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5),
-                                  borderSide: const BorderSide(
-                                    color: Colors.black,
+                                  borderSide: BorderSide(
+                                    color: FontsColor.black,
                                     width: 1,
                                   ),
                                 ),
@@ -339,10 +200,10 @@ class _ConnectedState extends State<Connected> {
                 Text(
                   'Mobile Number',
                   style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 15.sp,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold),
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f15,
+                      color: FontsColor.black,
+                      fontWeight: FontsWeight.bold),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                 Container(
@@ -351,27 +212,39 @@ class _ConnectedState extends State<Connected> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                     border: Border.all(
-                        color: isInput ? Colors.black : Colors.grey,
+                        color: isInput ? FontsColor.black : FontsColor.grey,
                         width: 0.5),
                   ),
                   child: Row(
                     children: [
                       GestureDetector(
-                        onTap: () => _showCountryCode(context),
+                        onTap: () {
+                          CountryCode.showCountryCode(
+                            context: context,
+                            searchController: _searchController,
+                            searchQuery: _searchQuery,
+                            onCountrySelected: (code, flag) {
+                              setState(() {
+                                _selectedCountryCode = code;
+                                _selectedCountryFlag = flag;
+                              });
+                            },
+                          );
+                        },
                         child: Container(
                           padding: const EdgeInsets.all(10),
                           child: Row(
                             children: [
                               Text(
                                 _selectedCountryFlag,
-                                style: TextStyle(fontSize: 18.sp),
+                                style: TextStyle(fontSize: FontsSize.f18),
                               ),
                               const SizedBox(width: 5),
                               Text(
                                 _selectedCountryCode,
                                 style: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontFamily: 'Inter',
+                                  fontSize: FontsSize.f14,
+                                  fontFamily: FontsFamily.inter,
                                 ),
                               ),
                               const SizedBox(width: 5),
@@ -388,7 +261,7 @@ class _ConnectedState extends State<Connected> {
                             vertical: BorderSide.strokeAlignCenter),
                         child: VerticalDivider(
                           width: 0.2,
-                          color: Colors.grey,
+                          color: FontsColor.grey,
                         ),
                       ),
                       Expanded(
@@ -400,8 +273,8 @@ class _ConnectedState extends State<Connected> {
                                 horizontal: 10, vertical: 14),
                             hintText: "Enter your mobile number",
                             hintStyle: TextStyle(
-                              fontSize: 14.sp,
-                              fontFamily: 'Inter',
+                              fontSize: FontsSize.f14,
+                              fontFamily: FontsFamily.inter,
                             ),
                           ),
                           keyboardType: TextInputType.phone,
@@ -414,10 +287,10 @@ class _ConnectedState extends State<Connected> {
                 Text(
                   "Company Name",
                   style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 15.sp,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold),
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f15,
+                      color: FontsColor.black,
+                      fontWeight: FontsWeight.bold),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                 Container(
@@ -425,22 +298,22 @@ class _ConnectedState extends State<Connected> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: Colors.grey, width: 0.5),
+                    border: Border.all(color: FontsColor.grey, width: 0.5),
                   ),
                   child: TextFormField(
                     controller: _companyname,
                     decoration: InputDecoration(
                       hintText: 'Enter your company name',
                       hintStyle: TextStyle(
-                        fontSize: 13.sp,
-                        fontFamily: 'Inter',
+                        fontSize: FontsSize.f13,
+                        fontFamily: FontsFamily.inter,
                       ),
                       border: InputBorder.none,
                       contentPadding: const EdgeInsets.all(10),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5),
-                        borderSide: const BorderSide(
-                          color: Colors.black,
+                        borderSide: BorderSide(
+                          color: FontsColor.black,
                           width: 1,
                         ),
                       ),
@@ -451,10 +324,10 @@ class _ConnectedState extends State<Connected> {
                 Text(
                   "Gender",
                   style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 15.sp,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold),
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f15,
+                      color: FontsColor.black,
+                      fontWeight: FontsWeight.bold),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                 Row(
@@ -471,8 +344,8 @@ class _ConnectedState extends State<Connected> {
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: _selectedGender == 'Male'
-                                ? Colors.black
-                                : Colors.grey,
+                                ? FontsColor.black
+                                : FontsColor.grey,
                             width: _selectedGender == 'Male' ? 1 : 0.5,
                           ),
                           borderRadius: BorderRadius.circular(25.sp),
@@ -493,11 +366,11 @@ class _ConnectedState extends State<Connected> {
                             Text(
                               'Male',
                               style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 15.sp,
+                                fontFamily: FontsFamily.inter,
+                                fontSize: FontsSize.f15,
                                 color: _selectedGender == 'Male'
-                                    ? Colors.black
-                                    : Colors.black54,
+                                    ? FontsColor.black
+                                    : FontsColor.black54,
                               ),
                             ),
                           ],
@@ -519,8 +392,8 @@ class _ConnectedState extends State<Connected> {
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: _selectedGender == 'Female'
-                                ? Colors.black
-                                : Colors.grey,
+                                ? FontsColor.black
+                                : FontsColor.grey,
                             width: _selectedGender == 'Female' ? 1 : 0.5,
                           ),
                           borderRadius: BorderRadius.circular(25.sp),
@@ -541,11 +414,11 @@ class _ConnectedState extends State<Connected> {
                             Text(
                               'Female',
                               style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 15.sp,
+                                fontFamily: FontsFamily.inter,
+                                fontSize: FontsSize.f15,
                                 color: _selectedGender == 'Female'
-                                    ? Colors.black
-                                    : Colors.black54,
+                                    ? FontsColor.black
+                                    : FontsColor.black54,
                               ),
                             ),
                           ],
@@ -558,10 +431,10 @@ class _ConnectedState extends State<Connected> {
                 Text(
                   'City',
                   style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 15.sp,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold),
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f15,
+                      color: FontsColor.black,
+                      fontWeight: FontsWeight.bold),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                 Container(
@@ -569,7 +442,7 @@ class _ConnectedState extends State<Connected> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: Colors.grey, width: 0.5),
+                    border: Border.all(color: FontsColor.grey, width: 0.5),
                   ),
                   child: InkWell(
                     onTap: () {},
@@ -579,15 +452,15 @@ class _ConnectedState extends State<Connected> {
                         decoration: InputDecoration(
                           hintText: 'Select city',
                           hintStyle: TextStyle(
-                            fontSize: 13.sp,
-                            fontFamily: 'Inter',
+                            fontSize: FontsSize.f13,
+                            fontFamily: FontsFamily.inter,
                           ),
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.all(10),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                              color: Colors.black,
+                            borderSide: BorderSide(
+                              color: FontsColor.black,
                               width: 1,
                             ),
                           ),
@@ -604,10 +477,10 @@ class _ConnectedState extends State<Connected> {
                 Text(
                   'How did you get inspired to join?',
                   style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 15.sp,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold),
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f15,
+                      color: FontsColor.black,
+                      fontWeight: FontsWeight.bold),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                 Container(
@@ -615,7 +488,7 @@ class _ConnectedState extends State<Connected> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: Colors.grey, width: 0.5),
+                    border: Border.all(color: FontsColor.grey, width: 0.5),
                   ),
                   child: InkWell(
                     onTap: () {},
@@ -625,15 +498,15 @@ class _ConnectedState extends State<Connected> {
                         decoration: InputDecoration(
                           hintText: 'Select from here',
                           hintStyle: TextStyle(
-                            fontSize: 13.sp,
-                            fontFamily: 'Inter',
+                            fontSize: FontsSize.f13,
+                            fontFamily: FontsFamily.inter,
                           ),
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.all(10),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                              color: Colors.black,
+                            borderSide: BorderSide(
+                              color: FontsColor.black,
                               width: 1,
                             ),
                           ),
@@ -656,16 +529,16 @@ class _ConnectedState extends State<Connected> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      color: const Color.fromARGB(255, 16, 2, 90),
+                      color: FontsColor.purple,
                     ),
                     child: Center(
                       child: Text(
                         "Submit",
                         style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 15.sp,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                          fontFamily: FontsFamily.inter,
+                          fontSize: FontsSize.f15,
+                          color: FontsColor.white,
+                          fontWeight: FontsWeight.bold,
                         ),
                       ),
                     ),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:intl/intl.dart';
 import 'package:progress_alliance/Routes/route.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 
 class NotificationDetail extends StatefulWidget {
   const NotificationDetail({super.key});
@@ -20,14 +21,14 @@ class _NotificationDetailState extends State<NotificationDetail> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -35,10 +36,10 @@ class _NotificationDetailState extends State<NotificationDetail> {
           title: Text(
             "Notification Details",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
               color: Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: GestureDetector(
@@ -63,7 +64,7 @@ class _NotificationDetailState extends State<NotificationDetail> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey[200]),
+                        color: FontsColor.grey200),
                     child: Icon(
                       Icons.photo,
                       size: MediaQuery.of(context).size.width * 0.2,
@@ -84,7 +85,9 @@ class _NotificationDetailState extends State<NotificationDetail> {
               Text(
                 formattedDate,
                 style: TextStyle(
-                    fontFamily: 'Inter', color: Colors.grey, fontSize: 13.sp),
+                    fontFamily: FontsFamily.inter,
+                    color: FontsColor.grey,
+                    fontSize: FontsSize.f13),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.012,
@@ -92,9 +95,9 @@ class _NotificationDetailState extends State<NotificationDetail> {
               Text(
                 'You Have New Lead',
                 style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: 15.sp,
-                    fontWeight: FontWeight.bold),
+                    fontFamily: FontsFamily.inter,
+                    fontSize: FontsSize.f15,
+                    fontWeight: FontsWeight.bold),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.006,
@@ -104,9 +107,9 @@ class _NotificationDetailState extends State<NotificationDetail> {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: 14.sp,
-                    color: Colors.grey[900]),
+                    fontFamily: FontsFamily.inter,
+                    fontSize: FontsSize.f14,
+                    color: FontsColor.grey900),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.05,
@@ -119,16 +122,16 @@ class _NotificationDetailState extends State<NotificationDetail> {
                   height: MediaQuery.of(context).size.height * 0.06,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 16, 2, 90),
+                      color: const Color.fromARGB(255, 16, 2, 90),
                       borderRadius: BorderRadius.circular(10)),
                   child: Center(
                     child: Text(
                       'Go To Page',
                       style: TextStyle(
-                          fontFamily: 'Inter',
-                          color: Colors.white,
-                          fontSize: 15.sp,
-                          fontWeight: FontWeight.bold),
+                          fontFamily: FontsFamily.inter,
+                          color: FontsColor.white,
+                          fontSize: FontsSize.f15,
+                          fontWeight: FontsWeight.bold),
                     ),
                   ),
                 ),

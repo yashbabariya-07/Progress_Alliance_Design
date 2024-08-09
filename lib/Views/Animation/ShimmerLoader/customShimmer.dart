@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ShimmerCustom extends StatefulWidget {
@@ -22,8 +23,8 @@ class _ShimmerCustomState extends State<ShimmerCustom>
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-        baseColor: Colors.grey[300]!,
-        highlightColor: Colors.grey[100]!,
+        baseColor: FontsColor.grey300!,
+        highlightColor: FontsColor.grey100!,
         child: Column(
           children: [
             Container(
@@ -31,7 +32,7 @@ class _ShimmerCustomState extends State<ShimmerCustom>
               height: MediaQuery.of(context).size.height * 0.15,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.grey[200]),
+                  color: FontsColor.grey200),
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.062,
@@ -43,7 +44,7 @@ class _ShimmerCustomState extends State<ShimmerCustom>
                   width: MediaQuery.of(context).size.width * 0.4,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.grey[200]),
+                      color: FontsColor.grey200),
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.01,
@@ -53,7 +54,7 @@ class _ShimmerCustomState extends State<ShimmerCustom>
                   width: MediaQuery.of(context).size.width * 0.24,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(2),
-                      color: Colors.grey[200]),
+                      color: FontsColor.grey200),
                 ),
               ],
             ),
@@ -70,21 +71,21 @@ class _ShimmerCustomState extends State<ShimmerCustom>
                     width: MediaQuery.of(context).size.width * 0.28,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        color: Colors.grey[300]),
+                        color: FontsColor.grey300),
                   ),
                   Container(
                     height: MediaQuery.of(context).size.height * 0.05,
                     width: MediaQuery.of(context).size.width * 0.28,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        color: Colors.grey[300]),
+                        color: FontsColor.grey300),
                   ),
                   Container(
                     height: MediaQuery.of(context).size.height * 0.05,
                     width: MediaQuery.of(context).size.width * 0.28,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        color: Colors.grey[300]),
+                        color: FontsColor.grey300),
                   ),
                 ],
               ),
@@ -104,7 +105,7 @@ class _ShimmerCustomState extends State<ShimmerCustom>
                         width: MediaQuery.of(context).size.width * 0.2,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: Colors.grey[300]),
+                            color: FontsColor.grey300),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.005,
@@ -114,7 +115,7 @@ class _ShimmerCustomState extends State<ShimmerCustom>
                         width: MediaQuery.of(context).size.width * 0.2,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: Colors.grey[300]),
+                            color: FontsColor.grey300),
                       ),
                     ],
                   ),
@@ -123,7 +124,7 @@ class _ShimmerCustomState extends State<ShimmerCustom>
                     width: MediaQuery.of(context).size.width * 0.2,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        color: Colors.grey[300]),
+                        color: FontsColor.grey300),
                   ),
                 ],
               ),
@@ -202,7 +203,7 @@ class CustomeRow extends StatelessWidget {
           width: MediaQuery.of(context).size.width * 0.12,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
-            color: Colors.grey[300],
+            color: FontsColor.grey300,
           ),
         ),
         SizedBox(
@@ -217,7 +218,7 @@ class CustomeRow extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.3,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
-                color: Colors.grey[300],
+                color: FontsColor.grey300,
               ),
             ),
             SizedBox(
@@ -228,7 +229,7 @@ class CustomeRow extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.5,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
-                color: Colors.grey[300],
+                color: FontsColor.grey300,
               ),
             ),
           ],

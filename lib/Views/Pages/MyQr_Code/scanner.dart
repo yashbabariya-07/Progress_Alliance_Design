@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class ScannerPage extends StatefulWidget {
@@ -72,10 +73,10 @@ class _ScannerPageState extends State<ScannerPage> {
           title: Text(
             "Mobile Scanner",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
               color: Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: IconButton(
@@ -109,7 +110,7 @@ class _ScannerPageState extends State<ScannerPage> {
               key: qrKey,
               onQRViewCreated: _onQRViewCreated,
               overlay: QrScannerOverlayShape(
-                borderColor: Colors.white,
+                borderColor: FontsColor.white,
                 borderRadius: 10,
                 borderLength: 30,
                 borderWidth: 10,

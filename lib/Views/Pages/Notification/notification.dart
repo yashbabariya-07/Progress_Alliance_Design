@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import 'package:progress_alliance/Routes/route.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -27,14 +28,14 @@ class _NotificationPageState extends State<NotificationPage>
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -42,10 +43,10 @@ class _NotificationPageState extends State<NotificationPage>
           title: Text(
             "Notification",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
-              color: Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
+              color: const Color.fromARGB(255, 16, 2, 90),
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: GestureDetector(
@@ -77,23 +78,23 @@ class _NotificationPageState extends State<NotificationPage>
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: selectedOption == 'General'
-                            ? Colors.white
-                            : Colors.grey[200],
+                            ? FontsColor.white
+                            : FontsColor.grey200,
                         border: Border.all(
                           color: selectedOption == 'General'
-                              ? const Color.fromARGB(255, 16, 2, 90)
-                              : Colors.transparent,
+                              ? FontsColor.purple
+                              : FontsColor.transparent,
                         ),
                       ),
                       child: Center(
                         child: Text(
                           'General',
                           style: TextStyle(
-                              fontFamily: 'Inter',
+                              fontFamily: FontsFamily.inter,
                               color: selectedOption == 'General'
-                                  ? const Color.fromARGB(255, 16, 2, 90)
-                                  : Colors.black,
-                              fontSize: 15.sp),
+                                  ? FontsColor.purple
+                                  : FontsColor.black,
+                              fontSize: FontsSize.f15),
                         ),
                       ),
                     ),
@@ -113,23 +114,23 @@ class _NotificationPageState extends State<NotificationPage>
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: selectedOption == 'Business'
-                            ? Colors.white
-                            : Colors.grey[200],
+                            ? FontsColor.white
+                            : FontsColor.grey200,
                         border: Border.all(
                           color: selectedOption == 'Business'
-                              ? const Color.fromARGB(255, 16, 2, 90)
-                              : Colors.transparent,
+                              ? FontsColor.purple
+                              : FontsColor.transparent,
                         ),
                       ),
                       child: Center(
                         child: Text(
                           'Business',
                           style: TextStyle(
-                              fontFamily: 'Inter',
+                              fontFamily: FontsFamily.inter,
                               color: selectedOption == 'Business'
-                                  ? const Color.fromARGB(255, 16, 2, 90)
-                                  : Colors.black,
-                              fontSize: 15.sp),
+                                  ? FontsColor.purple
+                                  : FontsColor.black,
+                              fontSize: FontsSize.f15),
                         ),
                       ),
                     ),
@@ -141,15 +142,15 @@ class _NotificationPageState extends State<NotificationPage>
               ),
               isLoading
                   ? Shimmer.fromColors(
-                      baseColor: Colors.grey[300]!,
-                      highlightColor: Colors.grey[100]!,
+                      baseColor: FontsColor.grey300!,
+                      highlightColor: FontsColor.grey100!,
                       child: Container(
                         padding: const EdgeInsets.all(15),
                         margin: const EdgeInsets.only(bottom: 5),
                         height: MediaQuery.of(context).size.height * 0.1,
                         width: double.infinity,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: FontsColor.white,
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ))
@@ -162,10 +163,10 @@ class _NotificationPageState extends State<NotificationPage>
                         children: [
                           CircleAvatar(
                             radius: MediaQuery.of(context).size.width * 0.05,
-                            backgroundColor: Colors.blue[100],
+                            backgroundColor: FontsColor.blue100,
                             child: Icon(
                               MdiIcons.bellOutline,
-                              color: Colors.blue,
+                              color: FontsColor.blue,
                               size: MediaQuery.of(context).size.width * 0.05,
                             ),
                           ),
@@ -179,9 +180,9 @@ class _NotificationPageState extends State<NotificationPage>
                                 Text(
                                   'You Have New Lead',
                                   style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      fontSize: 15.sp,
-                                      fontWeight: FontWeight.bold),
+                                      fontFamily: FontsFamily.inter,
+                                      fontSize: FontsSize.f15,
+                                      fontWeight: FontsWeight.bold),
                                 ),
                                 RichText(
                                   maxLines: 2,
@@ -191,27 +192,27 @@ class _NotificationPageState extends State<NotificationPage>
                                       text:
                                           "Congratulations, You have got new lead from Axar Patel...",
                                       style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 13.sp,
-                                          color: Colors.grey[900]),
+                                          fontFamily: FontsFamily.inter,
+                                          fontSize: FontsSize.f13,
+                                          color: FontsColor.grey900),
                                     ),
                                     TextSpan(
                                       text: "View More",
                                       style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 13.sp,
+                                          fontFamily: FontsFamily.inter,
+                                          fontSize: FontsSize.f13,
                                           color: const Color.fromARGB(
                                               255, 16, 2, 90),
-                                          fontWeight: FontWeight.bold),
+                                          fontWeight: FontsWeight.bold),
                                     ),
                                   ]),
                                 ),
                                 Text(
                                   formattedDate,
                                   style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      color: Colors.grey,
-                                      fontSize: 13.sp),
+                                      fontFamily: FontsFamily.inter,
+                                      color: FontsColor.grey,
+                                      fontSize: FontsSize.f13),
                                 ),
                               ],
                             ),

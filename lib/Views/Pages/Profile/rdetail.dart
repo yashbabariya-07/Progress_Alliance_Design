@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:progress_alliance/Routes/route.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 
 class ResidentialDetail extends StatefulWidget {
   const ResidentialDetail({super.key});
@@ -16,14 +17,14 @@ class _ResidentialDetailState extends State<ResidentialDetail> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -31,10 +32,10 @@ class _ResidentialDetailState extends State<ResidentialDetail> {
           title: Text(
             "Residential Details",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
-              color: const Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
+              color: FontsColor.purple,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: GestureDetector(
@@ -52,9 +53,9 @@ class _ResidentialDetailState extends State<ResidentialDetail> {
               child: Text(
                 "Save",
                 style: TextStyle(
-                  fontFamily: 'Inter',
-                  fontSize: 15.sp,
-                  color: const Color.fromARGB(255, 16, 2, 90),
+                  fontFamily: FontsFamily.inter,
+                  fontSize: FontsSize.f15,
+                  color: FontsColor.purple,
                 ),
               ),
             )
@@ -75,7 +76,7 @@ class _ResidentialDetailState extends State<ResidentialDetail> {
                   width: MediaQuery.of(context).size.width * 0.55,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(width: 0.2, color: Colors.grey),
+                    border: Border.all(width: 0.2, color: FontsColor.grey),
                   ),
                   child: Center(
                     child: Column(
@@ -94,10 +95,10 @@ class _ResidentialDetailState extends State<ResidentialDetail> {
                             Text(
                               "Pick Location",
                               style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 13.sp,
-                                color: const Color.fromARGB(255, 16, 2, 90),
-                                fontWeight: FontWeight.bold,
+                                fontFamily: FontsFamily.inter,
+                                fontSize: FontsSize.f13,
+                                color: FontsColor.purple,
+                                fontWeight: FontsWeight.bold,
                               ),
                             ),
                           ],
@@ -105,9 +106,9 @@ class _ResidentialDetailState extends State<ResidentialDetail> {
                         Text(
                           "(Click here to pick location)",
                           style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 12.sp,
-                              color: Colors.grey[700]),
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f12,
+                              color: FontsColor.grey700),
                         ),
                       ],
                     ),

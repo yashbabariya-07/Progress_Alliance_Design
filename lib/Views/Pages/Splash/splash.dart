@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'dart:async';
-import 'package:progress_alliance/Views/Pages/login/login.dart';
+import 'package:progress_alliance/Views/Pages/Login/login.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -14,10 +15,10 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => LoginPage()),
+        MaterialPageRoute(builder: (context) => const LoginPage()),
       );
     });
   }
@@ -26,9 +27,9 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return MediaQuery(
-      data: mediaQuery.copyWith(textScaleFactor: 1.0),
+      data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -47,9 +48,9 @@ class _SplashPageState extends State<SplashPage> {
                       TextSpan(
                         text: "Made With",
                         style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 15.sp,
-                            color: Colors.black),
+                            fontFamily: FontsFamily.inter,
+                            fontSize: FontsSize.f15,
+                            color: FontsColor.black),
                       ),
                       WidgetSpan(
                           child: Image.asset(
@@ -59,9 +60,9 @@ class _SplashPageState extends State<SplashPage> {
                       TextSpan(
                         text: " In India",
                         style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 15.sp,
-                            color: Colors.black),
+                            fontFamily: FontsFamily.inter,
+                            fontSize: FontsSize.f15,
+                            color: FontsColor.black),
                       ),
                     ]),
                   )),

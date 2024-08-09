@@ -1,7 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:image_picker/image_picker.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Pages/Business/businessInfo.dart';
 
 class BusinessDetail extends StatefulWidget {
@@ -57,7 +58,7 @@ class _BusinessDetailState extends State<BusinessDetail> {
 
   void _showBusinessType(BuildContext context) {
     showModalBottomSheet(
-      backgroundColor: Colors.white,
+      backgroundColor: FontsColor.white,
       context: context,
       builder: (BuildContext context) {
         return SingleChildScrollView(
@@ -75,9 +76,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
                     Text(
                       'Select Business Type',
                       style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.bold,
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f16,
+                        fontWeight: FontsWeight.bold,
                       ),
                     ),
                     GestureDetector(
@@ -95,8 +96,8 @@ class _BusinessDetailState extends State<BusinessDetail> {
                   title: Text(
                     'Retailer',
                     style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 14.sp,
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f14,
                     ),
                   ),
                   onTap: () {
@@ -109,8 +110,8 @@ class _BusinessDetailState extends State<BusinessDetail> {
                   title: Text(
                     'WholeSaler/Distributor',
                     style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 14.sp,
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f14,
                     ),
                   ),
                   onTap: () {
@@ -123,8 +124,8 @@ class _BusinessDetailState extends State<BusinessDetail> {
                   title: Text(
                     'Manufacturer',
                     style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 14.sp,
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f14,
                     ),
                   ),
                   onTap: () {
@@ -137,8 +138,8 @@ class _BusinessDetailState extends State<BusinessDetail> {
                   title: Text(
                     'Supplier',
                     style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 14.sp,
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f14,
                     ),
                   ),
                   onTap: () {
@@ -151,8 +152,8 @@ class _BusinessDetailState extends State<BusinessDetail> {
                   title: Text(
                     'Reseller',
                     style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 14.sp,
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f14,
                     ),
                   ),
                   onTap: () {
@@ -165,8 +166,8 @@ class _BusinessDetailState extends State<BusinessDetail> {
                   title: Text(
                     'Service Provider',
                     style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 14.sp,
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f14,
                     ),
                   ),
                   onTap: () {
@@ -179,8 +180,8 @@ class _BusinessDetailState extends State<BusinessDetail> {
                   title: Text(
                     'Home Industry',
                     style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 14.sp,
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f14,
                     ),
                   ),
                   onTap: () {
@@ -198,7 +199,7 @@ class _BusinessDetailState extends State<BusinessDetail> {
 
   void _showBusinessFormationType(BuildContext context) {
     showModalBottomSheet(
-      backgroundColor: Colors.white,
+      backgroundColor: FontsColor.white,
       context: context,
       builder: (BuildContext context) {
         return Container(
@@ -215,9 +216,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
                   Text(
                     'Select Business Formation',
                     style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.bold,
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f16,
+                      fontWeight: FontsWeight.bold,
                     ),
                   ),
                   GestureDetector(
@@ -235,8 +236,8 @@ class _BusinessDetailState extends State<BusinessDetail> {
                 title: Text(
                   'Sole Proprietorship',
                   style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: 14.sp,
+                    fontFamily: FontsFamily.inter,
+                    fontSize: FontsSize.f14,
                   ),
                 ),
                 onTap: () {
@@ -249,8 +250,8 @@ class _BusinessDetailState extends State<BusinessDetail> {
                 title: Text(
                   'Limited Liability Partnership',
                   style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: 14.sp,
+                    fontFamily: FontsFamily.inter,
+                    fontSize: FontsSize.f14,
                   ),
                 ),
                 onTap: () {
@@ -264,8 +265,8 @@ class _BusinessDetailState extends State<BusinessDetail> {
                 title: Text(
                   'Private Limited',
                   style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: 14.sp,
+                    fontFamily: FontsFamily.inter,
+                    fontSize: FontsSize.f14,
                   ),
                 ),
                 onTap: () {
@@ -278,8 +279,8 @@ class _BusinessDetailState extends State<BusinessDetail> {
                 title: Text(
                   'Partnership Firm',
                   style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: 14.sp,
+                    fontFamily: FontsFamily.inter,
+                    fontSize: FontsSize.f14,
                   ),
                 ),
                 onTap: () {
@@ -292,8 +293,8 @@ class _BusinessDetailState extends State<BusinessDetail> {
                 title: Text(
                   'Consulting',
                   style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: 14.sp,
+                    fontFamily: FontsFamily.inter,
+                    fontSize: FontsSize.f14,
                   ),
                 ),
                 onTap: () {
@@ -327,7 +328,7 @@ class _BusinessDetailState extends State<BusinessDetail> {
     ];
 
     showModalBottomSheet(
-      backgroundColor: Colors.white,
+      backgroundColor: FontsColor.white,
       context: context,
       isScrollControlled: true,
       builder: (BuildContext context) {
@@ -355,9 +356,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
                       Text(
                         'Select Business Category',
                         style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.bold),
+                            fontFamily: FontsFamily.inter,
+                            fontSize: FontsSize.f16,
+                            fontWeight: FontsWeight.bold),
                       ),
                     ],
                   ),
@@ -369,20 +370,21 @@ class _BusinessDetailState extends State<BusinessDetail> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: Colors.grey, width: 0.2),
+                      border: Border.all(color: FontsColor.grey, width: 0.2),
                     ),
                     child: TextField(
                       controller: _searchController,
                       decoration: InputDecoration(
                           labelText: 'Search business category...',
-                          labelStyle:
-                              TextStyle(fontSize: 14.sp, fontFamily: 'Inter'),
+                          labelStyle: TextStyle(
+                              fontSize: FontsSize.f14,
+                              fontFamily: FontsFamily.inter),
                           border: InputBorder.none,
                           contentPadding: EdgeInsets.symmetric(horizontal: 10),
                           prefixIcon: Icon(
                             Icons.search,
                             size: MediaQuery.of(context).size.width * 0.06,
-                            color: Colors.orange,
+                            color: FontsColor.orange,
                           )),
                       onChanged: (value) {
                         _searchQuery.value = value;
@@ -411,7 +413,8 @@ class _BusinessDetailState extends State<BusinessDetail> {
                                   title: Text(
                                     filteredCategories[index],
                                     style: TextStyle(
-                                        fontFamily: 'Inter', fontSize: 14.sp),
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14),
                                   ),
                                   onTap: () {
                                     _businessCategoryController.text =
@@ -453,7 +456,7 @@ class _BusinessDetailState extends State<BusinessDetail> {
     final Set<String> selectedSubCategories = {};
 
     showModalBottomSheet(
-      backgroundColor: Colors.white,
+      backgroundColor: FontsColor.white,
       context: context,
       isScrollControlled: true,
       builder: (BuildContext context) {
@@ -470,9 +473,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
                       Text(
                         'Select Business Sub Category',
                         style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.bold),
+                            fontFamily: FontsFamily.inter,
+                            fontSize: FontsSize.f16,
+                            fontWeight: FontsWeight.bold),
                       ),
                       TextButton(
                         onPressed: () {
@@ -483,9 +486,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
                         child: Text(
                           "Save",
                           style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 15.sp,
-                            color: Colors.black,
+                            fontFamily: FontsFamily.inter,
+                            fontSize: FontsSize.f15,
+                            color: FontsColor.black,
                           ),
                         ),
                       )
@@ -498,15 +501,16 @@ class _BusinessDetailState extends State<BusinessDetail> {
                     controller: _searchController,
                     decoration: InputDecoration(
                       hintText: 'Search business sub-category',
-                      hintStyle:
-                          TextStyle(fontSize: 15.sp, fontFamily: 'Inter'),
+                      hintStyle: TextStyle(
+                          fontSize: FontsSize.f15,
+                          fontFamily: FontsFamily.inter),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
                       contentPadding: EdgeInsets.symmetric(horizontal: 10),
                       prefixIcon: Icon(
                         Icons.search,
-                        color: Colors.orange,
+                        color: FontsColor.orange,
                         size: MediaQuery.of(context).size.width * 0.06,
                       ),
                     ),
@@ -555,7 +559,8 @@ class _BusinessDetailState extends State<BusinessDetail> {
                                   title: Text(
                                     category,
                                     style: TextStyle(
-                                        fontFamily: 'Inter', fontSize: 14.sp),
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14),
                                   ),
                                   onTap: () {
                                     if (selectedSubCategories
@@ -586,8 +591,8 @@ class _BusinessDetailState extends State<BusinessDetail> {
   }
 
   Divider buildDivider() {
-    return const Divider(
-      color: Colors.grey,
+    return Divider(
+      color: FontsColor.grey,
       thickness: 0.2,
     );
   }
@@ -598,14 +603,14 @@ class _BusinessDetailState extends State<BusinessDetail> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -613,10 +618,10 @@ class _BusinessDetailState extends State<BusinessDetail> {
           title: Text(
             "Business Details",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
-              color: const Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
+              color: FontsColor.purple,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: GestureDetector(
@@ -669,9 +674,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
               child: Text(
                 "Save",
                 style: TextStyle(
-                  fontFamily: 'Inter',
-                  fontSize: 15.sp,
-                  color: const Color.fromARGB(255, 16, 2, 90),
+                  fontFamily: FontsFamily.inter,
+                  fontSize: FontsSize.f15,
+                  color: FontsColor.purple,
                 ),
               ),
             )
@@ -689,9 +694,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
                     Text(
                       'Company Name',
                       style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14.sp,
-                        color: Colors.black,
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f14,
+                        color: FontsColor.black,
                       ),
                     ),
                     SizedBox(
@@ -702,22 +707,22 @@ class _BusinessDetailState extends State<BusinessDetail> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.grey, width: 0.5),
+                        border: Border.all(color: FontsColor.grey, width: 0.5),
                       ),
                       child: TextFormField(
                         controller: _cname,
                         decoration: InputDecoration(
                           hintText: 'Enter your company name',
                           hintStyle: TextStyle(
-                            fontSize: 14.sp,
-                            fontFamily: 'Inter',
+                            fontSize: FontsSize.f14,
+                            fontFamily: FontsFamily.inter,
                           ),
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.all(10),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                              color: Colors.black,
+                            borderSide: BorderSide(
+                              color: FontsColor.black,
                               width: 1,
                             ),
                           ),
@@ -735,9 +740,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
                     Text(
                       'Primary Business',
                       style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14.sp,
-                        color: Colors.black,
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f14,
+                        color: FontsColor.black,
                       ),
                     ),
                     SizedBox(
@@ -748,7 +753,7 @@ class _BusinessDetailState extends State<BusinessDetail> {
                             scale: MediaQuery.of(context).size.height * 0.0014,
                             child: Theme(
                                 data: ThemeData(
-                                    unselectedWidgetColor: Colors.white),
+                                    unselectedWidgetColor: FontsColor.white),
                                 child: Checkbox(
                                     value: isValue,
                                     onChanged: (value) {
@@ -759,8 +764,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
                           ),
                           Text(
                             "Is this your primary business?",
-                            style:
-                                TextStyle(fontSize: 14.sp, color: Colors.grey),
+                            style: TextStyle(
+                                fontSize: FontsSize.f14,
+                                color: FontsColor.grey),
                           ),
                         ],
                       ),
@@ -776,9 +782,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
                     Text(
                       'Business Established Date',
                       style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14.sp,
-                        color: Colors.black,
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f14,
+                        color: FontsColor.black,
                       ),
                     ),
                     SizedBox(
@@ -789,7 +795,7 @@ class _BusinessDetailState extends State<BusinessDetail> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.grey, width: 0.5),
+                        border: Border.all(color: FontsColor.grey, width: 0.5),
                       ),
                       child: InkWell(
                         onTap: () async {
@@ -813,15 +819,15 @@ class _BusinessDetailState extends State<BusinessDetail> {
                             decoration: InputDecoration(
                               hintText: 'Business established date',
                               hintStyle: TextStyle(
-                                fontSize: 14.sp,
-                                fontFamily: 'Inter',
+                                fontSize: FontsSize.f14,
+                                fontFamily: FontsFamily.inter,
                               ),
                               border: InputBorder.none,
                               contentPadding: const EdgeInsets.all(10),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5),
-                                borderSide: const BorderSide(
-                                  color: Colors.black,
+                                borderSide: BorderSide(
+                                  color: FontsColor.black,
                                   width: 0.5,
                                 ),
                               ),
@@ -849,9 +855,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
                           Text(
                             'Business Type',
                             style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 14.sp,
-                              color: Colors.black,
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f14,
+                              color: FontsColor.black,
                             ),
                           ),
                           SizedBox(
@@ -862,8 +868,8 @@ class _BusinessDetailState extends State<BusinessDetail> {
                             width: double.infinity,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              border:
-                                  Border.all(color: Colors.grey, width: 0.5),
+                              border: Border.all(
+                                  color: FontsColor.grey, width: 0.5),
                             ),
                             child: InkWell(
                               onTap: () {
@@ -875,15 +881,15 @@ class _BusinessDetailState extends State<BusinessDetail> {
                                   decoration: InputDecoration(
                                     hintText: 'select your business type',
                                     hintStyle: TextStyle(
-                                      fontSize: 14.sp,
-                                      fontFamily: 'Inter',
+                                      fontSize: FontsSize.f14,
+                                      fontFamily: FontsFamily.inter,
                                     ),
                                     border: InputBorder.none,
                                     contentPadding: const EdgeInsets.all(10),
                                     focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(5),
-                                      borderSide: const BorderSide(
-                                        color: Colors.black,
+                                      borderSide: BorderSide(
+                                        color: FontsColor.black,
                                         width: 1,
                                       ),
                                     ),
@@ -911,9 +917,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
                           Text(
                             'Business Formation',
                             style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 14.sp,
-                              color: Colors.black,
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f14,
+                              color: FontsColor.black,
                             ),
                           ),
                           SizedBox(
@@ -924,8 +930,8 @@ class _BusinessDetailState extends State<BusinessDetail> {
                             width: double.infinity,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              border:
-                                  Border.all(color: Colors.grey, width: 0.5),
+                              border: Border.all(
+                                  color: FontsColor.grey, width: 0.5),
                             ),
                             child: InkWell(
                               onTap: () {
@@ -937,15 +943,15 @@ class _BusinessDetailState extends State<BusinessDetail> {
                                   decoration: InputDecoration(
                                     hintText: 'select your business formation',
                                     hintStyle: TextStyle(
-                                      fontSize: 14.sp,
-                                      fontFamily: 'Inter',
+                                      fontSize: FontsSize.f14,
+                                      fontFamily: FontsFamily.inter,
                                     ),
                                     border: InputBorder.none,
                                     contentPadding: const EdgeInsets.all(10),
                                     focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(5),
-                                      borderSide: const BorderSide(
-                                        color: Colors.black,
+                                      borderSide: BorderSide(
+                                        color: FontsColor.black,
                                         width: 1,
                                       ),
                                     ),
@@ -973,9 +979,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
                     Text(
                       'Business Category',
                       style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14.sp,
-                        color: Colors.black,
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f14,
+                        color: FontsColor.black,
                       ),
                     ),
                     SizedBox(
@@ -986,7 +992,7 @@ class _BusinessDetailState extends State<BusinessDetail> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.grey, width: 0.5),
+                        border: Border.all(color: FontsColor.grey, width: 0.5),
                       ),
                       child: InkWell(
                         onTap: () {
@@ -998,15 +1004,15 @@ class _BusinessDetailState extends State<BusinessDetail> {
                             decoration: InputDecoration(
                               hintText: 'select your business category',
                               hintStyle: TextStyle(
-                                fontSize: 14.sp,
-                                fontFamily: 'Inter',
+                                fontSize: FontsSize.f14,
+                                fontFamily: FontsFamily.inter,
                               ),
                               border: InputBorder.none,
                               contentPadding: const EdgeInsets.all(10),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5),
-                                borderSide: const BorderSide(
-                                  color: Colors.black,
+                                borderSide: BorderSide(
+                                  color: FontsColor.black,
                                   width: 0.5,
                                 ),
                               ),
@@ -1030,9 +1036,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
                     Text(
                       'Business Sub Category',
                       style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14.sp,
-                        color: Colors.black,
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f14,
+                        color: FontsColor.black,
                       ),
                     ),
                     SizedBox(
@@ -1043,7 +1049,7 @@ class _BusinessDetailState extends State<BusinessDetail> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.grey, width: 0.5),
+                        border: Border.all(color: FontsColor.grey, width: 0.5),
                       ),
                       child: InkWell(
                         onTap: () {
@@ -1055,15 +1061,15 @@ class _BusinessDetailState extends State<BusinessDetail> {
                             decoration: InputDecoration(
                               hintText: 'select your sub business category',
                               hintStyle: TextStyle(
-                                fontSize: 14.sp,
-                                fontFamily: 'Inter',
+                                fontSize: FontsSize.f14,
+                                fontFamily: FontsFamily.inter,
                               ),
                               border: InputBorder.none,
                               contentPadding: const EdgeInsets.all(10),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5),
-                                borderSide: const BorderSide(
-                                  color: Colors.black,
+                                borderSide: BorderSide(
+                                  color: FontsColor.black,
                                   width: 0.5,
                                 ),
                               ),
@@ -1087,9 +1093,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
                     Text(
                       'Product/Service',
                       style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14.sp,
-                        color: Colors.black,
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f14,
+                        color: FontsColor.black,
                       ),
                     ),
                     SizedBox(
@@ -1100,7 +1106,7 @@ class _BusinessDetailState extends State<BusinessDetail> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.grey, width: 0.5),
+                        border: Border.all(color: FontsColor.grey, width: 0.5),
                       ),
                       child: InkWell(
                         onTap: () {},
@@ -1110,15 +1116,15 @@ class _BusinessDetailState extends State<BusinessDetail> {
                             decoration: InputDecoration(
                               hintText: 'select your products/service',
                               hintStyle: TextStyle(
-                                fontSize: 14.sp,
-                                fontFamily: 'Inter',
+                                fontSize: FontsSize.f14,
+                                fontFamily: FontsFamily.inter,
                               ),
                               border: InputBorder.none,
                               contentPadding: const EdgeInsets.all(10),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5),
-                                borderSide: const BorderSide(
-                                  color: Colors.black,
+                                borderSide: BorderSide(
+                                  color: FontsColor.black,
                                   width: 0.5,
                                 ),
                               ),
@@ -1146,9 +1152,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
                           Text(
                             'Business Email',
                             style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 14.sp,
-                              color: Colors.black,
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f14,
+                              color: FontsColor.black,
                             ),
                           ),
                           SizedBox(
@@ -1159,23 +1165,23 @@ class _BusinessDetailState extends State<BusinessDetail> {
                             width: double.infinity,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              border:
-                                  Border.all(color: Colors.grey, width: 0.5),
+                              border: Border.all(
+                                  color: FontsColor.grey, width: 0.5),
                             ),
                             child: TextFormField(
                               controller: _emailController,
                               decoration: InputDecoration(
                                 hintText: 'Enter your business ',
                                 hintStyle: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontFamily: 'Inter',
+                                  fontSize: FontsSize.f14,
+                                  fontFamily: FontsFamily.inter,
                                 ),
                                 border: InputBorder.none,
                                 contentPadding: const EdgeInsets.all(10),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5),
-                                  borderSide: const BorderSide(
-                                    color: Colors.black,
+                                  borderSide: BorderSide(
+                                    color: FontsColor.black,
                                     width: 1,
                                   ),
                                 ),
@@ -1196,9 +1202,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
                           Text(
                             'Contact Number',
                             style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 14.sp,
-                              color: Colors.black,
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f14,
+                              color: FontsColor.black,
                             ),
                           ),
                           SizedBox(
@@ -1209,23 +1215,23 @@ class _BusinessDetailState extends State<BusinessDetail> {
                             width: double.infinity,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              border:
-                                  Border.all(color: Colors.grey, width: 0.5),
+                              border: Border.all(
+                                  color: FontsColor.grey, width: 0.5),
                             ),
                             child: TextFormField(
                               controller: _phoneController,
                               decoration: InputDecoration(
                                 hintText: 'enter your contact number',
                                 hintStyle: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontFamily: 'Inter',
+                                  fontSize: FontsSize.f14,
+                                  fontFamily: FontsFamily.inter,
                                 ),
                                 border: InputBorder.none,
                                 contentPadding: const EdgeInsets.all(10),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5),
-                                  borderSide: const BorderSide(
-                                    color: Colors.black,
+                                  borderSide: BorderSide(
+                                    color: FontsColor.black,
                                     width: 1,
                                   ),
                                 ),
@@ -1246,9 +1252,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
                     Text(
                       "GST Number",
                       style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14.sp,
-                        color: Colors.black,
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f14,
+                        color: FontsColor.black,
                       ),
                     ),
                     SizedBox(
@@ -1259,22 +1265,22 @@ class _BusinessDetailState extends State<BusinessDetail> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.grey, width: 0.5),
+                        border: Border.all(color: FontsColor.grey, width: 0.5),
                       ),
                       child: TextFormField(
                         controller: _gstController,
                         decoration: InputDecoration(
                           hintText: 'Enter your GST number',
                           hintStyle: TextStyle(
-                            fontSize: 14.sp,
-                            fontFamily: 'Inter',
+                            fontSize: FontsSize.f14,
+                            fontFamily: FontsFamily.inter,
                           ),
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.all(10),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                              color: Colors.black,
+                            borderSide: BorderSide(
+                              color: FontsColor.black,
                               width: 1,
                             ),
                           ),
@@ -1292,9 +1298,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
                     Text(
                       "Website URL",
                       style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14.sp,
-                        color: Colors.black,
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f14,
+                        color: FontsColor.black,
                       ),
                     ),
                     SizedBox(
@@ -1305,22 +1311,22 @@ class _BusinessDetailState extends State<BusinessDetail> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.grey, width: 0.5),
+                        border: Border.all(color: FontsColor.grey, width: 0.5),
                       ),
                       child: TextFormField(
                         controller: _webURLController,
                         decoration: InputDecoration(
                           hintText: 'Enter your website url',
                           hintStyle: TextStyle(
-                            fontSize: 14.sp,
-                            fontFamily: 'Inter',
+                            fontSize: FontsSize.f14,
+                            fontFamily: FontsFamily.inter,
                           ),
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.all(10),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                              color: Colors.black,
+                            borderSide: BorderSide(
+                              color: FontsColor.black,
                               width: 1,
                             ),
                           ),
@@ -1338,9 +1344,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
                     Text(
                       "Business Description",
                       style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14.sp,
-                        color: Colors.black,
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f14,
+                        color: FontsColor.black,
                       ),
                     ),
                     SizedBox(
@@ -1350,7 +1356,7 @@ class _BusinessDetailState extends State<BusinessDetail> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.grey, width: 0.5),
+                        border: Border.all(color: FontsColor.grey, width: 0.5),
                       ),
                       child: TextFormField(
                         maxLines: 4,
@@ -1358,15 +1364,15 @@ class _BusinessDetailState extends State<BusinessDetail> {
                         decoration: InputDecoration(
                           hintText: 'Enter your business description',
                           hintStyle: TextStyle(
-                            fontSize: 14.sp,
-                            fontFamily: 'Inter',
+                            fontSize: FontsSize.f14,
+                            fontFamily: FontsFamily.inter,
                           ),
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.all(10),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                              color: Colors.black,
+                            borderSide: BorderSide(
+                              color: FontsColor.black,
                               width: 1,
                             ),
                           ),
@@ -1386,9 +1392,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
                       Text(
                         "Logo",
                         style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 14.sp,
-                          color: Colors.black,
+                          fontFamily: FontsFamily.inter,
+                          fontSize: FontsSize.f14,
+                          color: FontsColor.black,
                         ),
                       ),
                       SizedBox(
@@ -1401,7 +1407,7 @@ class _BusinessDetailState extends State<BusinessDetail> {
                           height: MediaQuery.of(context).size.height * 0.2,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Colors.grey[300],
+                            color: FontsColor.grey300,
                           ),
                           child: _logoImage != null
                               ? ClipRRect(
@@ -1416,9 +1422,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
                                     "+ Add",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      fontSize: 14.sp,
-                                      color: Colors.grey[600],
+                                      fontFamily: FontsFamily.inter,
+                                      fontSize: FontsSize.f14,
+                                      color: FontsColor.grey600,
                                     ),
                                   ),
                                 ),
@@ -1436,9 +1442,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
                     Text(
                       "Banner",
                       style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14.sp,
-                        color: Colors.black,
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f14,
+                        color: FontsColor.black,
                       ),
                     ),
                     SizedBox(
@@ -1451,7 +1457,7 @@ class _BusinessDetailState extends State<BusinessDetail> {
                         height: MediaQuery.of(context).size.height * 0.2,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Colors.grey[300],
+                          color: FontsColor.grey300,
                         ),
                         child: _bannerImage != null
                             ? ClipRRect(
@@ -1466,9 +1472,9 @@ class _BusinessDetailState extends State<BusinessDetail> {
                                   "+ Add",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 14.sp,
-                                    color: Colors.grey[600],
+                                    fontFamily: FontsFamily.inter,
+                                    fontSize: FontsSize.f14,
+                                    color: FontsColor.grey600,
                                   ),
                                 ),
                               ),

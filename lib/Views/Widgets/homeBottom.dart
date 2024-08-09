@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 
 class HomeBottom extends StatelessWidget {
   final int selectedIndex;
@@ -15,26 +16,26 @@ class HomeBottom extends StatelessWidget {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.075,
       child: BottomNavigationBar(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         currentIndex: selectedIndex,
         onTap: onTabTapped,
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: const Color.fromARGB(255, 16, 2, 90),
-        unselectedItemColor: Colors.grey,
+        selectedItemColor: FontsColor.purple,
+        unselectedItemColor: FontsColor.grey,
         selectedLabelStyle: TextStyle(
-          fontSize: 11.sp,
-          fontWeight: FontWeight.bold,
+          fontSize: FontsSize.f11,
+          fontFamily: FontsFamily.inter,
+          fontWeight: FontsWeight.bold,
         ),
         unselectedLabelStyle: TextStyle(
-          fontSize: 11.sp,
+          fontFamily: FontsFamily.inter,
+          fontSize: FontsSize.f11,
         ),
         items: [
           BottomNavigationBarItem(
             icon: Image.asset(
               "assets/PAG.png",
-              color: selectedIndex == 0
-                  ? const Color.fromARGB(255, 16, 2, 90)
-                  : Colors.grey,
+              color: selectedIndex == 0 ? FontsColor.purple : FontsColor.grey,
               width: MediaQuery.of(context).size.width * 0.08,
             ),
             label: 'Home',

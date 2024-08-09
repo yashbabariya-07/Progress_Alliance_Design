@@ -1,11 +1,12 @@
 import 'dart:io';
 import 'package:custom_info_window/custom_info_window.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 
 import 'package:progress_alliance/Views/Widgets/homeBottom.dart';
@@ -127,7 +128,7 @@ class _GooglemapState extends State<Googlemap>
 
   void _filter(BuildContext context) {
     showModalBottomSheet(
-      backgroundColor: Colors.white,
+      backgroundColor: FontsColor.white,
       context: context,
       builder: (BuildContext context) {
         return StatefulBuilder(
@@ -146,9 +147,9 @@ class _GooglemapState extends State<Googlemap>
                       Text(
                         'Filter',
                         style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.bold,
+                          fontFamily: FontsFamily.inter,
+                          fontSize: FontsSize.f16,
+                          fontWeight: FontsWeight.bold,
                         ),
                       ),
                       GestureDetector(
@@ -167,12 +168,12 @@ class _GooglemapState extends State<Googlemap>
                   ),
                   TabBar(
                     controller: _tabController,
-                    indicatorColor: Colors.orange,
+                    indicatorColor: FontsColor.orange,
                     labelStyle: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16.sp,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f16,
+                      color: FontsColor.black,
+                      fontWeight: FontsWeight.bold,
                     ),
                     indicatorSize: TabBarIndicatorSize.label,
                     tabs: const [
@@ -203,7 +204,7 @@ class _GooglemapState extends State<Googlemap>
                                 return Container(
                                   decoration: BoxDecoration(
                                     border: Border.all(
-                                        width: 0.2, color: Colors.grey),
+                                        width: 0.2, color: FontsColor.grey),
                                     borderRadius: BorderRadius.circular(5),
                                   ),
                                   child: Row(
@@ -234,17 +235,18 @@ class _GooglemapState extends State<Googlemap>
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text(
-                                                item["title"]!,
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
-                                                  fontFamily: 'Inter',
-                                                  fontSize: 12.sp,
-                                                  color: Colors.black,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
+                                              Text(item["title"]!,
+                                                  maxLines: 2,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: TextStyle(
+                                                    fontFamily:
+                                                        FontsFamily.inter,
+                                                    fontSize: FontsSize.f12,
+                                                    color: FontsColor.black,
+                                                    fontWeight:
+                                                        FontsWeight.bold,
+                                                  )),
                                             ],
                                           ),
                                         ),
@@ -264,9 +266,9 @@ class _GooglemapState extends State<Googlemap>
                               title: Text(
                                 _distanceOptions[index],
                                 style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.bold),
+                                    fontFamily: FontsFamily.inter,
+                                    fontSize: FontsSize.f14,
+                                    fontWeight: FontsWeight.bold),
                               ),
                               value: _distanceOptions[index],
                               groupValue: _selectedDistance,
@@ -329,8 +331,8 @@ class _GooglemapState extends State<Googlemap>
           _customInfoWindowController.addInfoWindow!(
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(width: 0.2, color: Colors.grey),
+                  color: FontsColor.white,
+                  border: Border.all(width: 0.2, color: FontsColor.grey),
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: Padding(
@@ -349,7 +351,7 @@ class _GooglemapState extends State<Googlemap>
                                     MediaQuery.of(context).size.height * 0.08,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color: Colors.grey[300],
+                                  color: FontsColor.grey300,
                                 ),
                                 child: _profile != null
                                     ? ClipRRect(
@@ -364,9 +366,9 @@ class _GooglemapState extends State<Googlemap>
                                           "+",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                            fontFamily: 'Inter',
-                                            fontSize: 20.sp,
-                                            color: Colors.grey[600],
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f20,
+                                            color: FontsColor.grey600,
                                           ),
                                         ),
                                       ),
@@ -385,7 +387,7 @@ class _GooglemapState extends State<Googlemap>
                                 child: Icon(Icons.fiber_manual_record,
                                     size: MediaQuery.of(context).size.width *
                                         0.03,
-                                    color: Colors.blue),
+                                    color: FontsColor.blue),
                               ),
                               SizedBox(
                                   width: MediaQuery.of(context).size.width *
@@ -393,9 +395,10 @@ class _GooglemapState extends State<Googlemap>
                               Text(
                                 "1.2 km",
                                 style: TextStyle(
-                                    fontSize: 10.sp,
-                                    fontFamily: 'Inter',
-                                    color: Colors.blue),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f10,
+                                  color: FontsColor.blue,
+                                ),
                               ),
                             ],
                           ),
@@ -417,18 +420,17 @@ class _GooglemapState extends State<Googlemap>
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
+                                        color: FontsColor.black,
+                                        fontWeight: FontsWeight.bold),
                                   ),
                                 ),
                                 Row(
                                   children: [
                                     Icon(
                                       MdiIcons.whatsapp,
-                                      color:
-                                          const Color.fromARGB(255, 16, 2, 90),
+                                      color: FontsColor.purple,
                                       size: MediaQuery.of(context).size.width *
                                           0.06,
                                     ),
@@ -438,8 +440,7 @@ class _GooglemapState extends State<Googlemap>
                                     ),
                                     Icon(
                                       MdiIcons.phoneOutline,
-                                      color:
-                                          const Color.fromARGB(255, 16, 2, 90),
+                                      color: FontsColor.purple,
                                       size: MediaQuery.of(context).size.width *
                                           0.06,
                                     ),
@@ -460,28 +461,25 @@ class _GooglemapState extends State<Googlemap>
                               height:
                                   MediaQuery.of(context).size.height * 0.004,
                             ),
-                            Text(
-                              "Trueline Solution PVT Limited",
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 12.sp,
-                                  color: Colors.grey),
-                            ),
+                            Text("Trueline Solution PVT Limited",
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                    fontFamily: FontsFamily.inter,
+                                    fontSize: FontsSize.f12,
+                                    color: FontsColor.grey)),
                             SizedBox(
                               height:
                                   MediaQuery.of(context).size.height * 0.005,
                             ),
                             Text(
-                              "123 Tech Street, Silicon Valley, near the pedar road varachaa surat gujarat",
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 12.sp,
-                                  color: Colors.grey),
-                            ),
+                                "123 Tech Street, Silicon Valley, near the pedar road varachaa surat gujarat",
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                    fontFamily: FontsFamily.inter,
+                                    fontSize: FontsSize.f12,
+                                    color: FontsColor.grey)),
                           ],
                         ),
                       ),
@@ -560,11 +558,11 @@ class _GooglemapState extends State<Googlemap>
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.grey[100],
+        backgroundColor: FontsColor.grey100,
         drawer: SizedBox(
           width: MediaQuery.of(context).size.width * 0.64,
           child: Drawer(
-            backgroundColor: Colors.white,
+            backgroundColor: FontsColor.white,
             child: Padding(
               padding: const EdgeInsets.only(top: 70),
               child: Column(
@@ -584,15 +582,15 @@ class _GooglemapState extends State<Googlemap>
                           ListTile(
                             leading: Icon(
                               Icons.note_add_outlined,
-                              color: Colors.black,
+                              color: FontsColor.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             title: Text(
                               "Complaint",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f14,
+                                  fontWeight: FontsWeight.bold),
                             ),
                             onTap: () {
                               Navigator.pushNamed(
@@ -602,15 +600,15 @@ class _GooglemapState extends State<Googlemap>
                           ListTile(
                             leading: Icon(
                               MdiIcons.downloadCircleOutline,
-                              color: Colors.black,
+                              color: FontsColor.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             title: Text(
                               "Downloads",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f14,
+                                  fontWeight: FontsWeight.bold),
                             ),
                             onTap: () {
                               Navigator.pushNamed(
@@ -620,15 +618,15 @@ class _GooglemapState extends State<Googlemap>
                           ListTile(
                             leading: Icon(
                               Icons.feedback_outlined,
-                              color: Colors.black,
+                              color: FontsColor.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             title: Text(
                               "Feedback & Review",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f14,
+                                  fontWeight: FontsWeight.bold),
                             ),
                             onTap: () {
                               Navigator.pushNamed(
@@ -638,15 +636,15 @@ class _GooglemapState extends State<Googlemap>
                           ListTile(
                             leading: Icon(
                               Icons.contact_mail,
-                              color: Colors.black,
+                              color: FontsColor.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             title: Text(
                               "Contact Us",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f14,
+                                  fontWeight: FontsWeight.bold),
                             ),
                             onTap: () {
                               Navigator.pushNamed(context, Routes.contactRoute);
@@ -655,30 +653,30 @@ class _GooglemapState extends State<Googlemap>
                           ListTile(
                             leading: Icon(
                               MdiIcons.informationOutline,
-                              color: Colors.black,
+                              color: FontsColor.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             title: Text(
                               "About Us",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f14,
+                                  fontWeight: FontsWeight.bold),
                             ),
                             onTap: () {},
                           ),
                           ListTile(
                             leading: Icon(
                               MdiIcons.helpCircleOutline,
-                              color: Colors.black,
+                              color: FontsColor.black,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             title: Text(
                               "Help?",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold),
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f14,
+                                  fontWeight: FontsWeight.bold),
                             ),
                             onTap: () {},
                           ),
@@ -708,9 +706,9 @@ class _GooglemapState extends State<Googlemap>
                           Text(
                             "LOG OUT",
                             style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 13.sp,
-                                fontWeight: FontWeight.bold,
+                                fontFamily: FontsFamily.inter,
+                                fontSize: FontsSize.f13,
+                                fontWeight: FontsWeight.bold,
                                 color: Colors.red),
                           ),
                         ],
@@ -723,13 +721,13 @@ class _GooglemapState extends State<Googlemap>
           ),
         ),
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           centerTitle: true,
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -740,7 +738,7 @@ class _GooglemapState extends State<Googlemap>
               },
               icon: Image.asset(
                 "assets/dr.png",
-                color: const Color.fromARGB(255, 16, 2, 90),
+                color: FontsColor.purple,
                 width: MediaQuery.of(context).size.width * 0.07,
               ),
             ),
@@ -754,7 +752,7 @@ class _GooglemapState extends State<Googlemap>
               children: [
                 Icon(
                   MdiIcons.mapMarkerOutline,
-                  color: Colors.orange,
+                  color: FontsColor.orange,
                   size: MediaQuery.of(context).size.height * 0.04,
                 ),
                 SizedBox(
@@ -768,25 +766,22 @@ class _GooglemapState extends State<Googlemap>
                         Text(
                           "Area Name",
                           style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.bold),
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f14,
+                              fontWeight: FontsWeight.bold),
                         ),
                         Icon(
                           Icons.arrow_drop_down,
-                          color: const Color.fromARGB(255, 16, 2, 90),
+                          color: FontsColor.purple,
                           size: MediaQuery.of(context).size.width * 0.06,
                         ),
                       ],
                     ),
-                    Text(
-                      "City Name",
-                      style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 12.sp,
-                        color: Colors.grey[700],
-                      ),
-                    ),
+                    Text("City Name",
+                        style: TextStyle(
+                            fontFamily: FontsFamily.inter,
+                            fontSize: FontsSize.f12,
+                            color: FontsColor.grey700)),
                   ],
                 ),
               ],
@@ -796,7 +791,7 @@ class _GooglemapState extends State<Googlemap>
             IconButton(
               icon: Icon(
                 Icons.search,
-                color: const Color.fromARGB(255, 16, 2, 90),
+                color: FontsColor.purple,
                 size: MediaQuery.of(context).size.width * 0.06,
               ),
               onPressed: () {},
@@ -820,8 +815,9 @@ class _GooglemapState extends State<Googlemap>
                           height: MediaQuery.of(context).size.height * 0.037,
                           width: MediaQuery.of(context).size.width * 0.25,
                           decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(width: 0.2, color: Colors.grey),
+                            color: FontsColor.white,
+                            border:
+                                Border.all(width: 0.2, color: FontsColor.grey),
                             borderRadius: BorderRadius.circular(5),
                           ),
                           child: Row(
@@ -830,16 +826,16 @@ class _GooglemapState extends State<Googlemap>
                               Text(
                                 "Filter",
                                 style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 13.sp,
-                                    fontWeight: FontWeight.bold),
+                                    fontFamily: FontsFamily.inter,
+                                    fontSize: FontsSize.f13,
+                                    fontWeight: FontsWeight.bold),
                               ),
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.01,
                               ),
                               Image.asset(
                                 "assets/filter.png",
-                                color: Colors.grey,
+                                color: FontsColor.grey,
                                 width: MediaQuery.of(context).size.width * 0.06,
                               )
                             ],
@@ -867,13 +863,13 @@ class _GooglemapState extends State<Googlemap>
                                   margin: const EdgeInsets.only(right: 10),
                                   decoration: BoxDecoration(
                                     color: isSelected
-                                        ? Colors.orange[100]
-                                        : Colors.white,
+                                        ? FontsColor.orange
+                                        : FontsColor.white,
                                     border: Border.all(
                                       width: isSelected ? 0.5 : 0.2,
                                       color: isSelected
-                                          ? Colors.orange
-                                          : Colors.grey,
+                                          ? FontsColor.orange
+                                          : FontsColor.grey,
                                     ),
                                     borderRadius: BorderRadius.circular(5),
                                   ),
@@ -883,12 +879,12 @@ class _GooglemapState extends State<Googlemap>
                                     child: Text(
                                       option,
                                       style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 13.sp,
-                                        fontWeight: FontWeight.bold,
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f13,
+                                        fontWeight: FontsWeight.bold,
                                         color: isSelected
-                                            ? Colors.orange
-                                            : Colors.black,
+                                            ? FontsColor.orange
+                                            : FontsColor.black,
                                       ),
                                     ),
                                   ),
@@ -908,14 +904,13 @@ class _GooglemapState extends State<Googlemap>
                     children: [
                       Row(
                         children: [
-                          Text(
-                            "Layout View",
-                            style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          Text("Layout View",
+                              style: TextStyle(
+                                fontFamily: FontsFamily.inter,
+                                fontSize: FontsSize.f12,
+                                color: FontsColor.black,
+                                fontWeight: FontsWeight.bold,
+                              )),
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.015,
                           ),
@@ -925,20 +920,18 @@ class _GooglemapState extends State<Googlemap>
                                   MediaQuery.of(context).size.height * 0.023,
                               width: MediaQuery.of(context).size.width * 0.13,
                               decoration: BoxDecoration(
-                                color: const Color.fromARGB(255, 16, 2, 90),
+                                color: FontsColor.purple,
                                 border: Border.all(
-                                    width: 1, color: Colors.transparent),
+                                    width: 1, color: FontsColor.transparent),
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               child: Center(
-                                child: Text(
-                                  "Map",
-                                  style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                ),
+                                child: Text("Map",
+                                    style: TextStyle(
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f12,
+                                        fontWeight: FontsWeight.bold,
+                                        color: FontsColor.white)),
                               ),
                             ),
                           if (selectedIndex == 1)
@@ -947,20 +940,18 @@ class _GooglemapState extends State<Googlemap>
                                   MediaQuery.of(context).size.height * 0.023,
                               width: MediaQuery.of(context).size.width * 0.13,
                               decoration: BoxDecoration(
-                                color: const Color.fromARGB(255, 16, 2, 90),
+                                color: FontsColor.purple,
                                 border: Border.all(
-                                    width: 1, color: Colors.transparent),
+                                    width: 1, color: FontsColor.transparent),
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               child: Center(
-                                child: Text(
-                                  "List",
-                                  style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                ),
+                                child: Text("List",
+                                    style: TextStyle(
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f12,
+                                        fontWeight: FontsWeight.bold,
+                                        color: FontsColor.white)),
                               ),
                             ),
                         ],
@@ -969,8 +960,8 @@ class _GooglemapState extends State<Googlemap>
                         height: MediaQuery.of(context).size.height * 0.04,
                         width: MediaQuery.of(context).size.width * 0.2,
                         decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(color: Colors.transparent),
+                          color: FontsColor.white,
+                          border: Border.all(color: FontsColor.transparent),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Row(
@@ -990,13 +981,13 @@ class _GooglemapState extends State<Googlemap>
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(7),
                                     color: selectedIndex == 0
-                                        ? Colors.grey[300]
-                                        : Colors.white,
+                                        ? FontsColor.grey300
+                                        : FontsColor.white,
                                   ),
                                   alignment: Alignment.center,
                                   child: Icon(
                                     MdiIcons.mapMarkerOutline,
-                                    color: Colors.grey[500],
+                                    color: FontsColor.grey500,
                                     size: MediaQuery.of(context).size.width *
                                         0.06,
                                   )),
@@ -1015,13 +1006,13 @@ class _GooglemapState extends State<Googlemap>
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(7),
                                     color: selectedIndex == 1
-                                        ? Colors.grey[300]
-                                        : Colors.white,
+                                        ? FontsColor.grey300
+                                        : FontsColor.white,
                                   ),
                                   alignment: Alignment.center,
                                   child: Icon(
                                     MdiIcons.viewAgendaOutline,
-                                    color: Colors.grey[500],
+                                    color: FontsColor.grey500,
                                     size: MediaQuery.of(context).size.width *
                                         0.06,
                                   )),
@@ -1074,23 +1065,23 @@ class _GooglemapState extends State<Googlemap>
                           padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
                           child: isLoading
                               ? Shimmer.fromColors(
-                                  baseColor: Colors.grey[300]!,
-                                  highlightColor: Colors.grey[100]!,
+                                  baseColor: FontsColor.grey300!,
+                                  highlightColor: FontsColor.grey100!,
                                   child: Container(
                                     height: MediaQuery.of(context).size.height *
                                         0.09,
                                     width: double.infinity,
                                     decoration: BoxDecoration(
-                                      color: Colors.white,
+                                      color: FontsColor.white,
                                       border: Border.all(
-                                          width: 0.2, color: Colors.grey),
+                                          width: 0.2, color: FontsColor.grey),
                                       borderRadius: BorderRadius.circular(5),
                                     ),
                                   ),
                                 )
                               : Container(
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: FontsColor.white,
                                     borderRadius: BorderRadius.circular(5),
                                   ),
                                   child: Padding(
@@ -1125,7 +1116,7 @@ class _GooglemapState extends State<Googlemap>
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
-                                                  color: Colors.grey[200],
+                                                  color: FontsColor.grey200,
                                                 ),
                                                 child: user['profileImage'] !=
                                                         null
@@ -1144,8 +1135,11 @@ class _GooglemapState extends State<Googlemap>
                                                           textAlign:
                                                               TextAlign.center,
                                                           style: TextStyle(
-                                                            fontFamily: 'Inter',
-                                                            fontSize: 20.sp,
+                                                            fontFamily:
+                                                                FontsFamily
+                                                                    .inter,
+                                                            fontSize:
+                                                                FontsSize.f20,
                                                             color: Colors
                                                                 .grey[600],
                                                           ),
@@ -1168,10 +1162,10 @@ class _GooglemapState extends State<Googlemap>
                                                           .size
                                                           .height *
                                                       0.02,
-                                                  child: const Icon(
+                                                  child: Icon(
                                                       Icons.fiber_manual_record,
                                                       size: 10,
-                                                      color: Colors.blue),
+                                                      color: FontsColor.blue),
                                                 ),
                                                 SizedBox(
                                                     width:
@@ -1179,15 +1173,13 @@ class _GooglemapState extends State<Googlemap>
                                                                 .size
                                                                 .width *
                                                             0.006),
-                                                Text(
-                                                  user['distance'],
-                                                  style: TextStyle(
-                                                      fontSize: 10.sp,
-                                                      fontFamily: 'Inter',
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: Colors.blue),
-                                                ),
+                                                Text(user['distance'],
+                                                    style: TextStyle(
+                                                      fontFamily:
+                                                          FontsFamily.inter,
+                                                      fontSize: FontsSize.f10,
+                                                      color: FontsColor.blue,
+                                                    )),
                                               ],
                                             ),
                                           ],
@@ -1209,18 +1201,18 @@ class _GooglemapState extends State<Googlemap>
                                                         .spaceBetween,
                                                 children: [
                                                   Expanded(
-                                                    child: Text(
-                                                      user['name'],
-                                                      maxLines: 2,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      style: TextStyle(
-                                                          fontFamily: 'Inter',
-                                                          fontSize: 12.sp,
-                                                          color: Colors.black,
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    ),
+                                                    child: Text(user['name'],
+                                                        maxLines: 2,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        style: TextStyle(
+                                                            fontFamily:
+                                                                FontsFamily
+                                                                    .inter,
+                                                            fontSize:
+                                                                FontsSize.f12,
+                                                            color: FontsColor
+                                                                .black)),
                                                   ),
                                                   Row(
                                                     children: [
@@ -1272,24 +1264,25 @@ class _GooglemapState extends State<Googlemap>
                                                   )
                                                 ],
                                               ),
-                                              Text(
-                                                user['company'],
-                                                maxLines: 1,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
-                                                  fontFamily: 'Inter',
-                                                  fontSize: 12.sp,
-                                                ),
-                                              ),
-                                              Text(
-                                                user['address'],
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
-                                                    fontFamily: 'Inter',
-                                                    fontSize: 12.sp,
-                                                    color: Colors.grey[700]),
-                                              ),
+                                              Text(user['company'],
+                                                  maxLines: 1,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: TextStyle(
+                                                      fontFamily:
+                                                          FontsFamily.inter,
+                                                      fontSize: FontsSize.f12,
+                                                      color: FontsColor.black)),
+                                              Text(user['address'],
+                                                  maxLines: 2,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: TextStyle(
+                                                      fontFamily:
+                                                          FontsFamily.inter,
+                                                      fontSize: FontsSize.f12,
+                                                      color:
+                                                          FontsColor.grey700)),
                                             ],
                                           ),
                                         ),

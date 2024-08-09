@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactUs extends StatefulWidget {
@@ -17,15 +18,15 @@ class _ContactUsState extends State<ContactUs> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -33,10 +34,10 @@ class _ContactUsState extends State<ContactUs> {
           title: Text(
             "Contact Us",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
               color: Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: GestureDetector(
@@ -59,10 +60,10 @@ class _ContactUsState extends State<ContactUs> {
                   Text(
                     "Information",
                     style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16.sp,
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f16,
                       color: Color.fromARGB(255, 16, 2, 90),
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontsWeight.bold,
                     ),
                   ),
                   SizedBox(
@@ -73,9 +74,9 @@ class _ContactUsState extends State<ContactUs> {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 13.sp,
-                        color: Colors.grey[700]),
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f13,
+                        color: FontsColor.grey700),
                   ),
                 ],
               ),
@@ -88,9 +89,9 @@ class _ContactUsState extends State<ContactUs> {
                   Text(
                     "Call",
                     style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 13.sp,
-                        fontWeight: FontWeight.bold),
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f13,
+                        fontWeight: FontsWeight.bold),
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.01,
@@ -109,7 +110,7 @@ class _ContactUsState extends State<ContactUs> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        color: Colors.grey[200],
+                        color: FontsColor.grey200,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -117,7 +118,7 @@ class _ContactUsState extends State<ContactUs> {
                           children: [
                             Icon(
                               MdiIcons.phoneOutline,
-                              color: Colors.grey[600],
+                              color: FontsColor.grey600,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             SizedBox(
@@ -126,9 +127,9 @@ class _ContactUsState extends State<ContactUs> {
                             Text(
                               "123456789",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  color: Colors.grey,
-                                  fontSize: 13.sp),
+                                  fontFamily: FontsFamily.inter,
+                                  color: FontsColor.grey,
+                                  fontSize: FontsSize.f13),
                             ),
                           ],
                         ),
@@ -146,9 +147,9 @@ class _ContactUsState extends State<ContactUs> {
                   Text(
                     "WhatsApp",
                     style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 13.sp,
-                        fontWeight: FontWeight.bold),
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f13,
+                        fontWeight: FontsWeight.bold),
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.01,
@@ -162,7 +163,7 @@ class _ContactUsState extends State<ContactUs> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        color: Colors.grey[200],
+                        color: FontsColor.grey200,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -178,9 +179,9 @@ class _ContactUsState extends State<ContactUs> {
                             Text(
                               "123456789",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  color: Colors.grey,
-                                  fontSize: 13.sp),
+                                  fontFamily: FontsFamily.inter,
+                                  color: FontsColor.grey,
+                                  fontSize: FontsSize.f13),
                             ),
                           ],
                         ),
@@ -198,9 +199,9 @@ class _ContactUsState extends State<ContactUs> {
                   Text(
                     "Website",
                     style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 13.sp,
-                        fontWeight: FontWeight.bold),
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f13,
+                        fontWeight: FontsWeight.bold),
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.01,
@@ -214,7 +215,7 @@ class _ContactUsState extends State<ContactUs> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        color: Colors.grey[200],
+                        color: FontsColor.grey200,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -222,7 +223,7 @@ class _ContactUsState extends State<ContactUs> {
                           children: [
                             Icon(
                               MdiIcons.web,
-                              color: Colors.grey[600],
+                              color: FontsColor.grey600,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             SizedBox(
@@ -231,9 +232,9 @@ class _ContactUsState extends State<ContactUs> {
                             Text(
                               "https://www.youtube.com/",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  color: Colors.grey,
-                                  fontSize: 13.sp),
+                                  fontFamily: FontsFamily.inter,
+                                  color: FontsColor.grey,
+                                  fontSize: FontsSize.f13),
                             ),
                           ],
                         ),
@@ -251,9 +252,9 @@ class _ContactUsState extends State<ContactUs> {
                   Text(
                     "Email",
                     style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 13.sp,
-                        fontWeight: FontWeight.bold),
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f13,
+                        fontWeight: FontsWeight.bold),
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.01,
@@ -272,7 +273,7 @@ class _ContactUsState extends State<ContactUs> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        color: Colors.grey[200],
+                        color: FontsColor.grey200,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -280,7 +281,7 @@ class _ContactUsState extends State<ContactUs> {
                           children: [
                             Icon(
                               MdiIcons.emailOutline,
-                              color: Colors.grey[600],
+                              color: FontsColor.grey600,
                               size: MediaQuery.of(context).size.width * 0.06,
                             ),
                             SizedBox(
@@ -289,9 +290,9 @@ class _ContactUsState extends State<ContactUs> {
                             Text(
                               "abc@gmail.com",
                               style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  color: Colors.grey,
-                                  fontSize: 13.sp),
+                                  fontFamily: FontsFamily.inter,
+                                  color: FontsColor.grey,
+                                  fontSize: FontsSize.f13),
                             ),
                           ],
                         ),

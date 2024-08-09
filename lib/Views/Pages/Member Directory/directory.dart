@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 import 'package:progress_alliance/Views/Widgets/homeBottom.dart';
 import 'package:progress_alliance/Routes/route.dart';
@@ -57,14 +58,14 @@ class _MemberDirectoryState extends State<MemberDirectory>
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -72,10 +73,10 @@ class _MemberDirectoryState extends State<MemberDirectory>
           title: Text(
             "Member Directory",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
               color: Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: GestureDetector(
@@ -101,8 +102,8 @@ class _MemberDirectoryState extends State<MemberDirectory>
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
           child: isLoading
               ? Shimmer.fromColors(
-                  baseColor: Colors.grey[300]!,
-                  highlightColor: Colors.grey[100]!,
+                  baseColor: FontsColor.grey300!,
+                  highlightColor: FontsColor.grey100!,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -110,8 +111,9 @@ class _MemberDirectoryState extends State<MemberDirectory>
                         height: MediaQuery.of(context).size.height * 0.07,
                         width: double.infinity,
                         decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(width: 0.2, color: Colors.grey),
+                          color: FontsColor.white,
+                          border:
+                              Border.all(width: 0.2, color: FontsColor.grey),
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
@@ -123,7 +125,7 @@ class _MemberDirectoryState extends State<MemberDirectory>
                         width: double.infinity,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(2),
-                            color: Colors.grey[200]),
+                            color: FontsColor.grey200),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.015,
@@ -136,14 +138,14 @@ class _MemberDirectoryState extends State<MemberDirectory>
                             width: MediaQuery.of(context).size.width * 0.24,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(2),
-                                color: Colors.grey[200]),
+                                color: FontsColor.grey200),
                           ),
                           Container(
                             height: MediaQuery.of(context).size.height * 0.022,
                             width: MediaQuery.of(context).size.width * 0.3,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(2),
-                                color: Colors.grey[200]),
+                                color: FontsColor.grey200),
                           ),
                         ],
                       ),
@@ -166,7 +168,7 @@ class _MemberDirectoryState extends State<MemberDirectory>
                                     shape: BoxShape.circle,
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
+                                        color: FontsColor.grey.withOpacity(0.5),
                                         spreadRadius: 2,
                                         blurRadius: 2,
                                       ),
@@ -197,7 +199,7 @@ class _MemberDirectoryState extends State<MemberDirectory>
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        border: Border.all(width: 0.2, color: Colors.grey),
+                        border: Border.all(width: 0.2, color: FontsColor.grey),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(10),
@@ -210,9 +212,9 @@ class _MemberDirectoryState extends State<MemberDirectory>
                                 Text(
                                   "Cluster Growth Partner",
                                   style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      fontSize: 15.sp,
-                                      fontWeight: FontWeight.bold),
+                                      fontFamily: FontsFamily.inter,
+                                      fontSize: FontsSize.f15,
+                                      fontWeight: FontsWeight.bold),
                                 ),
                                 GestureDetector(
                                   onTap: () {
@@ -222,9 +224,9 @@ class _MemberDirectoryState extends State<MemberDirectory>
                                   child: Text(
                                     "View All >",
                                     style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      fontSize: 14.sp,
-                                      color: Colors.blue,
+                                      fontFamily: FontsFamily.inter,
+                                      fontSize: FontsSize.f14,
+                                      color: FontsColor.blue,
                                     ),
                                   ),
                                 ),
@@ -244,9 +246,9 @@ class _MemberDirectoryState extends State<MemberDirectory>
                     Text(
                       "Cities",
                       style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 15.sp,
-                        fontWeight: FontWeight.bold,
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f15,
+                        fontWeight: FontsWeight.bold,
                       ),
                     ),
                     SizedBox(
@@ -273,7 +275,7 @@ class _MemberDirectoryState extends State<MemberDirectory>
                                     shape: BoxShape.circle,
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
+                                        color: FontsColor.grey.withOpacity(0.5),
                                         spreadRadius: 2,
                                         blurRadius: 2,
                                       ),
@@ -282,7 +284,7 @@ class _MemberDirectoryState extends State<MemberDirectory>
                                   child: CircleAvatar(
                                     radius: MediaQuery.of(context).size.width *
                                         0.099,
-                                    backgroundColor: Colors.white,
+                                    backgroundColor: FontsColor.white,
                                     child: CircleAvatar(
                                       radius:
                                           MediaQuery.of(context).size.width *
@@ -300,10 +302,10 @@ class _MemberDirectoryState extends State<MemberDirectory>
                                 cities[index]['label']!,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 12.sp,
-                                  color: const Color.fromARGB(255, 16, 2, 90),
-                                  fontWeight: FontWeight.bold,
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f12,
+                                  fontWeight: FontsWeight.bold,
+                                  color: FontsColor.purple,
                                 ),
                               ),
                             ],

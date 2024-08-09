@@ -1,8 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:image_picker/image_picker.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 
 class Addcomplaint extends StatefulWidget {
   const Addcomplaint({super.key});
@@ -41,8 +42,8 @@ class _AddcomplaintState extends State<Addcomplaint> {
         height: MediaQuery.of(context).size.height * 0.045,
         width: width,
         decoration: BoxDecoration(
-          color: isSelected ? Color.fromARGB(255, 16, 2, 90) : Colors.grey[300],
-          border: Border.all(width: 1, color: Colors.transparent),
+          color: isSelected ? FontsColor.purple : FontsColor.grey300,
+          border: Border.all(width: 1, color: FontsColor.transparent),
           borderRadius: BorderRadius.circular(25),
         ),
         child: Center(
@@ -50,9 +51,9 @@ class _AddcomplaintState extends State<Addcomplaint> {
             text,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 12.sp,
-              color: isSelected ? Colors.white : Colors.black,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f12,
+              color: isSelected ? FontsColor.white : FontsColor.black,
             ),
           ),
         ),
@@ -66,14 +67,14 @@ class _AddcomplaintState extends State<Addcomplaint> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -81,10 +82,10 @@ class _AddcomplaintState extends State<Addcomplaint> {
           title: Text(
             "Add Complaints",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
-              color: const Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
+              color: FontsColor.purple,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: GestureDetector(
@@ -106,10 +107,10 @@ class _AddcomplaintState extends State<Addcomplaint> {
                     Text(
                       "Tell us what is your complaint?",
                       style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 15.sp,
-                        color: Color.fromARGB(255, 16, 2, 90),
-                        fontWeight: FontWeight.bold,
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f15,
+                        color: FontsColor.purple,
+                        fontWeight: FontsWeight.bold,
                       ),
                     ),
                     SizedBox(
@@ -149,7 +150,7 @@ class _AddcomplaintState extends State<Addcomplaint> {
               ),
               Divider(
                 thickness: 2,
-                color: Colors.grey[300],
+                color: FontsColor.grey300,
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.018,
@@ -162,9 +163,9 @@ class _AddcomplaintState extends State<Addcomplaint> {
                     Text(
                       "Description",
                       style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 13.sp,
-                          fontWeight: FontWeight.bold),
+                          fontFamily: FontsFamily.inter,
+                          fontSize: FontsSize.f13,
+                          fontWeight: FontsWeight.bold),
                     ),
                     SizedBox(
                         height: MediaQuery.of(context).size.height * 0.015),
@@ -172,7 +173,7 @@ class _AddcomplaintState extends State<Addcomplaint> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.grey, width: 0.5),
+                        border: Border.all(color: FontsColor.grey, width: 0.5),
                       ),
                       child: TextFormField(
                         controller: _description,
@@ -180,15 +181,15 @@ class _AddcomplaintState extends State<Addcomplaint> {
                         decoration: InputDecoration(
                           hintText: 'Tell us what is your complaint?',
                           hintStyle: TextStyle(
-                            fontSize: 13.sp,
-                            fontFamily: 'Inter',
+                            fontSize: FontsSize.f13,
+                            fontFamily: FontsFamily.inter,
                           ),
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.all(10),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
                             borderSide: BorderSide(
-                              color: Colors.black,
+                              color: FontsColor.black,
                               width: 1,
                             ),
                           ),
@@ -209,9 +210,9 @@ class _AddcomplaintState extends State<Addcomplaint> {
                     Text(
                       "Attach Images (Optional)",
                       style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 13.sp,
-                          fontWeight: FontWeight.bold),
+                          fontFamily: FontsFamily.inter,
+                          fontSize: FontsSize.f13,
+                          fontWeight: FontsWeight.bold),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.015,
@@ -223,8 +224,8 @@ class _AddcomplaintState extends State<Addcomplaint> {
                             width: MediaQuery.of(context).size.width * 0.28,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              border:
-                                  Border.all(width: 0.5, color: Colors.grey),
+                              border: Border.all(
+                                  width: 0.5, color: FontsColor.grey),
                             ),
                             child: _coverImage != null
                                 ? Image.file(
@@ -237,7 +238,7 @@ class _AddcomplaintState extends State<Addcomplaint> {
                                     children: [
                                       Icon(
                                         Icons.add,
-                                        color: Colors.grey,
+                                        color: FontsColor.grey,
                                         size:
                                             MediaQuery.of(context).size.width *
                                                 0.06,
@@ -245,9 +246,9 @@ class _AddcomplaintState extends State<Addcomplaint> {
                                       Text(
                                         "Image 1",
                                         style: TextStyle(
-                                            fontFamily: 'Inter',
-                                            fontSize: 13.sp,
-                                            color: Colors.grey),
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f13,
+                                            color: FontsColor.grey),
                                       ),
                                     ],
                                   ))),
@@ -259,8 +260,8 @@ class _AddcomplaintState extends State<Addcomplaint> {
                             width: MediaQuery.of(context).size.width * 0.28,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              border:
-                                  Border.all(width: 0.5, color: Colors.grey),
+                              border: Border.all(
+                                  width: 0.5, color: FontsColor.grey),
                             ),
                             child: _coverImage1 != null
                                 ? Image.file(
@@ -273,7 +274,7 @@ class _AddcomplaintState extends State<Addcomplaint> {
                                     children: [
                                       Icon(
                                         Icons.add,
-                                        color: Colors.grey,
+                                        color: FontsColor.grey,
                                         size:
                                             MediaQuery.of(context).size.width *
                                                 0.06,
@@ -281,9 +282,9 @@ class _AddcomplaintState extends State<Addcomplaint> {
                                       Text(
                                         "Image 2",
                                         style: TextStyle(
-                                            fontFamily: 'Inter',
-                                            fontSize: 13.sp,
-                                            color: Colors.grey),
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f13,
+                                            color: FontsColor.grey),
                                       ),
                                     ],
                                   ))),
@@ -298,16 +299,16 @@ class _AddcomplaintState extends State<Addcomplaint> {
                         height: MediaQuery.of(context).size.height * 0.06,
                         width: double.infinity,
                         decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 16, 2, 90),
+                            color: FontsColor.purple,
                             borderRadius: BorderRadius.circular(10)),
                         child: Center(
                           child: Text(
                             'Submit',
                             style: TextStyle(
-                                fontFamily: 'Inter',
-                                color: Colors.white,
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.bold),
+                                fontFamily: FontsFamily.inter,
+                                color: FontsColor.white,
+                                fontSize: FontsSize.f15,
+                                fontWeight: FontsWeight.bold),
                           ),
                         ),
                       ),

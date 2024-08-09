@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:image_picker/image_picker.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
+
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/customShimmer.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 
@@ -43,15 +45,15 @@ class _MemberDetailState extends State<MemberDetail>
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -59,10 +61,10 @@ class _MemberDetailState extends State<MemberDetail>
           title: Text(
             "Member Details",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
-              color: const Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
+              color: FontsColor.purple,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: GestureDetector(
@@ -79,7 +81,7 @@ class _MemberDetailState extends State<MemberDetail>
                 onPressed: () {},
                 icon: Icon(
                   MdiIcons.accountPlusOutline,
-                  color: const Color.fromARGB(255, 16, 2, 90),
+                  color: FontsColor.purple,
                   size: MediaQuery.of(context).size.width * 0.06,
                 )),
           ],
@@ -94,16 +96,16 @@ class _MemberDetailState extends State<MemberDetail>
                       Container(
                         width: double.infinity,
                         height: MediaQuery.of(context).size.height * 0.15,
-                        color: Colors.grey[300],
+                        color: FontsColor.grey300,
                         child: Padding(
                           padding: const EdgeInsets.only(top: 22.0),
                           child: Text(
                             "Cover Photo",
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 15.sp,
-                              color: Colors.grey[600],
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f15,
+                              color: FontsColor.grey600,
                             ),
                           ),
                         ),
@@ -116,7 +118,7 @@ class _MemberDetailState extends State<MemberDetail>
                           children: [
                             CircleAvatar(
                               radius: MediaQuery.of(context).size.width * 0.15,
-                              backgroundColor: Colors.white,
+                              backgroundColor: FontsColor.white,
                               child: CircleAvatar(
                                 radius:
                                     MediaQuery.of(context).size.width * 0.146,
@@ -139,16 +141,16 @@ class _MemberDetailState extends State<MemberDetail>
                       Text(
                         "Member name",
                         style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 15.sp,
-                            fontWeight: FontWeight.bold),
+                            fontFamily: FontsFamily.inter,
+                            fontSize: FontsSize.f15,
+                            fontWeight: FontsWeight.bold),
                       ),
                       Text(
                         "PROGRESS ALLIANCE FAMILY",
                         style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 13.sp,
-                            color: Colors.grey),
+                            fontFamily: FontsFamily.inter,
+                            fontSize: FontsSize.f13,
+                            color: FontsColor.grey),
                       ),
                     ],
                   ),
@@ -174,7 +176,7 @@ class _MemberDetailState extends State<MemberDetail>
                             width: MediaQuery.of(context).size.width * 0.28,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
-                                color: Colors.grey[300]),
+                                color: FontsColor.grey300),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -190,9 +192,11 @@ class _MemberDetailState extends State<MemberDetail>
                                 Text(
                                   'Call',
                                   style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.bold),
+                                    fontFamily: FontsFamily.inter,
+                                    fontSize: FontsSize.f12,
+                                    color: FontsColor.black,
+                                    fontWeight: FontsWeight.bold,
+                                  ),
                                 ),
                               ],
                             ),
@@ -207,7 +211,7 @@ class _MemberDetailState extends State<MemberDetail>
                             width: MediaQuery.of(context).size.width * 0.28,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
-                                color: Colors.grey[300]),
+                                color: FontsColor.grey300),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -223,9 +227,11 @@ class _MemberDetailState extends State<MemberDetail>
                                 Text(
                                   'Whatsapp',
                                   style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.bold),
+                                    fontFamily: FontsFamily.inter,
+                                    fontSize: FontsSize.f12,
+                                    color: FontsColor.black,
+                                    fontWeight: FontsWeight.bold,
+                                  ),
                                 ),
                               ],
                             ),
@@ -238,7 +244,7 @@ class _MemberDetailState extends State<MemberDetail>
                             width: MediaQuery.of(context).size.width * 0.28,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
-                                color: Colors.grey[300]),
+                                color: FontsColor.grey300),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -254,9 +260,11 @@ class _MemberDetailState extends State<MemberDetail>
                                 Text(
                                   '1-2-1',
                                   style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.bold),
+                                    fontFamily: FontsFamily.inter,
+                                    fontSize: FontsSize.f12,
+                                    color: FontsColor.black,
+                                    fontWeight: FontsWeight.bold,
+                                  ),
                                 ),
                               ],
                             ),
@@ -271,12 +279,12 @@ class _MemberDetailState extends State<MemberDetail>
                   TabBar(
                     controller: _tabController,
                     indicatorSize: TabBarIndicatorSize.tab,
-                    indicatorColor: const Color.fromARGB(255, 16, 2, 90),
+                    indicatorColor: FontsColor.purple,
                     labelStyle: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16.sp,
-                      color: const Color.fromARGB(255, 16, 2, 90),
-                      fontWeight: FontWeight.bold,
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f16,
+                      color: FontsColor.purple,
+                      fontWeight: FontsWeight.bold,
                     ),
                     tabs: const [
                       Tab(text: "Personal"),
@@ -298,7 +306,7 @@ class _MemberDetailState extends State<MemberDetail>
                                   children: [
                                     Icon(
                                       MdiIcons.phoneOutline,
-                                      color: Colors.grey[500],
+                                      color: FontsColor.grey500,
                                       size: MediaQuery.of(context).size.width *
                                           0.06,
                                     ),
@@ -315,16 +323,16 @@ class _MemberDetailState extends State<MemberDetail>
                                         Text(
                                           'Mobile Number',
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                              color: Colors.grey),
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f13,
+                                              color: FontsColor.grey),
                                         ),
                                         Text(
                                           '1234567896',
                                           style: TextStyle(
-                                            fontFamily: 'Inter',
-                                            fontSize: 13.sp,
-                                            fontWeight: FontWeight.bold,
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f13,
+                                            fontWeight: FontsWeight.bold,
                                           ),
                                         ),
                                       ],
@@ -340,7 +348,7 @@ class _MemberDetailState extends State<MemberDetail>
                                   children: [
                                     Icon(
                                       MdiIcons.calendarMonthOutline,
-                                      color: Colors.grey[500],
+                                      color: FontsColor.grey500,
                                       size: MediaQuery.of(context).size.width *
                                           0.06,
                                     ),
@@ -357,16 +365,16 @@ class _MemberDetailState extends State<MemberDetail>
                                         Text(
                                           'Date Of Birth',
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                              color: Colors.grey),
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f13,
+                                              color: FontsColor.grey),
                                         ),
                                         Text(
                                           '12/12/2025',
                                           style: TextStyle(
-                                            fontFamily: 'Inter',
-                                            fontSize: 13.sp,
-                                            fontWeight: FontWeight.bold,
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f13,
+                                            fontWeight: FontsWeight.bold,
                                           ),
                                         ),
                                       ],
@@ -382,7 +390,7 @@ class _MemberDetailState extends State<MemberDetail>
                                   children: [
                                     Icon(
                                       MdiIcons.calendarMonthOutline,
-                                      color: Colors.grey[500],
+                                      color: FontsColor.grey500,
                                       size: MediaQuery.of(context).size.width *
                                           0.06,
                                     ),
@@ -399,16 +407,16 @@ class _MemberDetailState extends State<MemberDetail>
                                         Text(
                                           'Marriage Anniversary',
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                              color: Colors.grey),
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f13,
+                                              color: FontsColor.grey),
                                         ),
                                         Text(
                                           '25/12/2022',
                                           style: TextStyle(
-                                            fontFamily: 'Inter',
-                                            fontSize: 13.sp,
-                                            fontWeight: FontWeight.bold,
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f13,
+                                            fontWeight: FontsWeight.bold,
                                           ),
                                         ),
                                       ],
@@ -424,7 +432,7 @@ class _MemberDetailState extends State<MemberDetail>
                                   children: [
                                     Icon(
                                       MdiIcons.phoneOutline,
-                                      color: Colors.grey[500],
+                                      color: FontsColor.grey500,
                                       size: MediaQuery.of(context).size.width *
                                           0.06,
                                     ),
@@ -441,9 +449,9 @@ class _MemberDetailState extends State<MemberDetail>
                                         Text(
                                           'Emergency Contact',
                                           style: TextStyle(
-                                            fontFamily: 'Inter',
-                                            fontSize: 13.sp,
-                                            color: Colors.grey,
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f13,
+                                            color: FontsColor.grey,
                                           ),
                                         ),
                                         Row(
@@ -453,9 +461,9 @@ class _MemberDetailState extends State<MemberDetail>
                                             Text(
                                               'Person Name',
                                               style: TextStyle(
-                                                  fontFamily: 'Inter',
-                                                  fontSize: 13.sp,
-                                                  fontWeight: FontWeight.bold),
+                                                  fontFamily: FontsFamily.inter,
+                                                  fontSize: FontsSize.f13,
+                                                  fontWeight: FontsWeight.bold),
                                             ),
                                             SizedBox(
                                               width: MediaQuery.of(context)
@@ -477,9 +485,9 @@ class _MemberDetailState extends State<MemberDetail>
                                         Text(
                                           '1234567890',
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                              fontWeight: FontWeight.bold),
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f13,
+                                              fontWeight: FontsWeight.bold),
                                         ),
                                       ],
                                     )
@@ -494,7 +502,7 @@ class _MemberDetailState extends State<MemberDetail>
                                   children: [
                                     Icon(
                                       MdiIcons.mapMarkerOutline,
-                                      color: Colors.grey[500],
+                                      color: FontsColor.grey500,
                                       size: MediaQuery.of(context).size.width *
                                           0.06,
                                     ),
@@ -511,16 +519,16 @@ class _MemberDetailState extends State<MemberDetail>
                                         Text(
                                           'Address',
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                              color: Colors.grey),
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f13,
+                                              color: FontsColor.grey),
                                         ),
                                         Text(
                                           'Your address',
                                           style: TextStyle(
-                                            fontFamily: 'Inter',
-                                            fontSize: 13.sp,
-                                            fontWeight: FontWeight.bold,
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f13,
+                                            fontWeight: FontsWeight.bold,
                                           ),
                                         ),
                                         SizedBox(
@@ -545,7 +553,7 @@ class _MemberDetailState extends State<MemberDetail>
                                               decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(20),
-                                                  color: Colors.grey[300]),
+                                                  color: FontsColor.grey300),
                                               child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
@@ -553,9 +561,11 @@ class _MemberDetailState extends State<MemberDetail>
                                                   Text(
                                                     'Get Direction',
                                                     style: TextStyle(
-                                                        fontFamily: 'Inter',
-                                                        color: Colors.blue,
-                                                        fontSize: 13.sp),
+                                                        fontFamily:
+                                                            FontsFamily.inter,
+                                                        color: FontsColor.blue,
+                                                        fontSize:
+                                                            FontsSize.f13),
                                                   ),
                                                   SizedBox(
                                                     width:
@@ -571,7 +581,7 @@ class _MemberDetailState extends State<MemberDetail>
                                                                 .size
                                                                 .width *
                                                             0.04,
-                                                    color: Colors.blue,
+                                                    color: FontsColor.blue,
                                                   )
                                                 ],
                                               )),
@@ -589,7 +599,7 @@ class _MemberDetailState extends State<MemberDetail>
                                   children: [
                                     Icon(
                                       MdiIcons.accountOutline,
-                                      color: Colors.grey[500],
+                                      color: FontsColor.grey500,
                                       size: MediaQuery.of(context).size.width *
                                           0.06,
                                     ),
@@ -606,9 +616,9 @@ class _MemberDetailState extends State<MemberDetail>
                                         Text(
                                           'Introducer Details',
                                           style: TextStyle(
-                                            fontFamily: 'Inter',
-                                            fontSize: 13.sp,
-                                            color: Colors.grey,
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f13,
+                                            color: FontsColor.grey,
                                           ),
                                         ),
                                         Container(
@@ -621,7 +631,7 @@ class _MemberDetailState extends State<MemberDetail>
                                                     BorderRadius.circular(5),
                                                 border: Border.all(
                                                     width: 0.5,
-                                                    color: Colors.grey)),
+                                                    color: FontsColor.grey)),
                                             child: Padding(
                                               padding: const EdgeInsets.all(8),
                                               child: Row(
@@ -648,8 +658,11 @@ class _MemberDetailState extends State<MemberDetail>
                                                       Text(
                                                         'Introducer Name',
                                                         style: TextStyle(
-                                                            fontFamily: 'Inter',
-                                                            fontSize: 14.sp,
+                                                            fontFamily:
+                                                                FontsFamily
+                                                                    .inter,
+                                                            fontSize:
+                                                                FontsSize.f14,
                                                             fontWeight:
                                                                 FontWeight
                                                                     .bold),
@@ -675,7 +688,8 @@ class _MemberDetailState extends State<MemberDetail>
                                                       ),
                                                       Icon(
                                                         MdiIcons.phoneOutline,
-                                                        color: Colors.grey[500],
+                                                        color:
+                                                            FontsColor.grey500,
                                                         size: MediaQuery.of(
                                                                     context)
                                                                 .size
@@ -692,7 +706,8 @@ class _MemberDetailState extends State<MemberDetail>
                                                       Icon(
                                                         MdiIcons
                                                             .accountPlusOutline,
-                                                        color: Colors.grey[500],
+                                                        color:
+                                                            FontsColor.grey500,
                                                         size: MediaQuery.of(
                                                                     context)
                                                                 .size
@@ -725,7 +740,8 @@ class _MemberDetailState extends State<MemberDetail>
                                       MediaQuery.of(context).size.width * 0.3,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
-                                      border: Border.all(color: Colors.black)),
+                                      border:
+                                          Border.all(color: FontsColor.black)),
                                   child: Column(
                                     children: [
                                       Padding(
@@ -736,7 +752,7 @@ class _MemberDetailState extends State<MemberDetail>
                                           children: [
                                             Icon(
                                               Icons.star,
-                                              color: Colors.yellow,
+                                              color: FontsColor.yellow,
                                               size: MediaQuery.of(context)
                                                       .size
                                                       .width *
@@ -757,7 +773,7 @@ class _MemberDetailState extends State<MemberDetail>
                                           decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(10),
-                                              color: Colors.grey[300]),
+                                              color: FontsColor.grey300),
                                           child: _coverImage != null
                                               ? Image.file(
                                                   _coverImage!,
@@ -780,9 +796,9 @@ class _MemberDetailState extends State<MemberDetail>
                                         'Your Brand Name',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                            fontFamily: 'Inter',
-                                            fontSize: 13.sp,
-                                            fontWeight: FontWeight.bold),
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f13,
+                                            fontWeight: FontsWeight.bold),
                                       ),
                                     ],
                                   ),
@@ -798,14 +814,14 @@ class _MemberDetailState extends State<MemberDetail>
                                     Text(
                                       'Brand Name',
                                       style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 15.sp,
-                                          color: Colors.grey[700],
-                                          fontWeight: FontWeight.bold),
+                                          fontFamily: FontsFamily.inter,
+                                          fontSize: FontsSize.f15,
+                                          color: FontsColor.grey700,
+                                          fontWeight: FontsWeight.bold),
                                     ),
                                     CircleAvatar(
                                       radius: 13,
-                                      backgroundColor: Colors.grey[300],
+                                      backgroundColor: FontsColor.grey300,
                                       child: Center(
                                         child: Icon(
                                           MdiIcons.pencilOutline,
@@ -827,7 +843,7 @@ class _MemberDetailState extends State<MemberDetail>
                                   children: [
                                     Icon(
                                       MdiIcons.shoppingOutline,
-                                      color: Colors.grey[500],
+                                      color: FontsColor.grey500,
                                       size: MediaQuery.of(context).size.width *
                                           0.06,
                                     ),
@@ -844,16 +860,16 @@ class _MemberDetailState extends State<MemberDetail>
                                         Text(
                                           'Business Type',
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                              color: Colors.grey),
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f13,
+                                              color: FontsColor.grey),
                                         ),
                                         Text(
                                           'Business type',
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                              fontWeight: FontWeight.bold),
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f13,
+                                              fontWeight: FontsWeight.bold),
                                         ),
                                       ],
                                     )
@@ -868,7 +884,7 @@ class _MemberDetailState extends State<MemberDetail>
                                   children: [
                                     Icon(
                                       MdiIcons.viewAgendaOutline,
-                                      color: Colors.grey[500],
+                                      color: FontsColor.grey500,
                                       size: MediaQuery.of(context).size.width *
                                           0.06,
                                     ),
@@ -885,16 +901,16 @@ class _MemberDetailState extends State<MemberDetail>
                                         Text(
                                           'Category',
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                              color: Colors.grey),
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f13,
+                                              color: FontsColor.grey),
                                         ),
                                         Text(
                                           'Type of category',
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                              fontWeight: FontWeight.bold),
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f13,
+                                              fontWeight: FontsWeight.bold),
                                         ),
                                       ],
                                     )
@@ -909,7 +925,7 @@ class _MemberDetailState extends State<MemberDetail>
                                   children: [
                                     Icon(
                                       MdiIcons.viewAgendaOutline,
-                                      color: Colors.grey[500],
+                                      color: FontsColor.grey500,
                                       size: MediaQuery.of(context).size.width *
                                           0.06,
                                     ),
@@ -926,16 +942,16 @@ class _MemberDetailState extends State<MemberDetail>
                                         Text(
                                           'Sub Category',
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                              color: Colors.grey),
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f13,
+                                              color: FontsColor.grey),
                                         ),
                                         Text(
                                           'Type of sub-category',
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                              fontWeight: FontWeight.bold),
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f13,
+                                              fontWeight: FontsWeight.bold),
                                         ),
                                       ],
                                     )
@@ -950,7 +966,7 @@ class _MemberDetailState extends State<MemberDetail>
                                   children: [
                                     Icon(
                                       MdiIcons.hexagonOutline,
-                                      color: Colors.grey[500],
+                                      color: FontsColor.grey500,
                                       size: MediaQuery.of(context).size.width *
                                           0.06,
                                     ),
@@ -967,16 +983,16 @@ class _MemberDetailState extends State<MemberDetail>
                                         Text(
                                           'Formation',
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                              color: Colors.grey),
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f13,
+                                              color: FontsColor.grey),
                                         ),
                                         Text(
                                           'Business formation',
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                              fontWeight: FontWeight.bold),
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f13,
+                                              fontWeight: FontsWeight.bold),
                                         ),
                                       ],
                                     )
@@ -991,7 +1007,7 @@ class _MemberDetailState extends State<MemberDetail>
                                   children: [
                                     Icon(
                                       MdiIcons.calendarMonthOutline,
-                                      color: Colors.grey[500],
+                                      color: FontsColor.grey500,
                                       size: MediaQuery.of(context).size.width *
                                           0.06,
                                     ),
@@ -1008,16 +1024,16 @@ class _MemberDetailState extends State<MemberDetail>
                                         Text(
                                           'Establishment',
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                              color: Colors.grey),
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f13,
+                                              color: FontsColor.grey),
                                         ),
                                         Text(
                                           '01/12/2025',
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                              fontWeight: FontWeight.bold),
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f13,
+                                              fontWeight: FontsWeight.bold),
                                         ),
                                       ],
                                     )
@@ -1032,7 +1048,7 @@ class _MemberDetailState extends State<MemberDetail>
                                   children: [
                                     Icon(
                                       MdiIcons.phoneOutline,
-                                      color: Colors.grey[500],
+                                      color: FontsColor.grey500,
                                       size: MediaQuery.of(context).size.width *
                                           0.06,
                                     ),
@@ -1049,16 +1065,16 @@ class _MemberDetailState extends State<MemberDetail>
                                         Text(
                                           'Mobile Number',
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                              color: Colors.grey),
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f13,
+                                              color: FontsColor.grey),
                                         ),
                                         Text(
                                           '1234567896',
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                              fontWeight: FontWeight.bold),
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f13,
+                                              fontWeight: FontsWeight.bold),
                                         ),
                                       ],
                                     )
@@ -1073,7 +1089,7 @@ class _MemberDetailState extends State<MemberDetail>
                                   children: [
                                     Icon(
                                       MdiIcons.mapMarkerOutline,
-                                      color: Colors.grey[500],
+                                      color: FontsColor.grey500,
                                       size: MediaQuery.of(context).size.width *
                                           0.06,
                                     ),
@@ -1090,16 +1106,16 @@ class _MemberDetailState extends State<MemberDetail>
                                         Text(
                                           'Address',
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                              color: Colors.grey),
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f13,
+                                              color: FontsColor.grey),
                                         ),
                                         Text(
                                           'Your address',
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                              fontWeight: FontWeight.bold),
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f13,
+                                              fontWeight: FontsWeight.bold),
                                         ),
                                         SizedBox(
                                           height: MediaQuery.of(context)
@@ -1123,7 +1139,7 @@ class _MemberDetailState extends State<MemberDetail>
                                               decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(20),
-                                                  color: Colors.grey[300]),
+                                                  color: FontsColor.grey300),
                                               child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
@@ -1131,9 +1147,11 @@ class _MemberDetailState extends State<MemberDetail>
                                                   Text(
                                                     'Get Direction',
                                                     style: TextStyle(
-                                                        fontFamily: 'Inter',
-                                                        color: Colors.blue,
-                                                        fontSize: 13.sp),
+                                                        fontFamily:
+                                                            FontsFamily.inter,
+                                                        color: FontsColor.blue,
+                                                        fontSize:
+                                                            FontsSize.f13),
                                                   ),
                                                   SizedBox(
                                                     width:
@@ -1149,7 +1167,7 @@ class _MemberDetailState extends State<MemberDetail>
                                                                 .size
                                                                 .width *
                                                             0.04,
-                                                    color: Colors.blue,
+                                                    color: FontsColor.blue,
                                                   )
                                                 ],
                                               )),
@@ -1167,7 +1185,7 @@ class _MemberDetailState extends State<MemberDetail>
                                   children: [
                                     Icon(
                                       MdiIcons.informationOutline,
-                                      color: Colors.grey[500],
+                                      color: FontsColor.grey500,
                                       size: MediaQuery.of(context).size.width *
                                           0.06,
                                     ),
@@ -1184,16 +1202,16 @@ class _MemberDetailState extends State<MemberDetail>
                                         Text(
                                           'About Business',
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                              color: Colors.grey),
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f13,
+                                              color: FontsColor.grey),
                                         ),
                                         Text(
                                           'Business intro..',
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                              fontWeight: FontWeight.bold),
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f13,
+                                              fontWeight: FontsWeight.bold),
                                         ),
                                       ],
                                     )
@@ -1208,7 +1226,7 @@ class _MemberDetailState extends State<MemberDetail>
                                   children: [
                                     Icon(
                                       MdiIcons.link,
-                                      color: Colors.grey[500],
+                                      color: FontsColor.grey500,
                                       size: MediaQuery.of(context).size.width *
                                           0.06,
                                     ),
@@ -1225,9 +1243,9 @@ class _MemberDetailState extends State<MemberDetail>
                                         Text(
                                           'Social accounts',
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 13.sp,
-                                              color: Colors.grey),
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f13,
+                                              color: FontsColor.grey),
                                         ),
                                         GestureDetector(
                                             onTap: () {

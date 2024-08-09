@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:image_picker/image_picker.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 
 import 'package:progress_alliance/Views/Widgets/bottombar.dart';
@@ -76,9 +77,9 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
               Text(
                 'Profile Photo',
                 style: TextStyle(
-                  fontFamily: 'Inter',
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.bold,
+                  fontFamily: FontsFamily.inter,
+                  fontSize: FontsSize.f16,
+                  fontWeight: FontsWeight.bold,
                 ),
               ),
               ListTile(
@@ -89,9 +90,9 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                 title: Text(
                   'View Profile',
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Inter',
-                      fontSize: 14.sp),
+                      fontWeight: FontsWeight.bold,
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f14),
                 ),
                 onTap: () {
                   Navigator.pop(context);
@@ -106,9 +107,9 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                 title: Text(
                   'Change Profile',
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Inter',
-                      fontSize: 14.sp),
+                      fontWeight: FontsWeight.bold,
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f14),
                 ),
                 onTap: () {
                   Navigator.pop(context);
@@ -125,9 +126,9 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                   'Remove Profile',
                   style: TextStyle(
                     color: Colors.red,
-                    fontFamily: 'Inter',
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.bold,
+                    fontFamily: FontsFamily.inter,
+                    fontSize: FontsSize.f14,
+                    fontWeight: FontsWeight.bold,
                   ),
                 ),
                 onTap: () {
@@ -177,9 +178,9 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
               title: Text(
                 'Add Child',
                 style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.bold),
+                    fontFamily: FontsFamily.inter,
+                    fontSize: FontsSize.f18,
+                    fontWeight: FontsWeight.bold),
               ),
               content: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -190,8 +191,8 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                     decoration: InputDecoration(
                         labelText: 'Name',
                         labelStyle: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 14.sp,
+                          fontFamily: FontsFamily.inter,
+                          fontSize: FontsSize.f14,
                         )),
                   ),
                   TextField(
@@ -199,8 +200,8 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                     decoration: InputDecoration(
                         labelText: 'DOB',
                         labelStyle: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 14.sp,
+                          fontFamily: FontsFamily.inter,
+                          fontSize: FontsSize.f14,
                         )),
                     onTap: () async {
                       DateTime? pickedDate = await showDatePicker(
@@ -226,9 +227,9 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                     child: DropdownButtonFormField<String>(
                       iconSize: MediaQuery.of(context).size.width * 0.06,
                       style: TextStyle(
-                        fontSize: 14.sp,
-                        fontFamily: 'Inter',
-                        color: Colors.black,
+                        fontSize: FontsSize.f14,
+                        fontFamily: FontsFamily.inter,
+                        color: FontsColor.black,
                       ),
                       value: _gender,
                       items: [
@@ -248,13 +249,13 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                       decoration: InputDecoration(
                         hintText: 'Select Gender',
                         hintStyle: TextStyle(
-                          fontSize: 14.sp,
-                          fontFamily: 'Inter',
+                          fontSize: FontsSize.f14,
+                          fontFamily: FontsFamily.inter,
                         ),
                         border: const OutlineInputBorder(),
-                        focusedBorder: const OutlineInputBorder(
+                        focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.black,
+                            color: FontsColor.black,
                             width: 1,
                           ),
                         ),
@@ -304,9 +305,9 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
           title: Text(
             'Edit Child',
             style: TextStyle(
-                fontFamily: 'Inter',
-                fontSize: 18.sp,
-                fontWeight: FontWeight.bold),
+                fontFamily: FontsFamily.inter,
+                fontSize: FontsSize.f18,
+                fontWeight: FontsWeight.bold),
           ),
           content: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -317,8 +318,8 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                 decoration: InputDecoration(
                     labelText: 'Name',
                     labelStyle: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 14.sp,
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f14,
                     )),
               ),
               TextField(
@@ -326,8 +327,8 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                 decoration: InputDecoration(
                     labelText: 'DOB',
                     labelStyle: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 14.sp,
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f14,
                     )),
                 onTap: () async {
                   DateTime? pickedDate = await showDatePicker(
@@ -351,9 +352,9 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                 child: DropdownButtonFormField<String>(
                   iconSize: MediaQuery.of(context).size.width * 0.06,
                   style: TextStyle(
-                    fontSize: 14.sp,
-                    fontFamily: 'Inter',
-                    color: Colors.black,
+                    fontSize: FontsSize.f14,
+                    fontFamily: FontsFamily.inter,
+                    color: FontsColor.black,
                   ),
                   value: _gender,
                   items: [
@@ -373,13 +374,13 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                   decoration: InputDecoration(
                     hintText: 'Select Gender',
                     hintStyle: TextStyle(
-                      fontSize: 14.sp,
-                      fontFamily: 'Inter',
+                      fontSize: FontsSize.f14,
+                      fontFamily: FontsFamily.inter,
                     ),
                     border: const OutlineInputBorder(),
-                    focusedBorder: const OutlineInputBorder(
+                    focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.black,
+                        color: FontsColor.black,
                         width: 1,
                       ),
                     ),
@@ -418,15 +419,15 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -434,10 +435,10 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
           title: Text(
             "My Profile",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
-              color: const Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
+              color: FontsColor.purple,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: GestureDetector(
@@ -463,8 +464,8 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
         body: SingleChildScrollView(
           child: isLoading
               ? Shimmer.fromColors(
-                  baseColor: Colors.grey[300]!,
-                  highlightColor: Colors.grey[100]!,
+                  baseColor: FontsColor.grey300!,
+                  highlightColor: FontsColor.grey100!,
                   child: Column(
                     children: [
                       Container(
@@ -472,7 +473,7 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                         height: MediaQuery.of(context).size.height * 0.15,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Colors.grey[200]),
+                            color: FontsColor.grey200),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.08,
@@ -484,7 +485,7 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                             width: MediaQuery.of(context).size.width * 0.25,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(2),
-                                color: Colors.grey[200]),
+                                color: FontsColor.grey200),
                           ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.002,
@@ -494,7 +495,7 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                             width: MediaQuery.of(context).size.width * 0.35,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(2),
-                                color: Colors.grey[200]),
+                                color: FontsColor.grey200),
                           ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.002,
@@ -504,7 +505,7 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                             width: MediaQuery.of(context).size.width * 0.55,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(2),
-                                color: Colors.grey[200]),
+                                color: FontsColor.grey200),
                           ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.002,
@@ -514,7 +515,7 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                             width: MediaQuery.of(context).size.width * 0.35,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(2),
-                                color: Colors.grey[200]),
+                                color: FontsColor.grey200),
                           ),
                         ],
                       ),
@@ -528,7 +529,7 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                           width: double.infinity,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: Colors.grey[200]),
+                              color: FontsColor.grey200),
                         ),
                       ),
                       SizedBox(
@@ -541,7 +542,7 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                           width: double.infinity,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: Colors.grey[200]),
+                              color: FontsColor.grey200),
                         ),
                       ),
                       SizedBox(
@@ -554,7 +555,7 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                           width: double.infinity,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: Colors.grey[200]),
+                              color: FontsColor.grey200),
                         ),
                       ),
                     ],
@@ -568,7 +569,7 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                         Container(
                           width: double.infinity,
                           height: MediaQuery.of(context).size.height * 0.17,
-                          color: Colors.grey[300],
+                          color: FontsColor.grey300,
                           child: _coverImage != null
                               ? Image.file(
                                   _coverImage!,
@@ -580,9 +581,9 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                     "Cover Photo",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      fontSize: 15.sp,
-                                      color: Colors.grey[600],
+                                      fontFamily: FontsFamily.inter,
+                                      fontSize: FontsSize.f15,
+                                      color: FontsColor.grey600,
                                     ),
                                   ),
                                 ),
@@ -594,11 +595,11 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                             onTap: _pickCoverImage,
                             child: CircleAvatar(
                               radius: MediaQuery.of(context).size.width * 0.03,
-                              backgroundColor: Colors.black,
+                              backgroundColor: FontsColor.black,
                               child: CircleAvatar(
                                 radius:
                                     MediaQuery.of(context).size.width * 0.029,
-                                backgroundColor: Colors.white,
+                                backgroundColor: FontsColor.white,
                                 child: Icon(
                                   Icons.camera_alt_rounded,
                                   size:
@@ -617,7 +618,7 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                               CircleAvatar(
                                 radius:
                                     MediaQuery.of(context).size.width * 0.16,
-                                backgroundColor: Colors.white,
+                                backgroundColor: FontsColor.white,
                                 child: CircleAvatar(
                                   radius:
                                       MediaQuery.of(context).size.width * 0.156,
@@ -646,12 +647,12 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                   child: CircleAvatar(
                                     radius: MediaQuery.of(context).size.width *
                                         0.037,
-                                    backgroundColor: Colors.black,
+                                    backgroundColor: FontsColor.black,
                                     child: CircleAvatar(
                                       radius:
                                           MediaQuery.of(context).size.width *
                                               0.035,
-                                      backgroundColor: Colors.white,
+                                      backgroundColor: FontsColor.white,
                                       child: Icon(
                                         Icons.camera_alt_rounded,
                                         size:
@@ -675,15 +676,15 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                         Text(
                           "Mr. John Doe",
                           style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.bold),
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f14,
+                              fontWeight: FontsWeight.bold),
                         ),
                         Text(
                           "Saral Info Solution",
                           style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 13.sp,
+                            fontFamily: FontsFamily.inter,
+                            fontSize: FontsSize.f13,
                           ),
                         ),
                         RichText(
@@ -691,25 +692,25 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                           TextSpan(
                             text: "Membership Id: ",
                             style: TextStyle(
-                                fontSize: 12.sp,
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f12,
+                              color: FontsColor.black,
+                              fontWeight: FontsWeight.bold,
+                            ),
                           ),
                           TextSpan(
-                            text: "PA_Member_Id:07",
-                            style: TextStyle(
-                                fontSize: 12.sp,
-                                fontFamily: 'Inter',
-                                color: Colors.black),
-                          ),
+                              text: "PA_Member_Id:07",
+                              style: TextStyle(
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f12,
+                                  color: FontsColor.black)),
                         ])),
                         Text(
                           "Saral Info Solution",
                           style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 13.sp,
-                              fontWeight: FontWeight.bold),
+                              fontFamily: FontsFamily.inter,
+                              fontSize: FontsSize.f13,
+                              fontWeight: FontsWeight.bold),
                         ),
                       ],
                     ),
@@ -724,8 +725,8 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                             width: double.infinity,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              border:
-                                  Border.all(width: 0.2, color: Colors.grey),
+                              border: Border.all(
+                                  width: 0.2, color: FontsColor.grey),
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(15),
@@ -739,11 +740,11 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                       Text(
                                         "Basic Detail",
                                         style: TextStyle(
-                                            fontFamily: 'Inter',
-                                            fontSize: 15.sp,
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f15,
                                             color: const Color.fromARGB(
                                                 255, 16, 2, 90),
-                                            fontWeight: FontWeight.bold),
+                                            fontWeight: FontsWeight.bold),
                                       ),
                                       GestureDetector(
                                           onTap: () {
@@ -755,7 +756,7 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                                     .size
                                                     .width *
                                                 0.035,
-                                            backgroundColor: Colors.grey[300],
+                                            backgroundColor: FontsColor.grey300,
                                             child: Center(
                                               child: Icon(
                                                 MdiIcons.pencilOutline,
@@ -772,13 +773,11 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                     height: MediaQuery.of(context).size.height *
                                         0.018,
                                   ),
-                                  Text(
-                                    "Gender",
-                                    style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 12.sp,
-                                        color: Colors.grey),
-                                  ),
+                                  Text("Gender",
+                                      style: TextStyle(
+                                          fontFamily: FontsFamily.inter,
+                                          fontSize: FontsSize.f12,
+                                          color: FontsColor.grey)),
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.006,
@@ -786,21 +785,19 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                   Text(
                                     widget.gender,
                                     style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.bold),
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
+                                        fontWeight: FontsWeight.bold),
                                   ),
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.012,
                                   ),
-                                  Text(
-                                    "Date of Birth",
-                                    style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 12.sp,
-                                        color: Colors.grey),
-                                  ),
+                                  Text("Date of Birth",
+                                      style: TextStyle(
+                                          fontFamily: FontsFamily.inter,
+                                          fontSize: FontsSize.f12,
+                                          color: FontsColor.grey)),
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.006,
@@ -808,21 +805,19 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                   Text(
                                     widget.dob,
                                     style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.bold),
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
+                                        fontWeight: FontsWeight.bold),
                                   ),
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.012,
                                   ),
-                                  Text(
-                                    "Marriage Anniversary",
-                                    style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 12.sp,
-                                        color: Colors.grey),
-                                  ),
+                                  Text("Marriage Anniversary",
+                                      style: TextStyle(
+                                          fontFamily: FontsFamily.inter,
+                                          fontSize: FontsSize.f12,
+                                          color: FontsColor.grey)),
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.006,
@@ -830,21 +825,19 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                   Text(
                                     widget.marriage,
                                     style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.bold),
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
+                                        fontWeight: FontsWeight.bold),
                                   ),
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.012,
                                   ),
-                                  Text(
-                                    "Mobile Number",
-                                    style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 12.sp,
-                                        color: Colors.grey),
-                                  ),
+                                  Text("Mobile Number",
+                                      style: TextStyle(
+                                          fontFamily: FontsFamily.inter,
+                                          fontSize: FontsSize.f12,
+                                          color: FontsColor.grey)),
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.006,
@@ -852,21 +845,19 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                   Text(
                                     widget.mobile,
                                     style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.bold),
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
+                                        fontWeight: FontsWeight.bold),
                                   ),
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.012,
                                   ),
-                                  Text(
-                                    "Weight",
-                                    style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 12.sp,
-                                        color: Colors.grey),
-                                  ),
+                                  Text("Weight",
+                                      style: TextStyle(
+                                          fontFamily: FontsFamily.inter,
+                                          fontSize: FontsSize.f12,
+                                          color: FontsColor.grey)),
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.006,
@@ -874,21 +865,19 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                   Text(
                                     widget.weight,
                                     style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.bold),
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
+                                        fontWeight: FontsWeight.bold),
                                   ),
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.012,
                                   ),
-                                  Text(
-                                    "Blood Group",
-                                    style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 12.sp,
-                                        color: Colors.grey),
-                                  ),
+                                  Text("Blood Group",
+                                      style: TextStyle(
+                                          fontFamily: FontsFamily.inter,
+                                          fontSize: FontsSize.f12,
+                                          color: FontsColor.grey)),
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.006,
@@ -896,9 +885,9 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                   Text(
                                     widget.bgroup,
                                     style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.bold),
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
+                                        fontWeight: FontsWeight.bold),
                                   ),
                                 ],
                               ),
@@ -918,8 +907,8 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                             width: double.infinity,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              border:
-                                  Border.all(width: 0.2, color: Colors.grey),
+                              border: Border.all(
+                                  width: 0.2, color: FontsColor.grey),
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(10),
@@ -933,11 +922,11 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                       Text(
                                         "Residential Details",
                                         style: TextStyle(
-                                            fontFamily: 'Inter',
-                                            fontSize: 15.sp,
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f15,
                                             color: const Color.fromARGB(
                                                 255, 16, 2, 90),
-                                            fontWeight: FontWeight.bold),
+                                            fontWeight: FontsWeight.bold),
                                       ),
                                       GestureDetector(
                                           onTap: () {
@@ -949,7 +938,7 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                                     .size
                                                     .width *
                                                 0.035,
-                                            backgroundColor: Colors.grey[300],
+                                            backgroundColor: FontsColor.grey300,
                                             child: Center(
                                               child: Icon(
                                                 MdiIcons.pencilOutline,
@@ -966,13 +955,11 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                     height: MediaQuery.of(context).size.height *
                                         0.018,
                                   ),
-                                  Text(
-                                    "Address",
-                                    style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 12.sp,
-                                        color: Colors.grey),
-                                  ),
+                                  Text("Address",
+                                      style: TextStyle(
+                                          fontFamily: FontsFamily.inter,
+                                          fontSize: FontsSize.f12,
+                                          color: FontsColor.grey)),
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.006,
@@ -980,9 +967,9 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                   Text(
                                     "your address",
                                     style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.bold),
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
+                                        fontWeight: FontsWeight.bold),
                                   ),
                                 ],
                               ),
@@ -1002,8 +989,8 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                             width: double.infinity,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              border:
-                                  Border.all(width: 0.2, color: Colors.grey),
+                              border: Border.all(
+                                  width: 0.2, color: FontsColor.grey),
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(10),
@@ -1017,11 +1004,11 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                       Text(
                                         "Family Details",
                                         style: TextStyle(
-                                            fontFamily: 'Inter',
-                                            fontSize: 15.sp,
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f15,
                                             color: const Color.fromARGB(
                                                 255, 16, 2, 90),
-                                            fontWeight: FontWeight.bold),
+                                            fontWeight: FontsWeight.bold),
                                       ),
                                       GestureDetector(
                                           onTap: () {
@@ -1033,7 +1020,7 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                                     .size
                                                     .width *
                                                 0.035,
-                                            backgroundColor: Colors.grey[300],
+                                            backgroundColor: FontsColor.grey300,
                                             child: Center(
                                               child: Icon(
                                                 MdiIcons.pencilOutline,
@@ -1050,13 +1037,11 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                     height: MediaQuery.of(context).size.height *
                                         0.018,
                                   ),
-                                  Text(
-                                    "Spouse Name",
-                                    style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 12.sp,
-                                        color: Colors.grey),
-                                  ),
+                                  Text("Spouse Name",
+                                      style: TextStyle(
+                                          fontFamily: FontsFamily.inter,
+                                          fontSize: FontsSize.f12,
+                                          color: FontsColor.grey)),
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.006,
@@ -1064,21 +1049,19 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                   Text(
                                     widget.spouseName,
                                     style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.bold),
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
+                                        fontWeight: FontsWeight.bold),
                                   ),
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.012,
                                   ),
-                                  Text(
-                                    "Spouse Date of Birth",
-                                    style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 12.sp,
-                                        color: Colors.grey),
-                                  ),
+                                  Text("Spouse Date of Birth",
+                                      style: TextStyle(
+                                          fontFamily: FontsFamily.inter,
+                                          fontSize: FontsSize.f12,
+                                          color: FontsColor.grey)),
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.006,
@@ -1086,21 +1069,19 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                   Text(
                                     widget.spouseDOB,
                                     style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.bold),
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
+                                        fontWeight: FontsWeight.bold),
                                   ),
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.006,
                                   ),
-                                  Text(
-                                    'Children',
-                                    style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 12.sp,
-                                        color: Colors.grey),
-                                  ),
+                                  Text('Children',
+                                      style: TextStyle(
+                                          fontFamily: FontsFamily.inter,
+                                          fontSize: FontsSize.f12,
+                                          color: FontsColor.grey)),
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.006,
@@ -1108,11 +1089,11 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                   Container(
                                     decoration: BoxDecoration(
                                       border: Border.all(
-                                          color: Colors.grey, width: 0.5),
+                                          color: FontsColor.grey, width: 0.5),
                                     ),
                                     child: Table(
                                       border: TableBorder.all(
-                                          color: Colors.grey, width: 0.5),
+                                          color: FontsColor.grey, width: 0.5),
                                       children: [
                                         TableRow(
                                           children: [
@@ -1123,9 +1104,9 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                                   child: Text(
                                                 'Name',
                                                 style: TextStyle(
-                                                  fontFamily: 'Inter',
-                                                  fontSize: 13.sp,
-                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: FontsFamily.inter,
+                                                  fontSize: FontsSize.f13,
+                                                  fontWeight: FontsWeight.bold,
                                                   color: const Color.fromARGB(
                                                       255, 16, 2, 90),
                                                 ),
@@ -1138,9 +1119,9 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                                   child: Text(
                                                 'DOB',
                                                 style: TextStyle(
-                                                  fontFamily: 'Inter',
-                                                  fontSize: 13.sp,
-                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: FontsFamily.inter,
+                                                  fontSize: FontsSize.f13,
+                                                  fontWeight: FontsWeight.bold,
                                                   color: const Color.fromARGB(
                                                       255, 16, 2, 90),
                                                 ),
@@ -1153,9 +1134,9 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                                   child: Text(
                                                 'Gender',
                                                 style: TextStyle(
-                                                  fontFamily: 'Inter',
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 13.sp,
+                                                  fontFamily: FontsFamily.inter,
+                                                  fontWeight: FontsWeight.bold,
+                                                  fontSize: FontsSize.f13,
                                                   color: const Color.fromARGB(
                                                       255, 16, 2, 90),
                                                 ),
@@ -1196,8 +1177,9 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                                       textAlign:
                                                           TextAlign.center,
                                                       style: TextStyle(
-                                                        fontFamily: 'Inter',
-                                                        fontSize: 13.sp,
+                                                        fontFamily:
+                                                            FontsFamily.inter,
+                                                        fontSize: FontsSize.f13,
                                                       ),
                                                     ),
                                                   ),
@@ -1213,8 +1195,9 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                                       textAlign:
                                                           TextAlign.center,
                                                       style: TextStyle(
-                                                        fontFamily: 'Inter',
-                                                        fontSize: 13.sp,
+                                                        fontFamily:
+                                                            FontsFamily.inter,
+                                                        fontSize: FontsSize.f13,
                                                       ),
                                                     ),
                                                   ),
@@ -1231,8 +1214,9 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                                       textAlign:
                                                           TextAlign.center,
                                                       style: TextStyle(
-                                                        fontFamily: 'Inter',
-                                                        fontSize: 13.sp,
+                                                        fontFamily:
+                                                            FontsFamily.inter,
+                                                        fontSize: FontsSize.f13,
                                                       ),
                                                     ),
                                                   ),
@@ -1287,13 +1271,11 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                     height: MediaQuery.of(context).size.height *
                                         0.006,
                                   ),
-                                  Text(
-                                    "Emergency Person's Name",
-                                    style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 12.sp,
-                                        color: Colors.grey),
-                                  ),
+                                  Text("Emergency Person's Name",
+                                      style: TextStyle(
+                                          fontFamily: FontsFamily.inter,
+                                          fontSize: FontsSize.f12,
+                                          color: FontsColor.grey)),
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.006,
@@ -1301,21 +1283,19 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                   Text(
                                     widget.emgName,
                                     style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.bold),
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
+                                        fontWeight: FontsWeight.bold),
                                   ),
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.012,
                                   ),
-                                  Text(
-                                    "Emergency Person's Number",
-                                    style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 12.sp,
-                                        color: Colors.grey),
-                                  ),
+                                  Text("Emergency Person's Number",
+                                      style: TextStyle(
+                                          fontFamily: FontsFamily.inter,
+                                          fontSize: FontsSize.f12,
+                                          color: FontsColor.grey)),
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.006,
@@ -1323,9 +1303,9 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                   Text(
                                     widget.emgNumber,
                                     style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.bold),
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
+                                        fontWeight: FontsWeight.bold),
                                   ),
                                 ],
                               ),

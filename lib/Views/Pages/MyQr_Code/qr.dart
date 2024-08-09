@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:progress_alliance/Routes/route.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class QrCodePage extends StatefulWidget {
@@ -25,16 +26,16 @@ class _QrCodePageState extends State<QrCodePage> {
             title: Text(
               "My QR Code",
               style: TextStyle(
-                  fontFamily: 'Inter',
-                  fontSize: 16.sp,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold),
+                  fontFamily: FontsFamily.inter,
+                  fontSize: FontsSize.f16,
+                  color: FontsColor.white,
+                  fontWeight: FontsWeight.bold),
             ),
             leading: IconButton(
               icon: Icon(
                 Icons.cancel,
                 size: MediaQuery.of(context).size.width * 0.06,
-                color: Colors.white,
+                color: FontsColor.white,
               ),
               onPressed: () {
                 Navigator.pop(context);
@@ -51,7 +52,7 @@ class _QrCodePageState extends State<QrCodePage> {
                 children: [
                   CircleAvatar(
                     radius: MediaQuery.of(context).size.width * 0.13,
-                    backgroundColor: Colors.white,
+                    backgroundColor: FontsColor.white,
                     child: CircleAvatar(
                       radius: MediaQuery.of(context).size.width * 0.125,
                     ),
@@ -62,17 +63,17 @@ class _QrCodePageState extends State<QrCodePage> {
                   Text(
                     "John Doe",
                     style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 18.sp,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f18,
+                        color: FontsColor.white,
+                        fontWeight: FontsWeight.bold),
                   ),
                   Text(
                     "PROGRESS ALLIANCE 12 EVEREST",
                     style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 15.sp,
-                      color: Colors.white,
+                      fontFamily: FontsFamily.inter,
+                      fontSize: FontsSize.f15,
+                      color: FontsColor.white,
                     ),
                   ),
                 ],
@@ -82,7 +83,7 @@ class _QrCodePageState extends State<QrCodePage> {
               ),
               Container(
                   decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: FontsColor.white,
                       borderRadius: BorderRadius.circular(10)),
                   child: QrImageView(
                     data: "123",
@@ -99,14 +100,14 @@ class _QrCodePageState extends State<QrCodePage> {
                 },
                 child: CircleAvatar(
                   radius: MediaQuery.of(context).size.width * 0.07,
-                  backgroundColor: Colors.white,
+                  backgroundColor: FontsColor.white,
                   child: CircleAvatar(
                     radius: MediaQuery.of(context).size.width * 0.067,
                     backgroundColor: Color(0xFF00008B),
                     child: Icon(
                       Icons.document_scanner,
                       size: MediaQuery.of(context).size.width * 0.065,
-                      color: Colors.white,
+                      color: FontsColor.white,
                     ),
                   ),
                 ),

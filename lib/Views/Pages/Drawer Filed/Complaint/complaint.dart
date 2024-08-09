@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:progress_alliance/Routes/route.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 
 class ComplaintPage extends StatefulWidget {
   const ComplaintPage({super.key});
@@ -16,14 +17,14 @@ class _ComplaintPageState extends State<ComplaintPage> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -31,10 +32,10 @@ class _ComplaintPageState extends State<ComplaintPage> {
           title: Text(
             "My Complaints",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
               color: Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: GestureDetector(
@@ -61,16 +62,16 @@ class _ComplaintPageState extends State<ComplaintPage> {
                   width: MediaQuery.of(context).size.width * 0.3,
                   decoration: BoxDecoration(
                     color: Color.fromARGB(255, 16, 2, 90),
-                    border: Border.all(width: 1, color: Colors.transparent),
+                    border: Border.all(width: 1, color: FontsColor.transparent),
                     borderRadius: BorderRadius.circular(25),
                   ),
                   child: Center(
                     child: Text(
                       "+ Complaint",
                       style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14.sp,
-                        color: Colors.white,
+                        fontFamily: FontsFamily.inter,
+                        fontSize: FontsSize.f14,
+                        color: FontsColor.white,
                       ),
                     ),
                   ),

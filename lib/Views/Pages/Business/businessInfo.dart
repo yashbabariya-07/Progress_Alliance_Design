@@ -1,8 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:image_picker/image_picker.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 import 'package:progress_alliance/Views/Widgets/bottombar.dart';
 import 'package:progress_alliance/Routes/route.dart';
@@ -109,15 +110,15 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: FontsColor.white,
         appBar: AppBar(
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
-          backgroundColor: Colors.white,
+          backgroundColor: FontsColor.white,
           forceMaterialTransparency: true,
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: Container(
-              color: Colors.grey,
+              color: FontsColor.grey,
               height: 0.2,
             ),
           ),
@@ -125,10 +126,10 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
           title: Text(
             "Business Information",
             style: TextStyle(
-              fontFamily: 'Inter',
-              fontSize: 16.sp,
-              color: const Color.fromARGB(255, 16, 2, 90),
-              fontWeight: FontWeight.bold,
+              fontFamily: FontsFamily.inter,
+              fontSize: FontsSize.f16,
+              color: FontsColor.purple,
+              fontWeight: FontsWeight.bold,
             ),
           ),
           leading: GestureDetector(
@@ -156,8 +157,8 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
             padding: const EdgeInsets.all(10),
             child: isLoading
                 ? Shimmer.fromColors(
-                    baseColor: Colors.grey[300]!,
-                    highlightColor: Colors.grey[100]!,
+                    baseColor: FontsColor.grey300!,
+                    highlightColor: FontsColor.grey100!,
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -169,7 +170,7 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                               height: MediaQuery.of(context).size.height * 0.15,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color: Colors.grey[200]),
+                                  color: FontsColor.grey200),
                             ),
                           ),
                           SizedBox(
@@ -183,7 +184,7 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                               width: double.infinity,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color: Colors.grey[200]),
+                                  color: FontsColor.grey200),
                             ),
                           ),
                           SizedBox(
@@ -197,7 +198,7 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                               width: double.infinity,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color: Colors.grey[200]),
+                                  color: FontsColor.grey200),
                             ),
                           ),
                           SizedBox(
@@ -211,7 +212,7 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                               width: double.infinity,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color: Colors.grey[200]),
+                                  color: FontsColor.grey200),
                             ),
                           ),
                           SizedBox(
@@ -225,7 +226,7 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                               width: MediaQuery.of(context).size.width * 0.45,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8),
-                                  color: Colors.grey[200]),
+                                  color: FontsColor.grey200),
                             ),
                           ),
                         ]))
@@ -246,7 +247,7 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                       MediaQuery.of(context).size.height * 0.15,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey[200],
+                                    color: FontsColor.grey200,
                                   ),
                                   child: _logoImage != null
                                       ? ClipRRect(
@@ -262,9 +263,9 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                             "+ Add",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 15.sp,
-                                              color: Colors.grey[600],
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f15,
+                                              color: FontsColor.grey600,
                                             ),
                                           ),
                                         ),
@@ -278,8 +279,8 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                border:
-                                    Border.all(width: 0.2, color: Colors.grey),
+                                border: Border.all(
+                                    width: 0.2, color: FontsColor.grey),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(10),
@@ -293,11 +294,11 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                         Text(
                                           "Business Details",
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 15.sp,
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f15,
                                               color: const Color.fromARGB(
                                                   255, 16, 2, 90),
-                                              fontWeight: FontWeight.bold),
+                                              fontWeight: FontsWeight.bold),
                                         ),
                                         GestureDetector(
                                             onTap: () {
@@ -309,7 +310,8 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                                       .size
                                                       .width *
                                                   0.035,
-                                              backgroundColor: Colors.grey[300],
+                                              backgroundColor:
+                                                  FontsColor.grey300,
                                               child: Center(
                                                 child: Icon(
                                                   MdiIcons.pencilOutline,
@@ -327,13 +329,11 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                           MediaQuery.of(context).size.height *
                                               0.02,
                                     ),
-                                    Text(
-                                      "Company Name",
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 12.sp,
-                                          color: Colors.grey),
-                                    ),
+                                    Text("Company Name",
+                                        style: TextStyle(
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f12,
+                                            color: FontsColor.grey)),
                                     SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
@@ -342,8 +342,8 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                     Text(
                                       widget.name,
                                       style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
                                       ),
                                     ),
                                     SizedBox(
@@ -351,13 +351,11 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                           MediaQuery.of(context).size.height *
                                               0.012,
                                     ),
-                                    Text(
-                                      "Business Type",
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 12.sp,
-                                          color: Colors.grey),
-                                    ),
+                                    Text("Business Type",
+                                        style: TextStyle(
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f12,
+                                            color: FontsColor.grey)),
                                     SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
@@ -366,8 +364,8 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                     Text(
                                       widget.type,
                                       style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
                                       ),
                                     ),
                                     SizedBox(
@@ -375,13 +373,11 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                           MediaQuery.of(context).size.height *
                                               0.012,
                                     ),
-                                    Text(
-                                      "Business Category",
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 12.sp,
-                                          color: Colors.grey),
-                                    ),
+                                    Text("Business Category",
+                                        style: TextStyle(
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f12,
+                                            color: FontsColor.grey)),
                                     SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
@@ -390,8 +386,8 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                     Text(
                                       widget.category,
                                       style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
                                       ),
                                     ),
                                     SizedBox(
@@ -399,13 +395,11 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                           MediaQuery.of(context).size.height *
                                               0.012,
                                     ),
-                                    Text(
-                                      "Business Sub Category",
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 12.sp,
-                                          color: Colors.grey),
-                                    ),
+                                    Text("Business Sub Category",
+                                        style: TextStyle(
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f12,
+                                            color: FontsColor.grey)),
                                     SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
@@ -414,8 +408,8 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                     Text(
                                       widget.subCategory,
                                       style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
                                       ),
                                     ),
                                     SizedBox(
@@ -423,13 +417,11 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                           MediaQuery.of(context).size.height *
                                               0.012,
                                     ),
-                                    Text(
-                                      "Products/Service",
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 12.sp,
-                                          color: Colors.grey),
-                                    ),
+                                    Text("Products/Service",
+                                        style: TextStyle(
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f12,
+                                            color: FontsColor.grey)),
                                     SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
@@ -438,8 +430,8 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                     Text(
                                       widget.product,
                                       style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
                                       ),
                                     ),
                                     SizedBox(
@@ -447,13 +439,11 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                           MediaQuery.of(context).size.height *
                                               0.012,
                                     ),
-                                    Text(
-                                      "GST Number",
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 12.sp,
-                                          color: Colors.grey),
-                                    ),
+                                    Text("GST Number",
+                                        style: TextStyle(
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f12,
+                                            color: FontsColor.grey)),
                                     SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
@@ -462,8 +452,8 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                     Text(
                                       widget.gstNo,
                                       style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
                                       ),
                                     ),
                                     SizedBox(
@@ -471,13 +461,11 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                           MediaQuery.of(context).size.height *
                                               0.012,
                                     ),
-                                    Text(
-                                      "Contact Number",
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 12.sp,
-                                          color: Colors.grey),
-                                    ),
+                                    Text("Contact Number",
+                                        style: TextStyle(
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f12,
+                                            color: FontsColor.grey)),
                                     SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
@@ -486,8 +474,8 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                     Text(
                                       widget.number,
                                       style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
                                       ),
                                     ),
                                     SizedBox(
@@ -495,13 +483,11 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                           MediaQuery.of(context).size.height *
                                               0.012,
                                     ),
-                                    Text(
-                                      "Email Address",
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 12.sp,
-                                          color: Colors.grey),
-                                    ),
+                                    Text("Email Address",
+                                        style: TextStyle(
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f12,
+                                            color: FontsColor.grey)),
                                     SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
@@ -510,8 +496,8 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                     Text(
                                       widget.email,
                                       style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
                                       ),
                                     ),
                                     SizedBox(
@@ -519,13 +505,11 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                           MediaQuery.of(context).size.height *
                                               0.012,
                                     ),
-                                    Text(
-                                      "Website",
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 12.sp,
-                                          color: Colors.grey),
-                                    ),
+                                    Text("Website",
+                                        style: TextStyle(
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f12,
+                                            color: FontsColor.grey)),
                                     SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
@@ -534,8 +518,8 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                     Text(
                                       widget.website,
                                       style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
                                       ),
                                     ),
                                     SizedBox(
@@ -543,13 +527,11 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                           MediaQuery.of(context).size.height *
                                               0.012,
                                     ),
-                                    Text(
-                                      "Team Size",
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 12.sp,
-                                          color: Colors.grey),
-                                    ),
+                                    Text("Team Size",
+                                        style: TextStyle(
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f12,
+                                            color: FontsColor.grey)),
                                     SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
@@ -558,8 +540,8 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                     Text(
                                       widget.teamSize,
                                       style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
                                       ),
                                     ),
                                     SizedBox(
@@ -567,13 +549,11 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                           MediaQuery.of(context).size.height *
                                               0.012,
                                     ),
-                                    Text(
-                                      "Business Formation",
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 12.sp,
-                                          color: Colors.grey),
-                                    ),
+                                    Text("Business Formation",
+                                        style: TextStyle(
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f12,
+                                            color: FontsColor.grey)),
                                     SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
@@ -582,8 +562,8 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                     Text(
                                       widget.formation,
                                       style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
                                       ),
                                     ),
                                     SizedBox(
@@ -591,13 +571,11 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                           MediaQuery.of(context).size.height *
                                               0.012,
                                     ),
-                                    Text(
-                                      "Business established Date",
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 12.sp,
-                                          color: Colors.grey),
-                                    ),
+                                    Text("Business established Date",
+                                        style: TextStyle(
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f12,
+                                            color: FontsColor.grey)),
                                     SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
@@ -606,8 +584,8 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                     Text(
                                       widget.establish,
                                       style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
                                       ),
                                     ),
                                     SizedBox(
@@ -615,13 +593,11 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                           MediaQuery.of(context).size.height *
                                               0.012,
                                     ),
-                                    Text(
-                                      "About Business",
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 12.sp,
-                                          color: Colors.grey),
-                                    ),
+                                    Text("About Business",
+                                        style: TextStyle(
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f12,
+                                            color: FontsColor.grey)),
                                     SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
@@ -630,8 +606,8 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                     Text(
                                       widget.about,
                                       style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
                                       ),
                                     ),
                                     SizedBox(
@@ -644,15 +620,12 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            "Logo",
-                                            style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 12.sp,
-                                              color: Colors.grey,
-                                            ),
-                                          ),
-                                          SizedBox(height: 5),
+                                          Text("Logo",
+                                              style: TextStyle(
+                                                  fontFamily: FontsFamily.inter,
+                                                  fontSize: FontsSize.f12,
+                                                  color: FontsColor.grey)),
+                                          const SizedBox(height: 5),
                                           Container(
                                             width: MediaQuery.of(context)
                                                     .size
@@ -687,10 +660,9 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                           Text(
                                             "Banner",
                                             style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 12.sp,
-                                              color: Colors.grey,
-                                            ),
+                                                fontFamily: FontsFamily.inter,
+                                                fontSize: FontsSize.f11,
+                                                color: FontsColor.grey),
                                           ),
                                           SizedBox(
                                             height: MediaQuery.of(context)
@@ -728,8 +700,8 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                border:
-                                    Border.all(width: 0.2, color: Colors.grey),
+                                border: Border.all(
+                                    width: 0.2, color: FontsColor.grey),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -743,11 +715,11 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                         Text(
                                           "Business Address",
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 15.sp,
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f15,
                                               color: const Color.fromARGB(
                                                   255, 16, 2, 90),
-                                              fontWeight: FontWeight.bold),
+                                              fontWeight: FontsWeight.bold),
                                         ),
                                         GestureDetector(
                                             onTap: () {
@@ -759,7 +731,8 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                                       .size
                                                       .width *
                                                   0.035,
-                                              backgroundColor: Colors.grey[300],
+                                              backgroundColor:
+                                                  FontsColor.grey300,
                                               child: Center(
                                                 child: Icon(
                                                   MdiIcons.pencilOutline,
@@ -777,13 +750,11 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                           MediaQuery.of(context).size.height *
                                               0.02,
                                     ),
-                                    Text(
-                                      "Address",
-                                      style: TextStyle(
-                                          fontFamily: 'Inter',
-                                          fontSize: 12.sp,
-                                          color: Colors.grey),
-                                    ),
+                                    Text("Address",
+                                        style: TextStyle(
+                                            fontFamily: FontsFamily.inter,
+                                            fontSize: FontsSize.f12,
+                                            color: FontsColor.grey)),
                                     SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
@@ -792,8 +763,8 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                     Text(
                                       "${widget.shopNumber} ${widget.streetName} ${widget.area} ${widget.landmark} ${widget.city} ${widget.state}  ${widget.pincode} ",
                                       style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 14.sp,
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f14,
                                       ),
                                     ),
                                   ],
@@ -808,8 +779,8 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                border:
-                                    Border.all(width: 0.2, color: Colors.grey),
+                                border: Border.all(
+                                    width: 0.2, color: FontsColor.grey),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -823,11 +794,11 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                         Text(
                                           "Social Account",
                                           style: TextStyle(
-                                              fontFamily: 'Inter',
-                                              fontSize: 15.sp,
+                                              fontFamily: FontsFamily.inter,
+                                              fontSize: FontsSize.f15,
                                               color: const Color.fromARGB(
                                                   255, 16, 2, 90),
-                                              fontWeight: FontWeight.bold),
+                                              fontWeight: FontsWeight.bold),
                                         ),
                                         GestureDetector(
                                             onTap: () {
@@ -839,7 +810,8 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                                       .size
                                                       .width *
                                                   0.035,
-                                              backgroundColor: Colors.grey[300],
+                                              backgroundColor:
+                                                  FontsColor.grey300,
                                               child: Center(
                                                 child: Icon(
                                                   MdiIcons.pencilOutline,
@@ -887,8 +859,8 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
                                   Text(
                                     "Delete Business",
                                     style: TextStyle(
-                                        fontFamily: 'Inter',
-                                        fontSize: 13.sp,
+                                        fontFamily: FontsFamily.inter,
+                                        fontSize: FontsSize.f13,
                                         color: Colors.red),
                                   ),
                                 ],
