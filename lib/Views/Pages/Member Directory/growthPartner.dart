@@ -220,7 +220,7 @@ class _GrowthpartnerState extends State<Growthpartner> {
                               radius: MediaQuery.of(context).size.width * 0.045,
                               backgroundColor: FontsColor.grey200,
                               child: Image.asset(
-                                "assets/wp.png",
+                                "assets/Icons/wp.png",
                                 width:
                                     MediaQuery.of(context).size.width * 0.065,
                               ),

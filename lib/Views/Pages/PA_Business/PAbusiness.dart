@@ -18,36 +18,36 @@ class _PabusinessState extends State<Pabusiness> {
     {
       "title": "Advertising Services",
       "subtitle": "84 Companies",
-      "image": "assets/surat.jpg"
+      "image": "assets/Images/surat.jpg"
     },
     {
       "title": "Agriculture & Agro",
       "subtitle": "50 Companies",
-      "image": "assets/map.png"
+      "image": "assets/Images/map.png"
     },
     {
       "title": "Automobile",
       "subtitle": "20 Companies",
-      "image": "assets/surat.jpg"
+      "image": "assets/Images/surat.jpg"
     },
     {
       "title": "Beauty Care & Cosmetic",
       "subtitle": "20 Companies",
-      "image": "assets/map.png"
+      "image": "assets/Images/map.png"
     },
     {
       "title": "Chemicals",
       "subtitle": "20 Companies",
-      "image": "assets/surat.jpg"
+      "image": "assets/Images/surat.jpg"
     },
   ];
 
   final List<Map<String, String>> industries = [
-    {"name": "Industry 1", "image": "assets/surat.jpg"},
-    {"name": "Industry 2", "image": "assets/map.png"},
-    {"name": "Industry 3", "image": "assets/surat.jpg"},
-    {"name": "Industry 4", "image": "assets/map.png"},
-    {"name": "Industry 5", "image": "assets/surat.jpg"},
+    {"name": "Industry 1", "image": "assets/Images/surat.jpg"},
+    {"name": "Industry 2", "image": "assets/Images/map.png"},
+    {"name": "Industry 3", "image": "assets/Images/surat.jpg"},
+    {"name": "Industry 4", "image": "assets/Images/map.png"},
+    {"name": "Industry 5", "image": "assets/Images/surat.jpg"},
   ];
 
   int _selectedIndex = 1;
@@ -90,7 +90,7 @@ class _PabusinessState extends State<Pabusiness> {
                 Scaffold.of(context).openDrawer();
               },
               icon: Image.asset(
-                "assets/dr.png",
+                "assets/Icons/dr.png",
                 color: FontsColor.purple,
                 width: MediaQuery.of(context).size.width * 0.07,
               ),
@@ -132,7 +132,7 @@ class _PabusinessState extends State<Pabusiness> {
               child: Column(
                 children: [
                   Image.asset(
-                    "assets/PA.png",
+                    "assets/Logo/PA.png",
                     width: MediaQuery.of(context).size.width * 0.4,
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.05),

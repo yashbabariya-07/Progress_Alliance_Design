@@ -52,11 +52,11 @@ class _GooglemapState extends State<Googlemap>
   }
 
   final List<Map<String, String>> business = [
-    {"title": "Advertising Services", "image": "assets/surat.jpg"},
-    {"title": "Agriculture & Agro", "image": "assets/map.png"},
-    {"title": "Automobile", "image": "assets/surat.jpg"},
-    {"title": "Beauty Care & Cosmetic", "image": "assets/map.png"},
-    {"title": "Chemicals", "image": "assets/surat.jpg"},
+    {"title": "Advertising Services", "image": "assets/Images/surat.jpg"},
+    {"title": "Agriculture & Agro", "image": "assets/Images/map.png"},
+    {"title": "Automobile", "image": "assets/Images/surat.jpg"},
+    {"title": "Beauty Care & Cosmetic", "image": "assets/Images/map.png"},
+    {"title": "Chemicals", "image": "assets/Images/surat.jpg"},
   ];
 
   final List<String> _distanceOptions = [
@@ -117,7 +117,7 @@ class _GooglemapState extends State<Googlemap>
 
     BitmapDescriptor.fromAssetImage(
       ImageConfiguration(size: Size(markerSize, markerSize)),
-      "assets/marker.png",
+      "assets/Icons/marker.png",
     ).then((icon) {
       setState(() {
         markerIcon = icon;
@@ -449,7 +449,7 @@ class _GooglemapState extends State<Googlemap>
                                           0.02,
                                     ),
                                     Image.asset(
-                                      "assets/sendd.png",
+                                      "assets/Icons/sendd.png",
                                       width: MediaQuery.of(context).size.width *
                                           0.05,
                                     )
@@ -568,7 +568,7 @@ class _GooglemapState extends State<Googlemap>
               child: Column(
                 children: [
                   Image.asset(
-                    "assets/PA.png",
+                    "assets/Logo/PA.png",
                     width: MediaQuery.of(context).size.width * 0.4,
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.05),
@@ -737,7 +737,7 @@ class _GooglemapState extends State<Googlemap>
                 Scaffold.of(context).openDrawer();
               },
               icon: Image.asset(
-                "assets/dr.png",
+                "assets/Icons/dr.png",
                 color: FontsColor.purple,
                 width: MediaQuery.of(context).size.width * 0.07,
               ),
@@ -834,7 +834,7 @@ class _GooglemapState extends State<Googlemap>
                                 width: MediaQuery.of(context).size.width * 0.01,
                               ),
                               Image.asset(
-                                "assets/filter.png",
+                                "assets/Icons/filter.png",
                                 color: FontsColor.grey,
                                 width: MediaQuery.of(context).size.width * 0.06,
                               )
@@ -1253,7 +1253,7 @@ class _GooglemapState extends State<Googlemap>
                                                             0.02,
                                                       ),
                                                       Image.asset(
-                                                        "assets/sendd.png",
+                                                        "assets/Icons/sendd.png",
                                                         width: MediaQuery.of(
                                                                     context)
                                                                 .size

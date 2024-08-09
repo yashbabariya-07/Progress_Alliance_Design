@@ -356,7 +356,7 @@ class _BusinessAddressState extends State<BusinessAddress> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Image.asset(
-                                  "assets/map.png",
+                                  "assets/Images/map.png",
                                   width:
                                       MediaQuery.of(context).size.width * 0.05,
                                 ),

@@ -36,7 +36,7 @@ class _SplashPageState extends State<SplashPage> {
               Expanded(
                 child: Center(
                   child: Image.asset(
-                    "assets/PA.png",
+                    "assets/Logo/PA.png",
                     width: MediaQuery.of(context).size.width * 0.6,
                   ),
                 ),
@@ -54,7 +54,7 @@ class _SplashPageState extends State<SplashPage> {
                       ),
                       WidgetSpan(
                           child: Image.asset(
-                        "assets/like.png",
+                        "assets/Icons/like.png",
                         width: MediaQuery.of(context).size.width * 0.06,
                       )),
                       TextSpan(

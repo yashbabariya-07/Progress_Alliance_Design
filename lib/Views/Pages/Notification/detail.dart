@@ -272,7 +272,7 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Image.asset(
-                                        "assets/wp.png",
+                                        "assets/Icons/wp.png",
                                         width:
                                             MediaQuery.of(context).size.width *
                                                 0.07,
@@ -479,7 +479,7 @@ class _DeatailPageState extends State<DeatailPage> with LoadingStateMixin {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Image.asset(
-                                      "assets/wp.png",
+                                      "assets/Icons/wp.png",
                                       width: MediaQuery.of(context).size.width *
                                           0.07,
                                     ),

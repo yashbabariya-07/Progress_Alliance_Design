@@ -195,9 +195,9 @@ class _FeedbackPageState extends State<FeedbackPage> {
                   itemSize: 27,
                   itemPadding: EdgeInsets.symmetric(horizontal: 3),
                   ratingWidget: RatingWidget(
-                    full: Image.asset('assets/ostar.png'),
-                    empty: Image.asset('assets/bstar.png'),
-                    half: Image.asset('assets/ostar.png'),
+                    full: Image.asset('assets/Images/ostar.png'),
+                    empty: Image.asset('assets/Images/bstar.png'),
+                    half: Image.asset('assets/Images/ostar.png'),
                   ),
                   onRatingUpdate: (rating) {},
                 ),

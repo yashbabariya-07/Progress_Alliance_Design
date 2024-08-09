@@ -299,7 +299,7 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
               Row(
                 children: [
                   Image.asset(
-                    "assets/wp.png",
+                    "assets/Icons/wp.png",
                     width: MediaQuery.of(context).size.width * 0.07,
                   ),
                   SizedBox(
@@ -410,7 +410,7 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
                   Row(
                     children: [
                       Image.asset(
-                        "assets/wp.png",
+                        "assets/Icons/wp.png",
                         width: MediaQuery.of(context).size.width * 0.07,
                       ),
                       SizedBox(

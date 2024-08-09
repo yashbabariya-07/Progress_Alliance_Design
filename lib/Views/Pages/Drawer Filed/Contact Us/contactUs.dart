@@ -170,7 +170,7 @@ class _ContactUsState extends State<ContactUs> {
                         child: Row(
                           children: [
                             Image.asset(
-                              "assets/wp.png",
+                              "assets/Icons/wp.png",
                               width: MediaQuery.of(context).size.width * 0.08,
                             ),
                             SizedBox(

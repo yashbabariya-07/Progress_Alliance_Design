@@ -260,7 +260,7 @@ class _VolumeWidgetState extends State<VolumeWidget> with LoadingStateMixin {
                                       MediaQuery.of(context).size.width * 0.05,
                                 ),
                                 Image.asset(
-                                  "assets/downloads.png",
+                                  "assets/Icons/downloads.png",
                                   width:
                                       MediaQuery.of(context).size.width * 0.06,
                                 )

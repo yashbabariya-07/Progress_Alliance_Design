@@ -41,8 +41,8 @@ class _CompanyDetailState extends State<CompanyDetail>
 
   Future<void> _generateAndSharePDF() async {
     final pdf = pw.Document();
-    final imageData = await _loadAsset('assets/wp.png');
-    final imageData1 = await _loadAsset('assets/call.png');
+    final imageData = await _loadAsset('assets/Icons/wp.png');
+    final imageData1 = await _loadAsset('assets/Icons/call.png');
     final image = pw.MemoryImage(imageData);
     final image1 = pw.MemoryImage(imageData1);
 
@@ -406,7 +406,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Image.asset(
-                                  "assets/save.png",
+                                  "assets/Icons/save.png",
                                   width:
                                       MediaQuery.of(context).size.width * 0.05,
                                 ),
@@ -970,7 +970,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                                                               0.01,
                                                     ),
                                                     Image.asset(
-                                                      "assets/sendd.png",
+                                                      "assets/Icons/sendd.png",
                                                       width:
                                                           MediaQuery.of(context)
                                                                   .size
@@ -1024,7 +1024,7 @@ class _CompanyDetailState extends State<CompanyDetail>
                                                     'https://wa.me/7874118535');
                                               },
                                               child: Image.asset(
-                                                "assets/wp.png",
+                                                "assets/Icons/wp.png",
                                                 width: MediaQuery.of(context)
                                                         .size
                                                         .width *

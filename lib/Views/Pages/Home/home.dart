@@ -19,9 +19,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with LoadingStateMixin {
   int _current = 0;
   final List<String> imgList = [
-    'assets/s1.jpg',
-    'assets/s1.jpg',
-    'assets/s1.jpg',
+    'assets/Images/s1.jpg',
+    'assets/Images/s1.jpg',
+    'assets/Images/s1.jpg',
   ];
 
   int _selectedIndex = 0;
@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
               child: Column(
                 children: [
                   Image.asset(
-                    "assets/PA.png",
+                    "assets/Logo/PA.png",
                     width: MediaQuery.of(context).size.width * 0.4,
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.05),
@@ -250,7 +250,7 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                 Scaffold.of(context).openDrawer();
               },
               icon: Image.asset(
-                "assets/dr.png",
+                "assets/Icons/dr.png",
                 color: FontsColor.purple,
                 width: MediaQuery.of(context).size.width * 0.07,
               ),

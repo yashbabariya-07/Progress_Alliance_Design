@@ -214,7 +214,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                             Row(
                               children: [
                                 Image.asset(
-                                  "assets/wp.png",
+                                  "assets/Icons/wp.png",
                                   width:
                                       MediaQuery.of(context).size.width * 0.07,
                                 ),
@@ -306,7 +306,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                             Row(
                               children: [
                                 Image.asset(
-                                  "assets/wp.png",
+                                  "assets/Icons/wp.png",
                                   width:
                                       MediaQuery.of(context).size.width * 0.07,
                                 ),
@@ -411,7 +411,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                             Row(
                               children: [
                                 Image.asset(
-                                  "assets/wp.png",
+                                  "assets/Icons/wp.png",
                                   width:
                                       MediaQuery.of(context).size.width * 0.07,
                                 ),
@@ -503,7 +503,7 @@ class _CityGrowthPartnerState extends State<CityGrowthPartner>
                             Row(
                               children: [
                                 Image.asset(
-                                  "assets/wp.png",
+                                  "assets/Icons/wp.png",
                                   width:
                                       MediaQuery.of(context).size.width * 0.07,
                                 ),

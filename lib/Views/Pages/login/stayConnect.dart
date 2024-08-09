@@ -356,7 +356,7 @@ class _ConnectedState extends State<Connected> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset(
-                              "assets/man.png",
+                              "assets/Icons/man.png",
                               width: MediaQuery.of(context).size.width * 0.075,
                               height:
                                   MediaQuery.of(context).size.height * 0.075,
@@ -404,7 +404,7 @@ class _ConnectedState extends State<Connected> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset(
-                              "assets/woman.png",
+                              "assets/woIcons/man.png",
                               width: MediaQuery.of(context).size.width * 0.075,
                               height:
                                   MediaQuery.of(context).size.height * 0.075,

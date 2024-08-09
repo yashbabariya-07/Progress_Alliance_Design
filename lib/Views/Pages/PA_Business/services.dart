@@ -14,11 +14,11 @@ class AdService extends StatefulWidget {
 
 class _AdServiceState extends State<AdService> {
   final List<Map<String, String>> services = [
-    {"name": "Service 1", "image": "assets/s1.jpg"},
-    {"name": "Service 2", "image": "assets/s1.jpg"},
-    {"name": "Service 3", "image": "assets/surat.jpg"},
-    {"name": "Service 4", "image": "assets/s1.jpg"},
-    {"name": "Service 5", "image": "assets/surat.jpg"},
+    {"name": "Service 1", "image": "assets/Images/s1.jpg"},
+    {"name": "Service 2", "image": "assets/Images/s1.jpg"},
+    {"name": "Service 3", "image": "assets/Images/surat.jpg"},
+    {"name": "Service 4", "image": "assets/Images/s1.jpg"},
+    {"name": "Service 5", "image": "assets/Images/surat.jpg"},
   ];
 
   bool _isLoading = true;

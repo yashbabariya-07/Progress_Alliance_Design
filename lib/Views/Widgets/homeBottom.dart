@@ -34,7 +34,7 @@ class HomeBottom extends StatelessWidget {
         items: [
           BottomNavigationBarItem(
             icon: Image.asset(
-              "assets/PAG.png",
+              "assets/Icons/PAG.png",
               color: selectedIndex == 0 ? FontsColor.purple : FontsColor.grey,
               width: MediaQuery.of(context).size.width * 0.08,
             ),

@@ -86,7 +86,7 @@ class _HomesearchState extends State<Homesearch> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      "assets/search.png",
+                      "assets/Images/search.png",
                     ),
                     Text(
                       "No recent search",

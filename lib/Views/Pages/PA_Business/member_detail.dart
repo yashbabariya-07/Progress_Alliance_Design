@@ -575,7 +575,7 @@ class _MemberDetailState extends State<MemberDetail>
                                                             0.01,
                                                   ),
                                                   Image.asset(
-                                                    "assets/sendd.png",
+                                                    "assets/Icons/sendd.png",
                                                     width:
                                                         MediaQuery.of(context)
                                                                 .size
@@ -672,7 +672,7 @@ class _MemberDetailState extends State<MemberDetail>
                                                   Row(
                                                     children: [
                                                       Image.asset(
-                                                        "assets/wp.png",
+                                                        "assets/Icons/wp.png",
                                                         width: MediaQuery.of(
                                                                     context)
                                                                 .size
@@ -1161,7 +1161,7 @@ class _MemberDetailState extends State<MemberDetail>
                                                             0.01,
                                                   ),
                                                   Image.asset(
-                                                    "assets/sendd.png",
+                                                    "assets/Icons/sendd.png",
                                                     width:
                                                         MediaQuery.of(context)
                                                                 .size
@@ -1253,7 +1253,7 @@ class _MemberDetailState extends State<MemberDetail>
                                                   'https://wa.me/7874118535');
                                             },
                                             child: Image.asset(
-                                              "assets/wp.png",
+                                              "assets/Icons/wp.png",
                                               width: MediaQuery.of(context)
                                                       .size
                                                       .width *

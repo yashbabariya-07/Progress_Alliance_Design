@@ -16,17 +16,17 @@ class MemberDirectory extends StatefulWidget {
 class _MemberDirectoryState extends State<MemberDirectory>
     with LoadingStateMixin {
   List<Map<String, String>> cities = [
-    {"image": "assets/surat.jpg", "label": "Ahemdabad"},
-    {"image": "assets/surat.jpg", "label": "Ankleshwar"},
-    {"image": "assets/surat.jpg", "label": "Bhavnagar"},
-    {"image": "assets/surat.jpg", "label": "Jetpur"},
-    {"image": "assets/surat.jpg", "label": "Nashik"},
-    {"image": "assets/surat.jpg", "label": "Navsari"},
-    {"image": "assets/surat.jpg", "label": "Rajkot"},
-    {"image": "assets/surat.jpg", "label": "Surat"},
-    {"image": "assets/surat.jpg", "label": "Universal"},
-    {"image": "assets/surat.jpg", "label": "Vadodara"},
-    {"image": "assets/surat.jpg", "label": "Vapi"},
+    {"image": "assets/Images/surat.jpg", "label": "Ahemdabad"},
+    {"image": "assets/Images/surat.jpg", "label": "Ankleshwar"},
+    {"image": "assets/Images/surat.jpg", "label": "Bhavnagar"},
+    {"image": "assets/Images/surat.jpg", "label": "Jetpur"},
+    {"image": "assets/Images/surat.jpg", "label": "Nashik"},
+    {"image": "assets/Images/surat.jpg", "label": "Navsari"},
+    {"image": "assets/Images/surat.jpg", "label": "Rajkot"},
+    {"image": "assets/Images/surat.jpg", "label": "Surat"},
+    {"image": "assets/Images/surat.jpg", "label": "Universal"},
+    {"image": "assets/Images/surat.jpg", "label": "Vadodara"},
+    {"image": "assets/Images/surat.jpg", "label": "Vapi"},
   ];
 
   int _selectedIndex = 3;

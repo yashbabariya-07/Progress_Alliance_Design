@@ -120,7 +120,7 @@ class _ScannerPageState extends State<ScannerPage> {
               child: Align(
                 alignment: Alignment.topCenter,
                 child: Image.asset(
-                  "assets/WPA1.png",
+                  "assets/Logo/WPA1.png",
                   height: MediaQuery.of(context).size.height * 0.3,
                   width: MediaQuery.of(context).size.width * 0.65,
                 ),
