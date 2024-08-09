@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     bool isKeyboardOpen = mediaQuery.viewInsets.bottom > 0;
     return MediaQuery(
-      data: mediaQuery.copyWith(textScaleFactor: 1.0),
+      data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: FontsColor.white,
         body: SafeArea(
