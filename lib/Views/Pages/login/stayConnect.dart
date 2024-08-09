@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:progress_alliance/Routes/route.dart';
+import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Components/countryCode.dart';
 
 class Connected extends StatefulWidget {
@@ -256,8 +257,8 @@ class _ConnectedState extends State<Connected> {
                           ),
                         ),
                       ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
                             vertical: BorderSide.strokeAlignCenter),
                         child: VerticalDivider(
                           width: 0.2,
