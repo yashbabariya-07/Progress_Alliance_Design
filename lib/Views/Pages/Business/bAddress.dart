@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:progress_alliance/Theme/textStyle.dart';
+import 'package:progress_alliance/Views/Components/userTextField.dart/customeTextFormField.dart';
 import 'package:progress_alliance/Views/Pages/Business/businessInfo.dart';
 import 'package:progress_alliance/Routes/route.dart';
 
@@ -336,147 +337,26 @@ class _BusinessAddressState extends State<BusinessAddress> {
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
             child: Column(
               children: [
-                Center(
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, Routes.mapRoute);
-                    },
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * 0.085,
-                      width: MediaQuery.of(context).size.width * 0.55,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(width: 0.2, color: FontsColor.grey),
-                      ),
-                      child: Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image.asset(
-                                  "assets/Images/map.png",
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.05,
-                                ),
-                                SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.015,
-                                ),
-                                Text(
-                                  "Pick Location",
-                                  style: TextStyle(
-                                    fontFamily: FontsFamily.inter,
-                                    fontSize: FontsSize.f13,
-                                    color: FontsColor.purple,
-                                    fontWeight: FontsWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Text("(Click here to pick location)",
-                                style: TextStyle(
-                                    fontFamily: FontsFamily.inter,
-                                    fontSize: FontsSize.f12,
-                                    color: FontsColor.grey700)),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
+                Center(child: PickLocationButton(
+                  onTap: () {
+                    Navigator.pushNamed(context, Routes.mapRoute);
+                  },
+                )),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.02,
+                ),
+                UserCustomTextField(
+                  label: "Shop Number",
+                  hintText: 'Enter your shop number',
+                  controller: _shopNumber,
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Shop Number",
-                      style: TextStyle(
-                        fontFamily: FontsFamily.inter,
-                        fontSize: FontsSize.f14,
-                        color: FontsColor.black,
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: FontsColor.grey, width: 0.5),
-                      ),
-                      child: TextFormField(
-                        controller: _shopNumber,
-                        decoration: InputDecoration(
-                          hintText: 'Enter your shop number',
-                          hintStyle: TextStyle(
-                            fontSize: FontsSize.f14,
-                            fontFamily: FontsFamily.inter,
-                          ),
-                          border: InputBorder.none,
-                          contentPadding: const EdgeInsets.all(10),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5),
-                            borderSide: BorderSide(
-                              color: FontsColor.black,
-                              width: 1,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.02,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Street Name",
-                      style: TextStyle(
-                        fontFamily: FontsFamily.inter,
-                        fontSize: FontsSize.f14,
-                        color: FontsColor.black,
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: FontsColor.grey, width: 0.5),
-                      ),
-                      child: TextFormField(
-                        controller: _streetName,
-                        decoration: InputDecoration(
-                          hintText: 'Enter your street name',
-                          hintStyle: TextStyle(
-                            fontSize: FontsSize.f14,
-                            fontFamily: FontsFamily.inter,
-                          ),
-                          border: InputBorder.none,
-                          contentPadding: const EdgeInsets.all(10),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5),
-                            borderSide: BorderSide(
-                              color: FontsColor.black,
-                              width: 1,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                UserCustomTextField(
+                  label: "Street Name",
+                  hintText: 'Enter your street name',
+                  controller: _streetName,
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
@@ -485,49 +365,10 @@ class _BusinessAddressState extends State<BusinessAddress> {
                   children: [
                     Flexible(
                       flex: 4,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Area',
-                            style: TextStyle(
-                              fontFamily: FontsFamily.inter,
-                              fontSize: FontsSize.f14,
-                              color: FontsColor.black,
-                            ),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.01,
-                          ),
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.06,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(
-                                  color: FontsColor.grey, width: 0.5),
-                            ),
-                            child: TextFormField(
-                              controller: _area,
-                              decoration: InputDecoration(
-                                hintText: 'Enter your area ',
-                                hintStyle: TextStyle(
-                                  fontSize: FontsSize.f14,
-                                  fontFamily: FontsFamily.inter,
-                                ),
-                                border: InputBorder.none,
-                                contentPadding: const EdgeInsets.all(10),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5),
-                                  borderSide: BorderSide(
-                                    color: FontsColor.black,
-                                    width: 1,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                      child: UserCustomTextField(
+                        label: 'Area',
+                        hintText: 'Enter your area ',
+                        controller: _area,
                       ),
                     ),
                     SizedBox(
@@ -535,49 +376,10 @@ class _BusinessAddressState extends State<BusinessAddress> {
                     ),
                     Flexible(
                       flex: 4,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Landmark',
-                            style: TextStyle(
-                              fontFamily: FontsFamily.inter,
-                              fontSize: FontsSize.f14,
-                              color: FontsColor.black,
-                            ),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.01,
-                          ),
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.06,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(
-                                  color: FontsColor.grey, width: 0.5),
-                            ),
-                            child: TextFormField(
-                              controller: _landmark,
-                              decoration: InputDecoration(
-                                hintText: 'Enter your landmark',
-                                hintStyle: TextStyle(
-                                  fontSize: FontsSize.f14,
-                                  fontFamily: FontsFamily.inter,
-                                ),
-                                border: InputBorder.none,
-                                contentPadding: const EdgeInsets.all(10),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5),
-                                  borderSide: BorderSide(
-                                    color: FontsColor.black,
-                                    width: 1,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                      child: UserCustomTextField(
+                        label: 'Landmark',
+                        hintText: 'Enter your landmark',
+                        controller: _landmark,
                       ),
                     ),
                   ],
@@ -585,48 +387,10 @@ class _BusinessAddressState extends State<BusinessAddress> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Pincode",
-                      style: TextStyle(
-                        fontFamily: FontsFamily.inter,
-                        fontSize: FontsSize.f14,
-                        color: FontsColor.black,
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: FontsColor.grey, width: 0.5),
-                      ),
-                      child: TextFormField(
-                        controller: _pincode,
-                        decoration: InputDecoration(
-                          hintText: 'Enter your pincode',
-                          hintStyle: TextStyle(
-                            fontSize: FontsSize.f14,
-                            fontFamily: FontsFamily.inter,
-                          ),
-                          border: InputBorder.none,
-                          contentPadding: const EdgeInsets.all(10),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5),
-                            borderSide: BorderSide(
-                              color: FontsColor.black,
-                              width: 1,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                UserCustomTextField(
+                  label: "Pincode",
+                  hintText: 'Enter your pincode',
+                  controller: _pincode,
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
@@ -634,126 +398,28 @@ class _BusinessAddressState extends State<BusinessAddress> {
                 Row(
                   children: [
                     Flexible(
-                      flex: 4,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'State',
-                            style: TextStyle(
-                              fontFamily: FontsFamily.inter,
-                              fontSize: FontsSize.f14,
-                              color: FontsColor.black,
-                            ),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.01,
-                          ),
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.06,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(
-                                  color: FontsColor.grey, width: 0.5),
-                            ),
-                            child: InkWell(
-                              onTap: () {
-                                _showState(context);
-                              },
-                              child: IgnorePointer(
-                                child: TextFormField(
-                                  controller: _state,
-                                  decoration: InputDecoration(
-                                    hintText: 'Select your state',
-                                    hintStyle: TextStyle(
-                                      fontSize: FontsSize.f14,
-                                      fontFamily: FontsFamily.inter,
-                                    ),
-                                    border: InputBorder.none,
-                                    contentPadding: const EdgeInsets.all(10),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(5),
-                                      borderSide: BorderSide(
-                                        color: FontsColor.black,
-                                        width: 0.5,
-                                      ),
-                                    ),
-                                    suffixIcon: Icon(
-                                      Icons.arrow_drop_down,
-                                      size: MediaQuery.of(context).size.width *
-                                          0.06,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                        flex: 4,
+                        child: ProfilePageSelectionField(
+                          label: 'State',
+                          hintText: 'Select your state',
+                          controller: _state,
+                          onTap: () {
+                            _showState(context);
+                          },
+                        )),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.02,
                     ),
                     Flexible(
-                      flex: 4,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'City',
-                            style: TextStyle(
-                              fontFamily: FontsFamily.inter,
-                              fontSize: FontsSize.f14,
-                              color: FontsColor.black,
-                            ),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.01,
-                          ),
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.06,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(
-                                  color: FontsColor.grey, width: 0.5),
-                            ),
-                            child: InkWell(
-                              onTap: () {
-                                _showCity(context);
-                              },
-                              child: IgnorePointer(
-                                child: TextFormField(
-                                  controller: _city,
-                                  decoration: InputDecoration(
-                                    hintText: 'Select your city',
-                                    hintStyle: TextStyle(
-                                      fontSize: FontsSize.f14,
-                                      fontFamily: FontsFamily.inter,
-                                    ),
-                                    border: InputBorder.none,
-                                    contentPadding: const EdgeInsets.all(10),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(5),
-                                      borderSide: BorderSide(
-                                        color: FontsColor.black,
-                                        width: 0.5,
-                                      ),
-                                    ),
-                                    suffixIcon: Icon(
-                                      Icons.arrow_drop_down,
-                                      size: MediaQuery.of(context).size.width *
-                                          0.06,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                        flex: 4,
+                        child: ProfilePageSelectionField(
+                          label: 'City',
+                          hintText: 'Select your city',
+                          controller: _city,
+                          onTap: () {
+                            _showCity(context);
+                          },
+                        )),
                   ],
                 ),
               ],

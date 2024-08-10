@@ -53,24 +53,6 @@ class _BookViewState extends State<BookView> {
             size: MediaQuery.of(context).size.width * 0.06,
           ),
         ),
-        actions: [
-          FutureBuilder<File>(
-            future: _pdfFileFuture,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                if (snapshot.hasData) {
-                  return IconButton(
-                    icon: Icon(Icons.share),
-                    onPressed: () => _sharePdf(snapshot.data!),
-                  );
-                } else if (snapshot.hasError) {
-                  return Center(child: Text('Error loading PDF'));
-                }
-              }
-              return CircularProgressIndicator();
-            },
-          ),
-        ],
       ),
       body: FutureBuilder<File>(
         future: _pdfFileFuture,

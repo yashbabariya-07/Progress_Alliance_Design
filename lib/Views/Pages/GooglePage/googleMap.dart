@@ -863,7 +863,7 @@ class _GooglemapState extends State<Googlemap>
                                   margin: const EdgeInsets.only(right: 10),
                                   decoration: BoxDecoration(
                                     color: isSelected
-                                        ? FontsColor.orange
+                                        ? FontsColor.orange50
                                         : FontsColor.white,
                                     border: Border.all(
                                       width: isSelected ? 0.5 : 0.2,
@@ -882,9 +882,6 @@ class _GooglemapState extends State<Googlemap>
                                         fontFamily: FontsFamily.inter,
                                         fontSize: FontsSize.f13,
                                         fontWeight: FontsWeight.bold,
-                                        color: isSelected
-                                            ? FontsColor.orange
-                                            : FontsColor.black,
                                       ),
                                     ),
                                   ),

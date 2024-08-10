@@ -61,12 +61,12 @@ class _AdServiceState extends State<AdService> {
             style: TextStyle(
               fontFamily: FontsFamily.inter,
               fontSize: FontsSize.f16,
-              color: Color.fromARGB(255, 16, 2, 90),
+              color: FontsColor.purple,
               fontWeight: FontsWeight.bold,
             ),
           ),
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(0),
+            preferredSize: const Size.fromHeight(0),
             child: Container(
               color: FontsColor.grey,
               height: 0.2,

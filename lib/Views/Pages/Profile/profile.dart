@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:image_picker/image_picker.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
-
 import 'package:progress_alliance/Views/Widgets/bottombar.dart';
 import 'dart:io';
 import 'package:progress_alliance/Routes/route.dart';
@@ -70,7 +68,7 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
       context: context,
       builder: (BuildContext context) {
         return Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -175,6 +173,7 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
         return StatefulBuilder(
           builder: (context, setState) {
             return AlertDialog(
+              backgroundColor: FontsColor.white,
               title: Text(
                 'Add Child',
                 style: TextStyle(
@@ -266,11 +265,11 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
               ),
               actions: [
                 TextButton(
-                  child: Text('Cancel'),
+                  child: const Text('Cancel'),
                   onPressed: () => Navigator.of(context).pop(),
                 ),
                 TextButton(
-                  child: Text('Add'),
+                  child: const Text('Add'),
                   onPressed: () {
                     setState(() {
                       children.add({
@@ -302,6 +301,7 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
         String _gender = children[index]['gender'] ?? 'Girl';
 
         return AlertDialog(
+          backgroundColor: FontsColor.white,
           title: Text(
             'Edit Child',
             style: TextStyle(

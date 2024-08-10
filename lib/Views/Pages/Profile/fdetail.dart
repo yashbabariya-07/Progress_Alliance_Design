@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:progress_alliance/Theme/textStyle.dart';
+import 'package:progress_alliance/Views/Components/userTextField.dart/customeTextFormField.dart';
 import 'package:progress_alliance/Views/Pages/Profile/profile.dart';
 
 class FamilyDetail extends StatefulWidget {
@@ -20,7 +20,7 @@ class _FamilyDetailState extends State<FamilyDetail> {
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return MediaQuery(
-      data: mediaQuery.copyWith(textScaleFactor: 1.0),
+      data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: FontsColor.white,
         appBar: AppBar(
@@ -91,205 +91,49 @@ class _FamilyDetailState extends State<FamilyDetail> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Spouse Name',
-                      style: TextStyle(
-                        fontFamily: FontsFamily.inter,
-                        fontSize: FontsSize.f14,
-                        color: FontsColor.black,
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: FontsColor.grey, width: 0.5),
-                      ),
-                      child: TextFormField(
-                        controller: _sname,
-                        decoration: InputDecoration(
-                          hintText: 'Enter your spouse name',
-                          hintStyle: TextStyle(
-                            fontSize: FontsSize.f14,
-                          ),
-                          border: InputBorder.none,
-                          contentPadding: const EdgeInsets.all(10),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5),
-                            borderSide: BorderSide(
-                              color: FontsColor.black,
-                              width: 1,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                UserCustomTextField(
+                  label: 'Spouse Name',
+                  hintText: 'Enter your spouse name',
+                  controller: _sname,
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Spouse Date of Birth',
-                      style: TextStyle(
-                        fontFamily: FontsFamily.inter,
-                        fontSize: FontsSize.f14,
-                        color: FontsColor.black,
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: FontsColor.grey, width: 0.5),
-                      ),
-                      child: InkWell(
-                        onTap: () async {
-                          DateTime? pickedDate = await showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(2010),
-                            lastDate: DateTime(2050),
-                          );
+                ProfilePageSelectionField(
+                  label: 'Spouse Date of Birth',
+                  hintText: 'Spouse Date of Birth',
+                  controller: _dob,
+                  onTap: () async {
+                    DateTime? pickedDate = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2010),
+                      lastDate: DateTime(2050),
+                    );
 
-                          if (pickedDate != null) {
-                            setState(() {
-                              _dob.text =
-                                  "${pickedDate.day}-${pickedDate.month}-${pickedDate.year}";
-                            });
-                          }
-                        },
-                        child: IgnorePointer(
-                          child: TextFormField(
-                            controller: _dob,
-                            decoration: InputDecoration(
-                              hintText: 'Spouse Date of Birth',
-                              hintStyle: TextStyle(
-                                fontSize: FontsSize.f14,
-                              ),
-                              border: InputBorder.none,
-                              contentPadding: const EdgeInsets.all(10),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                borderSide: BorderSide(
-                                  color: FontsColor.black,
-                                  width: 0.5,
-                                ),
-                              ),
-                              suffixIcon: Icon(
-                                Icons.cancel_rounded,
-                                size: MediaQuery.of(context).size.width * 0.06,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                    if (pickedDate != null) {
+                      setState(() {
+                        _dob.text =
+                            "${pickedDate.day}-${pickedDate.month}-${pickedDate.year}";
+                      });
+                    }
+                  },
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Emergency Person's Name",
-                      style: TextStyle(
-                        fontFamily: FontsFamily.inter,
-                        fontSize: FontsSize.f14,
-                        color: FontsColor.black,
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: FontsColor.grey, width: 0.5),
-                      ),
-                      child: TextFormField(
-                        controller: _ename,
-                        decoration: InputDecoration(
-                          hintText: 'Enter your emg. person name',
-                          hintStyle: TextStyle(
-                            fontSize: FontsSize.f14,
-                          ),
-                          border: InputBorder.none,
-                          contentPadding: const EdgeInsets.all(10),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5),
-                            borderSide: BorderSide(
-                              color: FontsColor.black,
-                              width: 1,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                UserCustomTextField(
+                  label: "Emergency Person's Name",
+                  hintText: 'Enter your emg. person name',
+                  controller: _ename,
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Emergency Person's Number",
-                      style: TextStyle(
-                        fontFamily: FontsFamily.inter,
-                        fontSize: FontsSize.f14,
-                        color: FontsColor.black,
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: FontsColor.grey, width: 0.5),
-                      ),
-                      child: TextFormField(
-                        controller: _enumber,
-                        decoration: InputDecoration(
-                          hintText: 'Enter your emg. person number',
-                          hintStyle: TextStyle(
-                            fontSize: FontsSize.f14,
-                          ),
-                          border: InputBorder.none,
-                          contentPadding: const EdgeInsets.all(10),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5),
-                            borderSide: BorderSide(
-                              color: FontsColor.black,
-                              width: 1,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                UserCustomTextField(
+                  label: "Emergency Person's Number",
+                  hintText: 'Enter your emg. person number',
+                  controller: _enumber,
                 ),
               ],
             ),

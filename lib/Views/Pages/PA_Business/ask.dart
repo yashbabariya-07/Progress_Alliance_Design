@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:progress_alliance/Theme/textStyle.dart';
+import 'package:progress_alliance/Views/Components/CommonButton.dart';
 
 class AskPage extends StatefulWidget {
   const AskPage({super.key});
@@ -384,26 +385,7 @@ class _AskPageState extends State<AskPage> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.04,
                 ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 0.06,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 16, 2, 90),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Center(
-                      child: Text(
-                        'Submit',
-                        style: TextStyle(
-                            fontFamily: FontsFamily.inter,
-                            fontSize: FontsSize.f15,
-                            color: FontsColor.white,
-                            fontWeight: FontsWeight.bold),
-                      ),
-                    ),
-                  ),
-                )
+                CommonButton(text: "Submit", onTap: () {})
               ],
             ),
           ),

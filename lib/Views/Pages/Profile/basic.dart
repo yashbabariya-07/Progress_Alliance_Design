@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:progress_alliance/Theme/textStyle.dart';
+import 'package:progress_alliance/Views/Components/userTextField.dart/customeTextFormField.dart';
 import 'package:progress_alliance/Views/Pages/Profile/profile.dart';
 
 class BasicDetail extends StatefulWidget {
@@ -26,7 +26,7 @@ class _BasicDetailState extends State<BasicDetail> {
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return MediaQuery(
-      data: mediaQuery.copyWith(textScaleFactor: 1.0),
+      data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: FontsColor.white,
         appBar: AppBar(
@@ -34,7 +34,7 @@ class _BasicDetailState extends State<BasicDetail> {
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(0),
+            preferredSize: const Size.fromHeight(0),
             child: Container(
               color: FontsColor.grey,
               height: 0.2,
@@ -100,126 +100,36 @@ class _BasicDetailState extends State<BasicDetail> {
                 Row(
                   children: [
                     Flexible(
-                      flex: 2,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Prefix',
-                            style: TextStyle(
-                              fontFamily: FontsFamily.inter,
-                              fontSize: FontsSize.f14,
-                            ),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.01,
-                          ),
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.06,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(
-                                  color: FontsColor.grey, width: 0.5),
-                            ),
-                            child: DropdownButtonFormField<String>(
-                              iconSize:
-                                  MediaQuery.of(context).size.width * 0.06,
-                              style: TextStyle(
-                                fontSize: FontsSize.f14,
-                                fontFamily: FontsFamily.inter,
-                                color: FontsColor.black,
-                              ),
-                              value: _prefix,
-                              items: [
-                                'Mr.',
-                                'Mrs.',
-                                'Miss.',
-                                'Ms.',
-                                'Mx.',
-                                'Sir.',
-                                'Clir.',
-                                'Dr.'
-                              ]
-                                  .map((prefix) => DropdownMenuItem(
-                                        value: prefix,
-                                        child: Text(prefix),
-                                      ))
-                                  .toList(),
-                              onChanged: (value) {
-                                setState(() {
-                                  _prefix = value!;
-                                });
-                              },
-                              decoration: InputDecoration(
-                                hintText: 'Prefix',
-                                hintStyle: TextStyle(
-                                  fontSize: FontsSize.f14,
-                                  fontFamily: FontsFamily.inter,
-                                ),
-                                border: InputBorder.none,
-                                contentPadding: const EdgeInsets.all(10),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FontsColor.black,
-                                    width: 1,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                        flex: 2,
+                        child: UserDropdownField(
+                          label: 'Prefix',
+                          hint: 'Prefix',
+                          value: _prefix,
+                          items: const [
+                            'Mr.',
+                            'Mrs.',
+                            'Miss.',
+                            'Ms.',
+                            'Mx.',
+                            'Sir.',
+                            'Clir.',
+                            'Dr.',
+                          ],
+                          onChanged: (value) {
+                            setState(() {
+                              _prefix = value!;
+                            });
+                          },
+                        )),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.03,
                     ),
                     Flexible(
                       flex: 5,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Name*',
-                            style: TextStyle(
-                              fontFamily: FontsFamily.inter,
-                              fontSize: FontsSize.f14,
-                              color: FontsColor.black,
-                            ),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.01,
-                          ),
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.06,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(
-                                  color: FontsColor.grey, width: 0.5),
-                            ),
-                            child: TextFormField(
-                              controller: _name,
-                              decoration: InputDecoration(
-                                hintText: 'Enter Name',
-                                hintStyle: TextStyle(
-                                  fontSize: FontsSize.f14,
-                                  fontFamily: FontsFamily.inter,
-                                ),
-                                border: InputBorder.none,
-                                contentPadding: const EdgeInsets.all(10),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5),
-                                  borderSide: BorderSide(
-                                    color: FontsColor.black,
-                                    width: 1,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                      child: UserCustomTextField(
+                          label: 'Name*',
+                          hintText: 'Enter Name',
+                          controller: _name),
                     ),
                   ],
                 ),
@@ -230,149 +140,30 @@ class _BasicDetailState extends State<BasicDetail> {
                   children: [
                     Flexible(
                       flex: 5,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Father's Name*",
-                            style: TextStyle(
-                              fontFamily: FontsFamily.inter,
-                              fontSize: FontsSize.f14,
-                              color: FontsColor.black,
-                            ),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.01,
-                          ),
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.06,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(
-                                  color: FontsColor.grey, width: 0.5),
-                            ),
-                            child: TextFormField(
-                              controller: _fname,
-                              decoration: InputDecoration(
-                                hintText: "Enter Name",
-                                hintStyle: TextStyle(
-                                  fontSize: FontsSize.f14,
-                                  fontFamily: FontsFamily.inter,
-                                ),
-                                border: InputBorder.none,
-                                contentPadding: const EdgeInsets.all(10),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5),
-                                  borderSide: BorderSide(
-                                    color: FontsColor.black,
-                                    width: 1,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                      child: UserCustomTextField(
+                          label: "Father's Name*",
+                          hintText: 'Enter Name',
+                          controller: _fname),
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.03,
                     ),
                     Flexible(
                       flex: 5,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Surname*',
-                            style: TextStyle(
-                              fontFamily: FontsFamily.inter,
-                              fontSize: FontsSize.f14,
-                              color: FontsColor.black,
-                            ),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.01,
-                          ),
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.06,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(
-                                  color: FontsColor.grey, width: 0.5),
-                            ),
-                            child: TextFormField(
-                              controller: _surname,
-                              decoration: InputDecoration(
-                                hintText: 'Enter Surname',
-                                hintStyle: TextStyle(
-                                  fontSize: FontsSize.f14,
-                                  fontFamily: FontsFamily.inter,
-                                ),
-                                border: InputBorder.none,
-                                contentPadding: const EdgeInsets.all(10),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5),
-                                  borderSide: BorderSide(
-                                    color: FontsColor.black,
-                                    width: 1,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                      child: UserCustomTextField(
+                          label: "Surname*",
+                          hintText: 'Enter Surname',
+                          controller: _surname),
                     ),
                   ],
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Mobile Number',
-                      style: TextStyle(
-                        fontFamily: FontsFamily.inter,
-                        fontSize: FontsSize.f14,
-                        color: FontsColor.black,
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: FontsColor.grey, width: 0.5),
-                      ),
-                      child: TextFormField(
-                        controller: _mobile,
-                        decoration: InputDecoration(
-                          hintText: 'Enter mobile no.',
-                          hintStyle: TextStyle(
-                            fontSize: FontsSize.f14,
-                            fontFamily: FontsFamily.inter,
-                          ),
-                          border: InputBorder.none,
-                          contentPadding: const EdgeInsets.all(10),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5),
-                            borderSide: BorderSide(
-                              color: FontsColor.black,
-                              width: 1,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                UserCustomTextField(
+                    label: "Mobile Number",
+                    hintText: 'Enter mobile no.',
+                    controller: _mobile),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
@@ -390,217 +181,72 @@ class _BasicDetailState extends State<BasicDetail> {
                 Row(
                   children: [
                     Flexible(
-                      child: InkWell(
-                        onTap: () {
-                          setState(() {
-                            _selectedGender = 'Male';
-                          });
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: _selectedGender == 'Male'
-                                  ? FontsColor.black
-                                  : FontsColor.grey,
-                              width: _selectedGender == 'Male' ? 1 : 0.5,
-                            ),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Male',
-                            style: TextStyle(
-                              fontFamily: FontsFamily.inter,
-                              fontSize: FontsSize.f14,
-                              fontWeight: _selectedGender == 'Male'
-                                  ? FontWeight.bold
-                                  : FontWeight.normal,
-                              color: _selectedGender == 'Male'
-                                  ? FontsColor.black
-                                  : FontsColor.black54,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                        child: ProfileGenderButton(
+                            gender: 'Male',
+                            selectedGender: _selectedGender,
+                            onTap: () {
+                              setState(() {
+                                _selectedGender = 'Male';
+                              });
+                            })),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.03,
                     ),
                     Flexible(
-                      child: InkWell(
-                        onTap: () {
-                          setState(() {
-                            _selectedGender = 'Female';
-                          });
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: _selectedGender == 'Female'
-                                  ? FontsColor.black
-                                  : FontsColor.grey,
-                              width: _selectedGender == 'Female' ? 1 : 0.5,
-                            ),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Female',
-                            style: TextStyle(
-                              fontFamily: FontsFamily.inter,
-                              fontSize: FontsSize.f14,
-                              fontWeight: _selectedGender == 'Female'
-                                  ? FontWeight.bold
-                                  : FontWeight.normal,
-                              color: _selectedGender == 'Female'
-                                  ? FontsColor.black
-                                  : FontsColor.black54,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                        child: ProfileGenderButton(
+                            gender: 'Female',
+                            selectedGender: _selectedGender,
+                            onTap: () {
+                              setState(() {
+                                _selectedGender = 'Female';
+                              });
+                            })),
                   ],
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Date of Birth',
-                      style: TextStyle(
-                        fontFamily: FontsFamily.inter,
-                        fontSize: FontsSize.f14,
-                        color: FontsColor.black,
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: FontsColor.grey, width: 0.5),
-                      ),
-                      child: InkWell(
-                        onTap: () async {
-                          DateTime? pickedDate = await showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(2010),
-                            lastDate: DateTime(2050),
-                          );
-
-                          if (pickedDate != null) {
-                            setState(() {
-                              _dob.text =
-                                  "${pickedDate.day}-${pickedDate.month}-${pickedDate.year}";
-                            });
-                          }
-                        },
-                        child: IgnorePointer(
-                          child: TextFormField(
-                            controller: _dob,
-                            decoration: InputDecoration(
-                              hintText: 'Select Date of Birth',
-                              hintStyle: TextStyle(
-                                fontSize: FontsSize.f14,
-                                fontFamily: FontsFamily.inter,
-                              ),
-                              border: InputBorder.none,
-                              contentPadding: const EdgeInsets.all(10),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                borderSide: BorderSide(
-                                  color: FontsColor.black,
-                                  width: 0.5,
-                                ),
-                              ),
-                              suffixIcon: Icon(
-                                Icons.arrow_drop_down,
-                                size: MediaQuery.of(context).size.width * 0.06,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                ProfilePageSelectionField(
+                  label: 'Date of Birth',
+                  hintText: 'Select Date of Birth',
+                  controller: _dob,
+                  onTap: () async {
+                    DateTime? pickedDate = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2010),
+                      lastDate: DateTime(2050),
+                    );
+                    if (pickedDate != null) {
+                      setState(() {
+                        _dob.text =
+                            "${pickedDate.day}-${pickedDate.month}-${pickedDate.year}";
+                      });
+                    }
+                  },
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Marriage Anniversary',
-                      style: TextStyle(
-                        fontFamily: FontsFamily.inter,
-                        fontSize: FontsSize.f14,
-                        color: FontsColor.black,
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: FontsColor.grey, width: 0.5),
-                      ),
-                      child: InkWell(
-                        onTap: () async {
-                          DateTime? pickedDate = await showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(2010),
-                            lastDate: DateTime(2050),
-                          );
+                ProfilePageSelectionField(
+                  label: 'Marriage Anniversary',
+                  hintText: 'Select your marriage anniversary',
+                  controller: _marriage,
+                  onTap: () async {
+                    DateTime? pickedDate = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2010),
+                      lastDate: DateTime(2050),
+                    );
 
-                          if (pickedDate != null) {
-                            setState(() {
-                              _marriage.text =
-                                  "${pickedDate.day}-${pickedDate.month}-${pickedDate.year}";
-                            });
-                          }
-                        },
-                        child: IgnorePointer(
-                          child: TextFormField(
-                            controller: _marriage,
-                            decoration: InputDecoration(
-                              hintText: 'Select your marriage anniversary',
-                              hintStyle: TextStyle(
-                                fontSize: FontsSize.f14,
-                                fontFamily: FontsFamily.inter,
-                              ),
-                              border: InputBorder.none,
-                              contentPadding: const EdgeInsets.all(10),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                borderSide: BorderSide(
-                                  color: FontsColor.black,
-                                  width: 0.5,
-                                ),
-                              ),
-                              suffixIcon: Icon(
-                                Icons.arrow_drop_down,
-                                size: MediaQuery.of(context).size.width * 0.06,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                    if (pickedDate != null) {
+                      setState(() {
+                        _marriage.text =
+                            "${pickedDate.day}-${pickedDate.month}-${pickedDate.year}";
+                      });
+                    }
+                  },
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
@@ -670,78 +316,27 @@ class _BasicDetailState extends State<BasicDetail> {
                       width: MediaQuery.of(context).size.width * 0.03,
                     ),
                     Flexible(
-                      flex: 3,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Blood Group',
-                            style: TextStyle(
-                              fontFamily: FontsFamily.inter,
-                              fontSize: FontsSize.f14,
-                              color: FontsColor.black,
-                            ),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.01,
-                          ),
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.06,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(
-                                  color: FontsColor.grey, width: 0.5),
-                            ),
-                            child: DropdownButtonFormField<String>(
-                              iconSize:
-                                  MediaQuery.of(context).size.width * 0.06,
-                              style: TextStyle(
-                                fontSize: FontsSize.f14,
-                                fontFamily: FontsFamily.inter,
-                                color: FontsColor.black,
-                              ),
-                              value: _bgrp,
-                              items: [
-                                'A+',
-                                'A-',
-                                'B+',
-                                'B-',
-                                'AB+',
-                                'AB-',
-                                'O+',
-                                'O-'
-                              ]
-                                  .map((bgrp) => DropdownMenuItem(
-                                        value: bgrp,
-                                        child: Text(bgrp),
-                                      ))
-                                  .toList(),
-                              onChanged: (value) {
-                                setState(() {
-                                  _bgrp = value!;
-                                });
-                              },
-                              decoration: InputDecoration(
-                                hintText: 'Your blood group',
-                                hintStyle: TextStyle(
-                                  fontSize: FontsSize.f14,
-                                  fontFamily: FontsFamily.inter,
-                                ),
-                                border: InputBorder.none,
-                                contentPadding: const EdgeInsets.all(10),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FontsColor.black,
-                                    width: 1,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                        flex: 3,
+                        child: UserDropdownField(
+                          label: 'Blood Group',
+                          hint: 'Your blood group',
+                          value: _bgrp,
+                          items: const [
+                            'A+',
+                            'A-',
+                            'B+',
+                            'B-',
+                            'AB+',
+                            'AB-',
+                            'O+',
+                            'O-'
+                          ],
+                          onChanged: (value) {
+                            setState(() {
+                              _bgrp = value!;
+                            });
+                          },
+                        )),
                   ],
                 )
               ],

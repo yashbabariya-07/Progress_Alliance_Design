@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:progress_alliance/Routes/route.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
+import 'package:progress_alliance/Views/Components/CommonButton.dart';
 
 class OTPPage extends StatefulWidget {
   const OTPPage({Key? key}) : super(key: key);
@@ -108,29 +109,11 @@ class _OTPPageState extends State<OTPPage> {
                   textAlign: TextAlign.center,
                 ),
                 const Spacer(),
-                InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, Routes.homeRoute);
-                  },
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 0.06,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Color.fromARGB(255, 16, 2, 90),
-                    ),
-                    child: Center(
-                      child: Text(
-                        "Verify",
-                        style: TextStyle(
-                            fontFamily: FontsFamily.inter,
-                            fontSize: FontsSize.f15,
-                            color: FontsColor.white,
-                            fontWeight: FontsWeight.bold),
-                      ),
-                    ),
-                  ),
-                ),
+                CommonButton(
+                    text: "Verify",
+                    onTap: () {
+                      Navigator.pushNamed(context, Routes.homeRoute);
+                    }),
               ],
             ),
           ),

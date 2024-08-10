@@ -1,9 +1,8 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-
 import 'package:image_picker/image_picker.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
+import 'package:progress_alliance/Views/Components/CommonButton.dart';
 
 class Addcomplaint extends StatefulWidget {
   const Addcomplaint({super.key});
@@ -65,14 +64,14 @@ class _AddcomplaintState extends State<Addcomplaint> {
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return MediaQuery(
-      data: mediaQuery.copyWith(textScaleFactor: 1.0),
+      data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: FontsColor.white,
         appBar: AppBar(
           backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(0),
+            preferredSize: const Size.fromHeight(0),
             child: Container(
               color: FontsColor.grey,
               height: 0.2,
@@ -293,26 +292,7 @@ class _AddcomplaintState extends State<Addcomplaint> {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.038,
                     ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        height: MediaQuery.of(context).size.height * 0.06,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                            color: FontsColor.purple,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Center(
-                          child: Text(
-                            'Submit',
-                            style: TextStyle(
-                                fontFamily: FontsFamily.inter,
-                                color: FontsColor.white,
-                                fontSize: FontsSize.f15,
-                                fontWeight: FontsWeight.bold),
-                          ),
-                        ),
-                      ),
-                    )
+                    CommonButton(text: "Submit", onTap: () {}),
                   ],
                 ),
               ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:progress_alliance/Theme/textStyle.dart';
+import 'package:progress_alliance/Views/Components/userTextField.dart/customeTextFormField.dart';
 import 'package:progress_alliance/Views/Pages/Business/businessInfo.dart';
 
 class SocialAccount extends StatefulWidget {
@@ -109,284 +110,50 @@ class _SocialAccountState extends State<SocialAccount> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Facebook Link",
-                        style: TextStyle(
-                          fontFamily: FontsFamily.inter,
-                          fontSize: FontsSize.f14,
-                          color: FontsColor.black,
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.01,
-                      ),
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.06,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          border:
-                              Border.all(color: FontsColor.grey, width: 0.5),
-                        ),
-                        child: TextFormField(
-                          controller: _facbook,
-                          decoration: InputDecoration(
-                            hintText: 'Enter facebook link',
-                            hintStyle: TextStyle(
-                              fontSize: FontsSize.f14,
-                              fontFamily: FontsFamily.inter,
-                            ),
-                            border: InputBorder.none,
-                            contentPadding: const EdgeInsets.all(10),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5),
-                              borderSide: BorderSide(
-                                color: FontsColor.black,
-                                width: 1,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                  UserCustomTextField(
+                    label: "Facebook Link",
+                    hintText: 'Enter facebook link',
+                    controller: _facbook,
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.02,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Linkedin Link",
-                        style: TextStyle(
-                          fontFamily: FontsFamily.inter,
-                          fontSize: FontsSize.f14,
-                          color: FontsColor.black,
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.01,
-                      ),
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.06,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          border:
-                              Border.all(color: FontsColor.grey, width: 0.5),
-                        ),
-                        child: TextFormField(
-                          controller: _linkedin,
-                          decoration: InputDecoration(
-                            hintText: 'Enter linkedin link',
-                            hintStyle: TextStyle(
-                              fontSize: FontsSize.f14,
-                              fontFamily: FontsFamily.inter,
-                            ),
-                            border: InputBorder.none,
-                            contentPadding: const EdgeInsets.all(10),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5),
-                              borderSide: BorderSide(
-                                color: FontsColor.black,
-                                width: 1,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                  UserCustomTextField(
+                    label: "Linkedin Link",
+                    hintText: 'Enter linkedin link',
+                    controller: _linkedin,
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.02,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Instagram Link",
-                        style: TextStyle(
-                          fontFamily: FontsFamily.inter,
-                          fontSize: FontsSize.f14,
-                          color: FontsColor.black,
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.01,
-                      ),
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.06,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          border:
-                              Border.all(color: FontsColor.grey, width: 0.5),
-                        ),
-                        child: TextFormField(
-                          controller: _instagram,
-                          decoration: InputDecoration(
-                            hintText: 'Enter instagram link',
-                            hintStyle: TextStyle(
-                              fontSize: FontsSize.f14,
-                              fontFamily: FontsFamily.inter,
-                            ),
-                            border: InputBorder.none,
-                            contentPadding: const EdgeInsets.all(10),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5),
-                              borderSide: BorderSide(
-                                color: FontsColor.black,
-                                width: 1,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                  UserCustomTextField(
+                    label: "Instagram Link",
+                    hintText: 'Enter instagram link',
+                    controller: _instagram,
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.02,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Twitter Link",
-                        style: TextStyle(
-                          fontFamily: FontsFamily.inter,
-                          fontSize: FontsSize.f14,
-                          color: FontsColor.black,
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.01,
-                      ),
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.06,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          border:
-                              Border.all(color: FontsColor.grey, width: 0.5),
-                        ),
-                        child: TextFormField(
-                          controller: _twitter,
-                          decoration: InputDecoration(
-                            hintText: 'Enter twitter link',
-                            hintStyle: TextStyle(
-                              fontSize: FontsSize.f14,
-                              fontFamily: FontsFamily.inter,
-                            ),
-                            border: InputBorder.none,
-                            contentPadding: const EdgeInsets.all(10),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5),
-                              borderSide: BorderSide(
-                                color: FontsColor.black,
-                                width: 1,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                  UserCustomTextField(
+                    label: "Twitter Link",
+                    hintText: 'Enter twitter link',
+                    controller: _twitter,
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.02,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Youtube Link",
-                        style: TextStyle(
-                          fontFamily: FontsFamily.inter,
-                          fontSize: FontsSize.f14,
-                          color: FontsColor.black,
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.01,
-                      ),
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.06,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          border:
-                              Border.all(color: FontsColor.grey, width: 0.5),
-                        ),
-                        child: TextFormField(
-                          controller: _youtube,
-                          decoration: InputDecoration(
-                            hintText: 'Enter youtube link',
-                            hintStyle: TextStyle(
-                              fontSize: FontsSize.f14,
-                              fontFamily: FontsFamily.inter,
-                            ),
-                            border: InputBorder.none,
-                            contentPadding: const EdgeInsets.all(10),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5),
-                              borderSide: BorderSide(
-                                color: FontsColor.black,
-                                width: 1,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                  UserCustomTextField(
+                    label: "Youtube Link",
+                    hintText: 'Enter youtube link',
+                    controller: _youtube,
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.02,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Google Business Link",
-                        style: TextStyle(
-                          fontFamily: FontsFamily.inter,
-                          fontSize: FontsSize.f14,
-                          color: FontsColor.black,
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.01,
-                      ),
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.06,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          border:
-                              Border.all(color: FontsColor.grey, width: 0.5),
-                        ),
-                        child: TextFormField(
-                          controller: _google,
-                          decoration: InputDecoration(
-                            hintText: 'Enter google business link',
-                            hintStyle: TextStyle(
-                              fontSize: FontsSize.f14,
-                              fontFamily: FontsFamily.inter,
-                            ),
-                            border: InputBorder.none,
-                            contentPadding: const EdgeInsets.all(10),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5),
-                              borderSide: BorderSide(
-                                color: FontsColor.black,
-                                width: 1,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                  UserCustomTextField(
+                    label: "Google Business Link",
+                    hintText: 'Enter google business link',
+                    controller: _google,
                   ),
                 ],
               ),

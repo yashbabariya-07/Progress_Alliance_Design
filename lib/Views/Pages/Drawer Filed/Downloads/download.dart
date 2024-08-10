@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
@@ -75,7 +74,7 @@ class _DownloadState extends State<Download> {
             style: TextStyle(
               fontFamily: FontsFamily.inter,
               fontSize: FontsSize.f16,
-              color: Color.fromARGB(255, 16, 2, 90),
+              color: FontsColor.purple,
               fontWeight: FontsWeight.bold,
             ),
           ),

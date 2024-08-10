@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:progress_alliance/Routes/route.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
+import 'package:progress_alliance/Views/Components/userTextField.dart/customeTextFormField.dart';
 
 class ResidentialDetail extends StatefulWidget {
   const ResidentialDetail({super.key});
@@ -15,14 +15,14 @@ class _ResidentialDetailState extends State<ResidentialDetail> {
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return MediaQuery(
-      data: mediaQuery.copyWith(textScaleFactor: 1.0),
+      data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: FontsColor.white,
         appBar: AppBar(
           backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(0),
+            preferredSize: const Size.fromHeight(0),
             child: Container(
               color: FontsColor.grey,
               height: 0.2,
@@ -66,56 +66,11 @@ class _ResidentialDetailState extends State<ResidentialDetail> {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.03,
             ),
-            Center(
-              child: InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, Routes.mapRoute);
-                },
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.085,
-                  width: MediaQuery.of(context).size.width * 0.55,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(width: 0.2, color: FontsColor.grey),
-                  ),
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              "assets/Images/map.png",
-                              width: MediaQuery.of(context).size.width * 0.05,
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.015,
-                            ),
-                            Text(
-                              "Pick Location",
-                              style: TextStyle(
-                                fontFamily: FontsFamily.inter,
-                                fontSize: FontsSize.f13,
-                                color: FontsColor.purple,
-                                fontWeight: FontsWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Text(
-                          "(Click here to pick location)",
-                          style: TextStyle(
-                              fontFamily: FontsFamily.inter,
-                              fontSize: FontsSize.f12,
-                              color: FontsColor.grey700),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            Center(child: PickLocationButton(
+              onTap: () {
+                Navigator.pushNamed(context, Routes.mapRoute);
+              },
+            )),
           ],
         ),
       ),

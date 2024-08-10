@@ -40,6 +40,7 @@ class FontsColor {
   static Color? grey900 = Colors.grey[900];
   static Color white = Colors.white;
   static Color orange = Colors.orange;
+  static Color? orange50 = Colors.orange[50];
   static Color black = Colors.black;
   static Color black54 = Colors.black54;
   static Color transparent = Colors.transparent;

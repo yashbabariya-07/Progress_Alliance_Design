@@ -15,14 +15,14 @@ class _ComplaintPageState extends State<ComplaintPage> {
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return MediaQuery(
-      data: mediaQuery.copyWith(textScaleFactor: 1.0),
+      data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: FontsColor.white,
         appBar: AppBar(
           backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(0),
+            preferredSize: const Size.fromHeight(0),
             child: Container(
               color: FontsColor.grey,
               height: 0.2,
@@ -34,7 +34,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
             style: TextStyle(
               fontFamily: FontsFamily.inter,
               fontSize: FontsSize.f16,
-              color: Color.fromARGB(255, 16, 2, 90),
+              color: FontsColor.purple,
               fontWeight: FontsWeight.bold,
             ),
           ),
@@ -61,7 +61,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
                   height: MediaQuery.of(context).size.height * 0.05,
                   width: MediaQuery.of(context).size.width * 0.3,
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 16, 2, 90),
+                    color: FontsColor.purple,
                     border: Border.all(width: 1, color: FontsColor.transparent),
                     borderRadius: BorderRadius.circular(25),
                   ),

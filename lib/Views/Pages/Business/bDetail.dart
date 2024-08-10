@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
+import 'package:progress_alliance/Views/Components/userTextField.dart/customeTextFormField.dart';
 import 'package:progress_alliance/Views/Pages/Business/businessInfo.dart';
 
 class BusinessDetail extends StatefulWidget {
@@ -601,14 +602,14 @@ class _BusinessDetailState extends State<BusinessDetail> {
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return MediaQuery(
-      data: mediaQuery.copyWith(textScaleFactor: 1.0),
+      data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: FontsColor.white,
         appBar: AppBar(
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(0),
+            preferredSize: const Size.fromHeight(0),
             child: Container(
               color: FontsColor.grey,
               height: 0.2,
@@ -688,48 +689,10 @@ class _BusinessDetailState extends State<BusinessDetail> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Company Name',
-                      style: TextStyle(
-                        fontFamily: FontsFamily.inter,
-                        fontSize: FontsSize.f14,
-                        color: FontsColor.black,
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: FontsColor.grey, width: 0.5),
-                      ),
-                      child: TextFormField(
-                        controller: _cname,
-                        decoration: InputDecoration(
-                          hintText: 'Enter your company name',
-                          hintStyle: TextStyle(
-                            fontSize: FontsSize.f14,
-                            fontFamily: FontsFamily.inter,
-                          ),
-                          border: InputBorder.none,
-                          contentPadding: const EdgeInsets.all(10),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5),
-                            borderSide: BorderSide(
-                              color: FontsColor.black,
-                              width: 1,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                UserCustomTextField(
+                  label: 'Company Name',
+                  hintText: 'Enter your company name',
+                  controller: _cname,
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
@@ -776,71 +739,25 @@ class _BusinessDetailState extends State<BusinessDetail> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Business Established Date',
-                      style: TextStyle(
-                        fontFamily: FontsFamily.inter,
-                        fontSize: FontsSize.f14,
-                        color: FontsColor.black,
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: FontsColor.grey, width: 0.5),
-                      ),
-                      child: InkWell(
-                        onTap: () async {
-                          DateTime? pickedDate = await showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(2010),
-                            lastDate: DateTime(2050),
-                          );
+                ProfilePageSelectionField(
+                  label: 'Business Established Date',
+                  hintText: 'Business established date',
+                  controller: _date,
+                  onTap: () async {
+                    DateTime? pickedDate = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2010),
+                      lastDate: DateTime(2050),
+                    );
 
-                          if (pickedDate != null) {
-                            setState(() {
-                              _date.text =
-                                  "${pickedDate.day}-${pickedDate.month}-${pickedDate.year}";
-                            });
-                          }
-                        },
-                        child: IgnorePointer(
-                          child: TextFormField(
-                            controller: _date,
-                            decoration: InputDecoration(
-                              hintText: 'Business established date',
-                              hintStyle: TextStyle(
-                                fontSize: FontsSize.f14,
-                                fontFamily: FontsFamily.inter,
-                              ),
-                              border: InputBorder.none,
-                              contentPadding: const EdgeInsets.all(10),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                borderSide: BorderSide(
-                                  color: FontsColor.black,
-                                  width: 0.5,
-                                ),
-                              ),
-                              suffixIcon: Icon(
-                                Icons.arrow_drop_down,
-                                size: MediaQuery.of(context).size.width * 0.06,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                    if (pickedDate != null) {
+                      setState(() {
+                        _date.text =
+                            "${pickedDate.day}-${pickedDate.month}-${pickedDate.year}";
+                      });
+                    }
+                  },
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
@@ -849,61 +766,13 @@ class _BusinessDetailState extends State<BusinessDetail> {
                   children: [
                     Flexible(
                       flex: 4,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Business Type',
-                            style: TextStyle(
-                              fontFamily: FontsFamily.inter,
-                              fontSize: FontsSize.f14,
-                              color: FontsColor.black,
-                            ),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.006,
-                          ),
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.06,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(
-                                  color: FontsColor.grey, width: 0.5),
-                            ),
-                            child: InkWell(
-                              onTap: () {
-                                _showBusinessType(context);
-                              },
-                              child: IgnorePointer(
-                                child: TextFormField(
-                                  controller: _businessTypeController,
-                                  decoration: InputDecoration(
-                                    hintText: 'select your business type',
-                                    hintStyle: TextStyle(
-                                      fontSize: FontsSize.f14,
-                                      fontFamily: FontsFamily.inter,
-                                    ),
-                                    border: InputBorder.none,
-                                    contentPadding: const EdgeInsets.all(10),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(5),
-                                      borderSide: BorderSide(
-                                        color: FontsColor.black,
-                                        width: 1,
-                                      ),
-                                    ),
-                                    suffixIcon: Icon(
-                                      Icons.arrow_drop_down,
-                                      size: MediaQuery.of(context).size.width *
-                                          0.06,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                      child: ProfilePageSelectionField(
+                        label: 'Business Type',
+                        hintText: 'Select your business type',
+                        controller: _businessTypeController,
+                        onTap: () {
+                          _showBusinessType(context);
+                        },
                       ),
                     ),
                     SizedBox(
@@ -911,118 +780,13 @@ class _BusinessDetailState extends State<BusinessDetail> {
                     ),
                     Flexible(
                       flex: 4,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Business Formation',
-                            style: TextStyle(
-                              fontFamily: FontsFamily.inter,
-                              fontSize: FontsSize.f14,
-                              color: FontsColor.black,
-                            ),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.006,
-                          ),
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.06,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(
-                                  color: FontsColor.grey, width: 0.5),
-                            ),
-                            child: InkWell(
-                              onTap: () {
-                                _showBusinessFormationType(context);
-                              },
-                              child: IgnorePointer(
-                                child: TextFormField(
-                                  controller: _businessFormationController,
-                                  decoration: InputDecoration(
-                                    hintText: 'select your business formation',
-                                    hintStyle: TextStyle(
-                                      fontSize: FontsSize.f14,
-                                      fontFamily: FontsFamily.inter,
-                                    ),
-                                    border: InputBorder.none,
-                                    contentPadding: const EdgeInsets.all(10),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(5),
-                                      borderSide: BorderSide(
-                                        color: FontsColor.black,
-                                        width: 1,
-                                      ),
-                                    ),
-                                    suffixIcon: Icon(
-                                      Icons.arrow_drop_down,
-                                      size: MediaQuery.of(context).size.width *
-                                          0.06,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.02,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Business Category',
-                      style: TextStyle(
-                        fontFamily: FontsFamily.inter,
-                        fontSize: FontsSize.f14,
-                        color: FontsColor.black,
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: FontsColor.grey, width: 0.5),
-                      ),
-                      child: InkWell(
+                      child: ProfilePageSelectionField(
+                        label: 'Business Formation',
+                        hintText: 'Select your business formation',
+                        controller: _businessFormationController,
                         onTap: () {
-                          _showBusinessCategory(context);
+                          _showBusinessFormationType(context);
                         },
-                        child: IgnorePointer(
-                          child: TextFormField(
-                            controller: _businessCategoryController,
-                            decoration: InputDecoration(
-                              hintText: 'select your business category',
-                              hintStyle: TextStyle(
-                                fontSize: FontsSize.f14,
-                                fontFamily: FontsFamily.inter,
-                              ),
-                              border: InputBorder.none,
-                              contentPadding: const EdgeInsets.all(10),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                borderSide: BorderSide(
-                                  color: FontsColor.black,
-                                  width: 0.5,
-                                ),
-                              ),
-                              suffixIcon: Icon(
-                                Icons.arrow_drop_down,
-                                size: MediaQuery.of(context).size.width * 0.06,
-                              ),
-                            ),
-                          ),
-                        ),
                       ),
                     ),
                   ],
@@ -1030,114 +794,33 @@ class _BusinessDetailState extends State<BusinessDetail> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Business Sub Category',
-                      style: TextStyle(
-                        fontFamily: FontsFamily.inter,
-                        fontSize: FontsSize.f14,
-                        color: FontsColor.black,
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: FontsColor.grey, width: 0.5),
-                      ),
-                      child: InkWell(
-                        onTap: () {
-                          _showSubBusinessCategory(context);
-                        },
-                        child: IgnorePointer(
-                          child: TextFormField(
-                            controller: _businessSubCategoryController,
-                            decoration: InputDecoration(
-                              hintText: 'select your sub business category',
-                              hintStyle: TextStyle(
-                                fontSize: FontsSize.f14,
-                                fontFamily: FontsFamily.inter,
-                              ),
-                              border: InputBorder.none,
-                              contentPadding: const EdgeInsets.all(10),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                borderSide: BorderSide(
-                                  color: FontsColor.black,
-                                  width: 0.5,
-                                ),
-                              ),
-                              suffixIcon: Icon(
-                                Icons.arrow_drop_down,
-                                size: MediaQuery.of(context).size.width * 0.06,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                ProfilePageSelectionField(
+                  label: 'Business Category',
+                  hintText: 'Select  your business category',
+                  controller: _businessCategoryController,
+                  onTap: () {
+                    _showBusinessCategory(context);
+                  },
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Product/Service',
-                      style: TextStyle(
-                        fontFamily: FontsFamily.inter,
-                        fontSize: FontsSize.f14,
-                        color: FontsColor.black,
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: FontsColor.grey, width: 0.5),
-                      ),
-                      child: InkWell(
-                        onTap: () {},
-                        child: IgnorePointer(
-                          child: TextFormField(
-                            controller: _productController,
-                            decoration: InputDecoration(
-                              hintText: 'select your products/service',
-                              hintStyle: TextStyle(
-                                fontSize: FontsSize.f14,
-                                fontFamily: FontsFamily.inter,
-                              ),
-                              border: InputBorder.none,
-                              contentPadding: const EdgeInsets.all(10),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                borderSide: BorderSide(
-                                  color: FontsColor.black,
-                                  width: 0.5,
-                                ),
-                              ),
-                              suffixIcon: Icon(
-                                Icons.arrow_drop_down,
-                                size: MediaQuery.of(context).size.width * 0.06,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                ProfilePageSelectionField(
+                  label: 'Business Sub Category',
+                  hintText: 'Select  your business category',
+                  controller: _businessSubCategoryController,
+                  onTap: () {
+                    _showSubBusinessCategory(context);
+                  },
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.02,
+                ),
+                ProfilePageSelectionField(
+                  label: 'Product/Service',
+                  hintText: 'Select  your products/service',
+                  controller: _productController,
+                  onTap: () {},
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
@@ -1146,49 +829,10 @@ class _BusinessDetailState extends State<BusinessDetail> {
                   children: [
                     Flexible(
                       flex: 4,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Business Email',
-                            style: TextStyle(
-                              fontFamily: FontsFamily.inter,
-                              fontSize: FontsSize.f14,
-                              color: FontsColor.black,
-                            ),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.01,
-                          ),
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.06,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(
-                                  color: FontsColor.grey, width: 0.5),
-                            ),
-                            child: TextFormField(
-                              controller: _emailController,
-                              decoration: InputDecoration(
-                                hintText: 'Enter your business ',
-                                hintStyle: TextStyle(
-                                  fontSize: FontsSize.f14,
-                                  fontFamily: FontsFamily.inter,
-                                ),
-                                border: InputBorder.none,
-                                contentPadding: const EdgeInsets.all(10),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5),
-                                  borderSide: BorderSide(
-                                    color: FontsColor.black,
-                                    width: 1,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                      child: UserCustomTextField(
+                        label: 'Business Email',
+                        hintText: 'Enter your email',
+                        controller: _emailController,
                       ),
                     ),
                     SizedBox(
@@ -1196,49 +840,10 @@ class _BusinessDetailState extends State<BusinessDetail> {
                     ),
                     Flexible(
                       flex: 4,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Contact Number',
-                            style: TextStyle(
-                              fontFamily: FontsFamily.inter,
-                              fontSize: FontsSize.f14,
-                              color: FontsColor.black,
-                            ),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.01,
-                          ),
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.06,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(
-                                  color: FontsColor.grey, width: 0.5),
-                            ),
-                            child: TextFormField(
-                              controller: _phoneController,
-                              decoration: InputDecoration(
-                                hintText: 'enter your contact number',
-                                hintStyle: TextStyle(
-                                  fontSize: FontsSize.f14,
-                                  fontFamily: FontsFamily.inter,
-                                ),
-                                border: InputBorder.none,
-                                contentPadding: const EdgeInsets.all(10),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5),
-                                  borderSide: BorderSide(
-                                    color: FontsColor.black,
-                                    width: 1,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                      child: UserCustomTextField(
+                        label: 'Contact Number',
+                        hintText: 'Enter your contact number',
+                        controller: _phoneController,
                       ),
                     ),
                   ],
@@ -1246,141 +851,26 @@ class _BusinessDetailState extends State<BusinessDetail> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "GST Number",
-                      style: TextStyle(
-                        fontFamily: FontsFamily.inter,
-                        fontSize: FontsSize.f14,
-                        color: FontsColor.black,
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: FontsColor.grey, width: 0.5),
-                      ),
-                      child: TextFormField(
-                        controller: _gstController,
-                        decoration: InputDecoration(
-                          hintText: 'Enter your GST number',
-                          hintStyle: TextStyle(
-                            fontSize: FontsSize.f14,
-                            fontFamily: FontsFamily.inter,
-                          ),
-                          border: InputBorder.none,
-                          contentPadding: const EdgeInsets.all(10),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5),
-                            borderSide: BorderSide(
-                              color: FontsColor.black,
-                              width: 1,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                UserCustomTextField(
+                  label: "GST Number",
+                  hintText: 'Enter your GST number',
+                  controller: _gstController,
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Website URL",
-                      style: TextStyle(
-                        fontFamily: FontsFamily.inter,
-                        fontSize: FontsSize.f14,
-                        color: FontsColor.black,
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: FontsColor.grey, width: 0.5),
-                      ),
-                      child: TextFormField(
-                        controller: _webURLController,
-                        decoration: InputDecoration(
-                          hintText: 'Enter your website url',
-                          hintStyle: TextStyle(
-                            fontSize: FontsSize.f14,
-                            fontFamily: FontsFamily.inter,
-                          ),
-                          border: InputBorder.none,
-                          contentPadding: const EdgeInsets.all(10),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5),
-                            borderSide: BorderSide(
-                              color: FontsColor.black,
-                              width: 1,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                UserCustomTextField(
+                  label: "Website URL",
+                  hintText: 'Enter your website url',
+                  controller: _webURLController,
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Business Description",
-                      style: TextStyle(
-                        fontFamily: FontsFamily.inter,
-                        fontSize: FontsSize.f14,
-                        color: FontsColor.black,
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: FontsColor.grey, width: 0.5),
-                      ),
-                      child: TextFormField(
-                        maxLines: 4,
-                        controller: _businessDescController,
-                        decoration: InputDecoration(
-                          hintText: 'Enter your business description',
-                          hintStyle: TextStyle(
-                            fontSize: FontsSize.f14,
-                            fontFamily: FontsFamily.inter,
-                          ),
-                          border: InputBorder.none,
-                          contentPadding: const EdgeInsets.all(10),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5),
-                            borderSide: BorderSide(
-                              color: FontsColor.black,
-                              width: 1,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                MaxLineTextField(
+                    label: 'Business Description',
+                    hintText: 'Enter your business description',
+                    controller: _businessDescController),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),

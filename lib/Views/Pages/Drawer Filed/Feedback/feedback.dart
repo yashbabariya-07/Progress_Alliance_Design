@@ -4,6 +4,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
+import 'package:progress_alliance/Views/Components/CommonButton.dart';
 
 class FeedbackPage extends StatefulWidget {
   const FeedbackPage({super.key});
@@ -68,7 +69,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return MediaQuery(
-      data: mediaQuery.copyWith(textScaleFactor: 1.0),
+      data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: FontsColor.white,
         appBar: AppBar(
@@ -76,7 +77,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(0),
+            preferredSize: const Size.fromHeight(0),
             child: Container(
               color: FontsColor.grey,
               height: 0.2,
@@ -88,7 +89,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
             style: TextStyle(
               fontFamily: FontsFamily.inter,
               fontSize: FontsSize.f16,
-              color: Color.fromARGB(255, 16, 2, 90),
+              color: FontsColor.purple,
               fontWeight: FontsWeight.bold,
             ),
           ),
@@ -113,7 +114,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
                   style: TextStyle(
                     fontFamily: FontsFamily.inter,
                     fontSize: FontsSize.f15,
-                    color: Color.fromARGB(255, 16, 2, 90),
+                    color: FontsColor.purple,
                     fontWeight: FontsWeight.bold,
                   ),
                 ),
@@ -330,27 +331,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.038,
                     ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        height: MediaQuery.of(context).size.height * 0.06,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 16, 2, 90),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Submit',
-                            style: TextStyle(
-                              fontFamily: FontsFamily.inter,
-                              color: FontsColor.white,
-                              fontSize: FontsSize.f20,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    CommonButton(text: "Submit", onTap: () {}),
                   ],
                 ),
               ],

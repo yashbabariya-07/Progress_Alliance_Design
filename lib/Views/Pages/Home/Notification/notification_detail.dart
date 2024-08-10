@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:progress_alliance/Routes/route.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
+import 'package:progress_alliance/Views/Components/CommonButton.dart';
 
 class NotificationDetail extends StatefulWidget {
   const NotificationDetail({super.key});
@@ -19,14 +20,14 @@ class _NotificationDetailState extends State<NotificationDetail> {
     MediaQueryData mediaQuery = MediaQuery.of(context);
 
     return MediaQuery(
-      data: mediaQuery.copyWith(textScaleFactor: 1.0),
+      data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: FontsColor.white,
         appBar: AppBar(
           backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(0),
+            preferredSize: const Size.fromHeight(0),
             child: Container(
               color: FontsColor.grey,
               height: 0.2,
@@ -38,7 +39,7 @@ class _NotificationDetailState extends State<NotificationDetail> {
             style: TextStyle(
               fontFamily: FontsFamily.inter,
               fontSize: FontsSize.f16,
-              color: Color.fromARGB(255, 16, 2, 90),
+              color: FontsColor.purple,
               fontWeight: FontsWeight.bold,
             ),
           ),
@@ -114,28 +115,11 @@ class _NotificationDetailState extends State<NotificationDetail> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.05,
               ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, Routes.detailPersonRoute);
-                },
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.06,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 16, 2, 90),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Center(
-                    child: Text(
-                      'Go To Page',
-                      style: TextStyle(
-                          fontFamily: FontsFamily.inter,
-                          color: FontsColor.white,
-                          fontSize: FontsSize.f15,
-                          fontWeight: FontsWeight.bold),
-                    ),
-                  ),
-                ),
-              )
+              CommonButton(
+                  text: "Go To Page",
+                  onTap: () {
+                    Navigator.pushNamed(context, Routes.detailPersonRoute);
+                  })
             ],
           ),
         ),

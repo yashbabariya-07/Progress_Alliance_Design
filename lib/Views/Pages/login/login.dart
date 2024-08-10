@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:progress_alliance/Routes/route.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
-import 'package:progress_alliance/Views/Components/countryCode.dart';
+import 'package:progress_alliance/Views/Components/CommonButton.dart';
+import 'package:progress_alliance/Views/Components/LoginTextFormField/countryCode.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -137,30 +138,11 @@ class _LoginPageState extends State<LoginPage> {
                 const Spacer(),
                 Column(
                   children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, Routes.connectRoute);
-                      },
-                      child: Container(
-                        height: mediaQuery.size.height * 0.06,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: FontsColor.purple,
-                        ),
-                        child: Center(
-                          child: Text(
-                            "Next",
-                            style: TextStyle(
-                              fontFamily: FontsFamily.inter,
-                              fontSize: FontsSize.f15,
-                              color: FontsColor.white,
-                              fontWeight: FontsWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    CommonButton(
+                        text: "Next",
+                        onTap: () {
+                          Navigator.pushNamed(context, Routes.connectRoute);
+                        }),
                     SizedBox(height: mediaQuery.size.height * 0.02),
                     RichText(
                       textAlign: TextAlign.center,

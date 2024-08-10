@@ -298,7 +298,7 @@ class _PabusinessState extends State<Pabusiness> {
                       style: TextStyle(
                           fontFamily: FontsFamily.inter,
                           fontSize: FontsSize.f15,
-                          color: Color.fromARGB(255, 16, 2, 90),
+                          color: FontsColor.purple,
                           fontWeight: FontsWeight.bold),
                     ),
                     GestureDetector(
@@ -402,7 +402,7 @@ class _PabusinessState extends State<Pabusiness> {
                   style: TextStyle(
                     fontFamily: FontsFamily.inter,
                     fontSize: FontsSize.f15,
-                    color: Color.fromARGB(255, 16, 2, 90),
+                    color: FontsColor.purple,
                     fontWeight: FontsWeight.bold,
                   ),
                 ),
