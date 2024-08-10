@@ -46,11 +46,12 @@ class _ScannerPageState extends State<ScannerPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Scanned QR Code"),
+          backgroundColor: FontsColor.white,
+          title: const Text("Scanned QR Code"),
           content: Text("Data: $data"),
           actions: [
             TextButton(
-              child: Text("OK"),
+              child: const Text("OK"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -65,7 +66,7 @@ class _ScannerPageState extends State<ScannerPage> {
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return MediaQuery(
-      data: mediaQuery.copyWith(textScaleFactor: 1.0),
+      data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         appBar: AppBar(
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,

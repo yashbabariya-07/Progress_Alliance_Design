@@ -16,12 +16,12 @@ class _QrCodePageState extends State<QrCodePage> {
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return MediaQuery(
-      data: mediaQuery.copyWith(textScaleFactor: 1.0),
+      data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
-        backgroundColor: const Color(0xFF00008B),
+        backgroundColor: FontsColor.purple,
         appBar: AppBar(
             toolbarHeight: MediaQuery.of(context).size.width * 0.15,
-            backgroundColor: const Color(0xFF00008B),
+            backgroundColor: FontsColor.purple,
             centerTitle: true,
             title: Text(
               "My QR Code",
@@ -103,7 +103,7 @@ class _QrCodePageState extends State<QrCodePage> {
                   backgroundColor: FontsColor.white,
                   child: CircleAvatar(
                     radius: MediaQuery.of(context).size.width * 0.067,
-                    backgroundColor: Color(0xFF00008B),
+                    backgroundColor: FontsColor.purple,
                     child: Icon(
                       Icons.document_scanner,
                       size: MediaQuery.of(context).size.width * 0.065,
