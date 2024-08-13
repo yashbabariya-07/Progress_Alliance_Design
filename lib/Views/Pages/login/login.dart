@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:progress_alliance/Routes/route.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Components/CommonButton.dart';
-import 'package:progress_alliance/Views/Components/LoginTextFormField/countryCode.dart';
+import 'package:progress_alliance/Views/Components/LoginTextFormField/loginCustom.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -16,8 +16,26 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _searchController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final ValueNotifier<String> _searchQuery = ValueNotifier<String>("");
-  String _selectedCountryCode = "+91";
-  String _selectedCountryFlag = "🇮🇳";
+  bool _isHighlighted = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _phoneController.addListener(_checkInput);
+  }
+
+  void _checkInput() {
+    setState(() {
+      _isHighlighted = _phoneController.text.isNotEmpty;
+    });
+  }
+
+  @override
+  void dispose() {
+    _phoneController.removeListener(_checkInput);
+    _phoneController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,84 +74,14 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(height: mediaQuery.size.height * 0.045),
-                Container(
-                  height: mediaQuery.size.height * 0.06,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                        color: isKeyboardOpen == true
-                            ? FontsColor.black
-                            : FontsColor.grey,
-                        width: 0.5),
-                  ),
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          CountryCode.showCountryCode(
-                            context: context,
-                            searchController: _searchController,
-                            searchQuery: _searchQuery,
-                            onCountrySelected: (code, flag) {
-                              setState(() {
-                                _selectedCountryCode = code;
-                                _selectedCountryFlag = flag;
-                              });
-                            },
-                          );
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.all(10),
-                          child: Row(
-                            children: [
-                              Text(
-                                _selectedCountryFlag,
-                                style: TextStyle(fontSize: FontsSize.f18),
-                              ),
-                              const SizedBox(width: 5),
-                              Text(
-                                _selectedCountryCode,
-                                style: TextStyle(
-                                  fontSize: FontsSize.f14,
-                                  fontFamily: FontsFamily.inter,
-                                ),
-                              ),
-                              const SizedBox(width: 5),
-                              Icon(
-                                Icons.arrow_drop_down,
-                                size: MediaQuery.of(context).size.width * 0.06,
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: BorderSide.strokeAlignCenter),
-                        child: VerticalDivider(
-                          width: 0.2,
-                          color: FontsColor.grey,
-                        ),
-                      ),
-                      Expanded(
-                        child: TextField(
-                          controller: _phoneController,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 14),
-                            hintText: "Enter your mobile number",
-                            hintStyle: TextStyle(
-                              fontSize: FontsSize.f14,
-                              fontFamily: FontsFamily.inter,
-                            ),
-                          ),
-                          keyboardType: TextInputType.phone,
-                        ),
-                      ),
-                    ],
-                  ),
+                MobileNumberInput(
+                  phoneController: _phoneController,
+                  searchController: _searchController,
+                  searchQuery: _searchQuery,
+                  isHighlighted: isKeyboardOpen || _isHighlighted,
+                  onCountrySelected: (code, flag) {
+                    setState(() {});
+                  },
                 ),
                 const Spacer(),
                 Column(

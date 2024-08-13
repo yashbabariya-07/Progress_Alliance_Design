@@ -76,7 +76,7 @@ class _PabusinessState extends State<Pabusiness> {
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return MediaQuery(
-      data: mediaQuery.copyWith(textScaleFactor: 1.0),
+      data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: FontsColor.white,
         appBar: AppBar(
@@ -106,7 +106,7 @@ class _PabusinessState extends State<Pabusiness> {
             ),
           ),
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(0),
+            preferredSize: const Size.fromHeight(0),
             child: Container(
               color: FontsColor.grey,
               height: 0.2,
@@ -248,7 +248,7 @@ class _PabusinessState extends State<Pabusiness> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.012,
                 ),
-                Container(
+                SizedBox(
                   height: MediaQuery.of(context).size.height * 0.15,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
@@ -261,7 +261,7 @@ class _PabusinessState extends State<Pabusiness> {
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.height * 0.15,
-                          margin: EdgeInsets.only(right: 10),
+                          margin: const EdgeInsets.only(right: 10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             image: DecorationImage(
@@ -327,7 +327,7 @@ class _PabusinessState extends State<Pabusiness> {
             onPressed: () {
               Navigator.pushNamed(context, Routes.askRoute);
             },
-            backgroundColor: Color.fromARGB(255, 16, 2, 90),
+            backgroundColor: const Color.fromARGB(255, 16, 2, 90),
             child: Text(
               "+ Add Ask",
               style: TextStyle(

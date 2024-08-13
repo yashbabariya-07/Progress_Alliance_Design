@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
+import 'package:progress_alliance/Views/Components/contactUsComman.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactUs extends StatefulWidget {
@@ -16,7 +16,7 @@ class _ContactUsState extends State<ContactUs> {
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return MediaQuery(
-      data: mediaQuery.copyWith(textScaleFactor: 1.0),
+      data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: FontsColor.white,
         appBar: AppBar(
@@ -24,7 +24,7 @@ class _ContactUsState extends State<ContactUs> {
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(0),
+            preferredSize: const Size.fromHeight(0),
             child: Container(
               color: FontsColor.grey,
               height: 0.2,
@@ -83,223 +83,59 @@ class _ContactUsState extends State<ContactUs> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.025,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Call",
-                    style: TextStyle(
-                        fontFamily: FontsFamily.inter,
-                        fontSize: FontsSize.f13,
-                        fontWeight: FontsWeight.bold),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.01,
-                  ),
-                  GestureDetector(
-                    onTap: () async {
-                      const phoneNumber = 'tel:7874118535';
-                      if (await canLaunch(phoneNumber)) {
-                        await launch(phoneNumber);
-                      } else {
-                        throw 'Could not launch $phoneNumber';
-                      }
-                    },
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: FontsColor.grey200,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            Icon(
-                              MdiIcons.phoneOutline,
-                              color: FontsColor.grey600,
-                              size: MediaQuery.of(context).size.width * 0.06,
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.018,
-                            ),
-                            Text(
-                              "123456789",
-                              style: TextStyle(
-                                  fontFamily: FontsFamily.inter,
-                                  color: FontsColor.grey,
-                                  fontSize: FontsSize.f13),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  )
-                ],
+              CustomeField(
+                label: "Call",
+                hintText: "123456789",
+                icons: MdiIcons.phoneOutline,
+                onTap: () async {
+                  const phoneNumber = 'tel:7874118535';
+                  if (await canLaunch(phoneNumber)) {
+                    await launch(phoneNumber);
+                  } else {
+                    throw 'Could not launch $phoneNumber';
+                  }
+                },
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.022,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "WhatsApp",
-                    style: TextStyle(
-                        fontFamily: FontsFamily.inter,
-                        fontSize: FontsSize.f13,
-                        fontWeight: FontsWeight.bold),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.01,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      launch('https://wa.me/7874118535');
-                    },
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: FontsColor.grey200,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              "assets/Icons/wp.png",
-                              width: MediaQuery.of(context).size.width * 0.08,
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.018,
-                            ),
-                            Text(
-                              "123456789",
-                              style: TextStyle(
-                                  fontFamily: FontsFamily.inter,
-                                  color: FontsColor.grey,
-                                  fontSize: FontsSize.f13),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  )
-                ],
+              CustomeField(
+                label: "WhatsApp",
+                hintText: "123456789",
+                image: Image.asset(
+                  "assets/Icons/wp.png",
+                  width: MediaQuery.of(context).size.width * 0.08,
+                ),
+                onTap: () {
+                  launch('https://wa.me/7874118535');
+                },
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.022,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Website",
-                    style: TextStyle(
-                        fontFamily: FontsFamily.inter,
-                        fontSize: FontsSize.f13,
-                        fontWeight: FontsWeight.bold),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.01,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      launch('https://www.youtube.com/');
-                    },
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: FontsColor.grey200,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            Icon(
-                              MdiIcons.web,
-                              color: FontsColor.grey600,
-                              size: MediaQuery.of(context).size.width * 0.06,
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.018,
-                            ),
-                            Text(
-                              "https://www.youtube.com/",
-                              style: TextStyle(
-                                  fontFamily: FontsFamily.inter,
-                                  color: FontsColor.grey,
-                                  fontSize: FontsSize.f13),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  )
-                ],
+              CustomeField(
+                label: "Website",
+                hintText: "https://www.youtube.com/",
+                icons: MdiIcons.web,
+                onTap: () {
+                  launch('https://www.youtube.com/');
+                },
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.022,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Email",
-                    style: TextStyle(
-                        fontFamily: FontsFamily.inter,
-                        fontSize: FontsSize.f13,
-                        fontWeight: FontsWeight.bold),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.01,
-                  ),
-                  GestureDetector(
-                    onTap: () async {
-                      const emailAddress = 'mailto:yashbabariya07@gmail.com';
-                      if (await canLaunch(emailAddress)) {
-                        await launch(emailAddress);
-                      } else {
-                        throw 'Could not launch $emailAddress';
-                      }
-                    },
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: FontsColor.grey200,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            Icon(
-                              MdiIcons.emailOutline,
-                              color: FontsColor.grey600,
-                              size: MediaQuery.of(context).size.width * 0.06,
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.018,
-                            ),
-                            Text(
-                              "abc@gmail.com",
-                              style: TextStyle(
-                                  fontFamily: FontsFamily.inter,
-                                  color: FontsColor.grey,
-                                  fontSize: FontsSize.f13),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  )
-                ],
+              CustomeField(
+                label: "Email",
+                hintText: "abc@gmail.com",
+                icons: MdiIcons.emailOutline,
+                onTap: () async {
+                  const emailAddress = 'mailto:yashbabariya07@gmail.com';
+                  if (await canLaunch(emailAddress)) {
+                    await launch(emailAddress);
+                  } else {
+                    throw 'Could not launch $emailAddress';
+                  }
+                },
               ),
             ],
           ),

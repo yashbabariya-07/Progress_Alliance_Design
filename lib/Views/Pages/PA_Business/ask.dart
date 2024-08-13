@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Components/CommonButton.dart';
+import 'package:progress_alliance/Views/Components/userTextField.dart/customeTextFormField.dart';
 
 class AskPage extends StatefulWidget {
   const AskPage({super.key});
@@ -16,6 +16,7 @@ class _AskPageState extends State<AskPage> {
   final ValueNotifier<String> _searchQuery = ValueNotifier<String>("");
   final TextEditingController _businessCategoryController =
       TextEditingController();
+  final TextEditingController _description = TextEditingController();
 
   Widget _buildContainer(String label, Color color) {
     bool isSelected = selected == label;
@@ -41,6 +42,7 @@ class _AskPageState extends State<AskPage> {
             style: TextStyle(
               fontFamily: FontsFamily.inter,
               fontSize: FontsSize.f13,
+              fontWeight: isSelected ? FontsWeight.bold : FontWeight.normal,
               color: isSelected ? FontsColor.white : FontsColor.black,
             ),
           ),
@@ -73,6 +75,7 @@ class _AskPageState extends State<AskPage> {
       isScrollControlled: true,
       builder: (BuildContext context) {
         return Scaffold(
+          backgroundColor: FontsColor.white,
           body: Padding(
             padding: const EdgeInsets.fromLTRB(10, 40, 10, 10),
             child: SizedBox(
@@ -105,31 +108,12 @@ class _AskPageState extends State<AskPage> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.03,
                   ),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.06,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: FontsColor.grey, width: 0.2),
-                    ),
-                    child: TextField(
-                      controller: _searchController,
-                      decoration: InputDecoration(
-                          labelText: 'Search business category...',
-                          labelStyle: TextStyle(
-                              fontSize: FontsSize.f14,
-                              fontFamily: FontsFamily.inter),
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                          prefixIcon: Icon(
-                            Icons.search,
-                            size: MediaQuery.of(context).size.width * 0.06,
-                            color: FontsColor.orange,
-                          )),
-                      onChanged: (value) {
-                        _searchQuery.value = value;
-                      },
-                    ),
+                  CustomeSearchField(
+                    hintText: 'Search business category...',
+                    controller: _searchController,
+                    onChange: (value) {
+                      _searchQuery.value = value;
+                    },
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.015,
@@ -190,7 +174,7 @@ class _AskPageState extends State<AskPage> {
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return MediaQuery(
-      data: mediaQuery.copyWith(textScaleFactor: 1.0),
+      data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: FontsColor.white,
         appBar: AppBar(
@@ -198,7 +182,7 @@ class _AskPageState extends State<AskPage> {
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(0),
+            preferredSize: const Size.fromHeight(0),
             child: Container(
               color: FontsColor.grey,
               height: 0.2,
@@ -229,30 +213,10 @@ class _AskPageState extends State<AskPage> {
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
             child: Column(
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: FontsColor.grey, width: 0.2),
-                  ),
-                  height: MediaQuery.of(context).size.height * 0.06,
-                  width: double.infinity,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      labelText: 'Search by product and service',
-                      labelStyle: TextStyle(
-                        fontSize: FontsSize.f15,
-                        fontFamily: FontsFamily.inter,
-                      ),
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                      prefixIcon: Icon(
-                        Icons.search,
-                        size: MediaQuery.of(context).size.width * 0.06,
-                        color: FontsColor.orange,
-                      ),
-                    ),
-                    onChanged: (value) {},
-                  ),
+                CustomeSearchField(
+                  hintText: 'Search by product and service',
+                  controller: _searchController,
+                  onChange: (value) {},
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
@@ -314,42 +278,13 @@ class _AskPageState extends State<AskPage> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Description",
-                      style: TextStyle(
-                          fontFamily: FontsFamily.inter,
-                          fontSize: FontsSize.f13,
-                          fontWeight: FontsWeight.bold),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),
-                    TextFormField(
-                      maxLines: 4,
-                      decoration: InputDecoration(
-                        hintText: 'Write brief description for your ask....',
-                        hintStyle: TextStyle(
-                          fontSize: FontsSize.f13,
-                          fontFamily: FontsFamily.inter,
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide(
-                            color: FontsColor.black,
-                            width: 1,
-                          ),
-                        ),
-                        contentPadding:
-                            EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-                      ),
-                    ),
-                  ],
+                MaxLineTextField(
+                  label: "Description",
+                  hintText: 'Write brief description for your ask....',
+                  controller: _description,
+                  labelFontSize: FontsSize.f13,
+                  hintTextFontSize: FontsSize.f13,
+                  labelWeight: FontsWeight.bold,
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,

@@ -168,3 +168,197 @@ class PADrawer extends StatelessWidget {
     );
   }
 }
+
+class Enddrawer extends StatefulWidget {
+  const Enddrawer({super.key});
+
+  @override
+  State<Enddrawer> createState() => _EnddrawerState();
+}
+
+class _EnddrawerState extends State<Enddrawer> {
+  final ValueNotifier<String> _searchQuery = ValueNotifier<String>("");
+
+  final List<String> categories = [
+    'Advertising Services',
+    'Agriculture & Agro',
+    'Automobiles',
+    'Chemicals',
+    'Ecommerce',
+    'SEO',
+    'Software Development',
+    'Standard Software',
+    'Tally Accounting Software',
+    'Web Design & Development',
+  ];
+  final Set<String> selectedCategories = {};
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: FontsColor.white,
+      width: MediaQuery.of(context).size.width * 0.68,
+      child: Drawer(
+        backgroundColor: FontsColor.white,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 50.0),
+          child: Column(
+            children: [
+              Text(
+                'Categories',
+                style: TextStyle(
+                  fontSize: FontsSize.f16,
+                  fontFamily: FontsFamily.inter,
+                  color: FontsColor.purple,
+                  fontWeight: FontsWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
+              const Divider(
+                thickness: 0.5,
+              ),
+              Expanded(
+                child: ValueListenableBuilder<String>(
+                  valueListenable: _searchQuery,
+                  builder: (context, query, child) {
+                    final filteredCategories = categories.where((category) {
+                      return category
+                          .toLowerCase()
+                          .contains(query.toLowerCase());
+                    }).toList();
+                    return ListView.builder(
+                      itemCount: filteredCategories.length,
+                      itemBuilder: (context, index) {
+                        final category = filteredCategories[index];
+                        return ListTile(
+                          leading: Transform.scale(
+                            scale: MediaQuery.of(context).size.height * 0.0014,
+                            child: Checkbox(
+                              value: selectedCategories.contains(category),
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  if (value == true) {
+                                    selectedCategories.add(category);
+                                  } else {
+                                    selectedCategories.remove(category);
+                                  }
+                                });
+                              },
+                            ),
+                          ),
+                          title: Text(
+                            category,
+                            style: TextStyle(
+                                fontSize: FontsSize.f13,
+                                fontFamily: FontsFamily.inter,
+                                fontWeight: FontsWeight.bold),
+                          ),
+                          onTap: () {
+                            setState(() {
+                              if (selectedCategories.contains(category)) {
+                                selectedCategories.remove(category);
+                              } else {
+                                selectedCategories.add(category);
+                              }
+                            });
+                          },
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: selectedCategories.isEmpty
+                    ? Center(
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Container(
+                            height: MediaQuery.of(context).size.height * 0.04,
+                            width: MediaQuery.of(context).size.width * 0.28,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: FontsColor.purple,
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Apply',
+                                style: TextStyle(
+                                  fontFamily: FontsFamily.inter,
+                                  fontSize: FontsSize.f15,
+                                  color: FontsColor.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedCategories.clear();
+                              });
+                              Navigator.of(context).pop();
+                            },
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.04,
+                              width: MediaQuery.of(context).size.width * 0.28,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                    color:
+                                        const Color.fromARGB(255, 16, 2, 90)),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Reset',
+                                  style: TextStyle(
+                                    fontFamily: FontsFamily.inter,
+                                    fontSize: FontsSize.f15,
+                                    color: const Color.fromARGB(255, 16, 2, 90),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.04,
+                              width: MediaQuery.of(context).size.width * 0.28,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: FontsColor.purple,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Apply',
+                                  style: TextStyle(
+                                    fontFamily: FontsFamily.inter,
+                                    fontSize: FontsSize.f15,
+                                    color: FontsColor.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

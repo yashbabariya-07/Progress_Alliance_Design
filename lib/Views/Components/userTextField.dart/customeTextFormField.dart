@@ -262,12 +262,18 @@ class MaxLineTextField extends StatelessWidget {
   final String label;
   final String hintText;
   final TextEditingController controller;
+  final double? labelFontSize;
+  final double? hintTextFontSize;
+  final FontWeight? labelWeight;
 
   const MaxLineTextField({
     super.key,
     required this.label,
     required this.hintText,
     required this.controller,
+    this.labelFontSize,
+    this.hintTextFontSize,
+    this.labelWeight,
   });
 
   @override
@@ -279,15 +285,15 @@ class MaxLineTextField extends StatelessWidget {
           label,
           style: TextStyle(
             fontFamily: FontsFamily.inter,
-            fontSize: FontsSize.f14,
+            fontSize: labelFontSize,
             color: FontsColor.black,
+            fontWeight: labelWeight,
           ),
         ),
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.01,
         ),
         Container(
-          height: MediaQuery.of(context).size.height * 0.06,
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
@@ -301,7 +307,7 @@ class MaxLineTextField extends StatelessWidget {
               contentPadding: const EdgeInsets.all(10),
               hintText: hintText,
               hintStyle: TextStyle(
-                fontSize: FontsSize.f14,
+                fontSize: hintTextFontSize,
                 fontFamily: FontsFamily.inter,
               ),
               focusedBorder: OutlineInputBorder(
@@ -323,9 +329,9 @@ class PickLocationButton extends StatelessWidget {
   final VoidCallback onTap;
 
   const PickLocationButton({
-    Key? key,
+    super.key,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -375,6 +381,48 @@ class PickLocationButton extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class CustomeSearchField extends StatelessWidget {
+  final String hintText;
+  final TextEditingController controller;
+  final ValueChanged<String> onChange;
+
+  const CustomeSearchField(
+      {super.key,
+      required this.hintText,
+      required this.controller,
+      required this.onChange});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.06,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: FontsColor.grey, width: 0.2),
+      ),
+      child: TextFormField(
+          controller: controller,
+          decoration: InputDecoration(
+            hintText: hintText,
+            hintStyle: TextStyle(
+              fontSize: FontsSize.f14,
+              fontFamily: FontsFamily.inter,
+              color: FontsColor.grey700,
+            ),
+            border: InputBorder.none,
+            contentPadding: const EdgeInsets.all(10),
+            prefixIcon: Icon(
+              Icons.search,
+              size: MediaQuery.of(context).size.width * 0.06,
+              color: FontsColor.orange,
+            ),
+          ),
+          onChanged: onChange),
     );
   }
 }

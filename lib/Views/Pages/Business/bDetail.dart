@@ -334,6 +334,7 @@ class _BusinessDetailState extends State<BusinessDetail> {
       isScrollControlled: true,
       builder: (BuildContext context) {
         return Scaffold(
+          backgroundColor: FontsColor.white,
           body: Padding(
             padding: const EdgeInsets.fromLTRB(10, 40, 10, 10),
             child: SizedBox(
@@ -366,31 +367,14 @@ class _BusinessDetailState extends State<BusinessDetail> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.03,
                   ),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.06,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: FontsColor.grey, width: 0.2),
-                    ),
-                    child: TextField(
-                      controller: _searchController,
-                      decoration: InputDecoration(
-                          labelText: 'Search business category...',
-                          labelStyle: TextStyle(
-                              fontSize: FontsSize.f14,
-                              fontFamily: FontsFamily.inter),
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                          prefixIcon: Icon(
-                            Icons.search,
-                            size: MediaQuery.of(context).size.width * 0.06,
-                            color: FontsColor.orange,
-                          )),
-                      onChanged: (value) {
+                  CustomeSearchField(
+                    hintText: 'Search business category...',
+                    controller: _searchController,
+                    onChange: (value) {
+                      setState(() {
                         _searchQuery.value = value;
-                      },
-                    ),
+                      });
+                    },
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.015,
@@ -462,6 +446,7 @@ class _BusinessDetailState extends State<BusinessDetail> {
       isScrollControlled: true,
       builder: (BuildContext context) {
         return Scaffold(
+          backgroundColor: FontsColor.white,
           body: Padding(
             padding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
             child: SizedBox(
@@ -498,25 +483,13 @@ class _BusinessDetailState extends State<BusinessDetail> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.02,
                   ),
-                  TextField(
+                  CustomeSearchField(
+                    hintText: 'Search business sub-category',
                     controller: _searchController,
-                    decoration: InputDecoration(
-                      hintText: 'Search business sub-category',
-                      hintStyle: TextStyle(
-                          fontSize: FontsSize.f15,
-                          fontFamily: FontsFamily.inter),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                      prefixIcon: Icon(
-                        Icons.search,
-                        color: FontsColor.orange,
-                        size: MediaQuery.of(context).size.width * 0.06,
-                      ),
-                    ),
-                    onChanged: (value) {
-                      _searchQuery.value = value;
+                    onChange: (value) {
+                      setState(() {
+                        _searchQuery.value = value;
+                      });
                     },
                   ),
                   SizedBox(
@@ -868,9 +841,12 @@ class _BusinessDetailState extends State<BusinessDetail> {
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
                 MaxLineTextField(
-                    label: 'Business Description',
-                    hintText: 'Enter your business description',
-                    controller: _businessDescController),
+                  label: 'Business Description',
+                  hintText: 'Enter your business description',
+                  controller: _businessDescController,
+                  labelFontSize: FontsSize.f14,
+                  hintTextFontSize: FontsSize.f14,
+                ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),

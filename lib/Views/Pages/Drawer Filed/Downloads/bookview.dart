@@ -33,10 +33,6 @@ class _BookViewState extends State<BookView> {
     return file;
   }
 
-  void _sharePdf(File pdfFile) {
-    Share.shareXFiles([XFile(pdfFile.path)], text: '');
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

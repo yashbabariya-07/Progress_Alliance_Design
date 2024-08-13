@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
+import 'package:progress_alliance/Views/Components/ShimmerAnimation/DirectoryShimmer/directoryShimmer.dart';
 import 'package:progress_alliance/Views/Widgets/homeBottom.dart';
 import 'package:progress_alliance/Routes/route.dart';
 import 'package:shimmer/shimmer.dart';
@@ -56,14 +57,14 @@ class _MemberDirectoryState extends State<MemberDirectory>
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return MediaQuery(
-      data: mediaQuery.copyWith(textScaleFactor: 1.0),
+      data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: FontsColor.white,
         appBar: AppBar(
           backgroundColor: FontsColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(0),
+            preferredSize: const Size.fromHeight(0),
             child: Container(
               color: FontsColor.grey,
               height: 0.2,
@@ -101,97 +102,7 @@ class _MemberDirectoryState extends State<MemberDirectory>
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
           child: isLoading
-              ? Shimmer.fromColors(
-                  baseColor: FontsColor.grey300!,
-                  highlightColor: FontsColor.grey100!,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.07,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: FontsColor.white,
-                          border:
-                              Border.all(width: 0.2, color: FontsColor.grey),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.004,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(2),
-                            color: FontsColor.grey200),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.015,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.022,
-                            width: MediaQuery.of(context).size.width * 0.24,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(2),
-                                color: FontsColor.grey200),
-                          ),
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.022,
-                            width: MediaQuery.of(context).size.width * 0.3,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(2),
-                                color: FontsColor.grey200),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.025,
-                      ),
-                      Expanded(
-                        child: GridView.builder(
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 4,
-                                  mainAxisSpacing: 8,
-                                  childAspectRatio: 1),
-                          itemCount: cities.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Column(
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: FontsColor.grey.withOpacity(0.5),
-                                        spreadRadius: 2,
-                                        blurRadius: 2,
-                                      ),
-                                    ],
-                                  ),
-                                  child: CircleAvatar(
-                                    radius: MediaQuery.of(context).size.width *
-                                        0.099,
-                                    child: CircleAvatar(
-                                      radius:
-                                          MediaQuery.of(context).size.width *
-                                              0.097,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                )
+              ? const DirectoryShimmer()
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

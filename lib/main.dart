@@ -16,7 +16,7 @@ import 'package:progress_alliance/Views/Pages/Member%20Directory/cityPartner.dar
 import 'package:progress_alliance/Views/Pages/Member%20Directory/citygrowthPartner.dart';
 import 'package:progress_alliance/Views/Pages/Member%20Directory/directory.dart';
 import 'package:progress_alliance/Views/Pages/Member%20Directory/growthPartner.dart';
-import 'package:progress_alliance/Views/Pages/MyQr_Code/scanner.dart';
+import 'package:progress_alliance/Views/Pages/Home/MyQr_Code/scanner.dart';
 import 'package:progress_alliance/Views/Pages/Home/Notification/detail.dart';
 import 'package:progress_alliance/Views/Pages/Home/Notification/notification_detail.dart';
 import 'package:progress_alliance/Views/Pages/PA_Business/PAbusiness.dart';
@@ -36,7 +36,7 @@ import 'package:progress_alliance/Views/Pages/Home/homeSearch.dart';
 import 'package:progress_alliance/Views/Pages/Login/login.dart';
 import 'package:progress_alliance/Views/Pages/Login/otp.dart';
 import 'package:progress_alliance/Views/Pages/Login/stayConnect.dart';
-import 'package:progress_alliance/Views/Pages/MyQr_Code/qr.dart';
+import 'package:progress_alliance/Views/Pages/Home/MyQr_Code/qr.dart';
 import 'package:progress_alliance/Views/Pages/Home/Notification/notification.dart';
 import 'package:progress_alliance/Routes/route.dart';
 import 'package:progress_alliance/Views/Pages/SearchArea/search.dart';

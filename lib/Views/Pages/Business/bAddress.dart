@@ -63,39 +63,18 @@ class _BusinessAddressState extends State<BusinessAddress> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.012,
                   ),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.06,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: FontsColor.grey, width: 0.2),
-                    ),
-                    child: TextField(
-                      controller: _stateSearchController,
-                      decoration: InputDecoration(
-                        labelText: 'Search State.....',
-                        labelStyle: TextStyle(
-                          fontSize: FontsSize.f14,
-                          fontFamily: FontsFamily.inter,
-                        ),
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                        prefixIcon: Icon(
-                          Icons.search,
-                          size: MediaQuery.of(context).size.width * 0.06,
-                          color: FontsColor.orange,
-                        ),
-                      ),
-                      onChanged: (value) {
-                        setState(() {
-                          _filteredStates = _states
-                              .where((state) => state
-                                  .toLowerCase()
-                                  .contains(value.toLowerCase()))
-                              .toList();
-                        });
-                      },
-                    ),
+                  CustomeSearchField(
+                    hintText: 'Search State.....',
+                    controller: _stateSearchController,
+                    onChange: (value) {
+                      setState(() {
+                        _filteredStates = _states
+                            .where((state) => state
+                                .toLowerCase()
+                                .contains(value.toLowerCase()))
+                            .toList();
+                      });
+                    },
                   ),
                   Expanded(
                     child: ListView.builder(
@@ -182,39 +161,18 @@ class _BusinessAddressState extends State<BusinessAddress> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.012,
                   ),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.06,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: FontsColor.grey, width: 0.2),
-                    ),
-                    child: TextField(
-                      controller: _citySearchController,
-                      decoration: InputDecoration(
-                        labelText: 'Search City.....',
-                        labelStyle: TextStyle(
-                          fontSize: FontsSize.f14,
-                          fontFamily: FontsFamily.inter,
-                        ),
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                        prefixIcon: Icon(
-                          Icons.search,
-                          size: MediaQuery.of(context).size.width * 0.06,
-                          color: FontsColor.orange,
-                        ),
-                      ),
-                      onChanged: (value) {
-                        setState(() {
-                          _filteredCities = _citys
-                              .where((city) => city
-                                  .toLowerCase()
-                                  .contains(value.toLowerCase()))
-                              .toList();
-                        });
-                      },
-                    ),
+                  CustomeSearchField(
+                    hintText: 'Search City.....',
+                    controller: _citySearchController,
+                    onChange: (value) {
+                      setState(() {
+                        _filteredCities = _citys
+                            .where((city) => city
+                                .toLowerCase()
+                                .contains(value.toLowerCase()))
+                            .toList();
+                      });
+                    },
                   ),
                   Expanded(
                     child: ListView.builder(

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-
 import 'package:progress_alliance/Routes/route.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';

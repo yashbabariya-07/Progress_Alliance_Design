@@ -6,7 +6,7 @@ import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Growthpartner extends StatefulWidget {
-  const Growthpartner({Key? key}) : super(key: key);
+  const Growthpartner({super.key});
 
   @override
   State<Growthpartner> createState() => _GrowthpartnerState();

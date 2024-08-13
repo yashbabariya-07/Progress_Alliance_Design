@@ -5,6 +5,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Components/CommonButton.dart';
+import 'package:progress_alliance/Views/Components/userTextField.dart/customeTextFormField.dart';
 
 class FeedbackPage extends StatefulWidget {
   const FeedbackPage({super.key});
@@ -206,42 +207,13 @@ class _FeedbackPageState extends State<FeedbackPage> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Description",
-                      style: TextStyle(
-                          fontFamily: FontsFamily.inter,
-                          fontSize: FontsSize.f13,
-                          fontWeight: FontsWeight.bold),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.015,
-                    ),
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: FontsColor.grey, width: 0.5),
-                      ),
-                      child: TextFormField(
-                        controller: _description,
-                        maxLines: 4,
-                        decoration: InputDecoration(
-                          hintText: 'Tell us how we can improve...',
-                          hintStyle: TextStyle(
-                            fontSize: FontsSize.f13,
-                            fontFamily: FontsFamily.inter,
-                          ),
-                          border: InputBorder.none,
-                          contentPadding: const EdgeInsets.all(10),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5),
-                            borderSide: BorderSide(
-                              color: FontsColor.black,
-                              width: 1,
-                            ),
-                          ),
-                        ),
-                      ),
+                    MaxLineTextField(
+                      label: "Description",
+                      hintText: 'Tell us how we can improve....',
+                      controller: _description,
+                      labelFontSize: FontsSize.f13,
+                      hintTextFontSize: FontsSize.f13,
+                      labelWeight: FontsWeight.bold,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.01,

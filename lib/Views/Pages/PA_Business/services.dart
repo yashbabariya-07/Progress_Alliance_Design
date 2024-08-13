@@ -1,8 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-
 import 'package:progress_alliance/Routes/route.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
+import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 import 'package:shimmer/shimmer.dart';
 
 class AdService extends StatefulWidget {
@@ -12,7 +12,7 @@ class AdService extends StatefulWidget {
   State<AdService> createState() => _AdServiceState();
 }
 
-class _AdServiceState extends State<AdService> {
+class _AdServiceState extends State<AdService> with LoadingStateMixin {
   final List<Map<String, String>> services = [
     {"name": "Service 1", "image": "assets/Images/s1.jpg"},
     {"name": "Service 2", "image": "assets/Images/s1.jpg"},
@@ -21,26 +21,11 @@ class _AdServiceState extends State<AdService> {
     {"name": "Service 5", "image": "assets/Images/surat.jpg"},
   ];
 
-  bool _isLoading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadData();
-  }
-
-  Future<void> _loadData() async {
-    await Future.delayed(const Duration(seconds: 2));
-    setState(() {
-      _isLoading = false;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return MediaQuery(
-      data: mediaQuery.copyWith(textScaleFactor: 1.0),
+      data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: FontsColor.white,
         appBar: AppBar(
@@ -100,7 +85,7 @@ class _AdServiceState extends State<AdService> {
                       onTap: () {
                         Navigator.pushNamed(context, Routes.companyDetailRoute);
                       },
-                      child: _isLoading
+                      child: isLoading
                           ? Shimmer.fromColors(
                               baseColor: FontsColor.grey300!,
                               highlightColor: FontsColor.grey100!,

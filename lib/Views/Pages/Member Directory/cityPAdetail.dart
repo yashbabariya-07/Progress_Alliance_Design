@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
-
-import 'package:shimmer/shimmer.dart';
+import 'package:progress_alliance/Views/Components/MemberDirectory/commonDesign.dart';
+import 'package:progress_alliance/Views/Components/ShimmerAnimation/DirectoryShimmer/paChapterShimmer.dart';
 
 class PADetail extends StatefulWidget {
   const PADetail({super.key});
@@ -30,11 +29,64 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
     "Growth Associate Team": GlobalKey(),
   };
 
+  final List<Map<String, dynamic>> growthPartners = [
+    {
+      'section': 'Growth Partner Team',
+      'partners': [
+        {
+          'head': 'Event Team Head',
+          'name': ' Person 1 Name ',
+          'company': 'Yoyo Fashion India Pvt Ltd'
+        },
+        {
+          'head': 'Event Team Head',
+          'name': ' Person 2 Name ',
+          'company': 'Saral InfoTech Pvt Ltd'
+        },
+        {
+          'head': 'Event Team Head',
+          'name': ' Person 3 Name ',
+          'company': 'Vatudi Fashion'
+        },
+      ]
+    },
+    {
+      'section': 'Event Team',
+      'partners': [
+        {
+          'head': 'Event Team Head',
+          'name': ' Person 4 Name ',
+          'company': 'Manshav Infosoft Solutions'
+        },
+      ]
+    },
+    {
+      'section': 'Finance Team',
+      'partners': [
+        {
+          'head': 'Finance Team Head',
+          'name': ' Person 5 Name ',
+          'company': 'Yoyo Fashion India Pvt Ltd'
+        },
+      ]
+    },
+    {
+      'section': 'Growth Associate Team',
+      'partners': [
+        {
+          'head': 'Welcome Team Head',
+          'name': ' Person 6 Name ',
+          'company': 'Manshav Infosoft Solutions'
+        },
+      ]
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return MediaQuery(
-      data: mediaQuery.copyWith(textScaleFactor: 1.0),
+      data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: FontsColor.white,
         appBar: AppBar(
@@ -87,52 +139,7 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
         body: SingleChildScrollView(
           controller: _scrollController,
           child: isLoading
-              ? SizedBox(
-                  height: MediaQuery.of(context).size.height,
-                  child: Shimmer.fromColors(
-                    baseColor: FontsColor.grey300!,
-                    highlightColor: FontsColor.grey100!,
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(15, 15, 15, 10),
-                          child: Container(
-                            height: MediaQuery.of(context).size.height * 0.06,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: FontsColor.white,
-                              border: Border.all(
-                                  width: 0.2, color: FontsColor.grey),
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: ListView.builder(
-                            itemCount: 6,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 2.5, horizontal: 15),
-                                child: Container(
-                                  height: MediaQuery.of(context).size.height *
-                                      0.087,
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: FontsColor.white,
-                                    border: Border.all(
-                                        width: 0.2, color: FontsColor.grey),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                )
+              ? const PAChapterShimmer()
               : Column(
                   children: [
                     Padding(
@@ -198,243 +205,40 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
                         ],
                       ),
                     ),
-                    buildSectionHeader("Growth Partner Team"),
-                    buildPersonCard(
-                        "Person 1 Name ", "Yoyo Fashion India Pvt Ltd"),
-                    buildPersonCard("Person 2 Name ", "Saral InfoTech Pvt Ltd"),
-                    buildPersonCard("Person 3 Name ", "Vatudi Fashion"),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-                    buildSectionHeader("Event Team"),
-                    buildTeamHeadCard("Event Team Head", "Person 4 Name ",
-                        "Yoyo Fashion India Pvt Ltd"),
-                    buildSectionHeader("Finance Team"),
-                    buildTeamHeadCard("Finance Team Head", "Person 5 Name ",
-                        "Yoyo Industries Canada Pvt Ltd"),
-                    buildSectionHeader("Growth Associate Team"),
-                    buildTeamHeadCard("Welcome Team Head", "Person 6 Name ",
-                        "Yoyo Fashion India Pvt Ltd"),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: growthPartners.length,
+                      itemBuilder: (context, index) {
+                        final section = growthPartners[index];
+                        return Column(
+                          key: _sectionKeys[section['section']],
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TeamTitleCard(title: section['section']),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.02,
+                            ),
+                            ListView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: section['partners'].length,
+                              itemBuilder: (context, partnerIndex) {
+                                final partner =
+                                    section['partners'][partnerIndex];
+                                return TeamHeadCard(
+                                  title: partner['head'],
+                                  personName: partner['name'],
+                                  company: partner['company'],
+                                );
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    ),
                   ],
                 ),
-        ),
-      ),
-    );
-  }
-
-  Widget buildSectionHeader(String title) {
-    return Container(
-      key: _sectionKeys[title],
-      height: MediaQuery.of(context).size.height * 0.05,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        border: Border.all(color: FontsColor.grey, width: 0.2),
-        color: FontsColor.grey200,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Text(
-          title,
-          style: TextStyle(
-              fontFamily: FontsFamily.inter,
-              fontSize: FontsSize.f14,
-              fontWeight: FontsWeight.bold),
-        ),
-      ),
-    );
-  }
-
-  Widget buildPersonCard(String personName, String company) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
-      child: Container(
-        height: MediaQuery.of(context).size.height * 0.09,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          border: Border.all(color: FontsColor.grey, width: 0.2),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Row(
-            children: [
-              CircleAvatar(
-                radius: MediaQuery.of(context).size.width * 0.06,
-                backgroundColor: FontsColor.green,
-                child: CircleAvatar(
-                  radius: MediaQuery.of(context).size.width * 0.058,
-                  child: Icon(
-                    Icons.person,
-                    size: MediaQuery.of(context).size.width * 0.08,
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.05,
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      personName,
-                      style: TextStyle(
-                          fontFamily: FontsFamily.inter,
-                          fontSize: FontsSize.f14,
-                          fontWeight: FontsWeight.bold),
-                    ),
-                    Text(company,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontFamily: FontsFamily.inter,
-                            fontSize: FontsSize.f12,
-                            color: FontsColor.grey)),
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.03,
-              ),
-              Row(
-                children: [
-                  Image.asset(
-                    "assets/Icons/wp.png",
-                    width: MediaQuery.of(context).size.width * 0.07,
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.015,
-                  ),
-                  Icon(
-                    MdiIcons.phoneOutline,
-                    color: FontsColor.grey500,
-                    size: MediaQuery.of(context).size.width * 0.06,
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.015,
-                  ),
-                  Icon(
-                    MdiIcons.accountPlusOutline,
-                    color: FontsColor.grey500,
-                    size: MediaQuery.of(context).size.width * 0.06,
-                  ),
-                ],
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget buildTeamHeadCard(String title, String personName, String company) {
-    return Padding(
-      padding: const EdgeInsets.all(15),
-      child: Container(
-        height: MediaQuery.of(context).size.height * 0.11,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          border: Border.all(color: FontsColor.grey, width: 0.2),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Container(
-                height: MediaQuery.of(context).size.height * 0.025,
-                width: MediaQuery.of(context).size.width * 0.33,
-                decoration: BoxDecoration(
-                  color: FontsColor.grey200,
-                  border: Border.all(width: 0.2, color: FontsColor.transparent),
-                  borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(5),
-                      bottomRight: Radius.circular(5)),
-                ),
-                child: Center(
-                  child: Text(
-                    title,
-                    style: TextStyle(
-                      fontFamily: FontsFamily.inter,
-                      fontSize: FontsSize.f10,
-                      fontWeight: FontsWeight.bold,
-                      color: FontsColor.orange,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    radius: MediaQuery.of(context).size.width * 0.06,
-                    backgroundColor: FontsColor.blue,
-                    child: CircleAvatar(
-                      radius: MediaQuery.of(context).size.width * 0.058,
-                      child: Icon(
-                        Icons.person,
-                        size: MediaQuery.of(context).size.width * 0.08,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.05,
-                  ),
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          personName,
-                          style: TextStyle(
-                              fontFamily: FontsFamily.inter,
-                              fontSize: FontsSize.f14,
-                              fontWeight: FontsWeight.bold),
-                        ),
-                        Text(
-                          company,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                              fontFamily: FontsFamily.inter,
-                              fontSize: FontsSize.f12,
-                              color: FontsColor.grey),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Image.asset(
-                        "assets/Icons/wp.png",
-                        width: MediaQuery.of(context).size.width * 0.07,
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.015,
-                      ),
-                      Icon(
-                        MdiIcons.phoneOutline,
-                        color: FontsColor.grey500,
-                        size: MediaQuery.of(context).size.width * 0.06,
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.015,
-                      ),
-                      Icon(
-                        MdiIcons.accountPlusOutline,
-                        color: FontsColor.grey500,
-                        size: MediaQuery.of(context).size.width * 0.06,
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ],
         ),
       ),
     );

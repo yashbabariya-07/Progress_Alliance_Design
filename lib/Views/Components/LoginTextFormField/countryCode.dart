@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:progress_alliance/Theme/textStyle.dart';
+import 'package:progress_alliance/Views/Components/userTextField.dart/customeTextFormField.dart';
 
 class CountryCode {
   CountryCode._();
@@ -62,34 +63,12 @@ class CountryCode {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.008,
                   ),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.06,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: FontsColor.grey, width: 0.2),
-                    ),
-                    child: TextFormField(
-                      controller: searchController,
-                      decoration: InputDecoration(
-                        hintText: 'Search by country name, code and short...',
-                        hintStyle: TextStyle(
-                          fontSize: FontsSize.f14,
-                          fontFamily: FontsFamily.inter,
-                          color: FontsColor.grey700,
-                        ),
-                        border: InputBorder.none,
-                        contentPadding: const EdgeInsets.all(10),
-                        prefixIcon: Icon(
-                          Icons.search,
-                          size: MediaQuery.of(context).size.width * 0.06,
-                          color: FontsColor.orange,
-                        ),
-                      ),
-                      onChanged: (value) {
-                        searchQuery.value = value;
-                      },
-                    ),
+                  CustomeSearchField(
+                    hintText: 'Search by country name, code and short...',
+                    controller: searchController,
+                    onChange: (value) {
+                      searchQuery.value = value;
+                    },
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.015,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Components/CommonButton.dart';
+import 'package:progress_alliance/Views/Components/userTextField.dart/customeTextFormField.dart';
 
 class Addcomplaint extends StatefulWidget {
   const Addcomplaint({super.key});
@@ -155,49 +156,15 @@ class _AddcomplaintState extends State<Addcomplaint> {
                 height: MediaQuery.of(context).size.height * 0.018,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Description",
-                      style: TextStyle(
-                          fontFamily: FontsFamily.inter,
-                          fontSize: FontsSize.f13,
-                          fontWeight: FontsWeight.bold),
-                    ),
-                    SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.015),
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: FontsColor.grey, width: 0.5),
-                      ),
-                      child: TextFormField(
-                        controller: _description,
-                        maxLines: 4,
-                        decoration: InputDecoration(
-                          hintText: 'Tell us what is your complaint?',
-                          hintStyle: TextStyle(
-                            fontSize: FontsSize.f13,
-                            fontFamily: FontsFamily.inter,
-                          ),
-                          border: InputBorder.none,
-                          contentPadding: const EdgeInsets.all(10),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5),
-                            borderSide: BorderSide(
-                              color: FontsColor.black,
-                              width: 1,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: MaxLineTextField(
+                    label: "Description",
+                    hintText: 'Tell us what is your complaint?',
+                    controller: _description,
+                    labelFontSize: FontsSize.f13,
+                    hintTextFontSize: FontsSize.f13,
+                    labelWeight: FontsWeight.bold,
+                  )),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.035,
               ),
