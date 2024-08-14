@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:progress_alliance/Routes/route.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Components/Button/CommonButton.dart';
 
