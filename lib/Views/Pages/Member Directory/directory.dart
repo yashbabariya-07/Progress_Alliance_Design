@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 import 'package:progress_alliance/Views/Components/ShimmerAnimation/DirectoryShimmer/directoryShimmer.dart';
 import 'package:progress_alliance/Views/Widgets/homeBottom.dart';
 import 'package:progress_alliance/Routes/route.dart';
-import 'package:shimmer/shimmer.dart';
 
 class MemberDirectory extends StatefulWidget {
   const MemberDirectory({Key? key}) : super(key: key);

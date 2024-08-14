@@ -14,7 +14,6 @@ class GoogleView extends StatefulWidget {
 }
 
 class _GoogleViewState extends State<GoogleView> with LoadingStateMixin {
-  File? _profile;
   final picker = ImagePicker();
 
   Future<File?> _pickProfile() async {
