@@ -5,8 +5,8 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/customShimmer.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
-import 'package:progress_alliance/Views/Components/PACommon.dart/TabBarData/about.dart';
-import 'package:progress_alliance/Views/Components/PACommon.dart/TabBarData/contact.dart';
+import 'package:progress_alliance/Views/Pages/PA_Business/TabBarData/about.dart';
+import 'package:progress_alliance/Views/Pages/PA_Business/TabBarData/contact.dart';
 import 'package:progress_alliance/Views/Components/PACommon.dart/customeDetail.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:pdf/pdf.dart';

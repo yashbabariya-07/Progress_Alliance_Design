@@ -205,7 +205,11 @@ class _GooglemapState extends State<Googlemap>
                               return StatefulBuilder(
                                 builder: (BuildContext context,
                                     StateSetter setState) {
-                                  return const FilterMap();
+                                  return FilterMap(
+                                    onDistanceSelected: (String distance) {
+                                      _onDistanceSelected(distance);
+                                    },
+                                  );
                                 },
                               );
                             },

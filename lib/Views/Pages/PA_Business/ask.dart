@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
-import 'package:progress_alliance/Views/Components/CommonButton.dart';
+import 'package:progress_alliance/Views/Components/Button/CommonButton.dart';
 import 'package:progress_alliance/Views/Components/userTextField.dart/customeTextFormField.dart';
 
 class AskPage extends StatefulWidget {

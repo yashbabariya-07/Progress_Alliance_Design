@@ -3,7 +3,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 
 class FilterMap extends StatefulWidget {
-  const FilterMap({super.key});
+  final Function(String) onDistanceSelected;
+  const FilterMap({super.key, required this.onDistanceSelected});
 
   @override
   State<FilterMap> createState() => _FilterMapState();
@@ -80,7 +81,7 @@ class _FilterMapState extends State<FilterMap>
     setState(() {
       _selectedDistance = option;
     });
-    _updateMapForDistance(option);
+    widget.onDistanceSelected(option);
   }
 
   @override

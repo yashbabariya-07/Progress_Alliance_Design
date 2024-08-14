@@ -4,7 +4,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
-import 'package:progress_alliance/Views/Components/CommonButton.dart';
+import 'package:progress_alliance/Views/Components/Button/CommonButton.dart';
 import 'package:progress_alliance/Views/Components/userTextField.dart/customeTextFormField.dart';
 
 class FeedbackPage extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
-import 'package:progress_alliance/Views/Components/contactUsComman.dart';
+import 'package:progress_alliance/Views/Components/DrawerField/contactUsComman.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactUs extends StatefulWidget {

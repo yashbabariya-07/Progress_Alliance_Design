@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:progress_alliance/Routes/route.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
-import 'package:progress_alliance/Views/Components/CommonButton.dart';
+import 'package:progress_alliance/Views/Components/Button/CommonButton.dart';
 import 'package:progress_alliance/Views/Components/LoginTextFormField/loginCustom.dart';
 
 class Connected extends StatefulWidget {
