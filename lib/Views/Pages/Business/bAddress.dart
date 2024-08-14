@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:progress_alliance/Theme/textStyle.dart';
+import 'package:progress_alliance/Views/Pages/Business/IndividualPage/cityState.dart';
 import 'package:progress_alliance/Views/Components/userTextField.dart/customeTextFormField.dart';
 import 'package:progress_alliance/Views/Pages/Business/businessInfo.dart';
 import 'package:progress_alliance/Routes/route.dart';
@@ -22,85 +22,13 @@ class _BusinessAddressState extends State<BusinessAddress> {
   final TextEditingController _city = TextEditingController();
 
   void _showState(BuildContext context) {
-    TextEditingController _stateSearchController = TextEditingController();
-    List<String> _states = ['Gujarat', 'Maharashtra', 'Universal'];
-    List<String> _filteredStates = List.from(_states);
-
     showModalBottomSheet(
       backgroundColor: FontsColor.white,
       context: context,
       builder: (BuildContext context) {
         return StatefulBuilder(
           builder: (BuildContext context, StateSetter setState) {
-            return Container(
-              padding: const EdgeInsets.all(15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.008),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Select State',
-                        style: TextStyle(
-                          fontFamily: FontsFamily.inter,
-                          fontSize: FontsSize.f16,
-                          fontWeight: FontsWeight.bold,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Icon(
-                          Icons.cancel_rounded,
-                          size: MediaQuery.of(context).size.width * 0.06,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.012,
-                  ),
-                  CustomeSearchField(
-                    hintText: 'Search State.....',
-                    controller: _stateSearchController,
-                    onChange: (value) {
-                      setState(() {
-                        _filteredStates = _states
-                            .where((state) => state
-                                .toLowerCase()
-                                .contains(value.toLowerCase()))
-                            .toList();
-                      });
-                    },
-                  ),
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: _filteredStates.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return ListTile(
-                          title: Text(
-                            _filteredStates[index],
-                            style: TextStyle(
-                              fontFamily: FontsFamily.inter,
-                              fontSize: FontsSize.f14,
-                            ),
-                          ),
-                          onTap: () {
-                            setState(() {
-                              _state.text = _filteredStates[index];
-                            });
-                            Navigator.pop(context);
-                          },
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            );
+            return const CitySheet();
           },
         );
       },
@@ -108,97 +36,13 @@ class _BusinessAddressState extends State<BusinessAddress> {
   }
 
   void _showCity(BuildContext context) {
-    TextEditingController _citySearchController = TextEditingController();
-    List<String> _citys = [
-      'Ahemdabad',
-      'Ankleshwar',
-      'Bhavnagar',
-      'Jetpur',
-      'Navsari',
-      'Rajkot',
-      'Surat',
-      'Vadodara',
-      'Vapi',
-    ];
-    List<String> _filteredCities = List.from(_citys);
-
     showModalBottomSheet(
       backgroundColor: FontsColor.white,
       context: context,
       builder: (BuildContext context) {
         return StatefulBuilder(
           builder: (BuildContext context, StateSetter setState) {
-            return Container(
-              padding: EdgeInsets.all(15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.008,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Select City',
-                        style: TextStyle(
-                          fontFamily: FontsFamily.inter,
-                          fontSize: FontsSize.f16,
-                          fontWeight: FontsWeight.bold,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Icon(
-                          Icons.cancel_rounded,
-                          size: MediaQuery.of(context).size.width * 0.06,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.012,
-                  ),
-                  CustomeSearchField(
-                    hintText: 'Search City.....',
-                    controller: _citySearchController,
-                    onChange: (value) {
-                      setState(() {
-                        _filteredCities = _citys
-                            .where((city) => city
-                                .toLowerCase()
-                                .contains(value.toLowerCase()))
-                            .toList();
-                      });
-                    },
-                  ),
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: _filteredCities.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return ListTile(
-                          title: Text(
-                            _filteredCities[index],
-                            style: TextStyle(
-                              fontFamily: FontsFamily.inter,
-                              fontSize: FontsSize.f14,
-                            ),
-                          ),
-                          onTap: () {
-                            setState(() {
-                              _city.text = _filteredCities[index];
-                            });
-                            Navigator.pop(context);
-                          },
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            );
+            return const StateSheet();
           },
         );
       },
@@ -209,7 +53,7 @@ class _BusinessAddressState extends State<BusinessAddress> {
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return MediaQuery(
-      data: mediaQuery.copyWith(textScaleFactor: 1.0),
+      data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: FontsColor.white,
         appBar: AppBar(
@@ -247,35 +91,7 @@ class _BusinessAddressState extends State<BusinessAddress> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Businessinfo(
-                      name: '',
-                      type: '',
-                      category: '',
-                      subCategory: '',
-                      product: '',
-                      gstNo: '',
-                      number: '',
-                      email: '',
-                      website: '',
-                      teamSize: '',
-                      formation: '',
-                      establish: '',
-                      about: '',
-                      logoImage: null,
-                      bannerImage: null,
-                      shopNumber: _shopNumber.text,
-                      streetName: _streetName.text,
-                      area: _area.text,
-                      landmark: _landmark.text,
-                      pincode: _pincode.text,
-                      state: _state.text,
-                      city: _city.text,
-                      facebook: '',
-                      linkedin: '',
-                      instagram: '',
-                      youtube: '',
-                      google: '',
-                    ),
+                    builder: (context) => const Businessinfo(),
                   ),
                 );
               },

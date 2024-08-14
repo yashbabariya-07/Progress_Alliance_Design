@@ -15,7 +15,7 @@ class _GoogleState extends State<Google> {
       appBar: AppBar(
         toolbarHeight: MediaQuery.of(context).size.width * 0.15,
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(0),
+          preferredSize: const Size.fromHeight(0),
           child: Container(
             color: FontsColor.grey,
             height: 1,
@@ -25,7 +25,7 @@ class _GoogleState extends State<Google> {
           onTap: () {
             Navigator.pop(context);
           },
-          child: Icon(Icons.arrow_back_ios_rounded),
+          child: const Icon(Icons.arrow_back_ios_rounded),
         ),
       ),
     );

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Components/userTextField.dart/customeTextFormField.dart';
 import 'package:progress_alliance/Views/Pages/Business/businessInfo.dart';
@@ -23,7 +22,7 @@ class _SocialAccountState extends State<SocialAccount> {
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return MediaQuery(
-      data: mediaQuery.copyWith(textScaleFactor: 1.0),
+      data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
           backgroundColor: FontsColor.white,
           appBar: AppBar(
@@ -61,35 +60,7 @@ class _SocialAccountState extends State<SocialAccount> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Businessinfo(
-                        name: '',
-                        type: '',
-                        category: '',
-                        subCategory: '',
-                        product: '',
-                        gstNo: '',
-                        number: '',
-                        email: '',
-                        website: '',
-                        teamSize: '',
-                        formation: '',
-                        establish: '',
-                        about: '',
-                        logoImage: null,
-                        bannerImage: null,
-                        shopNumber: '',
-                        streetName: '',
-                        area: '',
-                        landmark: '',
-                        pincode: '',
-                        state: '',
-                        city: '',
-                        facebook: _facbook.text,
-                        linkedin: _linkedin.text,
-                        instagram: _instagram.text,
-                        youtube: _youtube.text,
-                        google: _google.text,
-                      ),
+                      builder: (context) => const Businessinfo(),
                     ),
                   );
                 },

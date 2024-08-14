@@ -65,18 +65,7 @@ class _BasicDetailState extends State<BasicDetail> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Profile(
-                      gender: _selectedGender,
-                      dob: _dob.text,
-                      marriage: _marriage.text,
-                      mobile: _mobile.text,
-                      weight: _weight.text,
-                      bgroup: _bgrp,
-                      spouseName: '',
-                      spouseDOB: '',
-                      emgName: '',
-                      emgNumber: '',
-                    ),
+                    builder: (context) => const Profile(),
                   ),
                 );
               },

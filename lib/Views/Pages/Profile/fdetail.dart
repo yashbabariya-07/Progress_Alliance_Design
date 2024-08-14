@@ -59,18 +59,7 @@ class _FamilyDetailState extends State<FamilyDetail> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Profile(
-                      gender: '',
-                      dob: '',
-                      marriage: '',
-                      mobile: '',
-                      weight: '',
-                      bgroup: '',
-                      spouseName: _sname.text,
-                      spouseDOB: _dob.text,
-                      emgName: _ename.text,
-                      emgNumber: _enumber.text,
-                    ),
+                    builder: (context) => const Profile(),
                   ),
                 );
               },

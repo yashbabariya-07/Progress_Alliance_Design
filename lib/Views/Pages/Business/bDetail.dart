@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
+import 'package:progress_alliance/Views/Pages/Business/IndividualPage/businessCategory.dart';
+import 'package:progress_alliance/Views/Pages/Business/IndividualPage/businessType.dart';
 import 'package:progress_alliance/Views/Components/userTextField.dart/customeTextFormField.dart';
 import 'package:progress_alliance/Views/Pages/Business/businessInfo.dart';
 
@@ -21,8 +23,6 @@ class _BusinessDetailState extends State<BusinessDetail> {
       TextEditingController();
   final TextEditingController _businessCategoryController =
       TextEditingController();
-  final TextEditingController _searchController = TextEditingController();
-  final ValueNotifier<String> _searchQuery = ValueNotifier<String>("");
   final TextEditingController _businessSubCategoryController =
       TextEditingController();
   final TextEditingController _productController = TextEditingController();
@@ -62,138 +62,7 @@ class _BusinessDetailState extends State<BusinessDetail> {
       backgroundColor: FontsColor.white,
       context: context,
       builder: (BuildContext context) {
-        return SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.all(15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.008,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Select Business Type',
-                      style: TextStyle(
-                        fontFamily: FontsFamily.inter,
-                        fontSize: FontsSize.f16,
-                        fontWeight: FontsWeight.bold,
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Icon(
-                        Icons.cancel_rounded,
-                        size: MediaQuery.of(context).size.width * 0.06,
-                      ),
-                    ),
-                  ],
-                ),
-                ListTile(
-                  title: Text(
-                    'Retailer',
-                    style: TextStyle(
-                      fontFamily: FontsFamily.inter,
-                      fontSize: FontsSize.f14,
-                    ),
-                  ),
-                  onTap: () {
-                    _businessTypeController.text = 'Retailer';
-                    Navigator.pop(context);
-                  },
-                ),
-                buildDivider(),
-                ListTile(
-                  title: Text(
-                    'WholeSaler/Distributor',
-                    style: TextStyle(
-                      fontFamily: FontsFamily.inter,
-                      fontSize: FontsSize.f14,
-                    ),
-                  ),
-                  onTap: () {
-                    _businessTypeController.text = 'WholeSaler/Distributor';
-                    Navigator.pop(context);
-                  },
-                ),
-                buildDivider(),
-                ListTile(
-                  title: Text(
-                    'Manufacturer',
-                    style: TextStyle(
-                      fontFamily: FontsFamily.inter,
-                      fontSize: FontsSize.f14,
-                    ),
-                  ),
-                  onTap: () {
-                    _businessTypeController.text = 'Manufacturer';
-                    Navigator.pop(context);
-                  },
-                ),
-                buildDivider(),
-                ListTile(
-                  title: Text(
-                    'Supplier',
-                    style: TextStyle(
-                      fontFamily: FontsFamily.inter,
-                      fontSize: FontsSize.f14,
-                    ),
-                  ),
-                  onTap: () {
-                    _businessTypeController.text = 'Supplier';
-                    Navigator.pop(context);
-                  },
-                ),
-                buildDivider(),
-                ListTile(
-                  title: Text(
-                    'Reseller',
-                    style: TextStyle(
-                      fontFamily: FontsFamily.inter,
-                      fontSize: FontsSize.f14,
-                    ),
-                  ),
-                  onTap: () {
-                    _businessTypeController.text = 'Reseller';
-                    Navigator.pop(context);
-                  },
-                ),
-                buildDivider(),
-                ListTile(
-                  title: Text(
-                    'Service Provider',
-                    style: TextStyle(
-                      fontFamily: FontsFamily.inter,
-                      fontSize: FontsSize.f14,
-                    ),
-                  ),
-                  onTap: () {
-                    _businessTypeController.text = 'Service Provider';
-                    Navigator.pop(context);
-                  },
-                ),
-                buildDivider(),
-                ListTile(
-                  title: Text(
-                    'Home Industry',
-                    style: TextStyle(
-                      fontFamily: FontsFamily.inter,
-                      fontSize: FontsSize.f14,
-                    ),
-                  ),
-                  onTap: () {
-                    _businessTypeController.text = 'Home Industry';
-                    Navigator.pop(context);
-                  },
-                ),
-              ],
-            ),
-          ),
-        );
+        return const BTypeSheet();
       },
     );
   }
@@ -203,371 +72,30 @@ class _BusinessDetailState extends State<BusinessDetail> {
       backgroundColor: FontsColor.white,
       context: context,
       builder: (BuildContext context) {
-        return Container(
-          padding: EdgeInsets.all(15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.006,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Select Business Formation',
-                    style: TextStyle(
-                      fontFamily: FontsFamily.inter,
-                      fontSize: FontsSize.f16,
-                      fontWeight: FontsWeight.bold,
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Icon(
-                      Icons.cancel_rounded,
-                      size: MediaQuery.of(context).size.width * 0.06,
-                    ),
-                  ),
-                ],
-              ),
-              ListTile(
-                title: Text(
-                  'Sole Proprietorship',
-                  style: TextStyle(
-                    fontFamily: FontsFamily.inter,
-                    fontSize: FontsSize.f14,
-                  ),
-                ),
-                onTap: () {
-                  _businessFormationController.text = 'Sole Proprietorship';
-                  Navigator.pop(context);
-                },
-              ),
-              buildDivider(),
-              ListTile(
-                title: Text(
-                  'Limited Liability Partnership',
-                  style: TextStyle(
-                    fontFamily: FontsFamily.inter,
-                    fontSize: FontsSize.f14,
-                  ),
-                ),
-                onTap: () {
-                  _businessFormationController.text =
-                      'Limited Liability Partnership';
-                  Navigator.pop(context);
-                },
-              ),
-              buildDivider(),
-              ListTile(
-                title: Text(
-                  'Private Limited',
-                  style: TextStyle(
-                    fontFamily: FontsFamily.inter,
-                    fontSize: FontsSize.f14,
-                  ),
-                ),
-                onTap: () {
-                  _businessFormationController.text = 'Private Limited';
-                  Navigator.pop(context);
-                },
-              ),
-              buildDivider(),
-              ListTile(
-                title: Text(
-                  'Partnership Firm',
-                  style: TextStyle(
-                    fontFamily: FontsFamily.inter,
-                    fontSize: FontsSize.f14,
-                  ),
-                ),
-                onTap: () {
-                  _businessFormationController.text = 'Partnership Firm';
-                  Navigator.pop(context);
-                },
-              ),
-              buildDivider(),
-              ListTile(
-                title: Text(
-                  'Consulting',
-                  style: TextStyle(
-                    fontFamily: FontsFamily.inter,
-                    fontSize: FontsSize.f14,
-                  ),
-                ),
-                onTap: () {
-                  _businessFormationController.text = 'Consulting';
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          ),
-        );
+        return const BFormationTypeSheet();
       },
     );
   }
 
   void _showBusinessCategory(BuildContext context) {
-    final List<String> businessCategories = [
-      'Advertising Services',
-      'Agriculture & Agro',
-      'Automobile',
-      'Beauty Care & Cosmetic Product',
-      'Chemicals',
-      'Computer Hardware & CCTV',
-      'Construction Materials',
-      'Consultancy & Services',
-      'Ecommerce',
-      'Education',
-      'Electronics & Electricals',
-      'Energy & Power',
-      'Engineering & Foundry',
-      'Financial & Legal Services'
-    ];
-
     showModalBottomSheet(
       backgroundColor: FontsColor.white,
       context: context,
       isScrollControlled: true,
       builder: (BuildContext context) {
-        return Scaffold(
-          backgroundColor: FontsColor.white,
-          body: Padding(
-            padding: const EdgeInsets.fromLTRB(10, 40, 10, 10),
-            child: SizedBox(
-              width: double.infinity,
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Icon(
-                          Icons.arrow_back_ios_rounded,
-                          size: MediaQuery.of(context).size.width * 0.06,
-                        ),
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.08,
-                      ),
-                      Text(
-                        'Select Business Category',
-                        style: TextStyle(
-                            fontFamily: FontsFamily.inter,
-                            fontSize: FontsSize.f16,
-                            fontWeight: FontsWeight.bold),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.03,
-                  ),
-                  CustomeSearchField(
-                    hintText: 'Search business category...',
-                    controller: _searchController,
-                    onChange: (value) {
-                      setState(() {
-                        _searchQuery.value = value;
-                      });
-                    },
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.015,
-                  ),
-                  Expanded(
-                    child: ValueListenableBuilder<String>(
-                      valueListenable: _searchQuery,
-                      builder: (context, query, child) {
-                        final filteredCategories =
-                            businessCategories.where((category) {
-                          return category
-                              .toLowerCase()
-                              .contains(query.toLowerCase());
-                        }).toList();
-                        return ListView.builder(
-                          itemCount: filteredCategories.length,
-                          itemBuilder: (context, index) {
-                            return Column(
-                              children: [
-                                ListTile(
-                                  title: Text(
-                                    filteredCategories[index],
-                                    style: TextStyle(
-                                        fontFamily: FontsFamily.inter,
-                                        fontSize: FontsSize.f14),
-                                  ),
-                                  onTap: () {
-                                    _businessCategoryController.text =
-                                        filteredCategories[index];
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                buildDivider(),
-                              ],
-                            );
-                          },
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
+        return const BCategorySheet();
       },
     );
   }
 
   void _showSubBusinessCategory(BuildContext context) {
-    final List<String> businessSubCategories = [
-      'Accounting Software',
-      'Digital Marketing',
-      'ERP Software',
-      'IT Industrial Training',
-      'Mobile Application Development',
-      'SEO',
-      'Software Development',
-      'Standard Software',
-      'Tally Accounting Software',
-      'Web Design & Development',
-    ];
-
-    final Set<String> selectedSubCategories = {};
-
     showModalBottomSheet(
       backgroundColor: FontsColor.white,
       context: context,
       isScrollControlled: true,
       builder: (BuildContext context) {
-        return Scaffold(
-          backgroundColor: FontsColor.white,
-          body: Padding(
-            padding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
-            child: SizedBox(
-              width: double.infinity,
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        'Select Business Sub Category',
-                        style: TextStyle(
-                            fontFamily: FontsFamily.inter,
-                            fontSize: FontsSize.f16,
-                            fontWeight: FontsWeight.bold),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          _businessSubCategoryController.text =
-                              selectedSubCategories.join(', ');
-                          Navigator.pop(context);
-                        },
-                        child: Text(
-                          "Save",
-                          style: TextStyle(
-                            fontFamily: FontsFamily.inter,
-                            fontSize: FontsSize.f15,
-                            color: FontsColor.black,
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.02,
-                  ),
-                  CustomeSearchField(
-                    hintText: 'Search business sub-category',
-                    controller: _searchController,
-                    onChange: (value) {
-                      setState(() {
-                        _searchQuery.value = value;
-                      });
-                    },
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.02,
-                  ),
-                  Expanded(
-                    child: ValueListenableBuilder<String>(
-                      valueListenable: _searchQuery,
-                      builder: (context, query, child) {
-                        final filteredCategories =
-                            businessSubCategories.where((category) {
-                          return category
-                              .toLowerCase()
-                              .contains(query.toLowerCase());
-                        }).toList();
-                        return ListView.builder(
-                          itemCount: filteredCategories.length,
-                          itemBuilder: (context, index) {
-                            final category = filteredCategories[index];
-                            return Column(
-                              children: [
-                                ListTile(
-                                  leading: Transform.scale(
-                                    scale: MediaQuery.of(context).size.height *
-                                        0.0012,
-                                    child: Checkbox(
-                                      value: selectedSubCategories
-                                          .contains(category),
-                                      onChanged: (bool? value) {
-                                        if (value == true) {
-                                          selectedSubCategories.add(category);
-                                        } else {
-                                          selectedSubCategories
-                                              .remove(category);
-                                        }
-
-                                        (context as Element).markNeedsBuild();
-                                      },
-                                    ),
-                                  ),
-                                  title: Text(
-                                    category,
-                                    style: TextStyle(
-                                        fontFamily: FontsFamily.inter,
-                                        fontSize: FontsSize.f14),
-                                  ),
-                                  onTap: () {
-                                    if (selectedSubCategories
-                                        .contains(category)) {
-                                      selectedSubCategories.remove(category);
-                                    } else {
-                                      selectedSubCategories.add(category);
-                                    }
-
-                                    (context as Element).markNeedsBuild();
-                                  },
-                                ),
-                                buildDivider(),
-                              ],
-                            );
-                          },
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
+        return const BSubCategorySheet();
       },
-    );
-  }
-
-  Divider buildDivider() {
-    return Divider(
-      color: FontsColor.grey,
-      thickness: 0.2,
     );
   }
 
@@ -613,35 +141,7 @@ class _BusinessDetailState extends State<BusinessDetail> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Businessinfo(
-                      name: _cname.text,
-                      type: _businessTypeController.text,
-                      category: _businessCategoryController.text,
-                      subCategory: _businessSubCategoryController.text,
-                      product: _productController.text,
-                      gstNo: _gstController.text,
-                      number: _phoneController.text,
-                      email: _emailController.text,
-                      website: _webURLController.text,
-                      teamSize: '',
-                      formation: _businessFormationController.text,
-                      establish: _date.text,
-                      about: _businessDescController.text,
-                      logoImage: _logoImage,
-                      bannerImage: _bannerImage,
-                      shopNumber: '',
-                      streetName: '',
-                      area: '',
-                      landmark: '',
-                      pincode: '',
-                      state: '',
-                      city: '',
-                      facebook: '',
-                      linkedin: '',
-                      instagram: '',
-                      youtube: '',
-                      google: '',
-                    ),
+                    builder: (context) => const Businessinfo(),
                   ),
                 );
               },
