@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
-        backgroundColor: FontsColor.white,
+        backgroundColor: BgColor.white,
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(20, 80, 20, 20),

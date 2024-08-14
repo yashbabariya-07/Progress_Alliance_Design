@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 
 class ProfileOption extends StatefulWidget {
@@ -111,7 +112,7 @@ class _AddChildDialogState extends State<AddChildDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: FontsColor.white,
+      backgroundColor: BgColor.white,
       title: Text(
         'Add Child',
         style: TextStyle(
@@ -267,7 +268,7 @@ class _EditChildDialogState extends State<EditChildDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: FontsColor.white,
+      backgroundColor: BgColor.white,
       title: Text(
         'Edit Child',
         style: TextStyle(

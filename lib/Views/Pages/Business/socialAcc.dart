@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Components/userTextField.dart/customeTextFormField.dart';
 import 'package:progress_alliance/Views/Pages/Business/businessInfo.dart';
@@ -24,7 +25,7 @@ class _SocialAccountState extends State<SocialAccount> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
-          backgroundColor: FontsColor.white,
+          backgroundColor: BgColor.white,
           appBar: AppBar(
             forceMaterialTransparency: true,
             toolbarHeight: MediaQuery.of(context).size.width * 0.15,

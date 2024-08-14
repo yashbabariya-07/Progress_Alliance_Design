@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 import 'package:progress_alliance/Views/Components/ShimmerAnimation/DirectoryShimmer/directoryShimmer.dart';
@@ -29,26 +30,19 @@ class _MemberDirectoryState extends State<MemberDirectory>
   ];
 
   int _selectedIndex = 3;
+  late NavigationHandler _navigationHandler;
+
+  @override
+  void initState() {
+    super.initState();
+    _navigationHandler = NavigationHandler(context);
+  }
+
   void _onTabTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
-    switch (index) {
-      case 0:
-        Navigator.pushReplacementNamed(context, Routes.homeRoute);
-        break;
-      case 1:
-        Navigator.pushReplacementNamed(context, Routes.paBusinessRoute);
-        break;
-      case 2:
-        Navigator.pushReplacementNamed(context, Routes.googleMapRoute);
-        break;
-      case 3:
-        Navigator.pushReplacementNamed(context, Routes.memberRoute);
-        break;
-      default:
-        break;
-    }
+    _navigationHandler.handleNavigation(index);
   }
 
   @override
@@ -57,9 +51,9 @@ class _MemberDirectoryState extends State<MemberDirectory>
     return MediaQuery(
       data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
-        backgroundColor: FontsColor.white,
+        backgroundColor: BgColor.white,
         appBar: AppBar(
-          backgroundColor: FontsColor.white,
+          backgroundColor: BgColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(0),
@@ -193,7 +187,7 @@ class _MemberDirectoryState extends State<MemberDirectory>
                                   child: CircleAvatar(
                                     radius: MediaQuery.of(context).size.width *
                                         0.099,
-                                    backgroundColor: FontsColor.white,
+                                    backgroundColor: BgColor.white,
                                     child: CircleAvatar(
                                       radius:
                                           MediaQuery.of(context).size.width *

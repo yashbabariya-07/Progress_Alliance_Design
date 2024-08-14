@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 import 'package:progress_alliance/Views/Components/ShimmerAnimation/HomeFieldShimmer.dart/homeShimmer.dart';
@@ -26,26 +27,19 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
   ];
 
   int _selectedIndex = 0;
+  late NavigationHandler _navigationHandler;
+
+  @override
+  void initState() {
+    super.initState();
+    _navigationHandler = NavigationHandler(context);
+  }
+
   void _onTabTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
-    switch (index) {
-      case 0:
-        Navigator.pushReplacementNamed(context, Routes.homeRoute);
-        break;
-      case 1:
-        Navigator.pushReplacementNamed(context, Routes.paBusinessRoute);
-        break;
-      case 2:
-        Navigator.pushReplacementNamed(context, Routes.googleMapRoute);
-        break;
-      case 3:
-        Navigator.pushReplacementNamed(context, Routes.memberRoute);
-        break;
-      default:
-        break;
-    }
+    _navigationHandler.handleNavigation(index);
   }
 
   List<Map<String, dynamic>> leads = [
@@ -79,11 +73,11 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
-        backgroundColor: FontsColor.grey100,
+        backgroundColor: BgColor.grey100,
         drawer: const PADrawer(),
         appBar: AppBar(
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
-          backgroundColor: FontsColor.white,
+          backgroundColor: BgColor.white,
           automaticallyImplyLeading: false,
           leading: Builder(
             builder: (context) => IconButton(
@@ -348,13 +342,13 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                                                     .size
                                                     .width *
                                                 0.055,
-                                            backgroundColor: FontsColor.black,
+                                            backgroundColor: BgColor.black,
                                             child: CircleAvatar(
                                               radius: MediaQuery.of(context)
                                                       .size
                                                       .width *
                                                   0.054,
-                                              backgroundColor: FontsColor.white,
+                                              backgroundColor: BgColor.white,
                                               child: Icon(
                                                 Icons.person,
                                                 size: MediaQuery.of(context)

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Components/userTextField.dart/customeTextFormField.dart';
@@ -23,7 +24,7 @@ class CountryCode {
       isScrollControlled: true,
       builder: (BuildContext context) {
         return Scaffold(
-          backgroundColor: FontsColor.white,
+          backgroundColor: BgColor.white,
           body: Padding(
             padding: const EdgeInsets.fromLTRB(10, 40, 10, 10),
             child: SizedBox(

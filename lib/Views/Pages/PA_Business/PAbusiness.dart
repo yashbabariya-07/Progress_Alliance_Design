@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Widgets/drawer.dart';
 import 'package:progress_alliance/Views/Widgets/homeBottom.dart';
@@ -50,26 +51,19 @@ class _PabusinessState extends State<Pabusiness> {
   ];
 
   int _selectedIndex = 1;
+  late NavigationHandler _navigationHandler;
+
+  @override
+  void initState() {
+    super.initState();
+    _navigationHandler = NavigationHandler(context);
+  }
+
   void _onTabTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
-    switch (index) {
-      case 0:
-        Navigator.pushReplacementNamed(context, Routes.homeRoute);
-        break;
-      case 1:
-        Navigator.pushReplacementNamed(context, Routes.paBusinessRoute);
-        break;
-      case 2:
-        Navigator.pushReplacementNamed(context, Routes.googleMapRoute);
-        break;
-      case 3:
-        Navigator.pushReplacementNamed(context, Routes.memberRoute);
-        break;
-      default:
-        break;
-    }
+    _navigationHandler.handleNavigation(index);
   }
 
   @override
@@ -78,10 +72,10 @@ class _PabusinessState extends State<Pabusiness> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
-        backgroundColor: FontsColor.white,
+        backgroundColor: BgColor.white,
         appBar: AppBar(
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
-          backgroundColor: FontsColor.white,
+          backgroundColor: BgColor.white,
           centerTitle: true,
           leading: Builder(
             builder: (context) => IconButton(

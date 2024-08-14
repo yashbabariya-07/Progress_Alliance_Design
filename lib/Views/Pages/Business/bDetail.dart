@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 import 'package:image_picker/image_picker.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Pages/Business/IndividualPage/businessCategory.dart';
 import 'package:progress_alliance/Views/Pages/Business/IndividualPage/businessType.dart';
@@ -59,7 +60,7 @@ class _BusinessDetailState extends State<BusinessDetail> {
 
   void _showBusinessType(BuildContext context) {
     showModalBottomSheet(
-      backgroundColor: FontsColor.white,
+      backgroundColor: BgColor.white,
       context: context,
       builder: (BuildContext context) {
         return const BTypeSheet();
@@ -69,7 +70,7 @@ class _BusinessDetailState extends State<BusinessDetail> {
 
   void _showBusinessFormationType(BuildContext context) {
     showModalBottomSheet(
-      backgroundColor: FontsColor.white,
+      backgroundColor: BgColor.white,
       context: context,
       builder: (BuildContext context) {
         return const BFormationTypeSheet();
@@ -79,7 +80,7 @@ class _BusinessDetailState extends State<BusinessDetail> {
 
   void _showBusinessCategory(BuildContext context) {
     showModalBottomSheet(
-      backgroundColor: FontsColor.white,
+      backgroundColor: BgColor.white,
       context: context,
       isScrollControlled: true,
       builder: (BuildContext context) {
@@ -90,7 +91,7 @@ class _BusinessDetailState extends State<BusinessDetail> {
 
   void _showSubBusinessCategory(BuildContext context) {
     showModalBottomSheet(
-      backgroundColor: FontsColor.white,
+      backgroundColor: BgColor.white,
       context: context,
       isScrollControlled: true,
       builder: (BuildContext context) {
@@ -105,7 +106,7 @@ class _BusinessDetailState extends State<BusinessDetail> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
-        backgroundColor: FontsColor.white,
+        backgroundColor: BgColor.white,
         appBar: AppBar(
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,

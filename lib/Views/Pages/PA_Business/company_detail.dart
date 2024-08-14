@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/customShimmer.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
@@ -201,9 +202,9 @@ class _CompanyDetailState extends State<CompanyDetail>
     return MediaQuery(
       data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
-        backgroundColor: FontsColor.white,
+        backgroundColor: BgColor.white,
         appBar: AppBar(
-          backgroundColor: FontsColor.white,
+          backgroundColor: BgColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           bottom: PreferredSize(

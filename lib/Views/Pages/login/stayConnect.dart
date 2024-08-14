@@ -51,9 +51,9 @@ class _ConnectedState extends State<Connected> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
-        backgroundColor: FontsColor.white,
+        backgroundColor: BgColor.white,
         appBar: AppBar(
-          backgroundColor: FontsColor.white,
+          backgroundColor: BgColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           leading: GestureDetector(

@@ -22,9 +22,9 @@ class _OTPPageState extends State<OTPPage> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaleFactor: 1.0),
       child: Scaffold(
-        backgroundColor: FontsColor.white,
+        backgroundColor: BgColor.white,
         appBar: AppBar(
-          backgroundColor: FontsColor.white,
+          backgroundColor: BgColor.white,
           leading: IconButton(
             icon: Icon(
               Icons.arrow_back_ios_rounded,

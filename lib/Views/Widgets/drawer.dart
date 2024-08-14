@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:progress_alliance/Routes/route.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 
 class PADrawer extends StatelessWidget {
@@ -11,7 +12,7 @@ class PADrawer extends StatelessWidget {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.64,
       child: Drawer(
-        backgroundColor: FontsColor.white,
+        backgroundColor: BgColor.white,
         child: Padding(
           padding: const EdgeInsets.only(top: 70),
           child: Column(
@@ -199,7 +200,7 @@ class _EnddrawerState extends State<Enddrawer> {
       color: FontsColor.white,
       width: MediaQuery.of(context).size.width * 0.68,
       child: Drawer(
-        backgroundColor: FontsColor.white,
+        backgroundColor: BgColor.white,
         child: Padding(
           padding: const EdgeInsets.only(top: 50.0),
           child: Column(

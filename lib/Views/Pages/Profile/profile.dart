@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 import 'package:progress_alliance/Views/Pages/Profile/IndividualPage/basicDetail.dart';
@@ -65,9 +66,9 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
-        backgroundColor: FontsColor.white,
+        backgroundColor: BgColor.white,
         appBar: AppBar(
-          backgroundColor: FontsColor.white,
+          backgroundColor: BgColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           bottom: PreferredSize(
@@ -144,11 +145,11 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                             onTap: _pickCoverImage,
                             child: CircleAvatar(
                               radius: MediaQuery.of(context).size.width * 0.03,
-                              backgroundColor: FontsColor.black,
+                              backgroundColor: BgColor.black,
                               child: CircleAvatar(
                                 radius:
                                     MediaQuery.of(context).size.width * 0.029,
-                                backgroundColor: FontsColor.white,
+                                backgroundColor: BgColor.white,
                                 child: Icon(
                                   Icons.camera_alt_rounded,
                                   size:
@@ -167,7 +168,7 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                               CircleAvatar(
                                 radius:
                                     MediaQuery.of(context).size.width * 0.16,
-                                backgroundColor: FontsColor.white,
+                                backgroundColor: BgColor.white,
                                 child: CircleAvatar(
                                   radius:
                                       MediaQuery.of(context).size.width * 0.156,
@@ -196,12 +197,12 @@ class _ProfileState extends State<Profile> with LoadingStateMixin {
                                   child: CircleAvatar(
                                     radius: MediaQuery.of(context).size.width *
                                         0.037,
-                                    backgroundColor: FontsColor.black,
+                                    backgroundColor: BgColor.black,
                                     child: CircleAvatar(
                                       radius:
                                           MediaQuery.of(context).size.width *
                                               0.035,
-                                      backgroundColor: FontsColor.white,
+                                      backgroundColor: BgColor.white,
                                       child: Icon(
                                         Icons.camera_alt_rounded,
                                         size:

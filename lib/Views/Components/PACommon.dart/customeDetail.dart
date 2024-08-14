@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 
 class CustomeDetail extends StatelessWidget {
@@ -62,7 +63,7 @@ class CustomeDetail extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: MediaQuery.of(context).size.width * 0.15,
-                    backgroundColor: FontsColor.white,
+                    backgroundColor: BgColor.white,
                     child: CircleAvatar(
                       radius: MediaQuery.of(context).size.width * 0.146,
                       child: Icon(

@@ -22,13 +22,6 @@ class _FilterMapState extends State<FilterMap>
     _tabController = TabController(length: 2, vsync: this);
   }
 
-  final List<LatLng> _markerPositions = [
-    const LatLng(21.221518982753015, 72.86885646384987),
-    const LatLng(24.59656677793974, 72.7063899608816),
-    const LatLng(18.988889624961452, 73.27039419325274),
-    const LatLng(37.77678674433221, -122.4827957211993),
-  ];
-
   final List<Map<String, String>> business = [
     {"title": "Advertising Services", "image": "assets/Images/surat.jpg"},
     {"title": "Agriculture & Agro", "image": "assets/Images/map.png"},
@@ -45,37 +38,6 @@ class _FilterMapState extends State<FilterMap>
     "within 5km",
     "within 10km"
   ];
-  void _updateMapForDistance(String option) {
-    if (mapController == null) return;
-
-    double zoomLevel;
-    switch (option) {
-      case "within 1km":
-        zoomLevel = 15.0;
-        break;
-      case "within 2km":
-        zoomLevel = 14.0;
-        break;
-      case "within 3km":
-        zoomLevel = 13.5;
-        break;
-      case "within 4km":
-        zoomLevel = 13.0;
-        break;
-      case "within 5km":
-        zoomLevel = 12.5;
-        break;
-      case "within 10km":
-        zoomLevel = 11.0;
-        break;
-      default:
-        zoomLevel = 10.0;
-    }
-
-    mapController!.animateCamera(
-      CameraUpdate.newLatLngZoom(_markerPositions[2], zoomLevel),
-    );
-  }
 
   void _onDistanceSelected(String option) {
     setState(() {

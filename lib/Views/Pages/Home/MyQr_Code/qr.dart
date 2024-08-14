@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:progress_alliance/Routes/route.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -18,10 +19,10 @@ class _QrCodePageState extends State<QrCodePage> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
-        backgroundColor: FontsColor.purple,
+        backgroundColor: BgColor.purple,
         appBar: AppBar(
             toolbarHeight: MediaQuery.of(context).size.width * 0.15,
-            backgroundColor: FontsColor.purple,
+            backgroundColor: BgColor.purple,
             centerTitle: true,
             title: Text(
               "My QR Code",
@@ -52,7 +53,7 @@ class _QrCodePageState extends State<QrCodePage> {
                 children: [
                   CircleAvatar(
                     radius: MediaQuery.of(context).size.width * 0.13,
-                    backgroundColor: FontsColor.white,
+                    backgroundColor: BgColor.white,
                     child: CircleAvatar(
                       radius: MediaQuery.of(context).size.width * 0.125,
                     ),
@@ -100,10 +101,10 @@ class _QrCodePageState extends State<QrCodePage> {
                 },
                 child: CircleAvatar(
                   radius: MediaQuery.of(context).size.width * 0.07,
-                  backgroundColor: FontsColor.white,
+                  backgroundColor: BgColor.white,
                   child: CircleAvatar(
                     radius: MediaQuery.of(context).size.width * 0.067,
-                    backgroundColor: FontsColor.purple,
+                    backgroundColor: BgColor.purple,
                     child: Icon(
                       Icons.document_scanner,
                       size: MediaQuery.of(context).size.width * 0.065,

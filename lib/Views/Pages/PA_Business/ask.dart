@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Components/Button/CommonButton.dart';
 import 'package:progress_alliance/Views/Components/userTextField.dart/customeTextFormField.dart';
@@ -70,12 +71,12 @@ class _AskPageState extends State<AskPage> {
     ];
 
     showModalBottomSheet(
-      backgroundColor: FontsColor.white,
+      backgroundColor: BgColor.white,
       context: context,
       isScrollControlled: true,
       builder: (BuildContext context) {
         return Scaffold(
-          backgroundColor: FontsColor.white,
+          backgroundColor: BgColor.white,
           body: Padding(
             padding: const EdgeInsets.fromLTRB(10, 40, 10, 10),
             child: SizedBox(
@@ -176,9 +177,9 @@ class _AskPageState extends State<AskPage> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
-        backgroundColor: FontsColor.white,
+        backgroundColor: BgColor.white,
         appBar: AppBar(
-          backgroundColor: FontsColor.white,
+          backgroundColor: BgColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           forceMaterialTransparency: true,
           bottom: PreferredSize(

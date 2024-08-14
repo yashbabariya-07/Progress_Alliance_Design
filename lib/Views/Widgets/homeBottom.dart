@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/Routes/route.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 
 class HomeBottom extends StatelessWidget {
@@ -16,7 +17,7 @@ class HomeBottom extends StatelessWidget {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.075,
       child: BottomNavigationBar(
-        backgroundColor: FontsColor.white,
+        backgroundColor: BgColor.white,
         currentIndex: selectedIndex,
         onTap: onTabTapped,
         type: BottomNavigationBarType.fixed,
@@ -64,5 +65,30 @@ class HomeBottom extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class NavigationHandler {
+  final BuildContext context;
+
+  NavigationHandler(this.context);
+
+  void handleNavigation(int index) {
+    switch (index) {
+      case 0:
+        Navigator.pushReplacementNamed(context, Routes.homeRoute);
+        break;
+      case 1:
+        Navigator.pushReplacementNamed(context, Routes.paBusinessRoute);
+        break;
+      case 2:
+        Navigator.pushReplacementNamed(context, Routes.googleMapRoute);
+        break;
+      case 3:
+        Navigator.pushReplacementNamed(context, Routes.memberRoute);
+        break;
+      default:
+        break;
+    }
   }
 }

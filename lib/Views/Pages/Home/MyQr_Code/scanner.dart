@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
@@ -46,7 +47,7 @@ class _ScannerPageState extends State<ScannerPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: FontsColor.white,
+          backgroundColor: BgColor.white,
           title: const Text("Scanned QR Code"),
           content: Text("Data: $data"),
           actions: [

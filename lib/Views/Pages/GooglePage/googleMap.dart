@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 import 'package:progress_alliance/Views/Pages/GooglePage/IndividualPage/filter.dart';
@@ -25,26 +26,19 @@ class _GooglemapState extends State<Googlemap>
   int selectedIndex = 0;
 
   int _selectedIndex = 2;
+  late NavigationHandler _navigationHandler;
+
+  @override
+  void initState() {
+    super.initState();
+    _navigationHandler = NavigationHandler(context);
+  }
+
   void _onTabTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
-    switch (index) {
-      case 0:
-        Navigator.pushReplacementNamed(context, Routes.homeRoute);
-        break;
-      case 1:
-        Navigator.pushReplacementNamed(context, Routes.paBusinessRoute);
-        break;
-      case 2:
-        Navigator.pushReplacementNamed(context, Routes.googleMapRoute);
-        break;
-      case 3:
-        Navigator.pushReplacementNamed(context, Routes.memberRoute);
-        break;
-      default:
-        break;
-    }
+    _navigationHandler.handleNavigation(index);
   }
 
   final List<String> _distanceOptions = [
@@ -107,10 +101,10 @@ class _GooglemapState extends State<Googlemap>
     return MediaQuery(
       data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
-        backgroundColor: FontsColor.grey100,
+        backgroundColor: BgColor.grey100,
         drawer: const PADrawer(),
         appBar: AppBar(
-          backgroundColor: FontsColor.white,
+          backgroundColor: BgColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           centerTitle: true,
           bottom: PreferredSize(
@@ -199,7 +193,7 @@ class _GooglemapState extends State<Googlemap>
                       GestureDetector(
                         onTap: () {
                           showModalBottomSheet(
-                            backgroundColor: FontsColor.white,
+                            backgroundColor: BgColor.white,
                             context: context,
                             builder: (BuildContext context) {
                               return StatefulBuilder(

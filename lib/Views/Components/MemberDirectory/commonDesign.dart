@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 
 class TeamTitleCard extends StatelessWidget {
@@ -51,7 +52,7 @@ class PersonCard extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: MediaQuery.of(context).size.width * 0.06,
-                backgroundColor: FontsColor.green,
+                backgroundColor: BgColor.green,
                 child: CircleAvatar(
                   radius: MediaQuery.of(context).size.width * 0.058,
                   child: Icon(
@@ -174,7 +175,7 @@ class TeamHeadCard extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: MediaQuery.of(context).size.width * 0.06,
-                    backgroundColor: FontsColor.blue,
+                    backgroundColor: BgColor.blue,
                     child: CircleAvatar(
                       radius: MediaQuery.of(context).size.width * 0.058,
                       child: Icon(

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pdfx/pdfx.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:progress_alliance/Theme/textStyle.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 
 class BookView extends StatefulWidget {
   final String pdfPath;
@@ -35,9 +35,9 @@ class _BookViewState extends State<BookView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: FontsColor.white,
+      backgroundColor: BgColor.white,
       appBar: AppBar(
-        backgroundColor: FontsColor.white,
+        backgroundColor: BgColor.white,
         toolbarHeight: MediaQuery.of(context).size.width * 0.15,
         leading: GestureDetector(
           onTap: () {

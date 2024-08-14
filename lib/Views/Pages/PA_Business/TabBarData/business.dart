@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -101,7 +102,7 @@ class _BusinessTabState extends State<BusinessTab> {
                 ),
                 CircleAvatar(
                   radius: 13,
-                  backgroundColor: FontsColor.grey300,
+                  backgroundColor: BgColor.grey300,
                   child: Center(
                     child: Icon(
                       MdiIcons.pencilOutline,

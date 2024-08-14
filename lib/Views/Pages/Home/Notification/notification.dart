@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:progress_alliance/Routes/route.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 import 'package:shimmer/shimmer.dart';
@@ -24,14 +25,14 @@ class _NotificationPageState extends State<NotificationPage>
     MediaQueryData mediaQuery = MediaQuery.of(context);
 
     return MediaQuery(
-      data: mediaQuery.copyWith(textScaleFactor: 1.0),
+      data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
-        backgroundColor: FontsColor.white,
+        backgroundColor: BgColor.white,
         appBar: AppBar(
-          backgroundColor: FontsColor.white,
+          backgroundColor: BgColor.white,
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(0),
+            preferredSize: const Size.fromHeight(0),
             child: Container(
               color: FontsColor.grey,
               height: 0.2,
@@ -161,7 +162,7 @@ class _NotificationPageState extends State<NotificationPage>
                         children: [
                           CircleAvatar(
                             radius: MediaQuery.of(context).size.width * 0.05,
-                            backgroundColor: FontsColor.blue100,
+                            backgroundColor: BgColor.blue100,
                             child: Icon(
                               MdiIcons.bellOutline,
                               color: FontsColor.blue,

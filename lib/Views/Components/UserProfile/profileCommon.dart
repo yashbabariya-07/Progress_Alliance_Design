@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 
 class DataHeading extends StatelessWidget {
@@ -24,7 +25,7 @@ class DataHeading extends StatelessWidget {
             onTap: onTap,
             child: CircleAvatar(
               radius: MediaQuery.of(context).size.width * 0.035,
-              backgroundColor: FontsColor.grey300,
+              backgroundColor: BgColor.grey300,
               child: Center(
                 child: Icon(
                   MdiIcons.pencilOutline,

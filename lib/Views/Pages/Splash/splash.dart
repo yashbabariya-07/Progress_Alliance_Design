@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'dart:async';
@@ -29,7 +30,7 @@ class _SplashPageState extends State<SplashPage> {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
-          backgroundColor: FontsColor.white,
+          backgroundColor: BgColor.white,
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

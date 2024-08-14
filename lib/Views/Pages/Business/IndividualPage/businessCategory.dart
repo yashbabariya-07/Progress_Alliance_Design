@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Components/userTextField.dart/customeTextFormField.dart';
 
@@ -33,7 +34,7 @@ class _BCategorySheetState extends State<BCategorySheet> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: FontsColor.white,
+      backgroundColor: BgColor.white,
       body: Padding(
         padding: const EdgeInsets.fromLTRB(10, 40, 10, 10),
         child: SizedBox(
@@ -154,7 +155,7 @@ class _BSubCategorySheetState extends State<BSubCategorySheet> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: FontsColor.white,
+      backgroundColor: BgColor.white,
       body: Padding(
         padding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
         child: SizedBox(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
@@ -13,10 +14,10 @@ class CustomBottomNavigationBar extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.height * 0.075,
       child: BottomNavigationBar(
-        backgroundColor: FontsColor.white,
+        backgroundColor: BgColor.white,
         currentIndex: selectedIndex,
         onTap: onTabTapped,
         type: BottomNavigationBarType.fixed,

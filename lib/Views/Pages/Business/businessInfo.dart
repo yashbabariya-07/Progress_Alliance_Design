@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 import 'package:progress_alliance/Views/Components/ShimmerAnimation/UserProfile/businessShimmer.dart';
@@ -57,10 +58,10 @@ class _BusinessinfoState extends State<Businessinfo> with LoadingStateMixin {
     return MediaQuery(
       data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
-        backgroundColor: FontsColor.white,
+        backgroundColor: BgColor.white,
         appBar: AppBar(
           toolbarHeight: MediaQuery.of(context).size.width * 0.15,
-          backgroundColor: FontsColor.white,
+          backgroundColor: BgColor.white,
           forceMaterialTransparency: true,
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(0),
