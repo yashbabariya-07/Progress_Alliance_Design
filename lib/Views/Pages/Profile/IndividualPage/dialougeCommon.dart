@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
@@ -11,15 +10,12 @@ class ProfileOption extends StatefulWidget {
 }
 
 class _ProfileOptionState extends State<ProfileOption> {
-  File? _profileImage;
   Future<void> _pickProfileImage() async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
     if (pickedFile != null) {
-      setState(() {
-        _profileImage = File(pickedFile.path);
-      });
+      setState(() {});
     }
   }
 
@@ -89,9 +85,7 @@ class _ProfileOptionState extends State<ProfileOption> {
             ),
             onTap: () {
               Navigator.pop(context);
-              setState(() {
-                _profileImage = null;
-              });
+              setState(() {});
             },
           ),
         ],
@@ -248,10 +242,10 @@ class EditChildDialog extends StatefulWidget {
   final Function(Map<String, String>) onSave;
 
   const EditChildDialog({
-    Key? key,
+    super.key,
     required this.childData,
     required this.onSave,
-  }) : super(key: key);
+  });
 
   @override
   _EditChildDialogState createState() => _EditChildDialogState();

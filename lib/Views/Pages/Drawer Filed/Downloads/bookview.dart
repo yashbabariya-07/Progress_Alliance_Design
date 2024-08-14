@@ -4,7 +4,6 @@ import 'package:pdfx/pdfx.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:progress_alliance/Theme/textStyle.dart';
-import 'package:share_plus/share_plus.dart';
 
 class BookView extends StatefulWidget {
   final String pdfPath;
