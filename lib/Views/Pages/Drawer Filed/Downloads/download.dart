@@ -8,6 +8,7 @@ import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 import 'package:progress_alliance/Routes/route.dart';
+import 'package:progress_alliance/Views/Components/AppBar/leadingTitleAppBar.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -59,33 +60,8 @@ class _DownloadState extends State<Download> {
       data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: BgColor.white,
-        appBar: AppBar(
-          toolbarHeight: MediaQuery.of(context).size.width * 0.15,
-          forceMaterialTransparency: true,
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(0),
-            child: Container(
-              color: FontsColor.grey,
-              height: 0.2,
-            ),
-          ),
-          centerTitle: true,
-          title: Text(
-            "Downloads",
-            style: TextStyle(
-              fontFamily: FontsFamily.inter,
-              fontSize: FontsSize.f16,
-              color: FontsColor.purple,
-              fontWeight: FontsWeight.bold,
-            ),
-          ),
-          leading: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Icon(Icons.arrow_back_ios_rounded,
-                size: MediaQuery.of(context).size.width * 0.06),
-          ),
+        appBar: const LeadTitleAppBar(
+          title: "Download",
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),

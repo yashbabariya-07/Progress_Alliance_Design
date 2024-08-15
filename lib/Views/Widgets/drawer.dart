@@ -324,7 +324,7 @@ class _EnddrawerState extends State<Enddrawer> {
                                   style: TextStyle(
                                     fontFamily: FontsFamily.inter,
                                     fontSize: FontsSize.f15,
-                                    color: const Color.fromARGB(255, 16, 2, 90),
+                                    color: FontsColor.purple,
                                   ),
                                 ),
                               ),

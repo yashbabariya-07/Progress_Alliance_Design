@@ -4,6 +4,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:progress_alliance/Routes/route.dart';
 import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
+import 'package:progress_alliance/Views/Components/AppBar/fullAppbar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Growthpartner extends StatefulWidget {
@@ -84,38 +85,8 @@ class _GrowthpartnerState extends State<Growthpartner> {
       data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: BgColor.white,
-        appBar: AppBar(
-          backgroundColor: BgColor.white,
-          toolbarHeight: MediaQuery.of(context).size.width * 0.15,
-          forceMaterialTransparency: true,
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(0),
-            child: Container(
-              color: FontsColor.grey,
-              height: 0.2,
-            ),
-          ),
-          centerTitle: true,
-          title: Text(
-            "Cluster Growth Partner",
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontFamily: FontsFamily.inter,
-              fontSize: FontsSize.f16,
-              color: FontsColor.purple,
-              fontWeight: FontsWeight.bold,
-            ),
-          ),
-          leading: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Icon(
-              Icons.arrow_back_ios_rounded,
-              size: MediaQuery.of(context).size.width * 0.06,
-            ),
-          ),
+        appBar: CustomeAppBar(
+          title: "Cluster Growth Partner",
           actions: [
             IconButton(
               icon: Icon(

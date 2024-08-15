@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
+import 'package:progress_alliance/Views/Components/AppBar/fullAppbar.dart';
 import 'package:progress_alliance/Views/Components/userTextField.dart/customeTextFormField.dart';
 import 'package:progress_alliance/Views/Pages/Business/businessInfo.dart';
 
@@ -26,35 +27,8 @@ class _SocialAccountState extends State<SocialAccount> {
       data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
           backgroundColor: BgColor.white,
-          appBar: AppBar(
-            forceMaterialTransparency: true,
-            toolbarHeight: MediaQuery.of(context).size.width * 0.15,
-            bottom: PreferredSize(
-              preferredSize: const Size.fromHeight(0),
-              child: Container(
-                color: FontsColor.grey,
-                height: 0.2,
-              ),
-            ),
-            centerTitle: true,
-            title: Text(
-              "Social Accounts",
-              style: TextStyle(
-                fontFamily: FontsFamily.inter,
-                fontSize: FontsSize.f16,
-                color: FontsColor.purple,
-                fontWeight: FontsWeight.bold,
-              ),
-            ),
-            leading: GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Icon(
-                Icons.arrow_back_ios_rounded,
-                size: MediaQuery.of(context).size.width * 0.06,
-              ),
-            ),
+          appBar: CustomeAppBar(
+            title: "Social Accounts",
             actions: [
               TextButton(
                 onPressed: () {

@@ -5,6 +5,7 @@ import 'package:progress_alliance/Routes/route.dart';
 import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Components/Button/CommonButton.dart';
+import 'package:progress_alliance/Views/Components/AppBar/leadingTitleAppBar.dart';
 
 class NotificationDetail extends StatefulWidget {
   const NotificationDetail({super.key});
@@ -24,38 +25,11 @@ class _NotificationDetailState extends State<NotificationDetail> {
       data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: BgColor.white,
-        appBar: AppBar(
-          backgroundColor: BgColor.white,
-          toolbarHeight: MediaQuery.of(context).size.width * 0.15,
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(0),
-            child: Container(
-              color: FontsColor.grey,
-              height: 0.2,
-            ),
-          ),
-          centerTitle: true,
-          title: Text(
-            "Notification Details",
-            style: TextStyle(
-              fontFamily: FontsFamily.inter,
-              fontSize: FontsSize.f16,
-              color: FontsColor.purple,
-              fontWeight: FontsWeight.bold,
-            ),
-          ),
-          leading: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Icon(
-              Icons.arrow_back_ios_rounded,
-              size: MediaQuery.of(context).size.width * 0.06,
-            ),
-          ),
+        appBar: const LeadTitleAppBar(
+          title: "Notification Details",
         ),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 25),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

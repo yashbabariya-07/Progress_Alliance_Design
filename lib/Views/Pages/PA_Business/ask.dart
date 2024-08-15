@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Components/Button/CommonButton.dart';
+import 'package:progress_alliance/Views/Components/AppBar/leadingTitleAppBar.dart';
 import 'package:progress_alliance/Views/Components/userTextField.dart/customeTextFormField.dart';
+import 'package:progress_alliance/Views/Pages/Business/IndividualPage/businessCategory.dart';
 
 class AskPage extends StatefulWidget {
   const AskPage({super.key});
@@ -14,7 +16,6 @@ class AskPage extends StatefulWidget {
 class _AskPageState extends State<AskPage> {
   String selected = "";
   final TextEditingController _searchController = TextEditingController();
-  final ValueNotifier<String> _searchQuery = ValueNotifier<String>("");
   final TextEditingController _businessCategoryController =
       TextEditingController();
   final TextEditingController _description = TextEditingController();
@@ -53,121 +54,13 @@ class _AskPageState extends State<AskPage> {
   }
 
   void _showBusinessCategory(BuildContext context) {
-    final List<String> businessCategories = [
-      'Advertising Services',
-      'Agriculture & Agro',
-      'Automobile',
-      'Beauty Care & Cosmetic Product',
-      'Chemicals',
-      'Computer Hardware & CCTV',
-      'Construction Materials',
-      'Consultancy & Services',
-      'Ecommerce',
-      'Education',
-      'Electronics & Electricals',
-      'Energy & Power',
-      'Engineering & Foundry',
-      'Financial & Legal Services'
-    ];
-
     showModalBottomSheet(
       backgroundColor: BgColor.white,
       context: context,
       isScrollControlled: true,
       builder: (BuildContext context) {
-        return Scaffold(
-          backgroundColor: BgColor.white,
-          body: Padding(
-            padding: const EdgeInsets.fromLTRB(10, 40, 10, 10),
-            child: SizedBox(
-              width: double.infinity,
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Icon(
-                          Icons.arrow_back_ios_rounded,
-                          size: MediaQuery.of(context).size.width * 0.06,
-                        ),
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.08,
-                      ),
-                      Text(
-                        'Select Business Category',
-                        style: TextStyle(
-                            fontFamily: FontsFamily.inter,
-                            fontSize: FontsSize.f16,
-                            fontWeight: FontsWeight.bold),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.03,
-                  ),
-                  CustomeSearchField(
-                    hintText: 'Search business category...',
-                    controller: _searchController,
-                    onChange: (value) {
-                      _searchQuery.value = value;
-                    },
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.015,
-                  ),
-                  Expanded(
-                    child: ValueListenableBuilder<String>(
-                      valueListenable: _searchQuery,
-                      builder: (context, query, child) {
-                        final filteredCategories =
-                            businessCategories.where((category) {
-                          return category
-                              .toLowerCase()
-                              .contains(query.toLowerCase());
-                        }).toList();
-                        return ListView.builder(
-                          itemCount: filteredCategories.length,
-                          itemBuilder: (context, index) {
-                            return Column(
-                              children: [
-                                ListTile(
-                                  title: Text(
-                                    filteredCategories[index],
-                                    style: TextStyle(
-                                        fontFamily: FontsFamily.inter,
-                                        fontSize: FontsSize.f14),
-                                  ),
-                                  onTap: () {
-                                    _businessCategoryController.text =
-                                        filteredCategories[index];
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                buildDivider(),
-                              ],
-                            );
-                          },
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
+        return const BCategorySheet();
       },
-    );
-  }
-
-  Divider buildDivider() {
-    return Divider(
-      color: FontsColor.grey,
-      thickness: 0.2,
     );
   }
 
@@ -178,36 +71,8 @@ class _AskPageState extends State<AskPage> {
       data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: BgColor.white,
-        appBar: AppBar(
-          backgroundColor: BgColor.white,
-          toolbarHeight: MediaQuery.of(context).size.width * 0.15,
-          forceMaterialTransparency: true,
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(0),
-            child: Container(
-              color: FontsColor.grey,
-              height: 0.2,
-            ),
-          ),
-          centerTitle: true,
-          title: Text(
-            "Add Ask",
-            style: TextStyle(
-              fontFamily: FontsFamily.inter,
-              fontSize: FontsSize.f16,
-              color: FontsColor.purple,
-              fontWeight: FontsWeight.bold,
-            ),
-          ),
-          leading: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Icon(
-              Icons.arrow_back_ios_rounded,
-              size: MediaQuery.of(context).size.width * 0.06,
-            ),
-          ),
+        appBar: const LeadTitleAppBar(
+          title: "Add Ask",
         ),
         body: SingleChildScrollView(
           child: Padding(

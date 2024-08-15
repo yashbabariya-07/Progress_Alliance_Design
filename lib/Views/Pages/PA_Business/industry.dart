@@ -7,6 +7,7 @@ import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 
 import 'package:progress_alliance/Routes/route.dart';
+import 'package:progress_alliance/Views/Components/AppBar/fullAppbar.dart';
 import 'package:progress_alliance/Views/Widgets/drawer.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -49,39 +50,11 @@ class _RetailerState extends State<Retailer> with LoadingStateMixin {
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return MediaQuery(
-      data: mediaQuery.copyWith(textScaleFactor: 1.0),
+      data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: BgColor.white,
-        appBar: AppBar(
-          toolbarHeight: MediaQuery.of(context).size.width * 0.15,
-          backgroundColor: BgColor.white,
-          centerTitle: true,
-          titleSpacing: 0,
-          title: Text(
-            "Retailer",
-            style: TextStyle(
-              fontFamily: FontsFamily.inter,
-              fontSize: FontsSize.f16,
-              color: FontsColor.purple,
-              fontWeight: FontsWeight.bold,
-            ),
-          ),
-          bottom: PreferredSize(
-            preferredSize: Size.fromHeight(0),
-            child: Container(
-              color: FontsColor.grey,
-              height: 0.2,
-            ),
-          ),
-          leading: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Icon(
-              Icons.arrow_back_ios_rounded,
-              size: MediaQuery.of(context).size.width * 0.06,
-            ),
-          ),
+        appBar: CustomeAppBar(
+          title: "Retailer",
           actions: [
             Builder(
               builder: (context) {

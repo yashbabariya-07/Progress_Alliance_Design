@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
+import 'package:progress_alliance/Views/Components/AppBar/PaAppbar.dart';
 import 'package:progress_alliance/Views/Widgets/drawer.dart';
 import 'package:progress_alliance/Views/Widgets/homeBottom.dart';
 import 'package:progress_alliance/Routes/route.dart';
@@ -73,49 +74,7 @@ class _PabusinessState extends State<Pabusiness> {
       data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: BgColor.white,
-        appBar: AppBar(
-          toolbarHeight: MediaQuery.of(context).size.width * 0.15,
-          backgroundColor: BgColor.white,
-          centerTitle: true,
-          leading: Builder(
-            builder: (context) => IconButton(
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-              icon: Image.asset(
-                "assets/Icons/dr.png",
-                color: FontsColor.purple,
-                width: MediaQuery.of(context).size.width * 0.07,
-              ),
-            ),
-          ),
-          titleSpacing: 0,
-          title: Text(
-            "PA Business",
-            style: TextStyle(
-              fontFamily: FontsFamily.inter,
-              fontSize: FontsSize.f16,
-              color: FontsColor.purple,
-              fontWeight: FontsWeight.bold,
-            ),
-          ),
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(0),
-            child: Container(
-              color: FontsColor.grey,
-              height: 0.2,
-            ),
-          ),
-          actions: [
-            IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.search,
-                  color: FontsColor.purple,
-                  size: MediaQuery.of(context).size.width * 0.06,
-                ))
-          ],
-        ),
+        appBar: const PaAppBar(),
         drawer: const PADrawer(),
         body: SingleChildScrollView(
           child: Padding(
@@ -321,7 +280,7 @@ class _PabusinessState extends State<Pabusiness> {
             onPressed: () {
               Navigator.pushNamed(context, Routes.askRoute);
             },
-            backgroundColor: const Color.fromARGB(255, 16, 2, 90),
+            backgroundColor: BgColor.purple,
             child: Text(
               "+ Add Ask",
               style: TextStyle(

@@ -162,7 +162,7 @@ class PersonalTab extends StatelessWidget {
                         ),
                         Icon(
                           MdiIcons.phoneOutline,
-                          color: const Color.fromARGB(255, 16, 2, 90),
+                          color: FontsColor.purple,
                           size: MediaQuery.of(context).size.width * 0.06,
                         ),
                       ],

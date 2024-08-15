@@ -3,6 +3,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
+import 'package:progress_alliance/Views/Components/AppBar/fullAppbar.dart';
 import 'package:progress_alliance/Views/Components/MemberDirectory/commonDesign.dart';
 import 'package:progress_alliance/Views/Components/ShimmerAnimation/DirectoryShimmer/paChapterShimmer.dart';
 
@@ -90,36 +91,8 @@ class _PADetailState extends State<PADetail> with LoadingStateMixin {
       data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: BgColor.white,
-        appBar: AppBar(
-          backgroundColor: BgColor.white,
-          toolbarHeight: MediaQuery.of(context).size.width * 0.15,
-          forceMaterialTransparency: true,
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(0),
-            child: Container(
-              color: FontsColor.grey,
-              height: 0.2,
-            ),
-          ),
-          centerTitle: true,
-          title: Text(
-            "PA Chapter Name",
-            style: TextStyle(
-              fontFamily: FontsFamily.inter,
-              fontSize: FontsSize.f16,
-              color: FontsColor.purple,
-              fontWeight: FontsWeight.bold,
-            ),
-          ),
-          leading: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Icon(
-              Icons.arrow_back_ios_rounded,
-              size: MediaQuery.of(context).size.width * 0.06,
-            ),
-          ),
+        appBar: CustomeAppBar(
+          title: "PA Chapter Name",
           actions: [
             IconButton(
               icon: Icon(

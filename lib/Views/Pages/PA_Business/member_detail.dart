@@ -4,6 +4,7 @@ import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/customShimmer.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
+import 'package:progress_alliance/Views/Components/AppBar/fullAppbar.dart';
 import 'package:progress_alliance/Views/Pages/PA_Business/TabBarData/business.dart';
 import 'package:progress_alliance/Views/Pages/PA_Business/TabBarData/personal.dart';
 import 'package:progress_alliance/Views/Components/PACommon.dart/customeDetail.dart';
@@ -33,36 +34,8 @@ class _MemberDetailState extends State<MemberDetail>
       data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: BgColor.white,
-        appBar: AppBar(
-          backgroundColor: BgColor.white,
-          toolbarHeight: MediaQuery.of(context).size.width * 0.15,
-          forceMaterialTransparency: true,
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(0),
-            child: Container(
-              color: FontsColor.grey,
-              height: 0.2,
-            ),
-          ),
-          centerTitle: true,
-          title: Text(
-            "Member Details",
-            style: TextStyle(
-              fontFamily: FontsFamily.inter,
-              fontSize: FontsSize.f16,
-              color: FontsColor.purple,
-              fontWeight: FontsWeight.bold,
-            ),
-          ),
-          leading: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Icon(
-              Icons.arrow_back_ios_rounded,
-              size: MediaQuery.of(context).size.width * 0.06,
-            ),
-          ),
+        appBar: CustomeAppBar(
+          title: "Member Details",
           actions: [
             IconButton(
                 onPressed: () {},
