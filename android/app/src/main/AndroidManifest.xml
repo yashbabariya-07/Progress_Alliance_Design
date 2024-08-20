@@ -6,6 +6,9 @@
     <uses-permission android:name="android.permission.FLASHLIGHT"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
     <application
         android:label="progress_alliance"
@@ -40,7 +43,11 @@
             android:value="2" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAfeoKNgV6l1f5AEaAPkmi9u3kwjzaQwLE"/>  
+            android:value="AIzaSyAfeoKNgV6l1f5AEaAPkmi9u3kwjzaQwLE"/> 
+        <meta-data
+           android:name="com.google.firebase.messaging.default_notification_channel_id"
+           android:value="high_importance_channel" />
+ 
     </application>
     <!-- Required to query activities that can process text, see:
          Api Key -: AIzaSyD5qYUozoB-B71LzoJKd9gF75Y2G_Far8w

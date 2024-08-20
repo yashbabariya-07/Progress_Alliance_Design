@@ -1,5 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:progress_alliance/Models/Authentication/firebaseNotificarion.dart';
 import 'package:progress_alliance/Views/Animation/PageTransition/CustomePageTransition.dart';
 import 'package:progress_alliance/Views/Pages/Business/bAddress.dart';
 import 'package:progress_alliance/Views/Pages/Business/bDetail.dart';
@@ -42,7 +44,10 @@ import 'package:progress_alliance/Routes/route.dart';
 import 'package:progress_alliance/Views/Pages/SearchArea/search.dart';
 import 'package:progress_alliance/Views/Pages/Splash/splash.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await FirebaseApi().initNotifications();
   runApp(const MyApp());
 }
 

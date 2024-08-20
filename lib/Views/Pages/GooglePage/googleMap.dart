@@ -11,7 +11,6 @@ import 'package:progress_alliance/Views/Pages/GooglePage/IndividualPage/toggel.d
 import 'package:progress_alliance/Views/Pages/GooglePage/IndividualPage/view.dart';
 import 'package:progress_alliance/Views/Widgets/drawer.dart';
 import 'package:progress_alliance/Views/Widgets/homeBottom.dart';
-import 'package:progress_alliance/Routes/route.dart';
 
 class Googlemap extends StatefulWidget {
   const Googlemap({super.key});

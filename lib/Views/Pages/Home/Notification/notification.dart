@@ -174,8 +174,7 @@ class _NotificationPageState extends State<NotificationPage>
                                       style: TextStyle(
                                           fontFamily: FontsFamily.inter,
                                           fontSize: FontsSize.f13,
-                                          color: const Color.fromARGB(
-                                              255, 16, 2, 90),
+                                          color: FontsColor.purple,
                                           fontWeight: FontsWeight.bold),
                                     ),
                                   ]),
