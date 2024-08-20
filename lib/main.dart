@@ -44,10 +44,19 @@ import 'package:progress_alliance/Routes/route.dart';
 import 'package:progress_alliance/Views/Pages/SearchArea/search.dart';
 import 'package:progress_alliance/Views/Pages/Splash/splash.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await FirebaseApi().initNotifications();
+
+  FirebaseApi firebaseApi = FirebaseApi();
+  await firebaseApi.initNotifications();
+  await firebaseApi.initLocalNotifications();
+  firebaseApi.firebaseInit();
+  firebaseApi.setupInteractMessage();
+  await firebaseApi.forgroundMessage();
+
   runApp(const MyApp());
 }
 
@@ -74,6 +83,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return MaterialApp(
+          navigatorKey: navigatorKey,
           debugShowCheckedModeBanner: false,
           initialRoute: Routes.splashRoute,
           theme: ThemeData(
