@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Animation/ShimmerLoader/syntax.dart';
 import 'package:shimmer/shimmer.dart';
@@ -60,8 +61,8 @@ class _GoogleViewState extends State<GoogleView> with LoadingStateMixin {
           padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
           child: isLoading
               ? Shimmer.fromColors(
-                  baseColor: FontsColor.grey300!,
-                  highlightColor: FontsColor.grey100!,
+                  baseColor: BgColor.grey300!,
+                  highlightColor: BgColor.grey100!,
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.09,
                     width: double.infinity,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -15,8 +16,8 @@ class _GrowthShimmerState extends State<GrowthShimmer> {
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       child: Shimmer.fromColors(
-        baseColor: FontsColor.grey300!,
-        highlightColor: FontsColor.grey100!,
+        baseColor: BgColor.grey300!,
+        highlightColor: BgColor.grey100!,
         child: Column(
           children: [
             Padding(

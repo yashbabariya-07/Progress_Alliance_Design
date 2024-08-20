@@ -39,8 +39,6 @@ class FirebaseApi {
       if (kDebugMode) {
         print("Listen Title: ${message.notification?.title}");
         print("Listen Body: ${message.notification?.body}");
-        print(message.data['type']);
-        print(message.data['title']);
       }
 
       if (message.notification != null) {

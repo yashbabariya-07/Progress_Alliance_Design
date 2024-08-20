@@ -40,8 +40,8 @@ class _HomeAppBarState extends State<HomeAppBar> with LoadingStateMixin {
         children: [
           isLoading
               ? Shimmer.fromColors(
-                  baseColor: FontsColor.grey300!,
-                  highlightColor: FontsColor.grey100!,
+                  baseColor: BgColor.grey300!,
+                  highlightColor: BgColor.grey100!,
                   child: CircleAvatar(
                     radius: MediaQuery.of(context).size.width * 0.045,
                   ),

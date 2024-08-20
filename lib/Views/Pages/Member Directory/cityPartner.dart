@@ -46,8 +46,8 @@ class _CityPartnerState extends State<CityPartner> with LoadingStateMixin {
             children: [
               isLoading
                   ? Shimmer.fromColors(
-                      baseColor: FontsColor.grey300!,
-                      highlightColor: FontsColor.grey100!,
+                      baseColor: BgColor.grey300!,
+                      highlightColor: BgColor.grey100!,
                       child: Container(
                         height: MediaQuery.of(context).size.height * 0.05,
                         width: double.infinity,
@@ -113,8 +113,8 @@ class _CityPartnerState extends State<CityPartner> with LoadingStateMixin {
                   itemBuilder: (context, index) {
                     return isLoading
                         ? Shimmer.fromColors(
-                            baseColor: FontsColor.grey300!,
-                            highlightColor: FontsColor.grey100!,
+                            baseColor: BgColor.grey300!,
+                            highlightColor: BgColor.grey100!,
                             child: Container(
                               height: MediaQuery.of(context).size.height * 0.05,
                               width: MediaQuery.of(context).size.width * 0.3,

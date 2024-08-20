@@ -84,8 +84,8 @@ class _RetailerState extends State<Retailer> with LoadingStateMixin {
                 },
                 child: isLoading
                     ? Shimmer.fromColors(
-                        baseColor: FontsColor.grey300!,
-                        highlightColor: FontsColor.grey100!,
+                        baseColor: BgColor.grey300!,
+                        highlightColor: BgColor.grey100!,
                         child: Container(
                           padding: const EdgeInsets.all(15),
                           margin: const EdgeInsets.only(bottom: 5),

@@ -62,8 +62,8 @@ class _AdServiceState extends State<AdService> with LoadingStateMixin {
                       },
                       child: isLoading
                           ? Shimmer.fromColors(
-                              baseColor: FontsColor.grey300!,
-                              highlightColor: FontsColor.grey100!,
+                              baseColor: BgColor.grey300!,
+                              highlightColor: BgColor.grey100!,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
                                 child: Stack(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -26,8 +27,8 @@ class _DirectoryShimmerState extends State<DirectoryShimmer> {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: FontsColor.grey300!,
-      highlightColor: FontsColor.grey100!,
+      baseColor: BgColor.grey300!,
+      highlightColor: BgColor.grey100!,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
