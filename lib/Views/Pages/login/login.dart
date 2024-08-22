@@ -1,5 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'package:progress_alliance/Routes/route.dart';
 import 'package:progress_alliance/Theme/bgColor.dart';
 import 'package:progress_alliance/Theme/textStyle.dart';
@@ -90,6 +90,17 @@ class _LoginPageState extends State<LoginPage> {
                     CommonButton(
                         text: "Next",
                         onTap: () {
+                          // await FirebaseAuth.instance.verifyPhoneNumber(
+                          //     verificationCompleted:
+                          //         (PhoneAuthCredential credential) {},
+                          //     verificationFailed: (FirebaseAuthException ex) {},
+                          //     codeSent:
+                          //         (String verificationid, int? resendtoken) {
+
+                          //     },
+                          //     codeAutoRetrievalTimeout:
+                          //         (String verificationId) {},
+                          //     phoneNumber: _phoneController.text.toString());
                           Navigator.pushNamed(context, Routes.connectRoute);
                         }),
                     SizedBox(height: mediaQuery.size.height * 0.02),

@@ -211,6 +211,7 @@ class MobileNumberInput extends StatefulWidget {
 }
 
 class _MobileNumberInputState extends State<MobileNumberInput> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String _selectedCountryCode = "+91";
   String _selectedCountryFlag = "🇮🇳";
 
@@ -218,83 +219,92 @@ class _MobileNumberInputState extends State<MobileNumberInput> {
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
 
-    return Container(
-      height: mediaQuery.size.height * 0.06,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        border: Border.all(
-          color: widget.isHighlighted ? FontsColor.black : FontsColor.grey,
-          width: 1,
+    return Form(
+      key: _formKey,
+      child: Container(
+        height: mediaQuery.size.height * 0.06,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5),
+          border: Border.all(
+            color: widget.isHighlighted ? FontsColor.black : FontsColor.grey,
+            width: 1,
+          ),
         ),
-      ),
-      child: Row(
-        children: [
-          GestureDetector(
-            onTap: () {
-              CountryCode.showCountryCode(
-                context: context,
-                searchController: widget.searchController,
-                searchQuery: widget.searchQuery,
-                onCountrySelected: (code, flag) {
-                  setState(() {
-                    _selectedCountryCode = code;
-                    _selectedCountryFlag = flag;
-                  });
-                  widget.onCountrySelected(code, flag);
-                },
-              );
-            },
-            child: Container(
-              padding: const EdgeInsets.all(10),
-              child: Row(
-                children: [
-                  Text(
-                    _selectedCountryFlag,
-                    style: TextStyle(fontSize: FontsSize.f18),
-                  ),
-                  SizedBox(width: mediaQuery.size.width * 0.01),
-                  Text(
-                    _selectedCountryCode,
-                    style: TextStyle(
-                      fontSize: FontsSize.f14,
-                      fontFamily: FontsFamily.inter,
+        child: Row(
+          children: [
+            GestureDetector(
+              onTap: () {
+                CountryCode.showCountryCode(
+                  context: context,
+                  searchController: widget.searchController,
+                  searchQuery: widget.searchQuery,
+                  onCountrySelected: (code, flag) {
+                    setState(() {
+                      _selectedCountryCode = code;
+                      _selectedCountryFlag = flag;
+                    });
+                    widget.onCountrySelected(code, flag);
+                  },
+                );
+              },
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                child: Row(
+                  children: [
+                    Text(
+                      _selectedCountryFlag,
+                      style: TextStyle(fontSize: FontsSize.f18),
                     ),
-                  ),
-                  SizedBox(width: mediaQuery.size.width * 0.01),
-                  Icon(
-                    Icons.arrow_drop_down,
-                    size: MediaQuery.of(context).size.width * 0.06,
-                  )
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-                vertical: BorderSide.strokeAlignCenter),
-            child: VerticalDivider(
-              width: MediaQuery.of(context).size.width * 0.0005,
-              color: FontsColor.grey,
-            ),
-          ),
-          Expanded(
-            child: TextField(
-              controller: widget.phoneController,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 14),
-                hintText: "Enter your mobile number",
-                hintStyle: TextStyle(
-                  fontSize: FontsSize.f14,
-                  fontFamily: FontsFamily.inter,
+                    SizedBox(width: mediaQuery.size.width * 0.01),
+                    Text(
+                      _selectedCountryCode,
+                      style: TextStyle(
+                        fontSize: FontsSize.f14,
+                        fontFamily: FontsFamily.inter,
+                      ),
+                    ),
+                    SizedBox(width: mediaQuery.size.width * 0.01),
+                    Icon(
+                      Icons.arrow_drop_down,
+                      size: MediaQuery.of(context).size.width * 0.06,
+                    )
+                  ],
                 ),
               ),
-              keyboardType: TextInputType.phone,
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                  vertical: BorderSide.strokeAlignCenter),
+              child: VerticalDivider(
+                width: MediaQuery.of(context).size.width * 0.0005,
+                color: FontsColor.grey,
+              ),
+            ),
+            Expanded(
+              child: TextFormField(
+                controller: widget.phoneController,
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 14),
+                  hintText: "Enter your mobile number",
+                  hintStyle: TextStyle(
+                    fontSize: FontsSize.f14,
+                    fontFamily: FontsFamily.inter,
+                  ),
+                ),
+                keyboardType: TextInputType.phone,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your account number';
+                  }
+                  return null;
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

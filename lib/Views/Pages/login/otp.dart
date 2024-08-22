@@ -1,6 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:progress_alliance/Routes/route.dart';
 import 'package:progress_alliance/Theme/bgColor.dart';
@@ -8,7 +8,8 @@ import 'package:progress_alliance/Theme/textStyle.dart';
 import 'package:progress_alliance/Views/Components/Button/CommonButton.dart';
 
 class OTPPage extends StatefulWidget {
-  const OTPPage({Key? key}) : super(key: key);
+  String verificationid;
+  OTPPage({super.key, required this.verificationid});
 
   @override
   State<OTPPage> createState() => _OTPPageState();
@@ -21,7 +22,7 @@ class _OTPPageState extends State<OTPPage> {
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return MediaQuery(
-      data: mediaQuery.copyWith(textScaleFactor: 1.0),
+      data: mediaQuery.copyWith(textScaler: const TextScaler.linear(1.0)),
       child: Scaffold(
         backgroundColor: BgColor.white,
         appBar: AppBar(
@@ -113,6 +114,20 @@ class _OTPPageState extends State<OTPPage> {
                 CommonButton(
                     text: "Verify",
                     onTap: () {
+                      // try {
+                      //   PhoneAuthCredential credential =
+                      //       await PhoneAuthProvider.credential(
+                      //           verificationId: widget.verificationid,
+                      //           smsCode: _otpController.text.toString());
+                      //   FirebaseAuth.instance
+                      //       .signInWithCredential(credential)
+                      //       .then((value) {
+
+                      //   });
+                      // } catch (ex) {
+                      //   print(ex.toString());
+                      // }
+
                       Navigator.pushNamed(context, Routes.homeRoute);
                     }),
               ],
