@@ -155,7 +155,8 @@ class GenderButton extends StatelessWidget {
 
     return InkWell(
       onTap: onTap,
-      child: Container(
+      borderRadius: BorderRadius.circular(25),
+      child: Ink(
         height: MediaQuery.of(context).size.height * 0.05,
         width: MediaQuery.of(context).size.width * 0.28,
         decoration: BoxDecoration(
@@ -166,7 +167,6 @@ class GenderButton extends StatelessWidget {
           color: isSelected ? FontsColor.white : FontsColor.grey100,
           borderRadius: BorderRadius.circular(25),
         ),
-        alignment: Alignment.center,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -178,10 +178,11 @@ class GenderButton extends StatelessWidget {
             Text(
               gender,
               style: TextStyle(
-                  fontFamily: FontsFamily.inter,
-                  fontSize: FontsSize.f14,
-                  color: isSelected ? FontsColor.purple : FontsColor.black54,
-                  fontWeight: FontsWeight.bold),
+                fontFamily: FontsFamily.inter,
+                fontSize: FontsSize.f14,
+                color: isSelected ? FontsColor.purple : FontsColor.black54,
+                fontWeight: FontsWeight.bold,
+              ),
             ),
           ],
         ),
