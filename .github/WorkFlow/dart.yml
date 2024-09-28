@@ -3,7 +3,7 @@ name: "Build & Release"
 on:
   pull_request:
     branches:
-      - origin/main
+      - main
       - master
   push:
     branches:
