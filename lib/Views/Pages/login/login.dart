@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_alliance/Routes/route.dart';
 import 'package:progress_alliance/Theme/bgColor.dart';
@@ -17,11 +18,42 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _phoneController = TextEditingController();
   final ValueNotifier<String> _searchQuery = ValueNotifier<String>("");
   bool _isHighlighted = false;
+  final FirebaseAnalytics analytics = FirebaseAnalytics.instance;
 
   @override
   void initState() {
     super.initState();
+    analytics.setAnalyticsCollectionEnabled(true);
     _phoneController.addListener(_checkInput);
+    _logPageView();
+  }
+
+  void _logPageView() async {
+    await analytics.logEvent(
+      name: 'page_view',
+      parameters: {
+        'page_name': 'login_page',
+      },
+    );
+  }
+
+  void _logNextButtonTap() async {
+    await analytics.logEvent(
+      name: 'button_tap',
+      parameters: {
+        'button_name': 'Submit',
+        'phone_number': _phoneController.text,
+      },
+    );
+  }
+
+  void _logNavigateToOTP() async {
+    await analytics.logEvent(
+      name: 'navigate_to_connection',
+      parameters: {
+        'from_page': 'login_page',
+      },
+    );
   }
 
   void _checkInput() {
@@ -100,6 +132,8 @@ class _LoginPageState extends State<LoginPage> {
                           //     codeAutoRetrievalTimeout:
                           //         (String verificationId) {},
                           //     phoneNumber: _phoneController.text.toString());
+                          _logNextButtonTap();
+                          _logNavigateToOTP();
                           Navigator.pushNamed(context, Routes.connectRoute);
                         }),
                     SizedBox(height: mediaQuery.size.height * 0.02),

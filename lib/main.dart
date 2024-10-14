@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -47,6 +48,7 @@ import 'package:progress_alliance/Views/Pages/Home/Notification/notification.dar
 import 'package:progress_alliance/Routes/route.dart';
 import 'package:progress_alliance/Views/Pages/SearchArea/search.dart';
 import 'package:progress_alliance/Views/Pages/Splash/splash.dart';
+import 'package:progress_alliance/firebase_options.dart';
 import 'package:provider/provider.dart';
 import 'package:secure_application/secure_application.dart';
 
@@ -54,7 +56,9 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   FirebaseApi firebaseApi = FirebaseApi();
   await firebaseApi.initNotifications();
@@ -65,6 +69,15 @@ Future<void> main() async {
   detectJailBreakHandler();
 
   await dotenv.load(fileName: ".env");
+
+  // Pass all uncaught errors from the framework to Crashlytics
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+
+  // For catching errors that happen outside of the Flutter context
+  PlatformDispatcher.instance.onError = (error, stack) {
+    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    return true;
+  };
 
   runApp(const MyApp());
 }

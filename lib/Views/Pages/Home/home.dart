@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:progress_alliance/Routes/route.dart';
@@ -345,6 +346,41 @@ class _HomePageState extends State<HomePage> with LoadingStateMixin {
                             },
                           ),
                         )),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Test crash
+                        FirebaseCrashlytics.instance.crash();
+
+                        // Log custom error
+                        try {
+                          throw Exception('This is a test error');
+                        } catch (e, stack) {
+                          FirebaseCrashlytics.instance.recordError(e, stack);
+                        }
+
+                        // Add custom keys
+                        FirebaseCrashlytics.instance
+                            .setCustomKey('str_key', 'hello');
+                        FirebaseCrashlytics.instance
+                            .setCustomKey('bool_key', true);
+                        FirebaseCrashlytics.instance.setCustomKey('int_key', 1);
+
+                        // Add user identifier
+                        FirebaseCrashlytics.instance
+                            .setUserIdentifier('user123');
+
+                        // Log messages
+                        FirebaseCrashlytics.instance.log('This is a test log');
+                      },
+                      child: const Text('Test Crashlytics'),
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                    ElevatedButton(
+                      onPressed: () =>
+                          throw const FormatException('Format Exception'),
+                      child: const Text("Format Exception"),
+                    ),
                   ],
                 ),
         ),
